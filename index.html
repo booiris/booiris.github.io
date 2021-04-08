@@ -173,7 +173,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-04-08 21:19:17 / 修改时间：21:24:12" itemprop="dateCreated datePublished" datetime="2021-04-08T21:19:17+08:00">2021-04-08</time>
+              <time title="创建时间：2021-04-08 21:19:17 / 修改时间：21:27:29" itemprop="dateCreated datePublished" datetime="2021-04-08T21:19:17+08:00">2021-04-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -197,85 +197,14 @@
 
       
           <h1 id="语言认知实验报告"><a href="#语言认知实验报告" class="headerlink" title="语言认知实验报告"></a>语言认知实验报告</h1><h2 id="实验目的"><a href="#实验目的" class="headerlink" title="实验目的"></a>实验目的</h2><p>感受编译执行和解释执行两种不同的执行方式，初步体验语言对编译器设计的影响，为后续编译程序的设计和开发奠定良好的基础。我最大的收获是接触到了了函数式编程的概念，了解到了许多新的概念和思考方式。</p>
-<h2 id="实验内容"><a href="#实验内容" class="headerlink" title="实验内容"></a>实验内容</h2><p>分别使用 C++、Java、Python和Haskell 实现了矩阵乘法的功能，对于Haskell，由于其一些有趣的特性，所以又实现了快速排序的功能。</p>
-<h2 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h2><h3 id="c"><a href="#c" class="headerlink" title="c++"></a>c++</h3><p>为了与其他语言一样能够接受任意大小的矩阵输入，保存矩阵采取动态分配内存的方式。</p>
-<p>动态分配内存相较于静态分配空间运行更慢，但为了节省空间的同时满足输入任意大小的矩阵，还是采用了动态分配内存的方法。实现矩阵乘法的代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">res.row = x.row, res.col = y.col;</span><br><span class="line">res.a = <span class="keyword">new</span> <span class="keyword">int</span> *[res.row];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; res.row; i++)</span><br><span class="line">    res.a[i] = <span class="keyword">new</span> <span class="keyword">int</span>[res.col];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; x.row; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; y.col; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; x.col; k++)</span><br><span class="line">            temp += x.a[i][k] * y.a[k][j];</span><br><span class="line">        res.a[i][j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h3><p>由于矩阵相乘功能过于简单，所以没有感受到这种面向对象设计语言的突出的特性，实现矩阵乘法的代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[][] res = <span class="keyword">new</span> <span class="keyword">int</span>[a.length][b[<span class="number">0</span>].length];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; b[<span class="number">0</span>].length; j++) &#123;</span><br><span class="line">        <span class="keyword">int</span> temp = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; a[<span class="number">0</span>].length; k++) &#123;</span><br><span class="line">            temp += a[i][k] * b[k][j];</span><br><span class="line">        &#125;</span><br><span class="line">        res[i][j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> res;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><p>采用列表保存矩阵，使用一行列表生成式就可以得到矩阵相乘的结果。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res = [[<span class="built_in">sum</span>(a[i][k]*b[k][j] <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(a[<span class="number">0</span>])))</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(b[<span class="number">0</span>]))] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(a))]</span><br></pre></td></tr></table></figure>
-
-<h3 id="Haskell"><a href="#Haskell" class="headerlink" title="Haskell"></a>Haskell</h3><p>Haskell 作为函数式编程语言，与上面三种语言有很大的不同。实现功能时，我获得了一种全新的体验。</p>
-<h4 id="矩阵运算"><a href="#矩阵运算" class="headerlink" title="矩阵运算"></a>矩阵运算</h4><p>对于运算 A * B 矩阵，我的做法是首先将 B 矩阵转置，然后 对于 A 的每一行，乘上 B.T 的所有行，相当于乘上 B 矩阵的所有列。然后求和得到结果矩阵的对应行。</p>
-<ol>
-<li><p>首先解决矩阵转置的问题，核心代码如下：</p>
- <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">transmat</span> mat = (map head mat) : transmat (map tail mat)</span><br></pre></td></tr></table></figure>
-<p> 由于 haskell 中存储矩阵的方式为列表套列表，所以取出一列的操作为每次取出每行的首元素，通过递归得到转置的矩阵。</p>
-</li>
-<li><p>接下来就是计算矩阵了。</p>
-<p> 首先实现一个函数，取出 A 矩阵中的一个行，乘上 B.T的每一行。</p>
- <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">line_mul</span> mat line = map sum $ map (zipWith (*) line) mat</span><br></pre></td></tr></table></figure>
-
-<p> 在这里不得不说 map 是一个很有趣的函数，它的签名为<br> $$(a\rightarrow b)\rightarrow [a] \rightarrow [b] $$</p>
-<p> 可以看出它将一个映射作用于一个集合上生成另一个集合。</p>
-<p> 在学习 haskell 语言的过程中，我就觉得奇怪，为什么函数的签名为什么要加上箭头，这种称为柯里化(Currying)。haskell对于函数的处理并不是一下子输入全部参数，而是根据箭头一层一层地剥开，这种特性结合 map 函数就得到了下面一行代码：</p>
- <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">map</span> (zipWith (*) line) mat </span><br></pre></td></tr></table></figure>
-
-<p> zipWith 函数的签名为：</p>
-<p> $$ (a \rightarrow b \rightarrow c) \rightarrow [a] \rightarrow [b] \rightarrow [c] $$</p>
-<p> 作用是将两个集合对应位置元素进行二元运算得到一个新的集合。</p>
-<p> (*) 函数签名为:</p>
-<p> $$a \rightarrow a \rightarrow a $$</p>
-<p> line 结构为 $[a]$ 。</p>
-<p> zipWith (*) line 得到的结构为 $[b] \rightarrow [c]$ ，再加上 map 就实现了取出 A 矩阵中的一个行，乘上 B.T的每一行的功能。</p>
-<p> 这种对函数的处理我觉得特别精妙。当我抱着试一试的心态写出这行代码发现可以运行，我觉得真是太有意思了。这样把问题一部分一部分地分解，符合思维习惯。</p>
-</li>
-<li><p>上面只是计算了 A 矩阵其中的一行，接下来就是把这个操作映射到 A 矩阵的所有行了，同样使用 map 和柯里化的特性，代码为：</p>
- <figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">map</span> (line_mul tmat) mat1</span><br></pre></td></tr></table></figure>
-
-<p> line_mul 的签名为:</p>
-<p> $$[[Int]] \rightarrow [Int] \rightarrow [Int]$$</p>
-<p> 可以看出就是一个矩阵和一行运算得到一行。</p>
-<p> 在给定了转置矩阵后结构变为 $[Int] \rightarrow [Int]$ ，行到行的映射。使用 map 将操作映射到 A 矩阵上的每一行上得到结果矩阵。</p>
-</li>
-</ol>
-<p>最终代码如下：</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">mat_mul</span> :: [[<span class="type">Int</span>]] -&gt; [[<span class="type">Int</span>]] -&gt; [[<span class="type">Int</span>]]</span><br><span class="line"><span class="title">mat_mul</span> mat1 mat2 = <span class="keyword">do</span></span><br><span class="line"><span class="title">let</span> tmat = transmat mat2</span><br><span class="line"><span class="title">map</span> (line_mul tmat) mat1</span><br><span class="line"><span class="title">where</span></span><br><span class="line">    transmat :: [[<span class="type">Int</span>]] -&gt; [[<span class="type">Int</span>]]</span><br><span class="line">    transmat ([]:_) = []</span><br><span class="line">    transmat mat = (map head mat) : transmat (map tail mat)</span><br><span class="line">    line_mul :: [[<span class="type">Int</span>]] -&gt; [<span class="type">Int</span>] -&gt; [<span class="type">Int</span>]</span><br><span class="line">    line_mul mat line = map sum $ map (zipWith (*) line) mat</span><br></pre></td></tr></table></figure>
-
-<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p>根据快排过程的定义，对于一个数组，选取一个中间值，使得中间值左边的数小于中间值，右边的数大于中间值，递归排序左右数组。发现这个左小右大的特点相当于在原集合中选取小于和大于选定值 x 的元素分别组成新的集合，分别将其放在 x 的左右。使用 filter 实现选取元素的功能。代码如下：</p>
-<figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">qsort</span> :: [<span class="type">Int</span>] -&gt; [<span class="type">Int</span>]</span><br><span class="line"><span class="title">qsort</span> [] = []</span><br><span class="line"><span class="title">qsort</span> (x:xs) =</span><br><span class="line"><span class="title">qsort</span> [a | a &lt;- xs, a &lt; x] ++</span><br><span class="line">[b | b &lt;- ([x] ++ xs), b == x] ++ qsort [a | a &lt;- xs, a &gt; x]</span><br></pre></td></tr></table></figure>
-
-<h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><h3 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h3><p>CPU核数：6</p>
-<p>CPU主频：2.2GHz</p>
-<p>内存大小：16G</p>
-<h3 id="运行效果截图"><a href="#运行效果截图" class="headerlink" title="运行效果截图"></a>运行效果截图</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><p><img src="img/1.png" alt="w-half"></p>
-<h4 id="Java-1"><a href="#Java-1" class="headerlink" title="Java"></a>Java</h4><p><img src="img/3.png" alt="w-half"></p>
-<h4 id="Python-1"><a href="#Python-1" class="headerlink" title="Python"></a>Python</h4><p><img src="img/2.png" alt="w-half"></p>
-<h4 id="Haskell-1"><a href="#Haskell-1" class="headerlink" title="Haskell"></a>Haskell</h4><p><img src="img/4.png" alt="w-half"></p>
-<h3 id="语言易用性和程序规模对比"><a href="#语言易用性和程序规模对比" class="headerlink" title="语言易用性和程序规模对比"></a>语言易用性和程序规模对比</h3><p>对于每个语言，我写了两个版本，一个是通过交互输入矩阵，另一个是通过读取文件输入矩阵用来测试函数速度。</p>
-<p>编写过程中，我感觉 C++ 和 Java 规模都差不多，程序结构相似，对于读取文件功能都有库函数能够实现。Python 和 Haskell 核心代码很短，它们的抽象层次更高。</p>
-<p>在生成的二进制程序中，由于测试速度的版本需要数据文件而数据又过大，所以只保留了交互的版本。</p>
-<h3 id="运行性能分析"><a href="#运行性能分析" class="headerlink" title="运行性能分析"></a>运行性能分析</h3><h4 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h4><p>C++ 和 Haskell 开启 O2 优化，四种语言运行速度如下：</p>
-<p><img src="img/5.png"></p>
-<p>可以看出C++最快，Java次之，Haskell 比 Python 快。</p>
-<p>这里必须指出 Haskell 一个有趣的特性，那就是惰性计算。</p>
-<p>在计算时间的时候，Haskell 必须输出结果才能得到时间。开始的时候，为了得到准确的时间，程序 IO 的时间需要尽可能地少，于是我想只输出矩阵其中的一个值，达到减少 IO 时间的目的。</p>
-<p>这时神奇的事情发生了， Haskell 的运行时间竟然比 C++ 快许多。我开始还以为 Haskell 的 map 函数能够进行并行计算，毕竟这是对相同结构的元素进行相同的操作。但随着输出部分的增多，我发现 Haskell 的时间越来越长，事情开始不对劲起来。</p>
-<p>为了去除 IO 的部分影响，首先输出读入的两个矩阵，这样矩阵就保存在内存中，去除了读入的时间。然后重复输出结果矩阵，由于 Haskell 保存计算过的结果的特性，第二次输出时间只是输出的时间，与第一次输出结果需要运算的时间相减就能能到运算的时间。</p>
-<p>在看到惰性计算对于无限数组的求值的例子时，我大概明白了， Haskell 只计算了对应输出位置的值。已经有这么多变换了， Haskell 还能找到对应的一部分数据进行计算得到结果，还能这种操作，以后得研究研究。（有可能想法有错，但 Haskell 只计算了局部的结果是没错的，输出全部矩阵和输出部分结果时间还是有较大差距）。</p>
-<h4 id="快速排序-1"><a href="#快速排序-1" class="headerlink" title="快速排序"></a>快速排序</h4><p>矩阵乘法得到得结果矩阵，矩阵里的元素互相不存在关系，所以能够局部计算是能理解的。快速排序得到的序列元素存在大小关系，原本以为这下不能局部计算了吧，没想到 Haskell 还真能得到局部结果，测试结果如下：</p>
-<p><img src="img/6.png"></p>
-<p>再想一想，得到部分连续的元素确实不用计算全部序列，如果当前不在计算范围内就不继续递归就行了。但是这样编译器也能自动优化，惰性计算还是有点神奇的。</p>
-<h2 id="心得体会"><a href="#心得体会" class="headerlink" title="心得体会"></a>心得体会</h2><p>最大的收获还是接触了 Haskell 语言吧。了解到了柯里化和惰性计算。没说到的还有纯函数和不纯函数的的概念，开始的时候读入数据 IO String 和 String 能把人折腾得不行。</p>
-<p>Java面向对象的特性还是有一点体现的，干啥都要类+’.’调用成员函数。</p>
-<p>Python的慢已经深刻感受过了。</p>
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
-</script>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/04/08/compile_work1/work1/%E8%AF%AD%E8%A8%80%E8%AE%A4%E7%9F%A5%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
