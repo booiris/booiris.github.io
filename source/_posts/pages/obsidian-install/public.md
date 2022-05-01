@@ -1,11 +1,11 @@
 ---
-title: public
-date: 2022-05-01 21:37:01
-updated: 2022-05-01 21:37:19
+title: Obsidian发布到Hexo
+date: 2022-05-01 23:30:54
+updated: 2022-05-01 23:30:56
 tags: []
 top: false
 mathjax: true
-categories:
+categories: obsidian-install
 author: booiris
 ---
 

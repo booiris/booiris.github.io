@@ -1,11 +1,11 @@
 ---
-title: WSL
-date: 2022-05-01 21:14:18
-updated: 2022-05-01 21:14:20
+title: linux-install
+date: 2022-05-01 23:30:29
+updated: 2022-05-01 23:30:29
 tags: []
 top: false
 mathjax: true
-categories:
+categories: linux
 author: booiris
 ---
 

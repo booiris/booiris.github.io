@@ -1,11 +1,11 @@
 ---
 title: Obsidian 多平台同步方法
-date: 2022-05-01 21:13:27
-updated: 2022-05-01 23:23:34
+date: 2022-05-01 23:31:00
+updated: 2022-05-01 23:31:02
 tags: []
 top: false
 mathjax: true
-categories:
+categories: obsidian-install
 author: booiris
 ---
 

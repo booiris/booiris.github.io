@@ -1,11 +1,11 @@
 ---
 title: Obsidian 备份方法
-date: 2022-05-01 21:12:46
-updated: 2022-05-01 21:13:01
+date: 2022-05-01 23:30:37
+updated: 2022-05-01 23:30:44
 tags: []
 top: false
 mathjax: true
-categories:
+categories: obsidian-install
 author: booiris
 ---
 
