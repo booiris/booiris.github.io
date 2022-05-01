@@ -15,11 +15,11 @@ build:
    - name: Checkout source
      uses: actions/checkout@v2
 
-   - name: Set up Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14'
-          
+   - name: Use Node.js ${{ matrix.node_version }}
+     uses: actions/setup-node@v1
+     with:
+       version: ${{ matrix.node_version }}
+
    - name: Setup hexo
      env:
        ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_SECRET }}
