@@ -1,8 +1,9 @@
 name: HEXO_DEPLOY
+
 on:
   push:
-  branches:
-    - source
+    branches:
+      - source
 
 env:
   POST_ASSET_IMAGE_CDN: true
