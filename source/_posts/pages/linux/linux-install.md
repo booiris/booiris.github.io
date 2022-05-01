@@ -1,7 +1,7 @@
 ---
 title: linux-install
 date: 2022-05-01 23:30:29
-updated: 2022-05-01 23:30:29
+updated: 2022-05-01 23:30:31
 tags: []
 top: false
 mathjax: true
