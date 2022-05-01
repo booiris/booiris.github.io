@@ -16,6 +16,13 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v2
 
+      - name: Checkout theme repo
+        uses: actions/checkout@v2
+        with:
+          repository: probberechts/hexo-theme-cactus
+          ref: master
+          path: themes/cactus
+
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:

@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
+title: Booiris
+subtitle: 'Hello world!'
 description: ''
 keywords:
 author: booiris
@@ -97,7 +97,21 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: cactus
+theme_config:
+  colorscheme: classic
+  nav:
+    home: /
+    # about: /about/
+    articles: /archives/
+    projects: https://github.com/booiris/
+    # LINK_NAME: URL
+  social_links:
+    github: https://github.com/booiris/
+    # twitter: your-twitter-url
+    mail: mailto:booiris02@gmail.com
+  mathjax:
+    enabled: true
 
 
 # Deployment
