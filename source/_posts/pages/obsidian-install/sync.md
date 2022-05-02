@@ -20,8 +20,9 @@ author: booiris
 使用 [TeraCLOUD](https://teracloud.jp/en/) 网盘。使用步骤如下：
 
 1. 注册账号。
-2. 登录 ，进入 mypage 界面。 <a href="https://sm.ms/image/pFAZdzBSCetUhfH" target="\_blank"><img src="https://s2.loli.net/2022/05/01/pFAZdzBSCetUhfH.png" width = 60% ></a>
-3. 开启 webdav 服务，记住用户名和密码。 <a href="https://sm.ms/image/zaS4pMH7k1l2Den" target="\_blank"><img src="https://s2.loli.net/2022/05/01/zaS4pMH7k1l2Den.png" width=100% ></a> 至此，webdav 服务注册成功。
+2. 登录 ，进入 mypage 界面。 
+<a href="https://sm.ms/image/pFAZdzBSCetUhfH" target="\_blank"><img src="https://s2.loli.net/2022/05/01/pFAZdzBSCetUhfH.png" width = 60% ></a>
+5. 开启 webdav 服务，记住用户名和密码。 <a href="https://sm.ms/image/zaS4pMH7k1l2Den" target="\_blank"><img src="https://s2.loli.net/2022/05/01/zaS4pMH7k1l2Den.png" width=100% ></a> 至此，webdav 服务注册成功。
 
 #### 使用 Remotely Save 插件进行同步
 
