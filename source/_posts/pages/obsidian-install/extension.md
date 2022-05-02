@@ -1,7 +1,7 @@
 ---
 title: 插件列表
 date: 2022-05-01 23:30:48
-updated: 2022-05-02 13:00:36
+updated: 2022-05-02 20:15:55
 tags: []
 top: false
 mathjax: true
@@ -31,6 +31,7 @@ author: booiris
 18. [full screen](obsidian://show-plugin?id=obsidian-fullscreen-plugin)
 19. [custom sidebar](obsidian://show-plugin?id=customizable-sidebar)
 20. [templater](obsidian://show-plugin?id=templater-obsidian)
+21. [check list](obsidian://show-plugin?id=obsidian-checklist-plugin)
 
 #### Auto Link Title
 
@@ -126,6 +127,10 @@ throw new Error("Oops, I'm a bug.");
 #### templater
 
 模板插件
+
+#### check list
+
+todo 列表
 
 ### 相关链接
 
