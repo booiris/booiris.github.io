@@ -1,7 +1,7 @@
 ---
 title: 插件列表
 date: 2022-05-01 23:30:48
-updated: 2022-05-01 23:30:50
+updated: 2022-05-02 00:43:13
 tags: []
 top: false
 mathjax: true
@@ -30,6 +30,7 @@ author: booiris
 17. [file tree](obsidian://show-plugin?id=file-tree-alternative)
 18. [full screen](obsidian://show-plugin?id=obsidian-fullscreen-plugin)
 19. [custom sidebar](obsidian://show-plugin?id=customizable-sidebar)
+20. [templater](obsidian://show-plugin?id=templater-obsidian)
 
 #### Auto Link Title
 
@@ -123,6 +124,10 @@ s
 #### custom sidebar
 
 调整侧边栏,添加命令
+
+#### templater
+
+模板插件
 
 ### 相关链接
 
