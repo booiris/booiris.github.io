@@ -5,7 +5,7 @@ updated: 2022-05-03 12:18:58
 tags: [模拟] 
 top: false 
 mathjax: true 
-categories: pages 
+categories:  algorithm
 author: booiris
 ---
 
