@@ -1,7 +1,7 @@
 ---
 title: chapter 1 
 date: 2022-05-01 23:30:18 
-updated: 2022-05-03 11:23:48
+updated: 2022-05-03 11:41:39
 tags: [todo] 
 top: false 
 mathjax: true 
@@ -61,3 +61,14 @@ author: booiris
 ### 1.4.1
 
 <a href="https://sm.ms/image/qcVioNzBPxhbX8t" target="_blank"><img src="https://s2.loli.net/2022/05/03/qcVioNzBPxhbX8t.png"  width=100%></a>
+
+#### I/O Devices
+
+Each I/O devices is connected to I/O bus by either a controller or an adapter.
+
+	Controller is chip set in the devices or on the system's motherboard.
+	Adapter is a card that plugs into a slot on the motherboard.
+
+#chapter1/IO
+
+
