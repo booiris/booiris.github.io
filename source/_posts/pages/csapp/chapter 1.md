@@ -1,7 +1,7 @@
 ---
 title: chapter 1
 date: 2022-05-01 23:30:18 
-updated: 2022-05-03 11:41:39
+updated: 2022-05-03 21:32:31
 tags: [todo]
 top: false
 mathjax: true
@@ -70,5 +70,3 @@ Each I/O devices is connected to I/O bus by either a controller or an adapter.
 	Adapter is a card that plugs into a slot on the motherboard.
 
 #chapter1/IO
-
-
