@@ -1,7 +1,7 @@
 ---
 title: chapter 1 
 date: 2022-05-01 23:30:18 
-updated: 2022-05-03 00:27:36
+updated: 2022-05-03 11:23:48
 tags: [todo] 
 top: false 
 mathjax: true 
@@ -24,7 +24,6 @@ author: booiris
 1. Is a switch statment always more efficient than a sequence of if-else statements?
 
 	- [ ] q1
-
 	answer:
 
 2. How much overhead is incurred by a function call?
@@ -45,7 +44,7 @@ author: booiris
 
 	answer:
 
-5. Why does out loop run so much faster if we sum into a local variable instead of an argument that is passed by refernce?
+5. Why does out loop run so much faster if we sum into a local variable instead of an argument that is passed by reference?
 
 	 - [ ] q5
 
@@ -57,6 +56,8 @@ author: booiris
 
 	answer:
 
-#### 1.4.1
+## 1.4
+
+### 1.4.1
 
 <a href="https://sm.ms/image/qcVioNzBPxhbX8t" target="_blank"><img src="https://s2.loli.net/2022/05/03/qcVioNzBPxhbX8t.png"  width=100%></a>
