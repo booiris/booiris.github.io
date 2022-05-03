@@ -1,11 +1,11 @@
 ---
-title: chapter 1 
+title: chapter 1
 date: 2022-05-01 23:30:18 
 updated: 2022-05-03 11:41:39
-tags: [todo] 
-top: false 
-mathjax: true 
-categories: csapp 
+tags: [todo]
+top: false
+mathjax: true
+categories: csapp
 author: booiris
 ---
 
