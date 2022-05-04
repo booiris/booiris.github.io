@@ -19,9 +19,9 @@ jobs:
       - name: Checkout theme repo
         uses: actions/checkout@v2
         with:
-          repository: xuthus5/hexo-theme-cactus
+          repository: booiris/hexo-theme-cactus
           ref: master
-          path: themes/ch-cactus
+          path: themes/mytheme
 
       - name: Set up Node.js
         uses: actions/setup-node@v1
