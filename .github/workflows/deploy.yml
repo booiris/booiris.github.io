@@ -41,6 +41,9 @@ jobs:
           git config --global user.name "booiris"
           npm install hexo-cli -g
           npm install
+          npm uninstall hexo-math
+          npm uninstall hexo-renderer-marked --save
+          npm install hexo-renderer-kramed --save
       - name: Hexo deploy
         run: |
           hexo clean

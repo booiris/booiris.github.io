@@ -97,7 +97,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: ch-cactus
+theme: mytheme
 theme_config:
   colorscheme: white
   nav:
@@ -113,7 +113,8 @@ theme_config:
     # twitter: your-twitter-url
     mail: mailto:booiris02@gmail.com
   mathjax:
-    enabled: true
+    enable: true
+    cdn: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML
   icp: 
     enabled: false
   tongji:
