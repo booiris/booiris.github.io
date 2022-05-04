@@ -1,7 +1,7 @@
 ---
 title: Data Lab 
 date: 2022-05-03 23:24:12 
-updated: 2022-05-04 15:42:53
+updated: 2022-05-04 16:42:48
 tags: [] 
 top: false
 mathjax: true
@@ -34,11 +34,11 @@ author: booiris
 
 #### Description
 
-	bitXor - x^y using only ~ and &.
+bitXor - x^y using only ~ and &.
 
 #### Example
 
-	bitXor(4, 5) = 1
+bitXor(4, 5) = 1
 
 #### Answer
 
@@ -48,7 +48,8 @@ $$
 	x \oplus y &= (x \vee y) \wedge (\sim x \vee \sim y) = \sim(\sim x \wedge \sim y) \wedge \sim (x \wedge y) \tag{2}
 \end{align}
 $$
-	Compare eq1 and eq2, eq1 uses five NOT operations and three AND operations, eq2 uses four NOT operations and three AND operations. Therefore eq2 is better.
+
+Compare eq1 and eq2, eq1 uses five NOT operations and three AND operations, eq2 uses four NOT operations and three AND operations. Therefore eq2 is better.
 
 #### Code
 
