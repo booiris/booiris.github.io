@@ -120,6 +120,10 @@ theme_config:
     enabled: false
   cdn:
     enabled: false
+  posts_overview:
+    show_all_posts: false
+    post_count: 10
+    sort_updated: true
 
 
 # Deployment
