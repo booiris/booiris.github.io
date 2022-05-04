@@ -15,7 +15,7 @@ author: booiris
 
 下面是 5 个人，每次数 2 个的情况。
 
-<a href="https://sm.ms/image/mLVdz7vXEb2irPs" target="_blank"><img src="https://s2.loli.net/2022/05/04/mLVdz7vXEb2irPs.png" ></a>
+<img src="https://s2.loli.net/2022/05/04/mLVdz7vXEb2irPs.png" >
 
 题解：对于最后一个人，每次操作与下一次操作差 k， 递归解决即可，注意下标从 1 开始，注意一下边界条件。
 
