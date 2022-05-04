@@ -1,8 +1,8 @@
 ---
 title: 1823-Find the Winner of the Circular Game 
 date: 2022-05-04 12:19:42 
-updated: 2022-05-04 13:00:18
-tags: [] 
+updated: 2022-05-04 14:35:24
+tags: [模拟] 
 top: false
 mathjax: true
 categories: [ algorithm ]
@@ -17,50 +17,30 @@ author: booiris
 
 <a href="https://sm.ms/image/mLVdz7vXEb2irPs" target="_blank"><img src="https://s2.loli.net/2022/05/04/mLVdz7vXEb2irPs.png" ></a>
 
-题解：
+题解：对于最后一个人，每次操作与下一次操作差 k， 递归解决即可，注意下标从 1 开始，注意一下边界条件。
 
 ```cpp
 #define LOCAL
-
 #include <bits/stdc++.h>
-
 using namespace std;
-
 #define INF 0x3f3f3f3f
-
 typedef long long ll;
-
 class Solution {
-
-  public:
-
-    int findTheWinner(int n, int k) {
-
-        if (n == 1)
-
-            return 1;
-
-        int pre = findTheWinner(n - 1, k);
-
-        return (pre + k - 1) % n + 1;
-
-    }
-
+  public:
+    int findTheWinner(int n, int k) {
+        if (n == 1)
+            return 1;
+        int pre = findTheWinner(n - 1, k);
+        int res = (pre + k) % n;
+        return res == 0 ? n : res;
+    }
 };
-
 #ifdef LOCAL
-
 int main() {
-
-    ios::sync_with_stdio(false);
-
-    cin.tie(0);
-
-    Solution s;
-
-    cout << s.findTheWinner(5, 2) << "\n";
-
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    Solution s;
+    cout << s.findTheWinner(5, 2) << "\n";
 }
-
 #endif
 ```
