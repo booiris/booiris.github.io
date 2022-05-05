@@ -1,7 +1,7 @@
 ---
 title: 713-Subarray Product Less Than K 
 date: 2022-05-05 10:28:41 
-updated: 2022-05-05 10:38:42
+updated: 2022-05-05 10:41:12
 tags: [滑动窗口] 
 top: false
 mathjax: true
@@ -15,9 +15,9 @@ author: booiris
 
 题解：
 
-枚举左节点，对于每一个左节点 i，找到满足字串积小于 k 的最长字串的右节点 high，那么有效的字串个数为 high - i +1。
+枚举左节点，对于每一个左节点 i，找到满足字串积小于 k 的最长字串的右节点 high，那么每一个左节点有效的字串个数为 high - i +1。
 
-对于两个左节点 $i , j$。 如果 $i<j$，那么它们的最长右节点一定有  $high_i <= high_j$ 。枚举左节点时 high 是单调递增的。所以时间复杂度为 $O(n)$。
+对于两个左节点 $i , j$。 如果 $i<j$，那么它们的最长右节点一定有  $high_i <= high_j$ 。枚举左节点时 high 是单调递增的，所以时间复杂度为 $O(n)$。
 
 ```cpp
 #define LOCAL
