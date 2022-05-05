@@ -1,7 +1,7 @@
 ---
 title: Data Lab 
 date: 2022-05-03 23:24:12 
-updated: 2022-05-05 10:25:26
+updated: 2022-05-05 23:53:06
 tags: [] 
 top: false
 mathjax: true
@@ -91,7 +91,7 @@ Legal ops: ! ~ & ^ | +.
 
 #### Answer
 
-Notice that only when x = -1 or x = INT_MAX, x^(x+1) = 0xffff.
+Notice that only when x = -1 or x = INT_MAX, x^(x+1) = 0xffffffff.
 
 Therefore, we can use a = ~(x ^ (x+1)) to find INT_MAX and -1. when a = 0, x = INT_MAX or -1.
 
@@ -108,3 +108,60 @@ int isTmax(int x) {
     return !((!temp) | a);
 }
 ```
+
+### q4
+
+#### Description
+
+allOddBits - return 1 if all odd-numbered bits in word set to 1 where bits are numbered from 0 (least significant) to 31 (most significant).
+
+#### Example
+
+Examples allOddBits(0xFFFFFFFD) = 0, allOddBits(0xAAAAAAAA) = 1.
+
+#### Answer
+
+We can use (x & 0xAAAAAAAA) ^ 0xAAAAAAAA to check if all odd-numbered bits in word set to 1.
+
+Therefore it's important to get a constant 0xAAAAAAAA.
+
+Since we can only use 0 ~ 0xff, we can simply repeate flowing code four times to get 0xAAAAAAAA.
+
+```c
+key |= 0xaa;
+key <<= 8;
+```
+
+However, it will cost 2 * 4 = 8 operations. We can use a better way to get constant.
+
+1. get a = 0xAA.
+2. get b = 0xAAAA.
+3. get c = 0xAAAAAAAA.
+
+It's a bit like binary serach. Every time we can construct double length number. Therefore to build a 32 bits number, we just use $log(\frac{32}{4}) = 3$ operations to get the number.
+
+#### Code
+
+```c
+int allOddBits(int x) {
+    int a = 0xaa;
+    int b = a | a << 8;
+    int c = b | b << 16;
+
+    return !((x & c) ^ c);
+}
+```
+
+### q5
+
+#### Description
+
+negate - return -x
+
+#### Example
+
+
+
+#### Answer
+
+#### Code
