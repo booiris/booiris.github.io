@@ -1,7 +1,7 @@
 ---
 title: Data Lab 
 date: 2022-05-03 23:24:12 
-updated: 2022-05-05 00:23:23
+updated: 2022-05-05 10:25:26
 tags: [] 
 top: false
 mathjax: true
@@ -91,9 +91,9 @@ Legal ops: ! ~ & ^ | +.
 
 #### Answer
 
-Consider when x1 = INT_MAX and x2 = -1, x1 + 1 = INT_MIN and x2 + 2 = 0. Notice that the symbol of x will change.
+Notice that only when x = -1 or x = INT_MAX, x^(x+1) = 0xffff.
 
-Therefore, we can use a = ~(x ^ (x+1)) to find INT_MAX and -1. when a = 0, x = INT_MAX or -1; a = 1 otherwise.
+Therefore, we can use a = ~(x ^ (x+1)) to find INT_MAX and -1. when a = 0, x = INT_MAX or -1.
 
 Next step we need to distinguish INT_MAX and -1. Notice that -1 + 1 = 0. So we can use b = !(x+1) to find -1. when b = 0, x = INT_MAX; b = 1, x = -1.
 
