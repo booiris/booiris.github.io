@@ -1,7 +1,7 @@
 ---
 title: 933-Number of Recent Calls 
 date: 2022-05-06 15:52:34 
-updated: 2022-05-06 15:53:01
+updated: 2022-05-06 16:01:28
 tags: [] 
 top: false
 mathjax: true
@@ -17,7 +17,7 @@ author: booiris
 
 题解：
 
-使用队列维护，将小于 t-3000 的
+使用队列维护，将小于 t-3000 的数出队，再将 t 入队，返回当前队列元素个数。
 
 ```cpp
 #define LOCAL
