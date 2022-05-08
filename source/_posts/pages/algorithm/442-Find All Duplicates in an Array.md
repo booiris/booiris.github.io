@@ -1,7 +1,7 @@
 ---
 title: 442-Find All Duplicates in an Array 
 date: 2022-05-08 13:46:38 
-updated: 2022-05-08 13:47:09
+updated: 2022-05-08 14:01:15
 tags: [原地哈希] 
 top: false
 mathjax: true
@@ -17,7 +17,7 @@ author: booiris
 
 题解：
 
-
+遍历两次数组，第一遍将每个元素放到对应下标的位置上，第二遍检查元素是否和它的下标相等，如果不相等，说明其为重复元素，加入答案。
 
 ```cpp
 #define LOCAL
