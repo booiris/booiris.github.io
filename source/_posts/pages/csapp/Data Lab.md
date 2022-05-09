@@ -160,7 +160,7 @@ negate - return -x
 
 #### Example
 
-
+Example: negate(1) = -1.
 
 #### Answer
 
