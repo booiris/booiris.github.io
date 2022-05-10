@@ -1,7 +1,7 @@
 ---
 title: 1728-Cat and Mouse II 
 date: 2022-05-10 20:54:08 
-updated: 2022-05-10 20:59:45
+updated: 2022-05-10 21:08:35
 tags: [] 
 top: false
 mathjax: true
@@ -38,11 +38,15 @@ The game can end in 4 ways:
 * If Mouse reaches the food first, Mouse wins.
 * If Mouse cannot get to the food within 1000 turns, Cat wins.
 
-Given a rows x cols matrix grid and two integers catJump and mouseJump, return true if Mouse can win the game if both Cat and Mouse play optimally, otherwise return false.
+Given a rows x cols matrix grid and two integers *catJump* and *mouseJump*, return true if Mouse can win the game if both Cat and Mouse play optimally, otherwise return false.
 
 ## 题解1（伪）
 
+博弈+记忆化搜索剪枝。
 
+如果轮到玩家1行动，搜索当前玩家所有可行的行动，如果有可以获胜的行动，那么玩家1一定会采用这个行动，所以此层博弈返回玩家1获胜。如果玩家1下一步的所有行动都不能获胜，那么玩家1必败，所以此层博弈返回玩家1失败。玩家2的情况类似。
+
+使用 dfs 搜索博弈树，使用一个状态数组保存搜索状态，然而，最大步数为 1000。所有的状态有 1000层 $\times$ 玩家1可能的位置 8\*8=64 $\times$ 玩家2可能的位置 8\*8=64。总状态有 $1000 \times 64 \times 64 = 4e6$ ，在 TLE 的边缘。不出意外，提交会出现 TLE。玄学设置最大层数为 256，就卡过去了。
 
 ```cpp
 #define LOCAL
