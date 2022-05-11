@@ -1,7 +1,7 @@
 ---
 title: 449-Serialize and Deserialize BST 
 date: 2022-05-11 17:54:53 
-updated: 2022-05-11 17:59:35
+updated: 2022-05-11 18:00:37
 tags: [树] 
 top: false
 mathjax: true
@@ -19,7 +19,7 @@ author: booiris
 
 ## 题解
 
-没看到是搜索树，直接上层序遍历
+没看到是搜索树，直接用层序遍历序列化，记录每一层的节点数据，空节点用特殊字符表示即可。
 
 ```cpp
 #define LOCAL
