@@ -1,7 +1,7 @@
 ---
 title: linux-install
 date: 2022-05-01 23:30:29
-updated: 2022-05-03 14:29:04
+updated: 2022-05-21 10:16:16
 tags: []
 top: false
 mathjax: true
@@ -25,6 +25,16 @@ author: booiris
 
 ```
 wslconfig /setdefault Name
+```
+
+- 修改默认用户，主机名，修改/etc/wsl.conf文件
+
+```bash
+[user]
+default=youruser
+
+[network]
+hostname=yourhostname
 ```
 
 ## Ubuntu
