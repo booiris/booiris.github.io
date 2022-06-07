@@ -174,3 +174,26 @@ int negate(int x)
     return ~x + 1;
 }
 ```
+
+### q6
+
+#### Description
+
+negate - return -x
+
+#### Example
+
+Example: negate(1) = -1.
+
+#### Answer
+
+Since x + ~x = -1, we can change it to -x = ~x + 1.
+
+#### Code
+
+```c
+int negate(int x)
+{
+    return ~x + 1;
+}
+```
