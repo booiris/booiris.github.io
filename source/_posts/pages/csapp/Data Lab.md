@@ -1,7 +1,7 @@
 ---
 title: Data Lab 
 date: 2022-05-03 23:24:12 
-updated: 2022-06-07 23:16:43
+updated: 2022-06-07 23:24:50
 tags: [] 
 top: false
 mathjax: true
@@ -222,7 +222,9 @@ Example: conditional(2,4,5) = 4
 
 At first, we can use x = !x to make $f(x)= 0 \{x\neq 0\}, 1 \{x = 0\}$.
 
-With x = ~x  + 1, we can get $g(x) = 0\chi ffff \{x\neq 0 \}, 0\times0000\{x=0\}$.
+With x = ~x  + 1, we can get $g(x) = ffff \{x\neq 0 \}, 0000\{x=0\}$.
+
+Notice that y ^ y  ^ z = z, y ^ 0 = y. Therefore, we can use y ^ ((y ^ z) & x) to get answer. When x = 0, (y ^ z) & x = y ^ z, otherwise, (y ^ z) & x = 0.
 
 #### Code
 
