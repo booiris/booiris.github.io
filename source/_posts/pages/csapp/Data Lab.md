@@ -1,7 +1,7 @@
 ---
 title: Data Lab 
 date: 2022-05-03 23:24:12 
-updated: 2022-06-07 22:52:22
+updated: 2022-06-07 23:16:43
 tags: [] 
 top: false
 mathjax: true
@@ -220,7 +220,9 @@ Example: conditional(2,4,5) = 4
 
 #### Answer
 
-%TODO
+At first, we can use x = !x to make $f(x)= 0 \{x\neq 0\}, 1 \{x = 0\}$.
+
+With x = ~x  + 1, we can get $g(x) = 0\chi ffff \{x\neq 0 \}, 0\times0000\{x=0\}$.
 
 #### Code
 
