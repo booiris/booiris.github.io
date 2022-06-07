@@ -1,7 +1,7 @@
 ---
 title: Data Lab 
 date: 2022-05-03 23:24:12 
-updated: 2022-06-07 22:01:51
+updated: 2022-06-07 22:52:22
 tags: [] 
 top: false
 mathjax: true
@@ -179,21 +179,56 @@ int negate(int x)
 
 #### Description
 
-negate - return -x
+isAsciiDigit - return 1 if 0x30 <= x <= 0x39 (ASCII codes for characters '0' to '9')
 
 #### Example
 
-Example: negate(1) = -1.
+isAsciiDigit(0x35) = 1.
+
+isAsciiDigit(0x3a) = 0.
+
+isAsciiDigit(0x05) = 0.
 
 #### Answer
 
-Since x + ~x = -1, we can change it to -x = ~x + 1.
+%TODO
 
 #### Code
 
 ```c
-int negate(int x)
+int isAsciiDigit(int x)
 {
-    return ~x + 1;
+    int a = x >> 4;
+    int key = 0x3;
+    int check1 = !(key ^ a);
+    int check2 = !((x >> 3) & 1);
+    int check3 = !(x ^ 0x38);
+    int check4 = !(x ^ 0x39);
+    return check1 & (check2 | check3 | check4);
+}
+```
+
+### q7
+
+#### Description
+
+conditional - same as x ? y : z
+
+#### Example
+
+Example: conditional(2,4,5) = 4
+
+#### Answer
+
+%TODO
+
+#### Code
+
+```c
+int conditional(int x, int y, int z)
+{
+    x = !x;
+    x = ~x + 1;
+    return y ^ ((y ^ z) & x);
 }
 ```
