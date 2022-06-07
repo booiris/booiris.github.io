@@ -1,7 +1,7 @@
 ---
 title: Data Lab 
 date: 2022-05-03 23:24:12 
-updated: 2022-05-05 23:53:06
+updated: 2022-06-07 22:01:51
 tags: [] 
 top: false
 mathjax: true
@@ -164,4 +164,13 @@ Example: negate(1) = -1.
 
 #### Answer
 
+Since x + ~x = -1, we can change it to -x = ~x + 1.
+
 #### Code
+
+```c
+int negate(int x)
+{
+    return ~x + 1;
+}
+```
