@@ -8,7 +8,9 @@ subtitle: 'Hello world!'
 description: 'Hello world'
 keywords:
 author: booiris
-language: en
+language:
+  - zh-CN
+  - en
 timezone: ''
 
 # URL
@@ -98,34 +100,41 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: stellar
-theme_config:
-  colorscheme: white
-  nav:
-    home: /
-    # about: /about/
-    tags: /tags/
-    categories: /categories/
-    articles: /archives/
-    # projects: https://github.com/booiris/
-    search: /search/
-    # LINK_NAME: URL
-  social_links:
-    github: https://github.com/booiris/
-    # twitter: your-twitter-url
-    mail: mailto:booiris02@gmail.com
-  mathjax:
-    enable: true
-    cdn: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML
-  icp: 
-    enabled: false
-  tongji:
-    enabled: false
-  cdn:
-    enabled: false
-  posts_overview:
-    show_all_posts: false
-    post_count: 10
-    sort_updated: true
+# theme_config:
+#   colorscheme: white
+#   nav:
+#     home: /
+#     # about: /about/
+#     tags: /tags/
+#     categories: /categories/
+#     articles: /archives/
+#     # projects: https://github.com/booiris/
+#     search: /search/
+#     # LINK_NAME: URL
+#   social_links:
+#     github: https://github.com/booiris/
+#     # twitter: your-twitter-url
+#     mail: mailto:booiris02@gmail.com
+#   mathjax:
+#     enable: true
+#     cdn: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+#   icp: 
+#     enabled: false
+#   tongji:
+#     enabled: false
+#   cdn:
+#     enabled: false
+#   posts_overview:
+#     show_all_posts: false
+#     post_count: 10
+#     sort_updated: true
+
+# theme_config:
+#   heti:
+#     enable: true
+#     css: https://unpkg.com/heti/umd/heti.min.css
+#     js: https://unpkg.com/heti/umd/heti-addon.min.js
+
 
 
 # Deployment
