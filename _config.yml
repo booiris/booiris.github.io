@@ -106,7 +106,7 @@ theme_config:
     tags: /tags/
     categories: /categories/
     articles: /archives/
-    projects: https://github.com/booiris/
+    # projects: https://github.com/booiris/
     search: /search/
     # LINK_NAME: URL
   social_links:
