@@ -3,12 +3,18 @@ sidebar:
     avatar: '[https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg](/)' 
   menu:
     post: '[博客](/)'
-    fav: '[便笺](/)'
-    message: '[留言](/)'
+    notes: '[便笺](/notes/)'
+    message: '[留言](/message-board/)'
 
 article:
   auto_excerpt: 0
   license:
+
+comments:
+  service: beaudar
+  beaudar:
+    repo: booiris/booiris.github.io
+    branch: master
 
 footer:
   social:
