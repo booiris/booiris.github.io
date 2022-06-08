@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Checkout theme repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: xaoxuu/hexo-theme-stellar
           ref: master
