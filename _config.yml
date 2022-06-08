@@ -91,6 +91,13 @@ time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
 updated_option: 'mtime'
 
+favicon:
+  small: https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg
+  #medium: /images/favicon-32x32-next.png
+  medium: https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg
+  apple_touch_icon: https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg
+  safari_pinned_tab: https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg
+  android_manifest: https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg
 
 
 # Include / Exclude file(s)
