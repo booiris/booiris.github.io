@@ -1,12 +1,6 @@
-
-# sidebar:
-#   # logo:
-#   #   title: '[<img no-lazy height="32px" src="xxx"/>](/)'
-#   menu:z
-#     post: '[btn.blog](/)'
-#     # wiki: '[btn.wiki](/wiki/)'
-#     notes: '[笔记](/notes/)'
-#     # more: '[更多](/more/)'
+sidebar:
+  menu:
+    post: '[btn.blog](/)'
 
 article:
   auto_excerpt: 0
