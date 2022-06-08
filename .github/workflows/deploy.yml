@@ -40,11 +40,9 @@ jobs:
           git config --global user.email "954520770@qq.com"
           git config --global user.name "booiris"
           npm install hexo-cli -g
-          npm install
           npm uninstall hexo-math
           npm uninstall hexo-renderer-marked --save
-          npm install hexo-renderer-kramed --save
-          npm install hexo-generator-search --save
+          npm install
       - name: Hexo deploy
         run: |
           hexo clean
