@@ -1,4 +1,4 @@
 ---
-title: notes
-type: notes
+title: 便笺
+menu_id: notes
 ---

@@ -3,18 +3,51 @@ sidebar:
     avatar: '[https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg](/)' 
   menu:
     post: '[博客](/)'
+    wiki: '[笔记](/wiki/)'
     notes: '[便笺](/notes/)'
-    message: '[留言](/message-board/)'
+    about: '[关于](/about/)'
+  widget_layout:
+    index: [welcome, recent] # for home/wiki/categories/tags/archives/404 pages
+    page: [welcome, toc] # for pages using 'layout:page'
+    post: [toc, repo_info] # for pages using 'layout:post'
+    wiki: [toc, repo_info, wiki_more] # for pages using 'layout:wiki'
+  widgets:
+    # Recent update
+    recent:
+      layout: recent
+      rss: # /atom.xml # npm i hexo-generator-feed
+      limit: 5 # Count of posts
+    # TOC (valid only in layout:post/wiki)
+    toc:
+      layout: toc
+      list_number: false
+      min_depth: 2
+      max_depth: 5
+      fallback: recent # Use a backup widget when toc does not exist.
+    # welcome
+    welcome:
+      layout: markdown
+      title: Stellar 入门指南
+      content: | # support markdown
+        欢迎使用 [Stellar](https://github.com/xaoxuu/hexo-theme-stellar/) 主题，下面是您的入门指南，祝您使用愉快！
+        <br>
+        **第一步**
+        创建 `blog/_config.stellar.yml` 文件，在此文件中填写需要自定义的主题配置。
+        <br>
+        **第二步**
+        创建 `blog/source/_data/widgets.yml` 文件，此文件中填写需要自定义的侧边栏组件，例如 `welcome` 组件。
+        <br>
+        如果有任何疑问，请先查阅[文档](https://xaoxuu.com/wiki/stellar/)，如果文档中没有提供，请提 [issue](https://github.com/xaoxuu/hexo-theme-stellar/issues/) 向开发中询问。
 
 article:
   auto_excerpt: 0
   license:
 
-comments:
-  service: beaudar
-  beaudar:
-    repo: booiris/booiris.github.io
-    branch: master
+# comments:
+#   service: beaudar
+#   beaudar:
+#     repo: booiris/booiris.github.io
+#     branch: master
 
 footer:
   social:
@@ -47,6 +80,18 @@ footer:
   license: 
   source: #'[GitHub](https://github.com/xaoxuu/hexo-theme-stellar)'
   more: # string or array (support markdown)
+
+style:
+  darkmode: always # auto / always / false
+  theme:
+    light: '#f8f8f8'
+    dark: '#313438'
+  animated_avatar:
+    animate: auto # auto, always
+    background: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp
+  codeblock:
+    scrollbar: 4px
+    highlightjs_theme: https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/atom-one-dark.min.css
 
 
 plugins:
