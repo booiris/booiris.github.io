@@ -27,17 +27,9 @@ sidebar:
     # welcome
     welcome:
       layout: markdown
-      title: Stellar 入门指
+      title: 💩🤡👹👺👻👽👾🤖
       content: | # support markdown
-        欢迎使用 [Stellar](https://github.com/xaoxuu/hexo-theme-stellar/) 主题，下面是您的入门指南，祝您使用愉快！
-        <br>
-        **第一步**
-        创建 `blog/_config.stellar.yml` 文件，在此文件中填写需要自定义的主题配置。
-        <br>
-        **第二步**
-        创建 `blog/source/_data/widgets.yml` 文件，此文件中填写需要自定义的侧边栏组件，例如 `welcome` 组件。
-        <br>
-        如果有任何疑问，请先查阅[文档](https://xaoxuu.com/wiki/stellar/)，如果文档中没有提供，请提 [issue](https://github.com/xaoxuu/hexo-theme-stellar/issues/) 向开发中询问。
+        施工中。。。
 
 article:
   auto_excerpt: 0
