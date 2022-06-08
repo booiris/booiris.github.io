@@ -9,8 +9,9 @@ description: 'Hello world'
 keywords:
 author: booiris
 language:
-  - zh-CN
   - en
+  - zh-CN
+
 timezone: ''
 
 # URL
@@ -100,6 +101,9 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: stellar
+
+
+
 # theme_config:
 #   colorscheme: white
 #   nav:
