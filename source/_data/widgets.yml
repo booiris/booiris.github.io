@@ -1,0 +1,18 @@
+# Recent update
+recent:
+  layout: recent
+  rss: # /atom.xml # npm i hexo-generator-feed
+  limit: 5 # Count of posts
+# TOC (valid only in layout:post/wiki)
+toc:
+  layout: toc
+  list_number: false
+  min_depth: 2
+  max_depth: 5
+  fallback: recent # Use a backup widget when toc does not exist.
+# welcome
+welcome:
+  layout: markdown
+  title: 💩🤡👹👺👻👽👾🤖
+  content: | # support markdown
+    施工中。。。
