@@ -8,14 +8,40 @@ article:
   auto_excerpt: 0
   license:
 
+footer:
+  social:
+    # github:
+    #   icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/08a41b181ce68.svg"/>'
+    #   url: /
+    # music:
+    #   icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/3845874.svg"/>'
+    #   url: /
+    # unsplash:
+    #   icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/3616429.svg"/>'
+    #   url: /
+    # comments:
+    #   icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/942ebbf1a4b91.svg"/>'
+    #   url: /about/#comments
+  sitemap:
+    # '博客':
+    #   - '[近期](/)'
+    #   - '[分类](/)'
+    #   - '[标签](/)'
+    #   - '[归档](/)'
+    # '项目':
+    #   - '[开源库](/)'
+    # '社交':
+    #   - '[友链](/)'
+    #   - '[留言板](/)'
+    # '更多':
+    #   - '[关于本站](/)'
+    #   - '[GitHub](/)'
+  license: 
+  source: #'[GitHub](https://github.com/xaoxuu/hexo-theme-stellar)'
+  more: # string or array (support markdown)
+
+
 plugins:
-  scrollreveal:
-    enable: true
-    js: https://fastly.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js
-    distance: 8px
-    duration: 500 # ms
-    interval: 100 # ms
-    scale: 1 # 0.1~1
   mathjax:
     enable: true
     cdn: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML
