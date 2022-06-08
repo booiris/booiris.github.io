@@ -92,12 +92,12 @@ time_format: HH:mm:ss
 updated_option: 'mtime'
 
 favicon:
-  small: https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg
+  small: /src/icon-32x32.ico
   #medium: /images/favicon-32x32-next.png
-  medium: https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg
-  apple_touch_icon: https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg
-  safari_pinned_tab: https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg
-  android_manifest: https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg
+  medium: /src/icon-32x32.ico
+  apple_touch_icon: /src/icon-32x32.ico
+  safari_pinned_tab: /src/icon-32x32.ico
+  android_manifest: /src/icon-32x32.ico
 
 
 # Include / Exclude file(s)
@@ -182,6 +182,7 @@ inject:
   head:
     - <link rel="preconnect" href="https://s1.hdslb.com/" />
     - <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'" />
+    - <link rel="icon" type="32x32" href="/src/icon-32x32.ico">
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
