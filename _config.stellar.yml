@@ -81,18 +81,6 @@ footer:
   source: #'[GitHub](https://github.com/xaoxuu/hexo-theme-stellar)'
   more: # string or array (support markdown)
 
-style:
-  darkmode: always # auto / always / false
-  theme:
-    light: '#f8f8f8'
-    dark: '#313438'
-  animated_avatar:
-    animate: auto # auto, always
-    background: https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp
-  codeblock:
-    scrollbar: 4px
-    highlightjs_theme: https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/atom-one-dark.min.css
-
 
 plugins:
   mathjax:
