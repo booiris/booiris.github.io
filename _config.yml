@@ -141,34 +141,39 @@ theme: stellar
 
 # npm i hexo-renderer-markdown-it-plus
 # Markdown-it config
-markdown:
-  render:
-    html: true
-    xhtmlOut: false
-    breaks: true
-    linkify: true
-    typographer: true
-    quotes: '“”‘’'
-  plugins:
-    - markdown-it-abbr
-    - markdown-it-footnote
-    - markdown-it-ins
-    - markdown-it-sub
-    - markdown-it-sup
-  anchors:
-    level: 2
-    collisionSuffix: 'v'
-    permalink: true
-    permalinkClass: header-anchor
-    permalinkSymbol: ¶
+# markdown:
+#   render:
+#     html: true
+#     xhtmlOut: false
+#     breaks: true
+#     linkify: true
+#     typographer: true
+#     quotes: '“”‘’'
+#   plugins:
+#     - markdown-it-abbr
+#     - markdown-it-footnote
+#     - markdown-it-ins
+#     - markdown-it-sub
+#     - markdown-it-sup
+#   anchors:
+#     level: 2
+#     collisionSuffix: 'v'
+#     permalink: true
+#     permalinkClass: header-anchor
+#     permalinkSymbol: ¶
 
+# inject:
+#   head:
+#     - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+#     - <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+#     # - <script defer src="src/auto-render.min.js"> </script>
+
+#   script:
 inject:
   head:
-    - <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
-    - <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
-    # - <script defer src="src/auto-render.min.js"> </script>
-
-  script:
+    - <link rel="preconnect" href="https://s1.hdslb.com/" />
+    - <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'" />
+    # - <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/medium.css" media="all" onload="this.media='all'" />
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

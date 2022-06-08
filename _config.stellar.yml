@@ -9,6 +9,10 @@ article:
   license:
 
 plugins:
+  heti:
+    enable: true
+    css: https://unpkg.com/heti/umd/heti.min.css
+    js: https://unpkg.com/heti/umd/heti-addon.min.js
   mathjax:
-    enable: false
-    # cdn: https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css
+    enable: true
+    cdn: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML
