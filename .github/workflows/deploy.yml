@@ -19,7 +19,7 @@ jobs:
       - name: Checkout theme repo
         uses: actions/checkout@v2
         with:
-          repository: xaoxuu/hexo-theme-stellar
+          repository: booiris/hexo-theme-stellar
           ref: main
           path: themes/stellar
 
