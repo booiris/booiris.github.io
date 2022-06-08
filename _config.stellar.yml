@@ -9,5 +9,10 @@
 #     # more: '[更多](/more/)'
 
 article:
-  auto_excerpt: 200
+  auto_excerpt: 0
   license:
+
+plugins:
+  mathjax:
+    enable: true
+    cdn: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML
