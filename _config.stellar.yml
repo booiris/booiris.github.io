@@ -10,9 +10,9 @@ article:
 
 footer:
   social:
-    # github:
-    #   icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/08a41b181ce68.svg"/>'
-    #   url: /
+    github:
+      icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/08a41b181ce68.svg"/>'
+      url: https://github.com/booiris
     # music:
     #   icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/3845874.svg"/>'
     #   url: /
@@ -23,11 +23,11 @@ footer:
     #   icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/942ebbf1a4b91.svg"/>'
     #   url: /about/#comments
   sitemap:
-    # '博客':
-    #   - '[近期](/)'
-    #   - '[分类](/)'
-    #   - '[标签](/)'
-    #   - '[归档](/)'
+    '博客':
+      - '[近期](/)'
+      - '[分类](/)'
+      - '[标签](/)'
+      - '[归档](/)'
     # '项目':
     #   - '[开源库](/)'
     # '社交':
