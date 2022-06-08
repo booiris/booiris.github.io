@@ -3,7 +3,7 @@ sidebar:
     avatar: '[https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/avatar/round/3442075.svg](/)' 
   menu:
     post: '[博客](/)'
-    wiki: '[笔记](/wiki/)'
+    wiki: '[项目](/wiki/)'
     notes: '[便笺](/notes/)'
     about: '[关于](/about/)'
   widget_layout:
