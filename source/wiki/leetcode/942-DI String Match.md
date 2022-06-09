@@ -1,17 +1,15 @@
 ---
 title: 942-DI String Match 
 date: 2022-05-09 13:28:12 
-updated: 2022-06-09 21:54:27
+updated: 2022-06-09 22:00:15
 tags: [贪心] 
 top: false
 mathjax: true
 author: booiris
 layout: wiki  
 wiki: leetcode
-order: 7
+order: 942
 ---
-
-# DI String Match
 
 题意：
 

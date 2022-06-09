@@ -1,17 +1,15 @@
 ---
 title: 1728-Cat and Mouse II 
 date: 2022-05-10 20:54:08 
-updated: 2022-06-09 21:54:31
+updated: 2022-06-09 22:00:18
 tags: [记忆化搜索,博弈] 
 top: false
 mathjax: true
 author: booiris
 layout: wiki  
 wiki: leetcode
-order: 8
+order: 1728
 ---
-
-# Cat and Mouse II
 
 ## 题意
 

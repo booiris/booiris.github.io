@@ -1,17 +1,15 @@
 ---
 title: one way lcci 
 date: 2022-05-13 11:05:41 
-updated: 2022-06-09 21:54:38
+updated: 2022-06-09 22:00:34
 tags: [] 
 top: false
 mathjax: true
 author: booiris
 layout: wiki  
 wiki: leetcode
-order: 10
+order: 10000
 ---
-
-# one way lcci
 
 ## 题意
 

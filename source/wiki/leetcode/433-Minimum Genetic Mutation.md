@@ -1,17 +1,15 @@
 ---
 title: 433-Minimum Genetic Mutation 
 date: 2022-05-07 13:23:29 
-updated: 2022-06-09 21:54:40
+updated: 2022-06-09 22:02:49
 tags: [] 
 top: false
 mathjax: true
 author: booiris
 layout: wiki  
 wiki: leetcode
-order: 443
+order: 433
 ---
-
-# Minimum Genetic Mutation
 
 题意：
 

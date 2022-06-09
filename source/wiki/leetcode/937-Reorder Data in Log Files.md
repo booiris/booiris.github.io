@@ -1,7 +1,7 @@
 ---
-title: 937-Reorder_Data_in_Log_Files 
+title: 937-Reorder Data in Log Files 
 date: 2022-05-03 12:11:57 
-updated: 2022-06-09 21:54:46
+updated: 2022-06-09 22:04:22
 tags: [模拟] 
 top: false 
 mathjax: true 
@@ -10,8 +10,6 @@ layout: wiki
 wiki: leetcode
 order: 937
 ---
-
-# Reorder Data in Log Files
 
 题意：给定字符串数组，按规则对数组进行排序，规则如下：
 

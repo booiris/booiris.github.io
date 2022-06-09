@@ -1,17 +1,15 @@
 ---
 title: 713-Subarray Product Less Than K 
 date: 2022-05-05 10:28:41 
-updated: 2022-06-09 21:54:17
+updated: 2022-06-09 22:03:47
 tags: [滑动窗口] 
 top: false
 mathjax: true
 author: booiris
 layout: wiki  
 wiki: leetcode
-order: 4
+order: 713
 ---
-
-# Subarray Product Less Than K
 
 题意：求数列字串积小于 k 的字串个数。
 
