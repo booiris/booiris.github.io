@@ -32,6 +32,9 @@ footer:
     mail:
       icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/a1b00e20f425d.svg"/>'
       url: mailto:booiris02@gmail.com
+    steam:
+      icon:
+      url: https://steamcommunity.com/profiles/76561198081152126/
     # unsplash:
     #   icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/3616429.svg"/>'
     #   url: /
