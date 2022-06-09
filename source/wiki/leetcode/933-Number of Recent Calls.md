@@ -1,11 +1,14 @@
 ---
 title: 933-Number of Recent Calls 
 date: 2022-05-06 15:52:34 
-updated: 2022-06-09 21:48:11
+updated: 2022-06-09 21:54:21
 tags: [] 
 top: false
 mathjax: true
 author: booiris
+layout: wiki  
+wiki: leetcode
+order: 5
 ---
 
 # Number of Recent Calls

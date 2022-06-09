@@ -1,11 +1,14 @@
 ---
 title: 449-Serialize and Deserialize BST 
 date: 2022-05-11 17:54:53 
-updated: 2022-06-09 21:48:05
+updated: 2022-06-09 21:54:14
 tags: [树] 
 top: false
 mathjax: true
 author: booiris
+layout: wiki  
+wiki: leetcode
+order: 3
 ---
 
 # Serialize and Deserialize BST

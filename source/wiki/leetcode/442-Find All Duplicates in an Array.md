@@ -1,11 +1,14 @@
 ---
 title: 442-Find All Duplicates in an Array 
 date: 2022-05-08 13:46:38 
-updated: 2022-06-09 21:48:02
+updated: 2022-06-09 21:54:12
 tags: [原地哈希] 
 top: false
 mathjax: true
 author: booiris
+layout: wiki 
+wiki: leetcode 
+order: 2
 ---
 
 # Find All Duplicates in an Array

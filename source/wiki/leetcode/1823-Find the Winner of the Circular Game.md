@@ -1,11 +1,14 @@
 ---
 title: 1823-Find the Winner of the Circular Game 
 date: 2022-05-04 12:19:42 
-updated: 2022-06-09 21:48:26
+updated: 2022-06-09 21:54:34
 tags: [模拟] 
 top: false
 mathjax: true
 author: booiris
+layout: wiki  
+wiki: leetcode
+order: 9
 ---
 
 # Find the Winner of the Circular Game
