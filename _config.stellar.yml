@@ -3,7 +3,7 @@ sidebar:
     avatar: '[https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg](/)' 
   menu:
     post: '[博客](/)'
-    wiki: '[项目](/wiki/)'
+    wiki: '[文档](/wiki/)'
     notes: '[便笺](/notes/)'
     about: '[关于](/about/)'
   widget_layout:
@@ -33,8 +33,11 @@ footer:
       icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/a1b00e20f425d.svg"/>'
       url: mailto:booiris02@gmail.com
     steam:
-      icon:
+      icon: '<img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/steam_47012.png"/>'
       url: https://steamcommunity.com/profiles/76561198081152126/
+    screep:
+      icon: '<img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/screep.png"/>'
+      url: https://screeps.com/a/#!/profile/booiris
     # unsplash:
     #   icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/3616429.svg"/>'
     #   url: /

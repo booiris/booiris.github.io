@@ -1,4 +1,4 @@
 ---
-title: 笔记
+title: 文档
 menu_id: wiki
 ---
