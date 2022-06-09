@@ -7,9 +7,8 @@ top: false
 mathjax: true
 categories: [ algorithm ]
 author: booiris
-# layout: wiki  # 使用wiki布局模板
-# wiki: leetcode # 这是项目名
-order: 1
+layout: wiki  # 使用wiki布局模板
+wiki: leetcode # 这是项目名
 ---
 
 # Minimum Genetic Mutation
