@@ -1,7 +1,7 @@
 ---
 title: 713-Subarray Product Less Than K 
 date: 2022-05-05 10:28:41 
-updated: 2022-06-09 22:03:47
+updated: 2022-06-10 00:41:24
 tags: [滑动窗口] 
 top: false
 mathjax: true
@@ -11,9 +11,11 @@ wiki: leetcode
 order: 713
 ---
 
-题意：求数列字串积小于 k 的字串个数。
+## 题意
 
-题解：
+求数列字串积小于 k 的字串个数。
+
+## 题解
 
 枚举左节点，对于每一个左节点 i，找到满足字串积小于 k 的最长字串的右节点 high，那么每一个左节点有效的字串个数为 high - i +1。
 

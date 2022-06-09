@@ -1,7 +1,7 @@
 ---
 title: 933-Number of Recent Calls 
 date: 2022-05-06 15:52:34 
-updated: 2022-06-09 22:04:00
+updated: 2022-06-10 00:41:48
 tags: [] 
 top: false
 mathjax: true
@@ -11,11 +11,11 @@ wiki: leetcode
 order: 933
 ---
 
-题意：
+## 题意
 
 流式输入时间戳为 t 的请求，对于每一次输入，返回 [t-3000,t] 内请求的个数。
 
-题解：
+## 题解
 
 使用队列维护，将小于 t-3000 的数出队，再将 t 入队，返回当前队列元素个数。
 

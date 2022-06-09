@@ -1,7 +1,7 @@
 ---
 title: 497-Random Point in Non-overlapping Rectangles 
 date: 2022-06-10 00:24:37 
-updated: 2022-06-10 00:38:54
+updated: 2022-06-10 00:42:33
 tags: [] 
 top: false
 mathjax: true
