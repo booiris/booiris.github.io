@@ -207,3 +207,4 @@ deploy:
   type: 'git'
   repo: git@github.com:booiris/booiris.github.io.git
   branch: master
+
