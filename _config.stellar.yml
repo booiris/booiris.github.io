@@ -65,5 +65,5 @@ footer:
 
 plugins:
   mathjax:
-    enable: true
+    enable: false
     cdn: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML
