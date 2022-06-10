@@ -1,7 +1,7 @@
 ---
 title: Data Lab 
 date: 2022-05-03 23:24:12 
-updated: 2022-06-10 08:17:59
+updated: 2022-06-10 08:20:25
 tags: [] 
 top: false
 mathjax: true
@@ -44,10 +44,10 @@ bitXor(4, 5) = 1
 #### Answer
 
 $$
-\begin{align}
+\begin{aligned}
 	x \oplus y &= (\sim x \wedge y) \vee (x \wedge \sim y) = \sim(\sim(\sim x \wedge y) \wedge \sim(x \wedge \sim y)) \\
 	x \oplus y &= (x \vee y) \wedge (\sim x \vee \sim y) = \sim(\sim x \wedge \sim y) \wedge \sim (x \wedge y)
-\end{align}
+\end{aligned}
 $$
 
 Compare eq1 and eq2, eq1 uses five NOT operations and three AND operations, eq2 uses four NOT operations and three AND operations. Therefore eq2 is better.
