@@ -2,10 +2,10 @@ sidebar:
   logo:
     avatar: '[https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg](/)' 
   menu:
-    post: '[博客](/)'
-    wiki: '[文档](/wiki/)'
-    notes: '[便笺](/notes/)'
-    about: '[关于](/about/)'
+    post: '[Blog](/)'
+    wiki: '[Doc](/wiki/)'
+    notes: '[Notes](/notes/)'
+    about: '[About](/about/)'
   widget_layout:
     index: [welcome, recent] # for home/wiki/categories/tags/archives/404 pages
     page: [welcome, toc] # for pages using 'layout:page'
