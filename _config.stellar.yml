@@ -12,7 +12,7 @@ sidebar:
     post: [toc, repo_info] # for pages using 'layout:post'
     wiki: [toc, repo_info, wiki_more] # for pages using 'layout:wiki'
   # widgets:
-
+ 
 article:
   auto_excerpt: 0
   license:
