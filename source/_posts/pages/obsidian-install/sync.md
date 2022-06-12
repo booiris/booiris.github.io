@@ -1,7 +1,7 @@
 ---
 title: Obsidian 多平台同步方法
 date: 2022-05-01 23:31:00
-updated: 2022-05-04 18:35:25
+updated: 2022-06-12 14:11:28
 tags: []
 top: false
 mathjax: true
