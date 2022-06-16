@@ -1,11 +1,11 @@
 ---
 title: 插件列表
 date: 2022-05-01 23:30:48
-updated: 2022-05-02 20:26:10
+updated: 2022-06-12 13:56:26
 tags: []
 top: false
 mathjax: true
-categories: obsidian-install
+categories: blog
 author: booiris
 ---
 
