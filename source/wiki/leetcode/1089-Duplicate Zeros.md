@@ -1,7 +1,7 @@
 ---
 title: 1089-Duplicate Zeros 
 date: 2022-06-17 16:13:02 
-updated: 2022-06-17 16:18:49
+updated: 2022-06-19 14:07:40
 tags: [双指针] 
 top: false
 mathjax: true
@@ -9,7 +9,7 @@ categories: []
 author: booiris
 layout: wiki 
 wiki: leetcode 
-order:      # add order, base on problem number.
+order: 1089    # add order, base on problem number.
 ---
 
 ## 题意
