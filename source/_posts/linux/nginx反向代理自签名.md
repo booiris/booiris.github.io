@@ -1,7 +1,7 @@
 ---
 title: nginx反向代理自签名 
 date: 2022-07-02 16:49:11 
-updated: 2022-07-02 17:40:33
+updated: 2022-07-02 17:40:48
 tags: [] 
 top: false
 mathjax: true
@@ -49,3 +49,5 @@ server{
 	}
 }
 ```
+
+openssl req -new -newkey rsa:2048 -days 365 -nodes -x509 -keyout cert.key -out cert.crt  -config cert.cnf
