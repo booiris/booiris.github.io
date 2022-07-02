@@ -81,8 +81,8 @@ server{
 	listen  443 ssl;
 	server_name $your_ip or website;
 
-	ssl_certificate      /cert/server.crt;
-	ssl_certificate_key  /cert/server.key;
+	ssl_certificate      /cert/cert.crt;
+	ssl_certificate_key  /cert/cert.key;
 
 	ssl_session_cache    shared:SSL:1m;
 	ssl_session_timeout  5m;
@@ -91,7 +91,7 @@ server{
 	ssl_prefer_server_ciphers on;   #使用服务器端的首选算法
 
 	location / {
-		proxy_pass $your_proxy_ip:$your_proxy_port;
+		proxy_pass http://$your_proxy_ip:$your_proxy_port;
 	}
 }
 ```
