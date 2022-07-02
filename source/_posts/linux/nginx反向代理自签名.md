@@ -24,8 +24,8 @@ docker stop nginx
 docker rm nginx
 ```
 
-创建端口映射
+shi
 
 ```bash
-docker run -d --restart=always -p $your_ip:443 --name nginx -v "$PWD"/nginx.conf:/etc/nginx/nginx.conf nginx
+docker run -d --restart=always -p 22223:443 --name nginx -v "$PWD"/nginx.conf:/etc/nginx/nginx.conf -v "$PWD"/cert:/cert nginx
 ```
