@@ -1,7 +1,7 @@
 ---
 title: nginx反向代理自签名 
 date: 2022-07-02 16:49:11 
-updated: 2022-07-02 19:31:19
+updated: 2022-08-10 01:24:36
 tags: [] 
 top: false
 mathjax: true
@@ -92,6 +92,10 @@ server{
 
 	location / {
 		proxy_pass http://$your_proxy_ip:$your_proxy_port;
+		            proxy_set_header Host $host;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header Accept-Encoding gzip;
 	}
 }
 ```
