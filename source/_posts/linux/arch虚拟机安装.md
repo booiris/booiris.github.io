@@ -1,7 +1,7 @@
 ---
 title: arch虚拟机安装 
 date: 2022-08-04 00:02:01 
-updated: 2022-08-04 00:12:11
+updated: 2022-08-17 22:42:54
 tags: [] 
 top: false
 mathjax: true
@@ -35,7 +35,7 @@ fdisk -l
 fdisk /dev/sda
 ```
 
-分区过程参考![网址](https://ericclose.github.io/Installing-Arch-as-a-guest-with-UEFI-and-GPT.html#arch-chroot)
+分区过程参考[网址](https://ericclose.github.io/Installing-Arch-as-a-guest-with-UEFI-and-GPT.html#arch-chroot)
 
 ### 确认是否生效
 
@@ -106,6 +106,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
 ### 进入chroot
+
 ```bash
 arch-chroot /mnt
 ```
@@ -155,6 +156,7 @@ echo YourNewHostname > /etc/hostname
 ```
 
 ### 添加host
+
 ```
 vim /etc/hosts
 # Static table lookup for hostnames.  
@@ -171,6 +173,7 @@ systemctl enable NetworkManager
 ```
 
 ### 设置 root 用户密码
+
 ```bash
 passwd
 ```
@@ -178,6 +181,7 @@ passwd
 ## 安装引导程序
 
 UEFI 系统：
+
 ```bash
 pacman -S grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id="Arch Linux" --recheck
