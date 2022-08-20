@@ -1,7 +1,7 @@
 ---
 title: nginx反向代理自签名 
 date: 2022-07-02 16:49:11 
-updated: 2022-08-10 01:24:36
+updated: 2022-08-20 14:52:15
 tags: [] 
 top: false
 mathjax: true
@@ -15,6 +15,7 @@ author: booiris
 
 ```bash
 mkdir cert
+cd cert
 ```
 
 然后创建配置文件cert.cnf，注意如果时ip自签名就在your_IP填写自己的ip，如果是自签名域名就是在your_domain写自己的域名。

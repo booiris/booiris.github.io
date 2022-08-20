@@ -1,7 +1,7 @@
 ---
 title: arch虚拟机安装 
 date: 2022-08-04 00:02:01 
-updated: 2022-08-17 22:42:54
+updated: 2022-08-20 14:50:01
 tags: [] 
 top: false
 mathjax: true
@@ -195,3 +195,13 @@ exit
 umount -R /mnt
 reboot
 ```
+
+### 备注
+
+实体机安装类似，关闭显示屏
+
+```
+setterm -blank 1 # 待机一分钟关闭显示屏
+```
+
+在进入fakeroot后安装 intel-ucode,电源管理tlp
