@@ -1,7 +1,7 @@
 ---
 title: 1403-Minimum Subsequence in Non-Increasing Order 
 date: 2022-08-05 00:23:19 
-updated: 2022-08-05 00:30:09
+updated: 2022-09-11 16:10:47
 tags: [贪心] 
 top: false
 mathjax: true
@@ -9,7 +9,7 @@ categories: []
 author: booiris
 layout: wiki 
 wiki: leetcode 
-order:      # add order, base on problem number.
+order:   1403   # add order, base on problem number.
 ---
 
 ## 题意

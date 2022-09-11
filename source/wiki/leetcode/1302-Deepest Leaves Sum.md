@@ -1,7 +1,7 @@
 ---
 title: 1302-Deepest Leaves Sum 
 date: 2022-08-17 20:21:22 
-updated: 2022-08-17 20:25:44
+updated: 2022-09-11 16:10:43
 tags: [] 
 top: false
 mathjax: true
@@ -9,7 +9,7 @@ categories: []
 author: booiris
 layout: wiki 
 wiki: leetcode 
-order:      # add order, base on problem number.
+order:   1302   # add order, base on problem number.
 ---
 
 ## 题意
