@@ -35,3 +35,7 @@ redis:
   #   repo: xaoxuu/hexo-theme-stellar
   #   'issue-term': 'Q & A'
   # sidebar:
+  sections:
+    '目录': [0, 1]
+    '第一章：数据对象': [2, 9]
+    '第二章： RDB 持久化': [10, 19]
