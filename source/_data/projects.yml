@@ -27,6 +27,7 @@ redis:
     small: 128px
     large: 240px
   description: redis源码阅读。
+  sidebar: [toc]
   # sidebar: [welcome, toc]
   index: true
   # repo: xaoxuu/hexo-theme-stellar
