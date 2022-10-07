@@ -1,15 +1,13 @@
 ---
 title: Obsidian 多平台同步方法
 date: 2022-05-01 23:31:00
-updated: 2022-06-12 14:11:32
+updated: 2022-10-07 16:59:24
 tags: []
 top: false
 mathjax: true
 categories: blog
 author: booiris
 ---
-
-# Obsidian 多平台同步方法
 
 ### webdav 同步
 

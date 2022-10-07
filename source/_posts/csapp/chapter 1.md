@@ -1,7 +1,7 @@
 ---
 title: chapter 1
 date: 2022-05-01 23:30:18 
-updated: 2022-05-04 18:41:31
+updated: 2022-10-07 16:58:47
 tags: [todo]
 top: false
 mathjax: true
@@ -12,8 +12,6 @@ author: booiris
 #todo
 
 * [ ] undo
-
-# chapter 1
 
 ## 1.3
 
@@ -60,7 +58,7 @@ author: booiris
 
 ### 1.4.1
 
-<img src="https://s2.loli.net/2022/05/03/qcVioNzBPxhbX8t.png"  width=100%>
+<img src="https://s2.loli.net/2022/05/03/qcVioNzBPxhbX8t.png" width=100%>
 
 #### I/O Devices
 

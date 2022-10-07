@@ -1,15 +1,13 @@
 ---
 title: 插件列表
 date: 2022-05-01 23:30:48
-updated: 2022-06-12 13:56:26
+updated: 2022-10-07 16:59:11
 tags: []
 top: false
 mathjax: true
 categories: blog
 author: booiris
 ---
-
-# 插件列表
 
 1. [Admonition](obsidian://show-plugin?id=obsidian-admonition)
 2. [Auto Link Title](obsidian://show-plugin?id=obsidian-auto-link-title)
