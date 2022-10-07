@@ -20,7 +20,7 @@ leetcode:
 redis:
   title: redis
   subtitle: redis源码阅读笔记
-  tags: 学习
+  tags: 笔记
   cover: false
   logo:
     src: https://cdn.jsdelivr.net/gh/booiris-cdn/img/redis_original_logo_icon_146368.svg
