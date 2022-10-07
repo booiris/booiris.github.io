@@ -4,7 +4,7 @@ sidebar:
   menu:
     post: "[Blog](/)"
     wiki: "[Doc](/wiki/)"
-    notes: "[Notes](/notes/)"
+    # notes: "[Notes](/notes/)"
     about: "[About](/about/)"
   widget_layout:
     index: [welcome, recent] # for home/wiki/categories/tags/archives/404 pages
