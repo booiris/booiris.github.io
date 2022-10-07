@@ -2,7 +2,7 @@
 title: chapter 1
 date: 2022-05-01 23:30:18 
 updated: 2022-10-07 16:58:47
-tags: [todo]
+tags: []
 top: false
 mathjax: true
 categories: csapp
