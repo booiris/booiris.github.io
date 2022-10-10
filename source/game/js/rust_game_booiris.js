@@ -28,7 +28,7 @@ function getInt32Memory0() {
 }
 /**
 */
-export const Cell = Object.freeze({ Dead:0,"0":"Dead",Alive:1,"1":"Alive", });
+export const Cell = Object.freeze({ Dead: 0, "0": "Dead", Alive: 1, "1": "Alive", });
 /**
 */
 export class Universe {
@@ -135,7 +135,7 @@ async function load(module, imports) {
 function getImports() {
     const imports = {};
     imports.wbg = {};
-    imports.wbg.__wbindgen_throw = function(arg0, arg1) {
+    imports.wbg.__wbindgen_throw = function (arg0, arg1) {
         throw new Error(getStringFromWasm0(arg0, arg1));
     };
 
@@ -189,3 +189,4 @@ async function init(input) {
 
 export { initSync }
 export default init;
+export { wasm };
