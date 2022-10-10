@@ -5,6 +5,7 @@ sidebar:
     post: "[Blog](/)"
     wiki: "[Doc](/wiki/)"
     # notes: "[Notes](/notes/)"
+    game: "[Game](/game/)"
     about: "[About](/about/)"
   widget_layout:
     index: [welcome, recent] # for home/wiki/categories/tags/archives/404 pages
