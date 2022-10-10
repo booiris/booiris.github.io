@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta name="generator" content="Hexo 6.2.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://fastly.jsdelivr.net'>
+  <link rel="preconnect" href="https://fastly.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  <title>linux-install - Booiris</title>
+
+  
+    <meta name="description" content="WSL wsl --list  卸载对应的系统  wsl --unregister Ubuntu  设置默认系统  wslconfig &#x2F;setdefault Name  修改默认用户，主机名，修改&#x2F;etc&#x2F;wsl.conf文件  [user] default&#x3D;youruser  [network] hostname&#x3D;yourhostname  Ubuntu  换源  备份sources.lis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux-install">
+<meta property="og:url" content="http://example.com/2022/05/01/linux/linux-install/index.html">
+<meta property="og:site_name" content="Booiris">
+<meta property="og:description" content="WSL wsl --list  卸载对应的系统  wsl --unregister Ubuntu  设置默认系统  wslconfig &#x2F;setdefault Name  修改默认用户，主机名，修改&#x2F;etc&#x2F;wsl.conf文件  [user] default&#x3D;youruser  [network] hostname&#x3D;yourhostname  Ubuntu  换源  备份sources.lis">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-05-01T15:30:29.000Z">
+<meta property="article:modified_time" content="2022-05-21T02:16:16.000Z">
+<meta property="article:author" content="booiris">
+<meta name="twitter:card" content="summary">
+  
+  
+
+  <!-- feed -->
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/%5Bobject%20Object%5D">
+  
+
+  
+    
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/atom-one-dark.min.css">
+
+  
+
+  
+
+
+  
+    
+      <link rel="preconnect" href="https://s1.hdslb.com/" />
+    
+      <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'" />
+    
+      <link rel="icon" type="32x32" href="https://cdn.jsdelivr.net/gh/booiris-cdn/img/icon-32x32.ico">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+    
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+    
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    
+  
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header">
+
+<div class="logo-wrap"><a class="avatar" href="/"><div class="bg" style="opacity:0;background-image:url(https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.2/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg" onerror="javascript:this.classList.add('error');this.src='https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.1/image/2659360.svg';"></a><a class="title" href="/"><div class="main">Booiris</div><div class="sub cap">Hello world!</div></a></div>
+<nav class="menu dis-select"><a class="nav-item active" href="/">Blog</a><a class="nav-item" href="/wiki/">Doc</a><a class="nav-item" href="/about/">About</a></nav></header>
+
+
+<div class="widgets">
+
+<div class="widget-wrap single" id="toc"><div class="widget-header cap dis-select"><span class="name">TOC</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu"><span class="toc-text"> Ubuntu</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90"><span class="toc-text"> 换源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oh-my-bash-%E7%BE%8E%E5%8C%96"><span class="toc-text"> oh-my-bash 美化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="toc-text"> 安装软件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85i3wm"><span class="toc-text"> 安装i3wm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85tigervnc"><span class="toc-text"> 安装tigervnc</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85feh-xfce4-terminal-rofi-polybar"><span class="toc-text"> 安装feh、xfce4-terminal、rofi、polybar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85picom"><span class="toc-text"> 安装picom</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85google"><span class="toc-text"> 安装google</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E5%AD%97%E4%BD%93"><span class="toc-text"> 加载字体</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#arch"><span class="toc-text"> ARCH</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-text"> 创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E7%94%A8%E6%88%B7"><span class="toc-text"> 设置默认用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8D%A2%E6%BA%90-2"><span class="toc-text"> 换源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yay"><span class="toc-text"> YAY</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6-2"><span class="toc-text"> 安装软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tighervnc-%E9%85%8D%E7%BD%AE"><span class="toc-text"> tighervnc 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%AD%E8%A8%80"><span class="toc-text"> 语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E4%BD%93"><span class="toc-text"> 字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%8C%E9%9D%A2"><span class="toc-text"> 桌面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rofi"><span class="toc-text"> rofi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sublime"><span class="toc-text"> sublime</span></a></li></ol></li></ol></div></div></div>
+
+
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/booiris" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/08a41b181ce68.svg"/></a><a class="social" href="mailto:booiris02@gmail.com" rel="noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/a1b00e20f425d.svg"/></a><a class="social" href="https://steamcommunity.com/profiles/76561198081152126/" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/steam_47012.png"/></a><a class="social" href="https://screeps.com/a/#!/profile/booiris" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/screep.png"/></a></div></footer>
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+    
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a><span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/linux/">linux</a></div><div id="post-meta">Posted on&nbsp;<time datetime="2022-05-01T15:30:29.000Z">2022-05-01</time></div></div>
+
+<article class='content md post'>
+<h1 class="article-title"><span>linux-install</span></h1>
+<h1 id="wsl"><a class="markdownIt-Anchor" href="#wsl"></a> WSL</h1>
+<pre><code class="hljs plaintext">wsl --list</code></pre>
+<ul>
+<li>卸载对应的系统</li>
+</ul>
+<pre><code class="hljs plaintext">wsl --unregister Ubuntu</code></pre>
+<ul>
+<li>设置默认系统</li>
+</ul>
+<pre><code class="hljs plaintext">wslconfig /setdefault Name</code></pre>
+<ul>
+<li>修改默认用户，主机名，修改/etc/wsl.conf文件</li>
+</ul>
+<pre><code class="hljs bash">[user]
+default=youruser
+
+[network]
+hostname=yourhostname</code></pre>
+<h2 id="ubuntu"><a class="markdownIt-Anchor" href="#ubuntu"></a> Ubuntu</h2>
+<h3 id="换源"><a class="markdownIt-Anchor" href="#换源"></a> 换源</h3>
+<ol>
+<li>备份<code>sources.list</code>文件</li>
+</ol>
+<pre><code class="hljs plaintext">sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</code></pre>
+<ol start="2">
+<li>编辑<code>/etc/apt/sources.list</code>文件</li>
+</ol>
+<pre><code class="hljs plaintext">sudo vim /etc/apt/sources.list</code></pre>
+<ol start="3">
+<li>在文件前面添加下面的条目(阿里源)</li>
+</ol>
+<pre><code class="hljs plaintext">deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</code></pre>
+<ol start="4">
+<li>更新</li>
+</ol>
+<pre><code class="hljs plaintext">sudo apt update</code></pre>
+<h3 id="oh-my-bash-美化"><a class="markdownIt-Anchor" href="#oh-my-bash-美化"></a> oh-my-bash 美化</h3>
+<ol>
+<li>安装</li>
+</ol>
+<pre><code class="hljs plaintext">bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)&quot;</code></pre>
+<h3 id="安装软件"><a class="markdownIt-Anchor" href="#安装软件"></a> 安装软件</h3>
+<h4 id="安装i3wm"><a class="markdownIt-Anchor" href="#安装i3wm"></a> 安装i3wm</h4>
+<ol>
+<li>安装</li>
+</ol>
+<pre><code class="hljs plaintext">sudo apt install i3</code></pre>
+<ol start="2">
+<li>同步最新仓库</li>
+</ol>
+<pre><code class="hljs plaintext">sudo apt install ca-certificates
+/usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2021.02.02_all.deb keyring.deb SHA256:cccfb1dd7d6b1b6a137bb96ea5b5eef18a0a4a6df1d6c0c37832025d2edaa710
+sudo dpkg -i ./keyring.deb
+sudo sh -c &quot;echo &quot;deb http://debian.sur5r.net/i3/ $(grep &#x27;^DISTRIB_CODENAME=&#x27; /etc/lsb-release | cut -f2 -d=) universe&quot; &gt; /etc/apt/sources.list.d/sur5r-i3.list&quot;
+sudo apt update</code></pre>
+<h4 id="安装tigervnc"><a class="markdownIt-Anchor" href="#安装tigervnc"></a> 安装tigervnc</h4>
+<ol>
+<li>安装</li>
+</ol>
+<pre><code class="hljs plaintext">sudo apt install tigervnc-standalone-server</code></pre>
+<ol start="2">
+<li>启动</li>
+</ol>
+<pre><code class="hljs plaintext">vncserver -SecurityTypes=None -localhost=no --I-KNOW-THIS-IS-INSECURE :1 -dpi 150 -geometry=1920x1080</code></pre>
+<ol start="3">
+<li>显示当前ip</li>
+</ol>
+<pre><code class="hljs plaintext">ip addr | grep eth0</code></pre>
+<h4 id="安装feh-xfce4-terminal-rofi-polybar"><a class="markdownIt-Anchor" href="#安装feh-xfce4-terminal-rofi-polybar"></a> 安装feh、xfce4-terminal、rofi、polybar</h4>
+<pre><code class="hljs plaintext">sudo apt install feh xfce4-terminal rofi polybar</code></pre>
+<h4 id="安装picom"><a class="markdownIt-Anchor" href="#安装picom"></a> 安装picom</h4>
+<pre><code class="hljs plaintext">sudo apt install libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libpcre3-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev meson gcc
+cd
+git clone https://github.com/yshui/picom.git --depth=1
+cd picom
+git submodule update --init --recursive
+meson --buildtype=release . build
+ninja -C build
+sudo ninja -C build install</code></pre>
+<h4 id="安装google"><a class="markdownIt-Anchor" href="#安装google"></a> 安装google</h4>
+<ol>
+<li>下载安装包</li>
+</ol>
+<pre><code class="hljs plaintext">wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb</code></pre>
+<ol start="2">
+<li>安装</li>
+</ol>
+<pre><code class="hljs plaintext">sudo apt install ./google-chrome-stable_current_amd64.deb</code></pre>
+<h4 id="加载字体"><a class="markdownIt-Anchor" href="#加载字体"></a> 加载字体</h4>
+<pre><code class="hljs plaintext">sudo mkfontscale
+sudo fc-cache -fv</code></pre>
+<h2 id="arch"><a class="markdownIt-Anchor" href="#arch"></a> ARCH</h2>
+<h3 id="创建用户"><a class="markdownIt-Anchor" href="#创建用户"></a> 创建用户</h3>
+<pre><code class="hljs plaintext">useradd -m -G wheel username
+# 请自行替换 username 为你的用户名
+
+passwd username
+# 请自行替换 username 为你的用户名
+
+vim /etc/sudoers
+# 去掉# %wheel ALL=(ALL)ALL</code></pre>
+<h3 id="设置默认用户"><a class="markdownIt-Anchor" href="#设置默认用户"></a> 设置默认用户</h3>
+<pre><code class="hljs plaintext">./Arch.exe config --default-user booiris</code></pre>
+<h3 id="换源-2"><a class="markdownIt-Anchor" href="#换源-2"></a> 换源</h3>
+<pre><code class="hljs plaintext">sudo pacman-key --init
+sudo pacman-key --populate archlinux
+
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+sudo vim /etc/pacman.d/mirrorlist
+
+# 清华大学
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+## 163
+Server = http://mirrors.163.com/archlinux/$repo/os/$arch
+## aliyun
+Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch
+
+cp /etc/pacman.conf /etc/pacman.conf.backup
+
+sudo vim /etc/pacman.conf
+
+[archlinuxcn]
+# The Chinese Arch Linux communities packages.
+# SigLevel = Optional TrustedOnly
+SigLevel = Optional TrustAll
+# 清华大学
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+
+sudo pacman -Syyu</code></pre>
+<h3 id="yay"><a class="markdownIt-Anchor" href="#yay"></a> YAY</h3>
+<ol>
+<li>安装</li>
+</ol>
+<pre><code class="hljs plaintext">sudo pacman -S yay</code></pre>
+<ol start="2">
+<li>换源</li>
+</ol>
+<pre><code class="hljs plaintext">yay --aururl &quot;https://aur.tuna.tsinghua.edu.cn&quot; --save</code></pre>
+<h3 id="安装软件-2"><a class="markdownIt-Anchor" href="#安装软件-2"></a> 安装软件</h3>
+<pre><code class="hljs plaintext">yay -S base-devel
+
+yay -S i3 tigervnc sublime-text-4 google-chrome xfce4-terminal</code></pre>
+<h3 id="tighervnc-配置"><a class="markdownIt-Anchor" href="#tighervnc-配置"></a> tighervnc 配置</h3>
+<ol>
+<li>用 <code>vncpasswd</code> 创建密码，它会将哈希处理之后的密码存储在 <code>~/.vnc/passwd</code>。</li>
+<li>编辑 <code>/etc/tigervnc/vncserver.users</code> 来定义用户映射</li>
+<li>创建 <code>~/.vnc/config</code>，其中至少要有一行定义会话的类型，比如 <code>session=foo</code> （将foo替换为你想要运行的桌面环境）。你可以通过查看 <code>/usr/share/xsessions/</code> 里的 <code>.desktop</code> 文件来知道有哪些桌面环境在当前系统上可以使用。</li>
+</ol>
+<pre><code class="hljs plaintext">session=i3
+geometry=1920x1080
+dpi=150
+alwaysshared</code></pre>
+<h3 id="语言"><a class="markdownIt-Anchor" href="#语言"></a> 语言</h3>
+<pre><code class="hljs plaintext">sudo vim /etc/locale.gen
+sudo locale-gen</code></pre>
+<h3 id="字体"><a class="markdownIt-Anchor" href="#字体"></a> 字体</h3>
+<pre><code class="hljs plaintext">yay -S noto-fonts-emoji adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts adobe-source-han-sans-cn-fonts  adobe-source-han-sans-tw-fonts nerd-fonts-jetbrains-mono ttf-iosevka-nerd ttf-material-icons-git papirus-icon-theme</code></pre>
+<h3 id="桌面"><a class="markdownIt-Anchor" href="#桌面"></a> 桌面</h3>
+<pre><code class="hljs plaintext">yay -S polybar rofi feh picom xss-lock dbus-x11 google-chrome
+yay -S fcitx5-im fcitx5-chinese-addons</code></pre>
+<p>创建<code>.Xresources</code></p>
+<pre><code class="hljs plaintext">Xft.dpi: 120
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb</code></pre>
+<h3 id="rofi"><a class="markdownIt-Anchor" href="#rofi"></a> rofi</h3>
+<pre><code class="hljs plaintext">mkdir ~/.local/share/rofi
+git clone https://github.com/Murzchnvok/rofi-collection.git --depth=1
+cp -r nord $HOME/.local/share/rofi/themes/
+</code></pre>
+<p>创建<code>config.rasi</code></p>
+<pre><code class="hljs plaintext">//@theme &quot;/home/booiris/.local/share/rofi/themes/nord.rasi&quot;
+@theme &quot;/home/booiris/.local/share/rofi/themes/nord.rasi&quot;</code></pre>
+<h3 id="sublime"><a class="markdownIt-Anchor" href="#sublime"></a> sublime</h3>
+<ol>
+<li>激活码</li>
+</ol>
+<pre><code class="hljs plaintext">—– BEGIN LICENSE —–
+
+Mifeng User
+
+Single User License
+
+EA7E-1184812
+
+C0DAA9CD 6BE825B5 FF935692 1750523A
+
+EDF59D3F A3BD6C96 F8D33866 3F1CCCEA
+
+1C25BE4D 25B1C4CC 5110C20E 5246CC42
+
+D232C83B C99CCC42 0E32890C B6CBF018
+
+B1D4C178 2F9DDB16 ABAA74E5 95304BEF
+
+9D0CCFA9 8AF8F8E2 1E0A955E 4771A576
+
+50737C65 325B6C32 817DCB83 A7394DFA
+
+27B7E747 736A1198 B3865734 0B434AA5
+
+—— END LICENSE ——</code></pre>
+<ol start="2">
+<li>修改设置</li>
+</ol>
+<pre><code class="hljs plaintext">&#123;
+        &quot;access_token&quot;: &quot;&quot;,
+        &quot;auto_upgrade&quot;: true,
+        &quot;gist_id&quot;: &quot;&quot;,
+&#125;</code></pre>
+
+
+
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="header cap theme"><span>READ NEXT</span></section><section class="body fs14"><a id="next" href="/2022/05/01/csapp/chapter%201/">chapter 1<span class="note">Older</span></a><div class="line"></div><a id="prev" href="/2022/05/01/blog/extension/">插件列表<span class="note">Newer</span></a></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="text"><p>本站由 <a href="/">@booiris</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br />
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.9.0';
+  stellar.config = {
+    date_suffix: {
+      just: 'Just',
+      min: 'minutes ago',
+      hour: 'hours ago',
+      day: 'days ago',
+      month: 'months ago',
+    },
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://fastly.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js'
+  };
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://fastly.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@6/swiper-bundle.min.css","js":"https://unpkg.com/swiper@6/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://fastly.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://fastly.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://fastly.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://fastly.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://fastly.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti/umd/heti.min.css","js":"https://unpkg.com/heti/umd/heti-addon.min.js"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
