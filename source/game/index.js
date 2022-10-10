@@ -1,5 +1,5 @@
-import init from "./pkg/rust_game_booiris.js";
-import { Universe, Cell, wasm } from "./pkg/rust_game_booiris.js";
+import init from "./js/rust_game_booiris.js";
+import { Universe, Cell, wasm } from "./js/rust_game_booiris.js";
 
 const run = () => {
     const CELL_SIZE = 5; // px
