@@ -1,5 +1,5 @@
-import { Universe, Cell } from "./js/rust_game_booiris";
-import { memory } from "./js/rust_game_booiris_bg";
+import { Universe, Cell } from "./js/rust_game_booiris.js";
+import { memory } from "./js/rust_game_booiris_bg.js";
 
 const CELL_SIZE = 5; // px
 const GRID_COLOR = "#CCCCCC";
