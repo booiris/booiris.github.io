@@ -41,6 +41,8 @@ jobs:
           git config --global user.name "booiris"
           npm install hexo-cli -g
           npm install
+          cd source/game
+          npm install
       - name: Hexo deploy
         run: |
           hexo clean
