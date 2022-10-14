@@ -1,3 +1,4 @@
+<style>
 #fps {
     white-space: pre;
     font-family: monospace;
