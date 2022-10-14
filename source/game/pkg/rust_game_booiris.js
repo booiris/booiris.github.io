@@ -251,12 +251,6 @@ function getImports() {
     imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
         takeObject(arg0);
     };
-    imports.wbg.__wbg_time_777d19cd98790a7e = function(arg0, arg1) {
-        console.time(getStringFromWasm0(arg0, arg1));
-    };
-    imports.wbg.__wbg_timeEnd_57a272cc84009b6d = function(arg0, arg1) {
-        console.timeEnd(getStringFromWasm0(arg0, arg1));
-    };
     imports.wbg.__wbg_random_656f2ae924b2540e = typeof Math.random == 'function' ? Math.random : notDefined('Math.random');
     imports.wbg.__wbindgen_throw = function(arg0, arg1) {
         throw new Error(getStringFromWasm0(arg0, arg1));
