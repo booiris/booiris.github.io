@@ -1,0 +1,15 @@
+{
+  "name": "push-box",
+  "collaborators": [
+    "booiris <954520770@qq.com>"
+  ],
+  "version": "0.1.0",
+  "files": [
+    "push_box_bg.wasm",
+    "push_box.js",
+    "push_box.d.ts"
+  ],
+  "module": "push_box.js",
+  "types": "push_box.d.ts",
+  "sideEffects": false
+}
