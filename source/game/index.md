@@ -3,4 +3,4 @@ title: game
 menu_id: game
 ---
 
-<h2 href="/game/life-game">Life-time</h2>
+<h2><a href="/game/life-game">Life-time</a></h2>
