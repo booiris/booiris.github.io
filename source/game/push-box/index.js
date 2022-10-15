@@ -67,7 +67,7 @@ const run = () => {
                 drawGrid();
                 drawMap();
 
-                game.set_is_log(true)
+                game.set_is_log(false)
                 setTimeout(() => {
                     requestAnimationFrame(renderLoop);
                 }, 100);
