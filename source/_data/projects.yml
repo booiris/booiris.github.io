@@ -40,3 +40,27 @@ redis:
     '第零章': [0, 1]
     '第一章: 数据对象': [2, 9]
     '第二章: RDB 持久化': [10, 19]
+
+nes:
+  title: nes
+  subtitle: nes模拟器实现记录
+  tags: fun
+  cover: false
+  logo:
+    src: https://cdn.jsdelivr.net/gh/booiris-cdn/img//image_1_a_cartridge.png
+    small: 128px
+    large: 240px
+  description: nes模拟器实现记录。
+  sidebar: [toc]
+  # sidebar: [welcome, toc]
+  index: true
+  # repo: xaoxuu/hexo-theme-stellar
+  # comment_title: '评论区仅供交流，有问题请提 [issue](https://github.com/xaoxuu/hexo-theme-stellar/issues) 反馈。'
+  # beaudar:
+  #   repo: xaoxuu/hexo-theme-stellar
+  #   'issue-term': 'Q & A'
+  # sidebar:
+  # sections:
+  #   '第零章': [0, 1]
+  #   '第一章: 数据对象': [2, 9]
+  #   '第二章: RDB 持久化': [10, 19]
