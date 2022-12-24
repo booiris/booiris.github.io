@@ -2,7 +2,7 @@
 title: game
 menu_id: game
 date: 2022-12-17 19:36:05
-updated: 2022-12-24 21:54:18
+updated: 2022-12-25 00:03:01
 ---
 
 ## [Life-time](/game/life-game/index.html)
@@ -22,6 +22,8 @@ Reinforcement learning based Sokoban game.
 github link: [rust-learning/push-box at rust-game · booiris/rust-learning · GitHub](https://github.com/booiris/rust-learning/tree/rust-game/push-box)
 
 ## [flappy-bird](/game/flappy-bird/index.html)
+
+**Attention!** This game size is 10 MB.
 
 <img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img//screen-shot.png" width = 40% >
 
