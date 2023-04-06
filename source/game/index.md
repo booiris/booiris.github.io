@@ -2,7 +2,7 @@
 title: game
 menu_id: game
 date: 2022-12-17 19:36:05
-updated: 2022-12-25 00:03:01
+updated: 2023-04-07 01:39:53
 ---
 
 ## [Life-time](/game/life-game/index.html)
