@@ -208,3 +208,4 @@ deploy:
   repo: git@github.com:booiris/booiris.github.io.git
   branch: master
 
+wiki_dir: wiki
