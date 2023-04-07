@@ -16,6 +16,7 @@ sidebar:
  
 article:
   auto_excerpt: 0
+  auto_cover: true
   license:
 
 # comments:
