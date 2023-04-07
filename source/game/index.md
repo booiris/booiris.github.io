@@ -2,7 +2,7 @@
 title: game
 menu_id: game
 date: 2022-12-17 19:36:05
-updated: 2023-04-07 13:21:00
+updated: 2023-04-07 18:49:05
 ---
 
 ## [Life-time](/game/life-game/index.html)
@@ -32,5 +32,7 @@ Bevy based Flappy Bird game.
 github link: [GitHub - booiris/rust-learning at snake](https://github.com/booiris/rust-learning/tree/snake)
 
 ## [snake](/game/snake/index.html)
+
+![eee](https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/%E6%88%AA%E5%B1%8F2023-04-07%2018.45.11.png)
 
 github link: [rust-nes/test-snake at master · booiris/rust-nes · GitHub](https://github.com/booiris/rust-nes/tree/master/test-snake)
