@@ -1,7 +1,7 @@
 ---
 title: 1157-Online Majority Element In Subarray 
 date: 2023-04-16 14:41:57 
-updated: 2023-04-16 16:56:57
+updated: 2023-04-16 17:03:33
 tags: [线段树,树套树,摩尔投票] 
 top: false
 mathjax: true
@@ -25,6 +25,8 @@ order:  1157    # add order, base on problem number.
 * `int query(int left, int right, int threshold)` 返回子数组中的元素  `arr[left…right]` 至少出现 `threshold` 次数，如果不存在这样的元素则返回 `-1`。
 
 ## 题解
+
+1. 线段树+摩尔投票
 
 ```rust
 #![allow(dead_code, unused_imports, unused_macros)]
@@ -178,3 +180,5 @@ pub fn main() {
     }
 }
 ```
+
+2. 树套树
