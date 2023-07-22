@@ -5,7 +5,7 @@ updated: 2023-07-22 21:04:27
 tags: [] 
 top: false
 mathjax: true
-categories: [ blog,screeps ]
+categories: [ screeps ]
 author: booiris
 ---
 
