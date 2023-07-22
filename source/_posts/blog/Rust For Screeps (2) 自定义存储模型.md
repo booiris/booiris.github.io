@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (2): 自定义存储模型"
 date: 2023-07-22 21:05:20 
-updated: 2023-07-22 23:58:41
+updated: 2023-07-23 00:06:04
 tags: [] 
 top: false
 mathjax: true
@@ -169,6 +169,7 @@ let mem_proxy = { creeps: {} }
 module.exports.loop = function () {
     delete global.Memory;
     global.Memory = mem_proxy
+    RawMemory._parsed = mem_proxy
     try {
         if (wasm_module) {
             wasm_module.loop();
