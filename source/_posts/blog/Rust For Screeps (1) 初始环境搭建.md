@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (1): 初始环境搭建"
 date: 2023-07-22 19:29:29 
-updated: 2023-07-22 21:04:27
+updated: 2023-07-22 21:21:57
 tags: [] 
 top: false
 mathjax: true
@@ -94,7 +94,7 @@ module.exports.loop = function () {
 }
 ```
 
-文件中 `wasm_module` 保存了 wasm 的实例。如果 wasm 的实例存在，就调用 loop 函数运行游戏逻辑。如果 wasm 的实例不存在 (由于更新代码或 screeps 进行了内存gc 等原因导致实列被销毁)，**重新载入 wasm 并且调用 setup 函数进行初始化，然后再运行游戏逻辑**。
+文件中 `wasm_module` 保存了 wasm 的实例。如果 wasm 的实例存在，就调用 loop 函数运行游戏逻辑。如果 wasm 的实例不存在 (由于更新代码或 screeps 进行了内存回收等原因导致实列被销毁)，**重新载入 wasm 并且调用 setup 函数进行初始化，然后再运行游戏逻辑**。
 
 `src/logging.rs` 为辅助文件，用于日志的实现。基本上就是进行 log 格式的创建，不做过多说明。在 setup 阶段调用一下 `setup_logging` 函数就行。
 
