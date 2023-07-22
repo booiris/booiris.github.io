@@ -7,7 +7,7 @@ sidebar:
     # notes: "[Notes](/notes/)"
     game: "[Game](/game/)"
     about: "[About](/about/)"
-    pic: "[Pic](/pic)"
+    pic: "[Picture](/pic)"
   widget_layout:
     index: [welcome, recent] # for home/wiki/categories/tags/archives/404 pages
     page: [welcome, toc] # for pages using 'layout:page'
