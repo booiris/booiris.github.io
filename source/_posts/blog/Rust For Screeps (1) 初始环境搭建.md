@@ -1,11 +1,11 @@
 ---
 title: "Rust For Screeps (1): 初始环境搭建"
 date: 2023-07-22 19:29:29 
-updated: 2023-07-22 19:37:26
+updated: 2023-07-22 19:37:38
 tags: [] 
 top: false
 mathjax: true
-categories: [ blog ]
+categories: [ blog,screeps ]
 author: booiris
 ---
 
