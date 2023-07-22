@@ -1,4 +1,4 @@
 ---
-title: Pic
-menu_id: Pic
+title: Picture
+menu_id: Picture
 ---
