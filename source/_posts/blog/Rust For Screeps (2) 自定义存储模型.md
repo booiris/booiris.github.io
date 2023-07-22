@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (2): 自定义存储模型"
 date: 2023-07-22 21:05:20 
-updated: 2023-07-22 23:04:26
+updated: 2023-07-22 23:22:24
 tags: [] 
 top: false
 mathjax: true
@@ -79,6 +79,20 @@ Object.defineProperty(runCodeCache[userId].globals, 'Memory', {
 
 ## Rust 存储模型
 
-从上面可以知道，Screeps 有一个 JavaScript 对象 `Memory` 保存需要的信息。
+从上面可以知道，Screeps 有一个 JavaScript 对象 `Memory` 保存需要的信息。但是要从 rust 中访问 JavaScript 里的对象十分麻烦。同时 [screeps-game-api](https://github.com/rustyscreeps/screeps-game-api/) 里似乎只有 `raw memory` 的获取方法，而没有 `memory` 对象的获取方法。
+
+所以显然易见，我们的存储信息需要放到 rust 里。在上一章的示例代码中，有这样一个变量:
+
+```rust
+// this is one way to persist data between ticks within Rust's memory, as opposed to
+// keeping state in memory on game objects - but will be lost on global resets!
+thread_local! {
+    static CREEP_TARGETS: RefCell<HashMap<String, CreepTarget>> = RefCell::new(HashMap::new());
+}
+```
+
+我们可以创建一个全局变量 (类似 javaScript 里的 `Memory` 对象) 存储到 wasm 的线性内存里。只要 wasm 的实例没有被销毁，那么这个全局变量就可以随着 wasm 实例在每个 tick 传递。
 
 ## 自定义存储实现
+
+通过 rust 的全局变量

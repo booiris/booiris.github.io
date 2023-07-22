@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (1): 初始环境搭建"
 date: 2023-07-22 19:29:29 
-updated: 2023-07-22 21:21:57
+updated: 2023-07-22 23:24:31
 tags: [] 
 top: false
 mathjax: true
@@ -174,80 +174,10 @@ pub fn game_loop() {
 
     info!("done! cpu: {}", game::cpu::get_used())
 }
-
-fn run_creep(creep: &Creep, creep_targets: &mut HashMap<String, CreepTarget>) {
-    if creep.spawning() {
-        return;
-    }
-    let name = creep.name();
-    debug!("running creep {}", name);
-
-    let target = creep_targets.entry(name);
-    match target {
-        Entry::Occupied(entry) => {
-            let creep_target = entry.get();
-            match creep_target {
-                CreepTarget::Upgrade(controller_id)
-                    if creep.store().get_used_capacity(Some(ResourceType::Energy)) > 0 =>
-                {
-                    if let Some(controller) = controller_id.resolve() {
-                        creep
-                            .upgrade_controller(&controller)
-                            .unwrap_or_else(|e| match e {
-                                ErrorCode::NotInRange => {
-                                    let _ = creep.move_to(&controller);
-                                }
-                                _ => {
-                                    warn!("couldn't upgrade: {:?}", e);
-                                    entry.remove();
-                                }
-                            });
-                    } else {
-                        entry.remove();
-                    }
-                }
-                CreepTarget::Harvest(source_id)
-                    if creep.store().get_free_capacity(Some(ResourceType::Energy)) > 0 =>
-                {
-                    if let Some(source) = source_id.resolve() {
-                        if creep.pos().is_near_to(source.pos()) {
-                            creep.harvest(&source).unwrap_or_else(|e| {
-                                warn!("couldn't harvest: {:?}", e);
-                                entry.remove();
-                            });
-                        } else {
-                            let _ = creep.move_to(&source);
-                        }
-                    } else {
-                        entry.remove();
-                    }
-                }
-                _ => {
-                    entry.remove();
-                }
-            };
-        }
-        Entry::Vacant(entry) => {
-            // no target, let's find one depending on if we have energy
-            let room = creep.room().expect("couldn't resolve creep room");
-            if creep.store().get_used_capacity(Some(ResourceType::Energy)) > 0 {
-                for structure in room.find(find::STRUCTURES, None).iter() {
-                    if let StructureObject::StructureController(controller) = structure {
-                        entry.insert(CreepTarget::Upgrade(controller.id()));
-                        break;
-                    }
-                }
-            } else if let Some(source) = room.find(find::SOURCES_ACTIVE, None).get(0) {
-                entry.insert(CreepTarget::Harvest(source.id()));
-            }
-        }
-    }
-}
-
 ```
 
 其中需要关注两个函数 `setup` 和 `game_loop` 。
 
 `setup` 为 wasm 实例创建的时候调用的函数，在其中可以实现日志初始化、数据初始化的逻辑。
 
-`game_loop` 通过 `#[wasm_bindgen(js_name = loop)]` 的标注 (rust 中成为过程宏) 将其改名为wasm 里运行的 loop 函数，这也是游戏中每 tick 运行的主逻辑。
+`game_loop` 通过 `#[wasm_bindgen(js_name = loop)]` 的标注 (rust 中称为过程宏) 将其改名为wasm 里运行的 loop 函数，这也是游戏中每 tick 运行的主逻辑。
