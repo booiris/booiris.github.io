@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (2): 自定义存储模型"
 date: 2023-07-22 21:05:20 
-updated: 2023-07-22 22:57:19
+updated: 2023-07-22 23:04:26
 tags: [] 
 top: false
 mathjax: true
@@ -21,8 +21,8 @@ screeps 的存储模型基本如图所示。
 
 `memory object` 的具体介绍在 [Global Objects | Screeps Documentation](https://docs.screeps.com/global-objects.html#Memory-object)。
 
-	Each player has access to the global object `Memory` in which he/she may store any information 
-	in the JSON format. 
+	Each player has access to the global object `Memory` in which he/she may store any 
+	information in the JSON format. 
 
 ```javascript
 Memory.someData = {...};
@@ -34,8 +34,8 @@ Memory.someData = {...};
 
 `raw memory` 在这里被提到 [Global Objects | Screeps Documentation](https://docs.screeps.com/global-objects.html#Serialization)
 
-	The Memory object is stored in the stringified form and is parsed each time upon the first in the 
-	tick access from your script with the help of the `JSON.parse` method.
+	The Memory object is stored in the stringified form and is parsed each time upon the first 
+	in the tick access from your script with the help of the `JSON.parse` method.
 
 可以看出 `Memory` 的对象实例最终会被序列化为字符串存储到 `raw memory` 中，在游戏的每个 tick 进行传递。
 
@@ -79,4 +79,6 @@ Object.defineProperty(runCodeCache[userId].globals, 'Memory', {
 
 ## Rust 存储模型
 
-## 自定义内存存储实现
+从上面可以知道，Screeps 有一个 JavaScript 对象 `Memory` 保存需要的信息。
+
+## 自定义存储实现
