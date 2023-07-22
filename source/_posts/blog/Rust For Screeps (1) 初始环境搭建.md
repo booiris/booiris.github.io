@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (1): 初始环境搭建"
 date: 2023-07-22 19:29:29 
-updated: 2023-07-22 20:42:17
+updated: 2023-07-22 20:50:23
 tags: [] 
 top: false
 mathjax: true
@@ -94,118 +94,154 @@ module.exports.loop = function () {
 }
 ```
 
-文件中wasm_module
+文件中 `wasm_module` 保存了 wasm 的实例。如果 wasm 的实例存在，就调用 loop 函数运行游戏逻辑。如果 wasm 的实例不存在 (由于更新代码或 screeps 进行了内存gc 等原因导致实列被销毁)，就重新载入 wasm 并且调用 setup 函数进行初始化，然后再运行游戏逻辑。
+
+`src/logging.rs` 为辅助文件，用于日志的实现。基本上就是进行log在 setup 阶段调用一下 `setup_logging` 函数就行。
 
 `src/lib.rs` 为 rust 的实现入口。
 
 ```rust
-use js_sys::JsString;
-use screeps::game;
-use web_sys::console;
+use std::cell::RefCell;
+use std::collections::{hash_map::Entry, HashMap};
 
-pub use log::LevelFilter::*;
+use log::*;
+use screeps::{
+    constants::{ErrorCode, Part, ResourceType},
+    enums::StructureObject,
+    find, game,
+    local::ObjectId,
+    objects::{Creep, Source, StructureController},
+    prelude::*,
+};
+use wasm_bindgen::prelude::*;
 
-struct JsLog;
-struct JsNotify;
+mod logging;
 
-impl log::Log for JsLog {
-    fn enabled(&self, _: &log::Metadata<'_>) -> bool {
-        true
-    }
-    fn log(&self, record: &log::Record<'_>) {
-        console::log_1(&JsString::from(format!("{}", record.args())));
-    }
-    fn flush(&self) {}
-}
-impl log::Log for JsNotify {
-    fn enabled(&self, _: &log::Metadata<'_>) -> bool {
-        true
-    }
-    fn log(&self, record: &log::Record<'_>) {
-        game::notify(&format!("{}", record.args()), None);
-    }
-    fn flush(&self) {}
+// add wasm_bindgen to any function you would like to expose for call from js
+#[wasm_bindgen]
+pub fn setup() {
+    logging::setup_logging(logging::Info);
 }
 
-pub fn setup_logging(verbosity: log::LevelFilter) {
-    fern::Dispatch::new()
-        .level(verbosity)
-        .format(|out, message, record| {
-            out.finish(format_args!(
-                "({}) {}: {}",
-                record.level(),
-                record.target(),
-                message
-            ))
-        })
-        .chain(Box::new(JsLog) as Box<dyn log::Log>)
-        .chain(
-            fern::Dispatch::new()
-                .level(log::LevelFilter::Warn)
-                .format(|out, message, _record| {
-                    let time = game::time();
-                    out.finish(format_args!("[{}] {}", time, message))
-                })
-                .chain(Box::new(JsNotify) as Box<dyn log::Log>),
-        )
-        .apply()
-        .expect("expected setup_logging to only ever be called once per instance");
-}
-```
-
-`src/logging.rs` 为辅助文件，用于日志的实现。
-
-```rust
-use js_sys::JsString;
-use screeps::game;
-use web_sys::console;
-
-pub use log::LevelFilter::*;
-
-struct JsLog;
-struct JsNotify;
-
-impl log::Log for JsLog {
-    fn enabled(&self, _: &log::Metadata<'_>) -> bool {
-        true
-    }
-    fn log(&self, record: &log::Record<'_>) {
-        console::log_1(&JsString::from(format!("{}", record.args())));
-    }
-    fn flush(&self) {}
-}
-impl log::Log for JsNotify {
-    fn enabled(&self, _: &log::Metadata<'_>) -> bool {
-        true
-    }
-    fn log(&self, record: &log::Record<'_>) {
-        game::notify(&format!("{}", record.args()), None);
-    }
-    fn flush(&self) {}
+// this is one way to persist data between ticks within Rust's memory, as opposed to
+// keeping state in memory on game objects - but will be lost on global resets!
+thread_local! {
+    static CREEP_TARGETS: RefCell<HashMap<String, CreepTarget>> = RefCell::new(HashMap::new());
 }
 
-pub fn setup_logging(verbosity: log::LevelFilter) {
-    fern::Dispatch::new()
-        .level(verbosity)
-        .format(|out, message, record| {
-            out.finish(format_args!(
-                "({}) {}: {}",
-                record.level(),
-                record.target(),
-                message
-            ))
-        })
-        .chain(Box::new(JsLog) as Box<dyn log::Log>)
-        .chain(
-            fern::Dispatch::new()
-                .level(log::LevelFilter::Warn)
-                .format(|out, message, _record| {
-                    let time = game::time();
-                    out.finish(format_args!("[{}] {}", time, message))
-                })
-                .chain(Box::new(JsNotify) as Box<dyn log::Log>),
-        )
-        .apply()
-        .expect("expected setup_logging to only ever be called once per instance");
+// this enum will represent a creep's lock on a specific target object, storing a js reference
+// to the object id so that we can grab a fresh reference to the object each successive tick,
+// since screeps game objects become 'stale' and shouldn't be used beyond the tick they were fetched
+#[derive(Clone)]
+enum CreepTarget {
+    Upgrade(ObjectId<StructureController>),
+    Harvest(ObjectId<Source>),
 }
+
+// to use a reserved name as a function name, use `js_name`:
+#[wasm_bindgen(js_name = loop)]
+pub fn game_loop() {
+    debug!("loop starting! CPU: {}", game::cpu::get_used());
+    // mutably borrow the creep_targets refcell, which is holding our creep target locks
+    // in the wasm heap
+    CREEP_TARGETS.with(|creep_targets_refcell| {
+        let mut creep_targets = creep_targets_refcell.borrow_mut();
+        debug!("running creeps");
+        for creep in game::creeps().values() {
+            run_creep(&creep, &mut creep_targets);
+        }
+    });
+
+    debug!("running spawns");
+    let mut additional = 0;
+    for spawn in game::spawns().values() {
+        debug!("running spawn {}", String::from(spawn.name()));
+
+        let body = [Part::Move, Part::Move, Part::Carry, Part::Work];
+        if spawn.room().unwrap().energy_available() >= body.iter().map(|p| p.cost()).sum() {
+            // create a unique name, spawn.
+            let name_base = game::time();
+            let name = format!("{}-{}", name_base, additional);
+            // note that this bot has a fatal flaw; spawning a creep
+            // creates Memory.creeps[creep_name] which will build up forever;
+            // these memory entries should be prevented (todo doc link on how) or cleaned up
+            match spawn.spawn_creep(&body, &name) {
+                Ok(()) => additional += 1,
+                Err(e) => warn!("couldn't spawn: {:?}", e),
+            }
+        }
+    }
+
+    info!("done! cpu: {}", game::cpu::get_used())
+}
+
+fn run_creep(creep: &Creep, creep_targets: &mut HashMap<String, CreepTarget>) {
+    if creep.spawning() {
+        return;
+    }
+    let name = creep.name();
+    debug!("running creep {}", name);
+
+    let target = creep_targets.entry(name);
+    match target {
+        Entry::Occupied(entry) => {
+            let creep_target = entry.get();
+            match creep_target {
+                CreepTarget::Upgrade(controller_id)
+                    if creep.store().get_used_capacity(Some(ResourceType::Energy)) > 0 =>
+                {
+                    if let Some(controller) = controller_id.resolve() {
+                        creep
+                            .upgrade_controller(&controller)
+                            .unwrap_or_else(|e| match e {
+                                ErrorCode::NotInRange => {
+                                    let _ = creep.move_to(&controller);
+                                }
+                                _ => {
+                                    warn!("couldn't upgrade: {:?}", e);
+                                    entry.remove();
+                                }
+                            });
+                    } else {
+                        entry.remove();
+                    }
+                }
+                CreepTarget::Harvest(source_id)
+                    if creep.store().get_free_capacity(Some(ResourceType::Energy)) > 0 =>
+                {
+                    if let Some(source) = source_id.resolve() {
+                        if creep.pos().is_near_to(source.pos()) {
+                            creep.harvest(&source).unwrap_or_else(|e| {
+                                warn!("couldn't harvest: {:?}", e);
+                                entry.remove();
+                            });
+                        } else {
+                            let _ = creep.move_to(&source);
+                        }
+                    } else {
+                        entry.remove();
+                    }
+                }
+                _ => {
+                    entry.remove();
+                }
+            };
+        }
+        Entry::Vacant(entry) => {
+            // no target, let's find one depending on if we have energy
+            let room = creep.room().expect("couldn't resolve creep room");
+            if creep.store().get_used_capacity(Some(ResourceType::Energy)) > 0 {
+                for structure in room.find(find::STRUCTURES, None).iter() {
+                    if let StructureObject::StructureController(controller) = structure {
+                        entry.insert(CreepTarget::Upgrade(controller.id()));
+                        break;
+                    }
+                }
+            } else if let Some(source) = room.find(find::SOURCES_ACTIVE, None).get(0) {
+                entry.insert(CreepTarget::Harvest(source.id()));
+            }
+        }
+    }
+}
+
 ```
