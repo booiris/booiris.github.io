@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (2): 自定义存储模型"
 date: 2023-07-22 21:05:20 
-updated: 2023-07-22 23:34:26
+updated: 2023-07-22 23:43:54
 tags: [] 
 top: false
 mathjax: true
@@ -106,3 +106,9 @@ Screeps 系统存在着一个机制，就是 `global reset` ，会定时销毁 j
 从第一部分可以知道 `raw memory` 可以认为是 Screeps 中的持久性存储。所以如果可以在每个 tick 最后把 rust 里的全局变量序列化到 `raw memory` 里，然后在 wasm 实例初始化时再从 `raw memory` 里反序列化回 rust 的全局变量，这就实现了信息的跨 tick 保存而又不会受到 `global reset` 的影响。
 
 ### 实现
+
+Screeps 的 api 存在对 `raw memory` 的操作方法 [Screeps Documentation](https://docs.screeps.com/api/#RawMemory)。
+
+<img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img//20230722234254.png" width=65% >
+
+储存全局变量参考代码

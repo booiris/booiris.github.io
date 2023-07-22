@@ -1,7 +1,7 @@
 ---
 title: 1728-Cat and Mouse II 
 date: 2022-05-10 20:54:08 
-updated: 2022-06-09 22:04:45
+updated: 2023-07-22 23:40:10
 tags: [记忆化搜索,博弈] 
 top: false
 mathjax: true
@@ -18,24 +18,35 @@ A game is played by a cat and a mouse named Cat and Mouse.
 The environment is represented by a grid of size rows x cols, where each element is a wall, floor, player (Cat, Mouse), or food.
 
 * Players are represented by the characters 'C'(Cat),'M'(Mouse).
+
 * Floors are represented by the character '.' and can be walked on.
+
 * Walls are represented by the character '#' and cannot be walked on.
+
 * Food is represented by the character 'F' and can be walked on.
+
 * There is only one of each character 'C', 'M', and 'F' in grid.
 
 Mouse and Cat play according to the following rules:
 
 * Mouse **moves first**, then they take turns to move.
+
 * During each turn, Cat and Mouse can jump in one of the four directions (left, right, up, down). They cannot jump over the wall nor outside of the grid.
+
 * *catJump*, *mouseJump* are the maximum lengths Cat and Mouse can jump at a time, respectively. Cat and Mouse can jump less than the maximum length.
+
 * Staying in the same position is allowed.
+
 * Mouse can jump over Cat.
 
 The game can end in 4 ways:
 
 * If Cat occupies the same position as Mouse, Cat wins.
+
 * If Cat reaches the food first, Cat wins.
+
 * If Mouse reaches the food first, Mouse wins.
+
 * If Mouse cannot get to the food within 1000 turns, Cat wins.
 
 Given a rows x cols matrix grid and two integers *catJump* and *mouseJump*, return true if Mouse can win the game if both Cat and Mouse play optimally, otherwise return false.
@@ -161,5 +172,8 @@ int main() {
 
 ## 题解2
 
-#TODO
 拓扑排序
+
+#todo
+
+- [ ] TODO: 拓扑排序

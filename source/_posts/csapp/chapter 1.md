@@ -1,7 +1,7 @@
 ---
 title: chapter 1
 date: 2022-05-01 23:30:18 
-updated: 2023-07-22 22:24:29
+updated: 2023-07-22 23:40:19
 tags: []
 top: false
 mathjax: true
@@ -11,7 +11,7 @@ author: booiris
 
 #todo
 
-* [ ] undo
+* [ ] TODO: 没写完
 
 ## 1.3
 
