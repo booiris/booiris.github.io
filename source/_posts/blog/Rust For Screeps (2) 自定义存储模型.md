@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (2): 自定义存储模型"
 date: 2023-07-22 21:05:20 
-updated: 2023-07-22 23:22:24
+updated: 2023-07-22 23:30:05
 tags: [] 
 top: false
 mathjax: true
@@ -91,8 +91,12 @@ thread_local! {
 }
 ```
 
-我们可以创建一个全局变量 (类似 javaScript 里的 `Memory` 对象) 存储到 wasm 的线性内存里。只要 wasm 的实例没有被销毁，那么这个全局变量就可以随着 wasm 实例在每个 tick 传递。
+我们可以使用 `RefCell` 创建一个全局变量 (类似 javaScript 里的 `Memory` 对象) 存储到 wasm 的线性内存里。只要 wasm 的实例没有被销毁，那么这个全局变量就可以随着 wasm 实例在每个 tick 传递。
 
 ## 自定义存储实现
 
-通过 rust 的全局变量
+通过 rust 的全局变量我们实现了信息跨 tick 存储，但注意到注释中存在着一句话。
+
+	keeping state in memory on game objects - but will be lost on global resets!
+
+Screeps 系统存在着一个机制，就是 `global reset` ，会定时销毁 javaScript 里的对象并且重建，这就导致了这会销毁 wasm 的实例，进而导致存储的信息丢失。
