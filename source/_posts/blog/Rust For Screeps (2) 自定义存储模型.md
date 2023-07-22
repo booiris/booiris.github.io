@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (2): 自定义存储模型"
 date: 2023-07-22 21:05:20 
-updated: 2023-07-22 23:43:54
+updated: 2023-07-22 23:53:12
 tags: [] 
 top: false
 mathjax: true
@@ -105,10 +105,99 @@ Screeps 系统存在着一个机制，就是 `global reset` ，会定时销毁 j
 
 从第一部分可以知道 `raw memory` 可以认为是 Screeps 中的持久性存储。所以如果可以在每个 tick 最后把 rust 里的全局变量序列化到 `raw memory` 里，然后在 wasm 实例初始化时再从 `raw memory` 里反序列化回 rust 的全局变量，这就实现了信息的跨 tick 保存而又不会受到 `global reset` 的影响。
 
-### 实现
+### rust 部分实现
 
 Screeps 的 api 存在对 `raw memory` 的操作方法 [Screeps Documentation](https://docs.screeps.com/api/#RawMemory)。
 
 <img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img//20230722234254.png" width=65% >
 
-储存全局变量参考代码
+储存全局变量参考代码:
+
+```rust
+thread_local! {
+    pub static GLOBAL_LONG_MEMORY: RefCell<GlobalMemory> = RefCell::new(GlobalMemory::new());
+}
+
+GLOBAL_LONG_MEMORY.with(|mem| {
+	let mem = &*mem.borrow();
+	let mem: String = mem.into();
+	raw_memory::set(&JsString::from_str(&mem).expect("can conver global mem to string"))
+});
+```
+
+其中 `GlobalMemory` 是一个结构体，并且实现了 `into String` 的方法，所以可以使用 `mem.into()` 转换为 `String` 类型，最后通过 api 的 `raw_memory::set` 方法将全局变量保存到 `raw memory` 中。
+
+初始化全局变量参考代码:
+
+```rust
+GLOBAL_LONG_MEMORY.with(|mem| {
+	let raw_memory: String = raw_memory::get()
+		.try_into()
+		.expect("can not get raw memory");
+	if let Ok(raw_mem) = GlobalMemory::try_from(raw_memory) {
+		*mem.borrow_mut() = raw_mem;
+	} else {
+		log::error!("old mem can not match new struct!");
+		*mem.borrow_mut() = GlobalMemory::new();
+	}
+});
+```
+
+可以看出，**存在无法从 `raw memory` 还原回全局变量的情况** ( `GlobalMemory` 的结构出现了破坏性的更改导致无法从之前的结构反序列化回去)。这时候需要考虑构建一个在空的全局变量下还能继续运行并且还原的系统。
+
+### javaScript 部分实现
+
+本来存储 `raw memory` 的过程在 rust 中实现即可。但是存在一个问题，
+
+实现代码如下:
+
+```javaScript
+"use strict";
+let wasm_module;
+
+const MODULE_NAME = "rust-screep-world";
+
+function console_error(...args) {
+    console.log(...args);
+    Game.notify(args.join(' '));
+}
+
+let mem_proxy = { creeps: {} }
+
+module.exports.loop = function () {
+    delete global.Memory;
+    global.Memory = mem_proxy
+    try {
+        if (wasm_module) {
+            wasm_module.loop();
+        } else {
+            // attempt to load the wasm only if there's enough bucket to do a bunch of work this tick
+            if (Game.cpu.bucket < 500) {
+                console.log("we are running out of time, pausing compile!!!" + JSON.stringify(Game.cpu));
+                return;
+            }
+
+            // delect the module from the cache, so we can reload it
+            if (MODULE_NAME in require.cache) {
+                delete require.cache[MODULE_NAME];
+            }
+            // replace this initialize function on the module
+            wasm_module = require(MODULE_NAME);
+            // load the wasm instance!
+            wasm_module.initialize_instance();
+            // run the setup function, which configures logging
+            wasm_module.setup();
+            // go ahead and run the loop for its first tick
+            wasm_module.loop();
+        }
+    } catch (error) {
+        console_error("caught exception err:", error);
+        if (error.stack) {
+            console_error("stack trace:", error.stack);
+        }
+        console_error("resetting VM next tick.");
+        wasm_module = null;
+    }
+    mem_proxy = global.Memory
+}
+```
