@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (2): 自定义存储模型"
 date: 2023-07-22 21:05:20 
-updated: 2023-07-22 23:53:12
+updated: 2023-07-22 23:58:41
 tags: [] 
 top: false
 mathjax: true
@@ -147,7 +147,9 @@ GLOBAL_LONG_MEMORY.with(|mem| {
 
 ### javaScript 部分实现
 
-本来存储 `raw memory` 的过程在 rust 中实现即可。但是存在一个问题，
+本来存储 `raw memory` 的过程在 rust 中实现即可。但是存在一个问题，Screeps 系统运行中，某些动作 (比如 creep_move) 会使用的 `memory object` 实例，所以会对 `raw memory` 进行反序列化。为了不必要的消耗，我们可以持有一个 `mem_proxy` 对象实例，每个 tick 开始，就对 `memory object` 进行赋值，这样就不会触发反序列化，减少 cpu 消耗。
+
+> 参考 [Screeps游戏 Memory仙术 - 简书](https://www.jianshu.com/p/c6413d67893b)
 
 实现代码如下:
 
