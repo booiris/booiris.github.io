@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (2): 自定义存储模型"
 date: 2023-07-22 21:05:20 
-updated: 2023-07-22 22:40:59
+updated: 2023-07-22 22:52:11
 tags: [] 
 top: false
 mathjax: true
@@ -13,7 +13,7 @@ author: booiris
 
 screeps 的存储模型基本如图所示。
 
-![image.png](https://cdn.jsdelivr.net/gh/booiris-cdn/img//20230722221333.png)
+![image.png](https://cdn.jsdelivr.net/gh/booiris-cdn/img//20230722224904.png)
 
 其中存在两种类型的 memory，一个是 `memory object` ，另一个是 `raw memory` 。
 
@@ -39,7 +39,34 @@ Memory.someData = {...};
 
 ### 存储传递过程
 
-在游戏的进行每个 tick 。
+在游戏的进行每个 tick ，screeps 系统会反序列化 `raw memory` 到 `Memory Object` (代码见 [game.js](https://github.com/screeps/engine/blob/c6c4fc9e656f160e0e0174b0dd9a817d2dd18976/src/game/game.js#L470)、[game.js](https://github.com/screeps/engine/blob/c6c4fc9e656f160e0e0174b0dd9a817d2dd18976/src/game/game.js#L478C13-L478C76))
+
+```javascript
+Object.defineProperty(runCodeCache[userId].globals, 'Memory', {
+	configurable: true,
+	enumerable: true,
+	get() {
+
+		try {
+			runCodeCache[userId].memory._parsed = JSON.parse(runCodeCache[userId].memory.get() || "{}");
+			runCodeCache[userId].memory._parsed.__proto__ = null;
+		}
+		catch (e) {
+			runCodeCache[userId].memory._parsed = null;
+		}
+
+		Object.defineProperty(runCodeCache[userId].globals, 'Memory', {
+			configurable: true,
+			enumerable: true,
+			value: runCodeCache[userId].memory._parsed
+		});
+
+		return runCodeCache[userId].memory._parsed;
+	}
+});
+```
+
+在每个 tick 最后，再将 `Memory` 序列化到 `raw memory` 里。
 
 ## Rust 存储模型
 
