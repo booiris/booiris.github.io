@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (2): 自定义存储模型"
 date: 2023-07-22 21:05:20 
-updated: 2023-07-23 00:06:04
+updated: 2023-07-23 01:20:07
 tags: [] 
 top: false
 mathjax: true
@@ -21,8 +21,7 @@ screeps 的存储模型基本如图所示。
 
 `memory object` 的具体介绍在 [Global Objects | Screeps Documentation](https://docs.screeps.com/global-objects.html#Memory-object)。
 
-	Each player has access to the global object `Memory` in which he/she may store any 
-	information in the JSON format. 
+> Each player has access to the global object `Memory` in which he/she may store any information in the JSON format.
 
 ```javascript
 Memory.someData = {...};
@@ -34,8 +33,7 @@ Memory.someData = {...};
 
 `raw memory` 在这里被提到 [Global Objects | Screeps Documentation](https://docs.screeps.com/global-objects.html#Serialization)
 
-	The Memory object is stored in the stringified form and is parsed each time upon the first 
-	in the tick access from your script with the help of the `JSON.parse` method.
+> The Memory object is stored in the stringified form and is parsed each time upon the first in the tick access from your script with the help of the `JSON.parse` method.
 
 可以看出 `Memory` 的对象实例最终会被序列化为字符串存储到 `raw memory` 中，在游戏的每个 tick 进行传递。
 
@@ -97,7 +95,7 @@ thread_local! {
 
 通过 rust 的全局变量我们实现了信息跨 tick 存储，但注意到注释中存在着一句话。
 
-	keeping state in memory on game objects - but will be lost on global resets!
+> keeping state in memory on game objects - but will be lost on global resets!
 
 Screeps 系统存在着一个机制，就是 `global reset` ，会定时销毁 javaScript 里的对象并且重建，这就导致了这会销毁 wasm 的实例，进而导致存储的信息丢失。
 
