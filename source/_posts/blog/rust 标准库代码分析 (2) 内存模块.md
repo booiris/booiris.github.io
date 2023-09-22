@@ -1,7 +1,7 @@
 ---
 title: "rust 标准库代码分析 (2): 内存模块"
 date: 2023-07-24 13:28:43 
-updated: 2023-09-22 13:04:22
+updated: 2023-09-22 20:18:10
 tags: [] 
 top: false
 mathjax: true
@@ -10,10 +10,6 @@ author: booiris
 ---
 
 > rust 源码 tag: [1.72.0](https://github.com/rust-lang/rust/tree/1.72.0)
-
-#todo
-
-- [ ] 内存模块
 
 ## 概述
 
