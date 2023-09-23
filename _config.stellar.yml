@@ -14,7 +14,7 @@ sidebar:
     post: [toc, repo_info] # for pages using 'layout:post'
     wiki: [toc, repo_info, wiki_more] # for pages using 'layout:wiki'
   widgets:
-    home: search, welcome, recent, timeline # for home
+    home: search, welcome, recent # for home
  
 article:
   auto_excerpt: 0
