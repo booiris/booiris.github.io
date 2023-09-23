@@ -18,6 +18,9 @@ sidebar:
 article:
   auto_excerpt: 0
   license:
+  related_posts:
+    enable: true
+    title: related article
 
 # comments:
 #   service: beaudar
