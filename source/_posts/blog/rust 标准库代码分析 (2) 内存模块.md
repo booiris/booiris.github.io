@@ -1,7 +1,7 @@
 ---
 title: "rust 标准库代码分析 (2): 内存模块"
 date: 2023-07-24 13:28:43
-updated: 2023-09-23 17:12:34
+updated: 2023-09-23 18:03:54
 tags:
   - rust
 top: false
@@ -13,9 +13,9 @@ author: booiris
 
 > rust 源码版本: [1.72.0](https://github.com/rust-lang/rust/tree/1.72.0)
 
-# 概述
+## 概述
 
-# rust 指针
+## rust 指针
 
 > 文件位置: [library/core/src/ptr](https://github.com/rust-lang/rust/tree/1.72.0/library/core/src/ptr)
 
@@ -32,6 +32,6 @@ author: booiris
 └── unique.rs
 ```
 
-## metadata (unstable)
+### metadata (unstable)
 
 元数据:
