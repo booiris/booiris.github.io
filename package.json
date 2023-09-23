@@ -22,7 +22,8 @@
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-markdown-it-plus": "^1.0.4",
     "hexo-renderer-stylus": "^2.1.0",
-    "hexo-server": "^3.0.0"
+    "hexo-server": "^3.0.0",
+    "hexo-theme-stellar": "^1.19.0"
   },
   "devDependencies": {
     "@vercel/node": "^2.5.22",

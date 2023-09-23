@@ -16,13 +16,6 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v2
 
-      - name: Checkout theme repo
-        uses: actions/checkout@v2
-        with:
-          repository: booiris/hexo-theme-stellar
-          ref: main
-          path: themes/stellar
-
       - name: Set up Node.js
         uses: actions/setup-node@v1
         with:
@@ -37,7 +30,7 @@ jobs:
           echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --global user.email "954520770@qq.com"
+          git config --global user.email "booiris02@gmail.com"
           git config --global user.name "booiris"
           npm install hexo-cli -g
           npm install
