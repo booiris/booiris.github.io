@@ -32,6 +32,6 @@ author: booiris
 └── unique.rs
 ```
 
-### metadata
+### metadata ()
 
 元数据:
