@@ -9,7 +9,7 @@ sidebar:
     about: "[About](/about/)"
     pic: "[Picture](/pic)"
   widget_layout:
-    index: [welcome, recent] # for home/wiki/categories/tags/archives/404 pages
+    home: [welcome, recent] # for home/wiki/categories/tags/archives/404 pages
     page: [welcome, toc] # for pages using 'layout:page'
     post: [toc, repo_info] # for pages using 'layout:post'
     wiki: [toc, repo_info, wiki_more] # for pages using 'layout:wiki'
