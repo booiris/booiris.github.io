@@ -1,7 +1,7 @@
 ---
 title: "rust 源码分析 (1): 概述"
 date: 2023-07-24 13:27:31
-updated: 2023-09-24 18:49:38
+updated: 2023-09-24 18:53:34
 tags:
   - rust
 top: false
@@ -50,7 +50,7 @@ author: booiris
 
 * `library` 包含了标准库的源代码，提供了许多常用的数据结构、函数和特性。
 
-* `src` 文件夹中的 README 说明了该文件夹的用途。
+* `src` 文件夹中的 README 说明了该文件夹的用途，里面包含了 构建系统、rustdoc、cargo 等工具的源码。
 
 > This directory contains some source code for the Rust project, including:
 > * The bootstrapping build system
@@ -60,7 +60,7 @@ author: booiris
 
 > 参考 [std - Rust](https://rustwiki.org/zh-CN/std/)
 
-`library` 里包含两个关键的文件夹 `core` 、`std` 。
+`library` 里包含两个关键的文件夹 `core` 、`std` ，可以发现他们导出的模块有部分重叠，下面是他们的一些关键区别。
 
 1. **Core 模块** (`core`)：
 	- `core` 模块是 Rust 的核心标准库，它包含了 Rust 语言的基本构建块和最基本的数据类型。
@@ -73,7 +73,7 @@ author: booiris
 	- `std` 模块通常用于编写大多数 Rust 应用程序，包括命令行工具、网络服务器、桌面应用程序等。
 	- 它提供了标准的 Rust 抽象和类型，如 `Vec`、`String`、`HashMap` 等。
 
-`core` 是 Rust 的核心标准库，提供了基本的 Rust 语言构建块，而 `std` 是构建在 `core` 之上的标准库，提供了更多的高级功能和与外部环境的交互。
+总之， `core` 是 Rust 的核心标准库，提供了基本的 Rust 语言构建块，而 `std` 是构建在 `core` 之上的标准库，提供了更多的高级功能和与外部环境的交互。
 
 ### rust 编译器
 
