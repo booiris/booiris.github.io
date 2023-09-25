@@ -1,7 +1,7 @@
 ---
 title: "rust 源码分析 (2)-标准库: 内存模块"
 date: 2023-07-24 13:28:43
-updated: 2023-09-24 18:42:6039:44
+updated: 2023-09-25 13:20:55
 tags:
   - rust
 top: false
@@ -32,9 +32,10 @@ author: booiris
 └── unique.rs
 ```
 
-### mod 
+### mod
 
+### metadata
 
-### metadata (unstable)
+#todo
 
-元数据:
+- [ ] 太难了，之后看
