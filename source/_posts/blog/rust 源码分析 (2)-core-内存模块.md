@@ -1,7 +1,7 @@
 ---
 title: "rust 源码分析 (2)-core: 内存模块"
 date: 2023-07-24 13:28:43
-updated: 2023-09-25 13:28:58
+updated: 2023-09-26 12:48:42
 tags:
   - rust
 top: false
@@ -38,4 +38,4 @@ author: booiris
 
 #todo
 
-- [ ] 太难了，还是看看远方的std库吧
+- [ ] 太抽象了，还是看看远方的std库吧
