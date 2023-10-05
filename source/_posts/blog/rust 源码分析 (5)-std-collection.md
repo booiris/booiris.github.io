@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (5)-std-collection
 date: 2023-10-05 16:32:00
-updated: 2023-10-05 20:57:34
+updated: 2023-10-05 21:15:45
 tags:
   - rust
 top: false
@@ -48,4 +48,4 @@ Map 结构:
 | [`HashMap`]  | *O*(1)~       | *O*(1)~*      | *O*(1)~       | N/A           | N/A          |
 | [`BTreeMap`] | *O*(log(*n*)) | *O*(log(*n*)) | *O*(log(*n*)) | *O*(log(*n*)) | *O*(*n*+*m*) |
 
-其中
+其中带 * 的为均摊复杂度，带 ~ 为期望复杂度。
