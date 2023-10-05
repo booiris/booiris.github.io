@@ -8,8 +8,8 @@ top: false
 mathjax: true
 categories: []
 author: booiris
-layout: wiki 
+layout: wiki
 wiki: rust
-order:  4   # add order, base on problem number.
+order: 5
 ---
 > rust 源码版本: [1.72.0](https://github.com/rust-lang/rust/tree/1.72.0)
