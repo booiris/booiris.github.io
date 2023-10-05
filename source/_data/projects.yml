@@ -44,6 +44,7 @@ redis:
 rust:
   title: rust
   subtitle: redis源码阅读
+  tags: 笔记
   cover: false
   logo:
     src: https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/rust-logo-blk.svg

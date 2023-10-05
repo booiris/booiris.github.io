@@ -1,14 +1,16 @@
 ---
 title: rust 源码分析 (5)-std-collection
 date: 2023-10-05 16:32:00
-updated: 2023-10-05 22:35:19
+updated: 2023-10-05 23:00:08
 tags:
   - rust
 top: false
 mathjax: true
-categories:
-  - blog
+categories: []
 author: booiris
+layout: wiki 
+wiki: rust
+order:  5   # add order, base on problem number.
 ---
 > rust 源码版本: [1.72.0](https://github.com/rust-lang/rust/tree/1.72.0)
 

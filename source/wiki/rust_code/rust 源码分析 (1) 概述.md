@@ -1,14 +1,16 @@
 ---
 title: "rust 源码分析 (1): 概述"
 date: 2023-07-24 13:27:31
-updated: 2023-09-24 18:53:34
+updated: 2023-10-05 23200:589:43
 tags:
   - rust
 top: false
 mathjax: true
-categories:
-  - rust_src
+categories: []
 author: booiris
+layout: wiki 
+wiki: rust
+order:  1   # add order, base on problem number.
 ---
 
 > rust 源码版本: [1.72.0](https://github.com/rust-lang/rust/tree/1.72.0)

@@ -1,14 +1,16 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2023-10-05 22:34:35
+updated: 2023-10-05 23:00:55
 tags:
   - rust
 top: false
 mathjax: true
-categories:
-  - blog
+categories: []
 author: booiris
+layout: wiki 
+wiki: rust
+order:  6   # add order, base on problem number.
 ---
 > rust 源码版本: [1.72.0](https://github.com/rust-lang/rust/tree/1.72.0)
 
@@ -24,4 +26,4 @@ author: booiris
 
 可能是哈希的实现方法依赖于系统的随机数发生器，所以 `HashMap` 和 `HashSet` 需要放到 `std` 库中。
 
-## 实现
+## 实现ƒ
