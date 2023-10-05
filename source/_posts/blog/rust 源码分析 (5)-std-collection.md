@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (5)-std-collection
 date: 2023-10-05 16:32:00
-updated: 2023-10-05 21:26:57
+updated: 2023-10-05 21:37:45
 tags:
   - rust
 top: false
@@ -54,7 +54,8 @@ Map :
 
 ### Capacity Management
 
-
+* 使用 `with_capacity` 方法预先分配容器内存。
+* 
 
 ### Iterators
 
