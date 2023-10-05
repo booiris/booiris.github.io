@@ -20,7 +20,7 @@ article:
   auto_excerpt: 0
   license:
   related_posts:
-    enable: true
+    enable: false
     title: related article
 
 # comments:
