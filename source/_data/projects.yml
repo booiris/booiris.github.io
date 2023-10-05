@@ -46,7 +46,7 @@ rust:
   subtitle: redis源码阅读
   cover: false
   logo:
-    src: https://cdn.jsdelivr.net/gh/booiris-cdn/img/redis_original_logo_icon_146368.svg
+    src: https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/rust-logo-blk.svg
     small: 128px
     large: 240px
   description: redis源码阅读。
