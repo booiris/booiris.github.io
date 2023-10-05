@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (5)-std-collection
 date: 2023-10-05 16:32:00
-updated: 2023-10-05 17:04:50
+updated: 2023-10-05 17:10:38
 tags:
   - rust
 top: false
@@ -15,6 +15,8 @@ author: booiris
 ## 文件位置
 
 > [library/std/src/collections/mod.rs](https://github.com/rust-lang/rust/blob/1.72.0/library/std/src/collections/mod.rs)
+
+## 介绍
 
 > 参考 [std::collections - Rust](https://doc.rust-lang.org/std/collections/index.html)
 
@@ -46,3 +48,4 @@ Map 结构:
 | [`HashMap`]  | *O*(1)~       | *O*(1)~*      | *O*(1)~       | N/A           | N/A          |
 | [`BTreeMap`] | *O*(log(*n*)) | *O*(log(*n*)) | *O*(log(*n*)) | *O*(log(*n*)) | *O*(*n*+*m*) |
 
+其中
