@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2023-10-05 22:13:57
+updated: 2023-10-05 22:22:16
 tags:
   - rust
 top: false
@@ -16,4 +16,8 @@ author: booiris
 
 > [library/std/src/collections/hash/map.rs](https://github.com/rust-lang/rust/blob/1.72.0/library/std/src/collections/hash/map.rs)
 
-`HashMap` 和 `HashSet` 位于 `std` 库中， 而其余的容器则在 `alloc` 库中，由 `std` 库重导出，可能是因为 `HashMap` 和 `HashSet` 依赖于外部库 [hashbrown](https://github.com/rust-lang/hashbrown#features) ，
+`HashMap` 和 `HashSet` 位于 `std` 库中， 而其余的容器则在 `alloc` 库中，由 `std` 库重导出。
+
+原因
+
+* [Move HashMap to liballoc · Issue #27242 · rust-lang/rust · GitHub](https://github.com/rust-lang/rust/issues/27242)
