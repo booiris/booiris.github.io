@@ -26,4 +26,4 @@ order:  6   # add order, base on problem number.
 
 可能是哈希的实现方法依赖于系统的随机数发生器，所以 `HashMap` 和 `HashSet` 需要放到 `std` 库中。
 
-## 实现ƒ
+## 实现
