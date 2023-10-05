@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (5)-std-collection
 date: 2023-10-05 16:32:00
-updated: 2023-10-05 21:15:45
+updated: 2023-10-05 21:26:57
 tags:
   - rust
 top: false
@@ -31,9 +31,11 @@ rust 标准库实现了一些常见的数据结构:
 7. 按键排序set `BTreeSet`
 8. 优先队列 `BinaryHeap`
 
-下面是元素操作的耗时
+## Tips
 
-Sequences 结构:
+### Performance
+
+Sequences :
 
 |                | get(i)                 | insert(i)               | remove(i)              | append    | split_off(i)           |
 |----------------|------------------------|-------------------------|------------------------|-----------|------------------------|
@@ -41,7 +43,7 @@ Sequences 结构:
 | [`VecDeque`]   | *O*(1)                 | *O*(min(*i*, *n*-*i*))* | *O*(min(*i*, *n*-*i*)) | *O*(*m*)* | *O*(min(*i*, *n*-*i*)) |
 | [`LinkedList`] | *O*(min(*i*, *n*-*i*)) | *O*(min(*i*, *n*-*i*))  | *O*(min(*i*, *n*-*i*)) | *O*(1)    | *O*(min(*i*, *n*-*i*)) |
 
-Map 结构:
+Map :
 
 |              | get           | insert        | remove        | range         | append       |
 |--------------|---------------|---------------|---------------|---------------|--------------|
@@ -49,3 +51,11 @@ Map 结构:
 | [`BTreeMap`] | *O*(log(*n*)) | *O*(log(*n*)) | *O*(log(*n*)) | *O*(log(*n*)) | *O*(*n*+*m*) |
 
 其中带 * 的为均摊复杂度，带 ~ 为期望复杂度。
+
+### Capacity Management
+
+### Iterators
+
+### Entries
+
+### Insert and complex keys
