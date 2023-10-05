@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (5)-std-collection
 date: 2023-10-05 16:32:00
-updated: 2023-10-05 21:37:45
+updated: 2023-10-05 22:02:14
 tags:
   - rust
 top: false
@@ -55,10 +55,11 @@ Map :
 ### Capacity Management
 
 * 使用 `with_capacity` 方法预先分配容器内存。
-* 
+
+* 使用 `reserve` 方法扩容。
+
+* 使用 `shrink_to_fit` 缩容。
 
 ### Iterators
 
-### Entries
-
-### Insert and complex keys
+通常用 `iter` 、 `iter_mut` 、`into_iter` 迭代容器。
