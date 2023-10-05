@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (5)-std-collection
 date: 2023-10-05 16:32:00
-updated: 2023-10-05 16:53:30
+updated: 2023-10-05 17:00:41
 tags:
   - rust
 top: false
@@ -24,7 +24,7 @@ rust 标准库实现了一些常见的数据结构:
 2. 双端数组 `VecDeque`
 3. 链表 `LinkedList`
 4. 哈希map `HashMap`
-5. Btree实现的按键排序map [`BTreeMap`](rust%20源码分析%20(6)-std-collection-HashMap.md)
+5. 按键排序map [`BTreeMap`](./rust%20源码分析%20(6)-std-collection-HashMap.md)
 6. 哈希set `HashSet`
 7. 按键排序set `BTreeSet`
 8. 优先队列 `BinaryHeap`
