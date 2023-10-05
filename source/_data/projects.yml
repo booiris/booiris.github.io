@@ -43,7 +43,7 @@ redis:
 
 rust:
   title: rust
-  subtitle: redis源码阅读
+  subtitle: rust源码阅读
   tags: 笔记
   cover: false
   logo:
@@ -52,6 +52,7 @@ rust:
     large: 240px
   description: redis源码阅读。
   index: true
+  sections:
 
 # nes:
 #   title: nes
