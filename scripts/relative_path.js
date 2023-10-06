@@ -21,6 +21,10 @@ hexo.extend.filter.register('before_post_render', function (post) {
                 if (md_path)
                     md_path = corr_rel_path(md_path) + '/';  // hexo 的 post url 以 / 结尾
 
+                if (cur_pagepath.endsWith("html")) {
+                    md_path = corr_rel_path(md_path) + '/';
+                }
+
                 // url fragment 部分按 hexo-renderer-marked 的方法 slugize 后作为 "anchorId"
                 // decodeURL 解决 obsidian 的空格用 %20 表示的问题
                 return md_path + (fragment ? '#' + slugize(decodeURL(fragment)) : '')
