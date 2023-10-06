@@ -1,7 +1,7 @@
 ---
 title: rust源码阅读
 date: 2023-10-05 23:06:41
-updated: 2023-10-05 23:16:04
+updated: 2023-10-06 11:38:11
 tags:
   - rust
 top: true
@@ -11,4 +11,4 @@ categories:
 author: booiris
 ---
 
-**[wiki链接]( /wiki/rust_code/index.md)**
+**[wiki链接](/wiki/rust_code/index.md)**
