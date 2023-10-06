@@ -29,7 +29,7 @@ hexo.extend.filter.register('before_post_render', function (post) {
                 is_mdlink = true;
                 let md_path = md_path1 ?? md_path2 ?? '';
                 if (md_path.endsWith("index")) {
-                    md_path += ".md"
+                    md_path += ".html"
                 }
                 if (md_path) {
                     if (cur_pagepath.endsWith("html")) {
