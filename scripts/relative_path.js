@@ -32,6 +32,10 @@ hexo.extend.filter.register('before_post_render', function (post) {
                 return `[${label}](${rel_path})`;
             }
 
+            if (cur_pagepath.endsWith("html")) {
+                cur_pagepath += "/"
+            }
+
             let new_str = `[${label}](${cur_pagepath}${rel_path})`;
             // console.debug("[CHANGE] " + match_str + " -> " + new_str);
             return new_str;
