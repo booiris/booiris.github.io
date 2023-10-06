@@ -16,7 +16,7 @@ hexo.extend.filter.register('before_post_render', function (post) {
             }
             return temp
         } else {
-            ''
+            return ''
         }
     };
 
