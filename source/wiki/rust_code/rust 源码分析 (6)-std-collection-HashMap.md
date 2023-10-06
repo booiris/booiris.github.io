@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2023-10-06 14:03:42
+updated: 2023-10-06 14:43:42
 tags:
   - rust
 top: false
@@ -27,3 +27,11 @@ order: 6
 可能是哈希的实现方法依赖于系统的随机数发生器，所以 `HashMap` 和 `HashSet` 需要放到 `std` 库中。
 
 ## 实现
+
+### 结构
+
+```rust
+pub struct HashMap<K, V, S = RandomState> {
+    base: base::HashMap<K, V, S>,
+}
+```
