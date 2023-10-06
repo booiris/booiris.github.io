@@ -11,4 +11,4 @@ categories:
 author: booiris
 ---
 
-**[wiki链接]( /wiki/rust_code/rust%20源码分析%20(1)%20概述.md)**
+**[wiki链接]( /wiki/rust_code/index.md)**
