@@ -10,7 +10,7 @@ hexo.extend.filter.register('before_post_render', function (post) {
     // \ 替换为 /
     let corr_rel_path = path => {
         if (path) {
-            temp = path.replace(/\\/g, '/')
+            let temp = path.replace(/\\/g, '/')
             if (path[0] != '/') {
                 temp = '../' + temp
             }
