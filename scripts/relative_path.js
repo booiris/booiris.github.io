@@ -18,11 +18,12 @@ hexo.extend.filter.register('before_post_render', function (post) {
             rel_path = rel_path.replace(/((\S+)\.md)$|((\S+)\.md)?(#(.*))$/, (_0, _1, md_path1, _3, md_path2, _5, fragment) => {
                 is_mdlink = true;
                 let md_path = md_path1 ?? md_path2 ?? '';
-                if (md_path)
-                    md_path = corr_rel_path(md_path) + '/';  // hexo 的 post url 以 / 结尾
-
-                if (cur_pagepath.endsWith("html")) {
-                    md_path = corr_rel_path(md_path) + '/';
+                if (md_path){
+                    if (cur_pagepath.endsWith("html")) {
+                        md_path = corr_rel_path(md_path) + '.html';
+                    }else{
+                        md_path = corr_rel_path(md_path) + '/';  // hexo 的 post url 以 / 结尾
+                    }
                 }
 
                 // url fragment 部分按 hexo-renderer-marked 的方法 slugize 后作为 "anchorId"
