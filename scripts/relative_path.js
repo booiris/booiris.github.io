@@ -32,7 +32,7 @@ hexo.extend.filter.register('before_post_render', function (post) {
                     md_path += ".html"
                 }
                 if (md_path) {
-                    if (cur_pagepath.endsWith("html") || cur_pagepath.endsWith("html/")) {
+                    if (cur_pagepath.includes("html")) {
                         md_path = corr_rel_path(md_path) + '.html';
                     } else {
                         md_path = corr_rel_path(md_path) + '/';  // hexo 的 post url 以 / 结尾
