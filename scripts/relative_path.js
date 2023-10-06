@@ -14,7 +14,6 @@ hexo.extend.filter.register('before_post_render', function (post) {
             if (path[0] != '/') {
                 temp = '../' + temp
             }
-            adfasd
             temp
         } else {
             ''
