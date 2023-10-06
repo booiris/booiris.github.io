@@ -8,7 +8,18 @@ hexo.extend.filter.register('before_post_render', function (post) {
     let cur_pagepath = url.parse(post.permalink).pathname;
     // 校准相对路径，hexo 以 asset 文件夹为参考，所以加 ../
     // \ 替换为 /
-    let corr_rel_path = path => path ? '../' + path.replace(/\\/g, '/') : '';
+    let corr_rel_path = path => {
+        if (path) {
+            temp = path.replace(/\\/g, '/')
+            if (path[0] != '/') {
+                temp = '../' + temp
+            }
+            adfasd
+            temp
+        } else {
+            ''
+        }
+    };
 
     // 匹配 []() 形式，但链接中包含 :// 的不匹配，来排除超链接
     post.content = post.content.replace(/\[([^\[\]]*)\]\((?!\S+:\/\/)(\S*)\)/g,
@@ -18,10 +29,10 @@ hexo.extend.filter.register('before_post_render', function (post) {
             rel_path = rel_path.replace(/((\S+)\.md)$|((\S+)\.md)?(#(.*))$/, (_0, _1, md_path1, _3, md_path2, _5, fragment) => {
                 is_mdlink = true;
                 let md_path = md_path1 ?? md_path2 ?? '';
-                if (md_path){
+                if (md_path) {
                     if (cur_pagepath.endsWith("html")) {
                         md_path = corr_rel_path(md_path) + '.html';
-                    }else{
+                    } else {
                         md_path = corr_rel_path(md_path) + '/';  // hexo 的 post url 以 / 结尾
                     }
                 }
