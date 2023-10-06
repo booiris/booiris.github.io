@@ -34,7 +34,7 @@ hexo.extend.filter.register('before_post_render', function (post) {
                 if (md_path) {
                     if (cur_pagepath.includes(".html")) {
                         md_path = corr_rel_path(md_path) + '.html';
-                    } else {
+                    } else if (!md_path.endsWith(".html")) {
                         md_path = corr_rel_path(md_path) + '/';  // hexo 的 post url 以 / 结尾
                     }
                 }
