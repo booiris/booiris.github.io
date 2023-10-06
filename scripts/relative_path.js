@@ -33,7 +33,7 @@ hexo.extend.filter.register('before_post_render', function (post) {
             if (!is_mdlink)
                 rel_path = corr_rel_path(rel_path);
 
-            if (temp_path[0] === '/') {
+            if (temp_path[0] == '/') {
                 return `[${label}](${rel_path})`;
             }
 
