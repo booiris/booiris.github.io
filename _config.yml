@@ -211,5 +211,3 @@ deploy:
   branch: master
 
 wiki_dir: wiki
-
-hexo-asset-folder: true
