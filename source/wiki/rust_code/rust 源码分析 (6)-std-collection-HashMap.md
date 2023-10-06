@@ -10,7 +10,7 @@ categories: []
 author: booiris
 layout: wiki
 wiki: rust
-order: 7
+order: 6
 ---
 > rust 源码版本: [1.72.0](https://github.com/rust-lang/rust/tree/1.72.0)
 
