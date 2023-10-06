@@ -50,19 +50,16 @@ footer:
     #   icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/942ebbf1a4b91.svg"/>'
     #   url: /about/#comments
   sitemap:
-    # '博客':
-    #   - '[近期](/)'
-    #   - '[分类](/)'
-    #   - '[标签](/)'
-    #   - '[归档](/)'
-    # '项目':
-    #   - '[开源库](/)'
-    # '社交':
-    #   - '[友链](/)'
-    #   - '[留言板](/)'
-    # '更多':
-    #   - '[关于本站](/)'
-    #   - '[GitHub](/)'
+    'blog':
+      - '[recent](/)'
+      - '[categories](/categories)'
+      - '[tags](/tags)'
+      - '[archives](/archives)'
+    'wiki':
+      - '[main](/wiki)'
+      - '[leetcode](/wiki/leetcode)'
+      - '[redis](/wiki/redis)'
+      - '[rust_code](/wiki/rust_code)'
   license: "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
   source: #'[GitHub](https://github.com/xaoxuu/hexo-theme-stellar)'
   more: # string or array (support markdown)
