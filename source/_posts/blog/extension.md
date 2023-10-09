@@ -16,23 +16,22 @@ author: booiris
 5. [Calendar](obsidian://show-plugin?id=calendar)
 6. [Check list](obsidian://show-plugin?id=obsidian-checklist-plugin)
 7. [Collapse All](obsidian://show-plugin?id=obsidian-collapse-all-plugin)
-8. [Custom sidebar](obsidian://show-plugin?id=customizable-sidebar)
-9. [Data view](obsidian://show-plugin?id=dataview)
-10. [Editor syntax highlight](obsidian://show-plugin?id=cm-editor-syntax-highlight-obsidian)
-11. [Excalidraw](obsidian://show-plugin?id=obsidian-excalidraw-plugin)
-12. [File tree alternative](obsidian://show-plugin?id=file-tree-alternative)
-13. [Full screen plugin](obsidian://show-plugin?id=obsidian-fullscreen-plugin)
-14. [Image Toolkit](obsidian://show-plugin?id=obsidian-image-toolkit)
-15. [Link Favicons](obsidian://show-plugin?id=link-favicon)
-16. [Linter](obsidian://show-plugin?id=obsidian-linter)
-17. [Mind map](obsidian://show-plugin?id=obsidian-mind-map)
-18. [Minimal theme settings](obsidian://show-plugin?id=obsidian-minimal-settings)
-19. [Natural Language Dates](obsidian://show-plugin?id=nldates-obsidian)
-20. [Note refactor obsidian](obsidian://show-plugin?id=note-refactor-obsidian)
-21. [Outliner](obsidian://show-plugin?id=obsidian-outliner)
-22. [Remember cursor position](obsidian://show-plugin?id=remember-cursor-position)
-23. [Remotely Save](obsidian://show-plugin?id=remotely-save)
-24. [Templater](obsidian://show-plugin?id=templater-obsidian)
+8. [Data view](obsidian://show-plugin?id=dataview)
+9. [Editor syntax highlight](obsidian://show-plugin?id=cm-editor-syntax-highlight-obsidian)
+10. [Excalidraw](obsidian://show-plugin?id=obsidian-excalidraw-plugin)
+11. [File tree alternative](obsidian://show-plugin?id=file-tree-alternative)
+12. [Full screen plugin](obsidian://show-plugin?id=obsidian-fullscreen-plugin)
+13. [Image Toolkit](obsidian://show-plugin?id=obsidian-image-toolkit)
+14. [Link Favicons](obsidian://show-plugin?id=link-favicon)
+15. [Linter](obsidian://show-plugin?id=obsidian-linter)
+16. [Mind map](obsidian://show-plugin?id=obsidian-mind-map)
+17. [Minimal theme settings](obsidian://show-plugin?id=obsidian-minimal-settings)
+18. [Natural Language Dates](obsidian://show-plugin?id=nldates-obsidian)
+19. [Note refactor obsidian](obsidian://show-plugin?id=note-refactor-obsidian)
+20. [Outliner](obsidian://show-plugin?id=obsidian-outliner)
+21. [Remember cursor position](obsidian://show-plugin?id=remember-cursor-position)
+22. [Remotely Save](obsidian://show-plugin?id=remotely-save)
+23. [Templater](obsidian://show-plugin?id=templater-obsidian)
 
 #### Auto Link Title
 
@@ -120,10 +119,6 @@ throw new Error("Oops, I'm a bug.");
 #### full screen
 
 禅模式
-
-#### custom sidebar
-
-调整侧边栏,添加命令
 
 #### templater
 
