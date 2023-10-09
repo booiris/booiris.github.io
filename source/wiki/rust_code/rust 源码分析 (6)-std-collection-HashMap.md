@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2023-10-06 14:43:42
+updated: 2023-10-09 13:15:56
 tags:
   - rust
 top: false
@@ -35,3 +35,5 @@ pub struct HashMap<K, V, S = RandomState> {
     base: base::HashMap<K, V, S>,
 }
 ```
+
+其中 `K`、`V` 、`S` 分别表示键类型、值类型和哈希函数。
