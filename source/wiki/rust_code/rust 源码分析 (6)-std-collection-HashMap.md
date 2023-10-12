@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2023-10-13 00:03:10
+updated: 2023-10-13 00:19:17
 tags:
   - rust
 top: false
@@ -102,5 +102,20 @@ pub struct RawEntryBuilderMut<'a, K: 'a, V: 'a, S: 'a> {
 
 pub struct RawOccupiedEntryMut<'a, K: 'a, V: 'a, S: 'a> {
     base: base::RawOccupiedEntryMut<'a, K, V, S>,
+}
+
+pub struct RawVacantEntryMut<'a, K: 'a, V: 'a, S: 'a> {
+    base: base::RawVacantEntryMut<'a, K, V, S>,
+}
+
+pub struct RawEntryBuilder<'a, K: 'a, V: 'a, S: 'a> {
+    map: &'a HashMap<K, V, S>,
+}
+```
+
+```rust
+pub struct RandomState {
+    k0: u64,
+    k1: u64,
 }
 ```
