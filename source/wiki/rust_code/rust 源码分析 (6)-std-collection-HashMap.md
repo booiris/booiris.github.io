@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2023-10-12 12:51:55
+updated: 2023-10-12 23:48:28
 tags:
   - rust
 top: false
@@ -40,7 +40,7 @@ pub struct HashMap<K, V, S = RandomState> {
 
 其中 `K`、`V` 、`S` 分别表示键类型、值类型和哈希函数。`std` 的 `hashMap` 实际上的底层实现实际上是 [GitHub - rust-lang/hashbrown](https://github.com/rust-lang/hashbrown) (`1.72.0` 的 rust 依赖版本为 `0.14`)。
 
-#### Iter/IterMut/IntoIter
+#### 常规迭代器
 
 ```rust
 pub struct Iter<'a, K: 'a, V: 'a> {
@@ -54,9 +54,26 @@ pub struct IterMut<'a, K: 'a, V: 'a> {
 pub struct IntoIter<K, V> {
     base: base::IntoIter<K, V>,
 }
+
+pub struct Drain<'a, K: 'a, V: 'a> {
+    base: base::Drain<'a, K, V>,
+}
 ```
 
-基础的迭代器实现就是 `hashbrown` 的套壳。
+基础的迭代器实现就是 `hashbrown` 的套了一层实现。
+
+#### 其他迭代器
+
+```rust
+pub struct ExtractIf<'a, K, V, F>
+where
+    F: FnMut(&K, &mut V) -> bool,
+{
+    base: base::ExtractIf<'a, K, V, F>,
+}
+
+
+```
 
 #### Keys/Values
 
