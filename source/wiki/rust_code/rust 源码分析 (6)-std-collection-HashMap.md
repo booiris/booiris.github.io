@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2023-10-12 23:48:28
+updated: 2023-10-13 00:03:10
 tags:
   - rust
 top: false
@@ -62,7 +62,31 @@ pub struct Drain<'a, K: 'a, V: 'a> {
 
 基础的迭代器实现就是 `hashbrown` 的套了一层实现。
 
-#### 其他迭代器
+#### Keys/Values
+
+```rust
+pub struct Keys<'a, K: 'a, V: 'a> {
+    inner: Iter<'a, K, V>,
+}
+
+pub struct IntoKeys<K, V> {
+    inner: IntoIter<K, V>,
+}
+
+pub struct Values<'a, K: 'a, V: 'a> {
+    inner: Iter<'a, K, V>,
+}
+
+pub struct ValuesMut<'a, K: 'a, V: 'a> {
+    inner: IterMut<'a, K, V>,
+}
+
+pub struct IntoValues<K, V> {
+    inner: IntoIter<K, V>,
+}
+```
+
+#### 其他
 
 ```rust
 pub struct ExtractIf<'a, K, V, F>
@@ -72,17 +96,11 @@ where
     base: base::ExtractIf<'a, K, V, F>,
 }
 
-
-```
-
-#### Keys/Values
-
-```rust
-pub struct Keys<'a, K: 'a, V: 'a> {
-    inner: Iter<'a, K, V>,
+pub struct RawEntryBuilderMut<'a, K: 'a, V: 'a, S: 'a> {
+    map: &'a mut HashMap<K, V, S>,
 }
 
-pub struct Values<'a, K: 'a, V: 'a> {
-    inner: Iter<'a, K, V>,
+pub struct RawOccupiedEntryMut<'a, K: 'a, V: 'a, S: 'a> {
+    base: base::RawOccupiedEntryMut<'a, K, V, S>,
 }
 ```
