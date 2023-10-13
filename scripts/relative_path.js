@@ -21,8 +21,9 @@ hexo.extend.filter.register('before_post_render', function (post) {
     };
 
     // 匹配 []() 形式，但链接中包含 :// 的不匹配，来排除超链接
-    post.content = post.content.replace(/\[([^\[\]]*)\]\((?!\S+:\/\/)(\S*?)\)/g,
+    post.content = post.content.replace(/\[([^\[\]]*)\]\((?<!\S+:\/\/)(\S*?)\)/g,
         function (match_str, label, rel_path) {
+            console.log(rel_path)
             const temp_path = rel_path;
             let is_mdlink = false;
             rel_path = rel_path.replace(/((\S+)\.md)$|((\S+)\.md)?(#(.*))$/, (_0, _1, md_path1, _3, md_path2, _5, fragment) => {
