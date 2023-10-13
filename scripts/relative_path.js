@@ -28,7 +28,7 @@ hexo.extend.filter.register('before_post_render', function (post) {
             rel_path = rel_path.replace(/((\S+)\.md)$|((\S+)\.md)?(#(.*))$/, (_0, _1, md_path1, _3, md_path2, _5, fragment) => {
                 is_mdlink = true;
                 let md_path = md_path1 ?? md_path2 ?? '';
-                if (md_path.endsWith("index")) {
+                if (md_path.endsWith("index") && !cur_pagepath.includes(".html")) {
                     md_path += ".html"
                 }
                 if (md_path) {
