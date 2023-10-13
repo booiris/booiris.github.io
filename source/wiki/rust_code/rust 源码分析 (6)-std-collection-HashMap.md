@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2023-10-13 13:03:41
+updated: 2023-10-13 13:09:55
 tags:
   - rust
 top: false
@@ -120,6 +120,8 @@ pub struct RandomState {
     k0: u64,
     k1: u64,
 }
+
+pub struct DefaultHasher(SipHasher13);
 ```
 
 ```rust
@@ -146,3 +148,5 @@ pub struct RandomState {
         })
     }
 ```
+
+[Seed HashMaps thread-locally, straight from the OS. by huonw · Pull Request #31356 · rust-lang/rust · GitHub](https://github.com/rust-lang/rust/pull/31356)
