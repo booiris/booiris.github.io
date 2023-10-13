@@ -1,13 +1,16 @@
 ---
 title: "Rust For Screeps (2): 自定义存储模型"
-date: 2023-07-22 21:05:20 
-updated: 2023-07-23 01:20:07
-tags: [] 
+date: 2023-07-22 21:05:20
+updated: 2023-10-13 22:25:34
+tags: 
 top: false
 mathjax: true
-categories: [ screeps ]
+categories:
+  - screeps
 author: booiris
 ---
+
+[Rust For Screeps (1) 初始环境搭建](Rust%20For%20Screeps%20(1)%20初始环境搭建.md)
 
 ## Screeps 存储模型
 
