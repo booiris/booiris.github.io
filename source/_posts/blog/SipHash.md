@@ -1,7 +1,7 @@
 ---
 title: SipHash
 date: 2023-10-13 13:36:05
-updated: 2023-10-13 13:36:44
+updated: 2023-10-13 13:40:12
 tags:
   - hash
 top: false
@@ -11,3 +11,7 @@ categories:
 author: booiris
 ---
 > 论文[eprint.iacr.org/2012/351.pdf](https://eprint.iacr.org/2012/351.pdf)
+
+#todo
+
+- [ ] siphash
