@@ -4,6 +4,8 @@ const url = require('url');
 const { slugize, decodeURL } = require('hexo-util');
 
 hexo.extend.filter.register('before_post_render', function (post) {
+
+    console.debug(post.permalink);
     // 当前文档对应页面的绝对路径，类似 /path/to/file/fliename/
     let cur_pagepath = url.parse(post.permalink).pathname;
     // 校准相对路径，hexo 以 asset 文件夹为参考，所以加 ../
