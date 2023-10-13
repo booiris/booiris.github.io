@@ -4,10 +4,10 @@ const url = require('url');
 const { slugize, decodeURL } = require('hexo-util');
 
 hexo.extend.filter.register('before_post_render', function (post) {
-
-    console.debug("link", post.permalink);
     // 当前文档对应页面的绝对路径，类似 /path/to/file/fliename/
     let cur_pagepath = url.parse(post.permalink).pathname;
+
+    console.debug("link", cur_pagepath);
     // 校准相对路径，hexo 以 asset 文件夹为参考，所以加 ../
     // \ 替换为 /
     let corr_rel_path = path => {
@@ -22,9 +22,14 @@ hexo.extend.filter.register('before_post_render', function (post) {
         }
     };
 
+    if (cur_pagepath.endsWith("std-collection-HashMap.html")) {
+        console.log(post.content)
+    }
+
     // 匹配 []() 形式，但链接中包含 :// 的不匹配，来排除超链接
     post.content = post.content.replace(/\[([^\[\]]*)\]\((?!\S+:\/\/)(\S*)\)/g,
         function (match_str, label, rel_path) {
+            console.debug("content_link", rel_path);
             const temp_path = rel_path;
             let is_mdlink = false;
             rel_path = rel_path.replace(/((\S+)\.md)$|((\S+)\.md)?(#(.*))$/, (_0, _1, md_path1, _3, md_path2, _5, fragment) => {
