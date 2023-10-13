@@ -1,7 +1,7 @@
 ---
 title: Obsidian 多平台同步方法
 date: 2022-05-01 23:31:00
-updated: 2022-10-07 16:59:24
+updated: 2023-10-13 23:38:19
 tags: []
 top: false
 mathjax: true
@@ -20,7 +20,8 @@ author: booiris
 1. 注册账号。
 2. 登录 ，进入 mypage 界面。
 <img src="https://s2.loli.net/2022/05/01/pFAZdzBSCetUhfH.png" width = 60% >
-5. 开启 webdav 服务，记住用户名和密码。<img src="https://s2.loli.net/2022/05/01/zaS4pMH7k1l2Den.png" width=100% > 至此，webdav 服务注册成功。
+4. 开启 webdav 服务，记住用户名和密码。
+<img src="https://s2.loli.net/2022/05/01/zaS4pMH7k1l2Den.png" width=100% > 至此，webdav 服务注册成功。
 
 #### 使用 Remotely Save 插件进行同步
 
