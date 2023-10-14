@@ -151,4 +151,6 @@ HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) ([eprint.
     }
 ```
 
+哈希函数参数的初始化从注释中能看出有点说法，在最开始的时候
+
 [Seed HashMaps thread-locally, straight from the OS. by huonw · Pull Request #31356 · rust-lang/rust · GitHub](https://github.com/rust-lang/rust/pull/31356)
