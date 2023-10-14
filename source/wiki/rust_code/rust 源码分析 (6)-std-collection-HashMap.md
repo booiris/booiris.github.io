@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2023-10-13 22:15:52
+updated: 2023-10-14 10:58:27
 tags:
   - rust
 top: false
@@ -151,6 +151,4 @@ HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) ([eprint.
     }
 ```
 
-哈希函数参数的初始化从注释中能看出有点说法，在最开始的时候
-
-[Seed HashMaps thread-locally, straight from the OS. by huonw · Pull Request #31356 · rust-lang/rust · GitHub](https://github.com/rust-lang/rust/pull/31356)
+哈希函数参数的初始化从注释中能看出有点说法，最初参数是调用两次随机数生成器分别生成`k0`，`k1` 两个参数。但在 [#31356](https://github.com/rust-lang/rust/pull/31356) 中提出
