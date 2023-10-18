@@ -12,6 +12,8 @@ author: booiris
 ---
 > 论文 [eprint.iacr.org/2012/351.pdf](https://eprint.iacr.org/2012/351.pdf)
 
+> 代码位置 
+
 #todo
 
 - [ ] siphash
