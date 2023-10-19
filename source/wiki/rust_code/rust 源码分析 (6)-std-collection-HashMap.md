@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2023-10-14 11:09:48
+updated: 2023-10-19 13:08:54
 tags:
   - rust
 top: false
@@ -124,7 +124,7 @@ pub struct RandomState {
 pub struct DefaultHasher(SipHasher13);
 ```
 
-HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) ([eprint.iacr.org/2012/351.pdf](https://eprint.iacr.org/2012/351.pdf))。
+HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) 。
 
 ```rust
     pub fn new() -> RandomState {
