@@ -1,7 +1,7 @@
 ---
 title: SipHash
 date: 2023-10-13 13:36:05
-updated: 2023-10-19 00:16:04
+updated: 2023-10-19 12:54:41
 tags:
   - hash
 top: false
@@ -14,7 +14,4 @@ author: booiris
 
 > 代码位置 [library/core/src/hash/sip.rs](https://github.com/rust-lang/rust/blob/1.72.0/library/core/src/hash/sip.rs)
 
-#todo
-
-- [ ] siphash
-
+SipHash 是一种用于处理短内容的哈希函数，其提出用于解决 [hash dos 攻击](../todo/todo.md)。
