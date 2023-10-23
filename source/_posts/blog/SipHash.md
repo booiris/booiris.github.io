@@ -1,7 +1,7 @@
 ---
 title: SipHash
 date: 2023-10-13 13:36:05
-updated: 2023-10-23 13:02:43
+updated: 2023-10-23 13:05:34
 tags:
   - hash
 top: false
@@ -18,11 +18,19 @@ SipHash 是一类针对短消息设计的伪随机函数族，其提出用于解
 
 ## 实现
 
+对于 SipHash-c-d 函数族，包含的输入有一个 128 bit 的 `key` 和 可为空的输入 ``
+
 ### 初始化
+
+首先
 
 ![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/spihash1.png)
 
+### SpiRound 迭代
+
 ![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/spihash2.png)
+
+### 整体迭代步骤
 
 ![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/spihash3.png)
 
