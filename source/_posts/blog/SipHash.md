@@ -1,7 +1,7 @@
 ---
 title: SipHash
 date: 2023-10-13 13:36:05
-updated: 2023-10-23 13:22:14
+updated: 2023-10-24 12:32:51
 tags:
   - hash
 top: false
@@ -45,3 +45,5 @@ SipHash 是一类针对短消息设计的伪随机函数族，相较于其他的
 ![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/spihash3.png)
 
 ## 安全性分析
+
+## rust 实现细节
