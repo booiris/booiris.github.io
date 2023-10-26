@@ -1,7 +1,7 @@
 ---
 title: SipHash
 date: 2023-10-13 13:36:05
-updated: 2023-10-26 13:09:55
+updated: 2023-10-26 22:31:34
 tags:
   - hash
 top: false
@@ -38,7 +38,7 @@ SipHash 是一类针对短消息设计的伪随机函数族，相较于其他的
 
 在初始化状态后，将输入的字符串进行编码，将输入的字符串以每 8 字节作为一组以小端序编码成 64 位的数 $m_i$ ，最后不够的用 0 做填充，最后一个字节的值为输入的字符串长度 $len \bmod 256$。具体来说，编码的过程如下图:
 
-在将输入 `s` 编码成 $m_0,m_1 \dots m_\lceil \frac{(len+1)}{8} \rceil$ 
+在将输入 `s` 编码成 $m_0,m_1 \dots m_{\lceil \frac{(len+1)}{8} \rceil}$ 后，对于每个 $m_i$ 执行以下步骤，迭代执行完所有的输入后，`Compression Round` 完成。
 
 $$
 \begin{aligned}
