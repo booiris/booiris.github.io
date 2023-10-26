@@ -1,7 +1,7 @@
 ---
 title: SipHash
 date: 2023-10-13 13:36:05
-updated: 2023-10-26 12:57:20
+updated: 2023-10-26 12:58:31
 tags:
   - hash
 top: false
@@ -34,19 +34,31 @@ SipHash 是一类针对短消息设计的伪随机函数族，相较于其他的
 
 ![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/spihash1.png)
 
-### SpiRound 迭代
+### Compression Round
 
 在初始化状态后，将输入的字符串进行编码，将输入的字符串以每 8 字节作为一组以小端序编码成 64 位的数 $m_i$ ，最后不够的用 0 做填充，最后一个字节的值为输入的字符串长度 $len \bmod 256$。具体来说，编码的过程如下图:
 
 $$
 \begin{align}
 v_3 \ \oplus = m_i \\
-SipRound(v_0,v_1,v_2,v_3)\  c \ times \\
+SipRound(v_0,v_1,v_2,v_3)\ for\   c \ times \\
 v_0 \ \oplus = m_i 
 \end{align}
 $$
 
 PS: 巨💩🤡的是论文中的 "For example, the one-byte input string m = ab is parsed as m0 = 01000000000000ab"。开始我还以为输入的是字符串 "ab"，没看到 "one-byte input"，导致编码输入 m 这块卡了一会。感觉写成 "0xab" 和 "0x01000000000000ab" 会好一点🤡。
+
+### Finalization Round
+
+在所有的输入字节处理在 `Compression Round` 处理完成后，
+
+$$
+\begin{align}
+v_2 \ \oplus = 0xff \\
+SipRound(v_0,v_1,v_2,v_3)\ for\   d \ times \\
+res = v_0 \oplus v_1 \
+\end{align}
+$$
 
 ![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/spihash2.png)
 
