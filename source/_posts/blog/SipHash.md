@@ -1,7 +1,7 @@
 ---
 title: SipHash
 date: 2023-10-13 13:36:05
-updated: 2023-10-26 22:55:38
+updated: 2023-10-26 23:07:09
 tags:
   - hash
 top: false
@@ -73,3 +73,7 @@ SipRound 的运算过程如下:
 ![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/spihash2.png)
 
 ## 安全性分析
+
+#todo
+
+- [ ] SipHash 安全性分析  
