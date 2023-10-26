@@ -1,7 +1,7 @@
 ---
 title: SipHash
 date: 2023-10-13 13:36:05
-updated: 2023-10-26 22:54:06
+updated: 2023-10-26 22:55:38
 tags:
   - hash
 top: false
@@ -65,6 +65,10 @@ res = v_0 \oplus v_1 \oplus v_2 \oplus v_3
 $$
 
 ### SipRound
+
+SipRound 的运算过程如下:
+
+![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/siphash_sipround1.png)
 
 ![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/spihash2.png)
 
