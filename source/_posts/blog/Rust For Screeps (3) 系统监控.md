@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (3): 系统监控"
 date: 2023-07-22 23:35:45
-updated: 2023-11-02 12:59:16
+updated: 2023-11-02 13:09:20
 tags: 
 top: false
 mathjax: true
@@ -12,12 +12,13 @@ author: booiris
 
 > 参考 [Screeps 制作统计图表 - 简书](https://www.jianshu.com/p/de74baf6fb48)
 
-首先说明本文使用 docker 将监控系统部署在自有服务器上，
+首先说明: 本文使用 docker 将监控系统部署在自有服务器上，所以先决条件是一台能公网访问的服务器(
+
+## 整体流程
+
+
 
 [GitHub - booiris/rust-learning at screep\_log](https://github.com/booiris/rust-learning/tree/screep_log)
-
-
-
 
 ```bash
 version: '2'
