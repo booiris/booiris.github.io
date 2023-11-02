@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (3): 系统监控"
 date: 2023-07-22 23:35:45
-updated: 2023-11-02 13:26:38
+updated: 2023-11-02 13:32:15
 tags: 
 top: false
 mathjax: true
@@ -24,15 +24,13 @@ author: booiris
 
 在 [Screeps 制作统计图表 - 简书](https://www.jianshu.com/p/de74baf6fb48) 中使用的是 [memory object](Rust%20For%20Screeps%20(2)%20自定义存储模型.md#memory%20object) 存储系统信息。遗憾的是在 rust 中无法使用 `memory` 对象，但是 screeps 还有另一个存储信息的地方，那就是 [raw memory](Rust%20For%20Screeps%20(2)%20自定义存储模型.md#raw%20memory) 。
 
-所以
+`raw memory` 可以存储 10 MB 的序列化后的内容，它由一个个 `segment` 组成，每个`segment` 最多存储 100 KB 内容。所以可以指定一段 `segment` 用于存储当前系统的状态。
 
 ```rust
-fn store(&self) {
-	GLOBAL_LONG_MEMORY.with(|mem| {
-		let mem = &*mem.borrow();
-		let mem: String = mem.into();
-		raw_memory::set(&JsString::from_str(&mem).expect("can not conver global mem to string"))
-	})
+fn log(&self) {
+	let status_segement = raw_memory::segments();
+	let status = Status::get_status();
+	status_segement.set(STATUS_INDEX, status.into());
 }
 ```
 
