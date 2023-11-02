@@ -10,6 +10,3 @@ categories:
 author: booiris
 ---
 
-#todo
-
-- [ ] TODO: 系统监控和 panic 处理
