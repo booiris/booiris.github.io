@@ -1,7 +1,7 @@
 ---
 title: "Rust For Screeps (3): 系统监控"
 date: 2023-07-22 23:35:45
-updated: 2023-11-02 13:19:20
+updated: 2023-11-02 13:26:38
 tags: 
 top: false
 mathjax: true
@@ -22,7 +22,19 @@ author: booiris
 
 ### 记录当前状态存入内存
 
-在 [Screeps 制作统计图表 - 简书](https://www.jianshu.com/p/de74baf6fb48) 中使用的是 `memory` 对象存储的系统信息。
+在 [Screeps 制作统计图表 - 简书](https://www.jianshu.com/p/de74baf6fb48) 中使用的是 [memory object](Rust%20For%20Screeps%20(2)%20自定义存储模型.md#memory%20object) 存储系统信息。遗憾的是在 rust 中无法使用 `memory` 对象，但是 screeps 还有另一个存储信息的地方，那就是 [raw memory](Rust%20For%20Screeps%20(2)%20自定义存储模型.md#raw%20memory) 。
+
+所以
+
+```rust
+fn store(&self) {
+	GLOBAL_LONG_MEMORY.with(|mem| {
+		let mem = &*mem.borrow();
+		let mem: String = mem.into();
+		raw_memory::set(&JsString::from_str(&mem).expect("can not conver global mem to string"))
+	})
+}
+```
 
 ### 访问内存并解析内存内容
 
