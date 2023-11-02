@@ -12,7 +12,7 @@ author: booiris
 
 > 参考 [Screeps 制作统计图表 - 简书](https://www.jianshu.com/p/de74baf6fb48)
 
-首先说明本
+首先说明本文使用 docker 将监控系统部署在自有服务器上，
 
 [GitHub - booiris/rust-learning at screep\_log](https://github.com/booiris/rust-learning/tree/screep_log)
 
@@ -44,8 +44,8 @@ services:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_USERNAME=${username}
       - DOCKER_INFLUXDB_INIT_PASSWORD=${pwd}
-      - DOCKER_INFLUXDB_INIT_ORG=${}
-      - DOCKER_INFLUXDB_INIT_BUCKET=${}
+      - DOCKER_INFLUXDB_INIT_ORG=${org}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${bucket}
 
 # https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/ 查看参数含义
   grafana:
