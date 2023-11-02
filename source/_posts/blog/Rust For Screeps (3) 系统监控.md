@@ -22,7 +22,7 @@ author: booiris
 
 ### 记录当前状态存入内存
 
-在 [Screeps 制作统计图表 - 简书](https://www.jianshu.com/p/de74baf6fb48) 
+在 [Screeps 制作统计图表 - 简书](https://www.jianshu.com/p/de74baf6fb48) 中使用的是 `memory` 对象存储的系统信息。
 
 ### 访问内存并解析内存内容
 
