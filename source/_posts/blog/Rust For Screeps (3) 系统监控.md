@@ -18,7 +18,7 @@ author: booiris
 
 ![image.png](https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20231102131635.png)
 
-## 详细实现
+## 具体实现
 
 ### 记录当前状态存入内存
 
