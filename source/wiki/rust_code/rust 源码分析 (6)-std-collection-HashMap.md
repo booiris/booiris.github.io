@@ -160,7 +160,7 @@ HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) 。
 }
 ```
 
-但在 [#31356](https://github.com/rust-lang/rust/pull/31356) 中提出，在每个线程缓存随机数种子对于 hashMap 的初始化速度有显著的提升，最终在 [std: Cache HashMap keys in TLS by alexcrichton · Pull Request #33318 · rust-lang/rust · GitHub](https://github.com/rust-lang/rust/pull/33318/files) 中这个改动被合入，代码为:
+在 [#31356](https://github.com/rust-lang/rust/pull/31356) 中提出，在每个线程缓存随机数种子对于 hashMap 的初始化速度有显著的提升，最终在 [std: Cache HashMap keys in TLS by alexcrichton · Pull Request #33318 · rust-lang/rust · GitHub](https://github.com/rust-lang/rust/pull/33318/files) 中这个改动被合入，代码为:
 
 ```rust
     pub fn new() -> RandomState {
@@ -175,3 +175,4 @@ HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) 。
         })
     }
 ```
+在
