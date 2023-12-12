@@ -21,5 +21,6 @@ monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的�
 
 一个 monad 包含三个部分:
 
-1. 类型构造子(构造函数) M`func M(T) -> M{ inner: T }`
-2. 
+1. 类型构造子 M ，在 go 中可以理解为一种名为 M 包裹着 T 的泛型结构体 `M<T>{ val: T }`
+2. 类型转换子 T -> M T，在 go 中可以理解为由值 T 构造 M 的函数 `func FromVal[T any](val T) -> M<T>`
+3. 组合子 (M T, T -> M U) -> M U，在 go 中可以理解为
