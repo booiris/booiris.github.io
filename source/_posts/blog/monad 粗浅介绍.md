@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍 
 date: 2023-12-12 21:20:47 
-updated: 2023-12-13 01:27:27
+updated: 2023-12-13 01:29:26
 tags: [] 
 top: false
 mathjax: true
@@ -30,3 +30,11 @@ monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的�
 1. 转换子是 [left-identity](https://en.wikipedia.org/wiki/Identity_element) 的: `func FromVal[T any](val T) -> M<T>` 等价于
 2. 23
 3. 123
+
+## monad 有什么用?
+
+### 另一个宇宙的 go option
+
+### monad 如何解决回调地狱
+
+### 
