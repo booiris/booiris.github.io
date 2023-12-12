@@ -11,4 +11,4 @@ author: booiris
 
 ## 什么是monad?
 
->> 
+monad 是函数式编程
