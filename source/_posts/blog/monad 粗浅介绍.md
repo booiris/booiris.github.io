@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍 
 date: 2023-12-12 21:20:47 
-updated: 2023-12-13 01:04:21
+updated: 2023-12-13 01:08:16
 tags: [] 
 top: false
 mathjax: true
@@ -20,5 +20,6 @@ monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的�
 > [Monad (functional programming) - Wikipedia](https://en.wikipedia.org/wiki/Monad_(functional_programming)#Definition)
 
 一个 monad 包含三个部分:
-1. 类型构造子(构造函数) M, 使得能对类型 T 应用函数 func M(T) -> M{inner: T} 
+
+1. 类型构造子(构造函数) M`func M(T) -> M{ inner: T }`
 2. 
