@@ -72,6 +72,8 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 
 ### 另一个宇宙的 go option
 
+
+
 ### monad 如何解决回调地狱
 
 ### monad 在流式处理中的应用
