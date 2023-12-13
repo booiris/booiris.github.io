@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍 
 date: 2023-12-12 21:20:47 
-updated: 2023-12-13 23:06:07
+updated: 2023-12-13 23:09:26
 tags: [] 
 top: false
 mathjax: true
@@ -51,16 +51,16 @@ monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的�
 func F[T, U any](x T) M<U>  { f(x) } // f(x) 是对 x 的一些行为
 func G[U, P any](y U) M<P> { g(y) } // g(y) 是对 y 的一些行为
 
-func H[T, P any](x T) M<P> { G(F(x)) }
+func H[T, P any](x T) M<P> { F(x).FlatMap(G) }
 
-res1 := M{}
+res1 := M{val: x}.FlatMap(H)
 ```
 
 ```go
 func F[T, U any](x T) M<U>  { f(x) } // f(x) 是对 x 的一些行为
 func G[U, P any](y U) M<P> { g(y) } // g(y) 是对 y 的一些行为
 
-M{ val: x }.FlatMap(F).FlatMap(G)
+res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 ```
 
 ## monad 有什么用?
