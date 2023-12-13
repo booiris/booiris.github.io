@@ -1,11 +1,12 @@
 ---
-title: monad 粗浅介绍 
-date: 2023-12-12 21:20:47 
-updated: 2023-12-13 23:40:49
-tags: [] 
+title: monad 粗浅介绍
+date: 2023-12-12 21:20:47
+updated: 2023-12-13 23:44:02
+tags: 
 top: false
 mathjax: true
-categories: [ blog ]
+categories:
+  - blog
 author: booiris
 ---
 
@@ -66,6 +67,8 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 ```
 
 ## monad 有什么用?
+
+在列举完 monad 的定义后，为了避免陷在抽象的世界里无法自拔，
 
 ### 另一个宇宙的 go option
 
