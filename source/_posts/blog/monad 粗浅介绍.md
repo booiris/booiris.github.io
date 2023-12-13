@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍 
 date: 2023-12-12 21:20:47 
-updated: 2023-12-13 23:18:57
+updated: 2023-12-13 23:22:05
 tags: [] 
 top: false
 mathjax: true
@@ -15,7 +15,7 @@ monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的�
 
 ### 定义
 
-尽管没有太复杂的数学概念，但还是需要一个定义说明什么样的东西才能称之为 monad。在 wiki 的定义中:
+尽管没有太复杂的数学概念，但还是需要一个定义说明什么样的东西才能称之为 monad。在接下来的说明中，除了列举出数学定义以外，在 wiki 的定义中:
 
 > [Monad (functional programming) - Wikipedia](https://en.wikipedia.org/wiki/Monad_(functional_programming)#Definition)
 
@@ -29,7 +29,7 @@ monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的�
 
 > 在 go 中可以理解为由值 `T` 构造 `M` 的函数 `func Unit[T any](val T) -> M<T>`
 
-3. 组合子 `>>=(FlatMap) :: M T -> ( T -> M U) -> M U` 。
+3. 组合子 `>>= or FlatMap :: M T -> ( T -> M U) -> M U` 。
 
 > 在 go 中可以理解为 `M<T>{ val: T }` 这个结构体具有一个成员方法 `func flatMap[T, U any](func(T) -> M<U>) -> M<U>` ，能够接受一个函数实现从 `M<T>` 到 `M<U>` 的变换。
 
