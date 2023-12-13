@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-14 00:16:29
+updated: 2023-12-14 00:22:23
 tags: 
 top: false
 mathjax: true
@@ -68,7 +68,7 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 
 ## monad 有什么用?
 
-在列举完 monad 的定义后，为了避免陷在抽象的世界里无法自拔，笔者在接下来会列举一些例子说明 monad 的作用，帮助更好地理解什么是 monad 。
+在列举完 monad 的定义后，为了避免陷在抽象的世界里无法自拔，笔者在接下来会具体列举一些例子说明 monad 的作用，帮助更好地理解什么是 monad 。
 
 ### 另一个宇宙的 go option
 
@@ -84,5 +84,4 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 
 * [Functors, Applicatives, And Monads In Pictures - adit.io](https://www.adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
 
-* 什么是 Monad (Functional Programming)？ - Belleve的回答 - 知乎
-https://www.zhihu.com/question/19635359/answer/62415213
+* [什么是 Monad (Functional Programming)？ - Belleve的回答 - 知乎 🤣](https://www.zhihu.com/question/19635359/answer/62415213)
