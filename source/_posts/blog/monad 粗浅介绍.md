@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍 
 date: 2023-12-12 21:20:47 
-updated: 2023-12-13 22:51:18
+updated: 2023-12-13 22:56:24
 tags: [] 
 top: false
 mathjax: true
@@ -45,7 +45,15 @@ monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的�
 
 3. 组合子 `>>=` 满足结合律: `ma >>= λx -> (f(x) >>= λy -> g(y)) ↔ (ma >>= λx -> f(x)) >>= λy -> g(y)`
 
-> 在 go 中可以理解为 
+> 在 go 中可以理解为以下两个过程执行结果相等
+
+```go
+F = func[T,U any](x T) M<U>  { f(x) } // f(x) 是对 x 的一些行为
+G = func[T,U any](y T) M<U> { g(y) } // g(y) 是对 y 的一些行为
+
+M{ val: x}.FlatMap(F).FlatMap(G)
+```
+
 ## monad 有什么用?
 
 ### 另一个宇宙的 go option
