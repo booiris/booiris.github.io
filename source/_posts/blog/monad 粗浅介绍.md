@@ -72,7 +72,7 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 
 ### 另一个宇宙的 go option
 
-考虑在 go 中编写
+在 go 中处理返回值存在一种qing'kuang
 
 ### monad 如何解决回调地狱
 
