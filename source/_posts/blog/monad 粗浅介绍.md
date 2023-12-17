@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-17 21:48:55
+updated: 2023-12-17 21:58:47
 tags: 
 top: false
 mathjax: true
@@ -72,7 +72,11 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 
 ### 另一个宇宙的 go option
 
-在 go 中处理返回值存在一种qing'kuang
+在编程中，可能会经常遇到处理一个kenne
+
+```go
+
+```
 
 ### monad 如何解决回调地狱
 
