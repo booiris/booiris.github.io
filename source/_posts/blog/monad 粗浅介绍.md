@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-24 20:37:19
+updated: 2023-12-24 20:43:46
 tags: 
 top: false
 mathjax: true
@@ -79,13 +79,23 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 func GetID () *int64 {}
 // 获取 ID 对应的信息
 func GetInfo (id int64) *Info {}
-// 获取上一个
+// 获取上一个 Info 中 uid 对应的信息
 func GetUserInfo (uid int64) *UserInfo {}
 
 func main() {
 	id := GetID()
-	if id != nil{
+	if id == nil{
+		return
 	}
+	info := GetInfo(*id)
+	if info == nil{
+		return
+	}
+	userInfo := GetUserInfo(info.UID)
+	if userInfo == nil{
+		return
+	}
+	// use userInfo ...
 }
 
 ```
