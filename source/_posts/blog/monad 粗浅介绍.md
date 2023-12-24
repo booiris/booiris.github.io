@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-24 20:43:46
+updated: 2023-12-24 20:48:17
 tags: 
 top: false
 mathjax: true
@@ -70,35 +70,37 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 
 在列举完 monad 的定义后，为了避免陷在抽象的世界里无法自拔，笔者在接下来会具体列举一些例子说明 monad 的作用，帮助更好地说明什么是 monad 。
 
-### 另一个宇宙的 go option
+### 另一个宇宙的 go error
 
-在 go 编程中，可能会经常遇到处理一个可能为空的变量的情况。具体来说形似如下代码:
+在 go 编程中，可能常见如下代码:
 
 ```go
 // 获取要查询的ID
-func GetID () *int64 {}
+func GetID () (int64,error) {}
 // 获取 ID 对应的信息
-func GetInfo (id int64) *Info {}
+func GetInfo (id int64) (Info,error) {}
 // 获取上一个 Info 中 uid 对应的信息
-func GetUserInfo (uid int64) *UserInfo {}
+func GetUserInfo (uid int64) (UserInfo,error) {}
 
-func main() {
-	id := GetID()
-	if id == nil{
-		return
+func handle() error {
+	id, err := GetID()
+	if err != nil{
+		return err
 	}
-	info := GetInfo(*id)
-	if info == nil{
-		return
-	}
-	userInfo := GetUserInfo(info.UID)
-	if userInfo == nil{
-		return
+	info, err := GetInfo(*id)
+	if err != nil{
+		return err
+ 	}
+	userInfo, err := GetUserInfo(info.UID)
+	if err != nil{
+		return err
 	}
 	// use userInfo ...
 }
 
 ```
+
+kiiind
 
 ### monad 如何解决回调地狱
 
