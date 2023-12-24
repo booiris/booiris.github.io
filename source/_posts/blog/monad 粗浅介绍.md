@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-24 21:50:52
+updated: 2023-12-24 22:09:15
 tags: 
 top: false
 mathjax: true
@@ -106,7 +106,14 @@ func handle() error {
 
 当然笔者并不反对 go 这种严格处理每个函数返回的错误值的思想，不过本文既然是有关 monad 的介绍，自然是想着怎么将 monad 套用到 go 的错误处理中。
 
-回顾 monad 的定义，
+回顾 monad 的定义，首先 monad 是一个结构体:
+
+```go
+type ErrMonad[T any] struct {
+	result T
+	err  error
+}
+```
 
 ### monad 如何解决回调地狱
 
