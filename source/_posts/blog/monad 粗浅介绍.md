@@ -87,7 +87,7 @@ func handle() error {
 	if err != nil {
 		return err
 	}
-	info, err := GetInfo(*id)
+	info, err := GetInfo(id)
 	if err != nil {
 		return err
  	}
