@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-24 21:23:42
+updated: 2023-12-24 21:50:52
 tags: 
 top: false
 mathjax: true
@@ -109,6 +109,8 @@ func handle() error {
 回顾 monad 的定义，
 
 ### monad 如何解决回调地狱
+
+现在让我们来看看一点老东西。
 
 ### monad 在流式处理中的应用
 
