@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-23 15:46:47
+updated: 2023-12-24 20:02:25
 tags: 
 top: false
 mathjax: true
@@ -72,15 +72,13 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 
 ### 另一个宇宙的 go option
 
-在编程中，可能会经常遇到处理一个可能为空的变量的情况。
+在 go 编程中，可能会经常遇到处理一个可能为空的变量的情况。具体来说形似如下代码:
 
 ```go
 
 ```
 
 ### monad 如何解决回调地狱
-
-
 
 ### monad 在流式处理中的应用
 
