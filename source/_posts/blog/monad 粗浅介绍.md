@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-24 20:33:26
+updated: 2023-12-24 20:37:19
 tags: 
 top: false
 mathjax: true
@@ -75,9 +75,18 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 在 go 编程中，可能会经常遇到处理一个可能为空的变量的情况。具体来说形似如下代码:
 
 ```go
-func GetInfo(id int64) *Info {}
+// 获取要查询的ID
+func GetID () *int64 {}
+// 获取 ID 对应的信息
+func GetInfo (id int64) *Info {}
+// 获取上一个
+func GetUserInfo (uid int64) *UserInfo {}
 
-func GetAttr(id int64) *Info {}
+func main() {
+	id := GetID()
+	if id != nil{
+	}
+}
 
 ```
 
