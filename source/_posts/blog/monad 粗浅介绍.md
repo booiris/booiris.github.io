@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-24 20:53:24
+updated: 2023-12-24 20:58:26
 tags: 
 top: false
 mathjax: true
@@ -100,7 +100,7 @@ func handle() error {
 
 ```
 
-可以看出 go 的灵魂出现了
+可以看出 go 的灵魂出现了🤗
 
 ```go
 if err != nil {
