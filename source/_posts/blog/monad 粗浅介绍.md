@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-24 21:03:04
+updated: 2023-12-24 21:07:56
 tags: 
 top: false
 mathjax: true
@@ -102,7 +102,9 @@ func handle() error {
 
 可以看到 go 的灵魂出现了🤗
 
-![image.png](https://cdn.jsdelivr.net/gh/booiris-cdn/img/20231224210233.png)
+![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/20231224210233.png)
+
+当然笔者并不反对 go 这种严格处理返回
 
 ### monad 如何解决回调地狱
 
