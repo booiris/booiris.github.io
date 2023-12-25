@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-24 22:16:08
+updated: 2023-12-25 23:34:39
 tags: 
 top: false
 mathjax: true
@@ -116,6 +116,8 @@ type ErrMonad[T any] struct {
 	err  error
 }
 ```
+
+上面的结构体包含了返回值和错误。考虑到日常使用中采用的是 
 
 ### monad 如何解决回调地狱
 
