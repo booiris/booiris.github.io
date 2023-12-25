@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-25 23:46:39
+updated: 2023-12-25 23:46:51
 tags: 
 top: false
 mathjax: true
@@ -129,7 +129,9 @@ func Unit[T any] (result T) ErrMonad[T] {
 }
 
 func Err[T any] (err error) ErrMonad[T] {
-
+	return ErrMonad{
+		err: err
+	}
 }
 ```
 
