@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-26 00:17:41
+updated: 2023-12-26 00:24:23
 tags: 
 top: false
 mathjax: true
@@ -138,7 +138,16 @@ func Err[T any] (err error) ErrMonad[T] {
 * 有组合子 `FlatMap` 成员方法:
 
 ```go
-func (h *ErrMonad[T]) FlatMap[U] ( func(T) ErrMonad[U] ) ErrMonad[U] 
+func (h *ErrMonad[T]) FlatMap[U] (mapFunc func(T) ErrMonad[U] ) ErrMonad[U] {
+	if h.err != nil{
+		return *h
+	}
+	if mapFunc == nil {
+		// 错误处理
+		return xxx
+	}
+	
+}
 ```
 
 ### monad 如何解决回调地狱
