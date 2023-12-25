@@ -123,13 +123,13 @@ type ErrMonad[T any] struct {
 
 ```go
 func Unit[T any] (result T) ErrMonad[T] {
-	return ErrMonad{
+	return ErrMonad[T]{
 		result: result,
 	}
 }
 
 func Err[T any] (err error) ErrMonad[T] {
-	return ErrMonad{
+	return ErrMonad[T]{
 		err: err,
 	}
 }
