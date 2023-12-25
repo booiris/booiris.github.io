@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-25 23:34:39
+updated: 2023-12-25 23:46:39
 tags: 
 top: false
 mathjax: true
@@ -117,7 +117,21 @@ type ErrMonad[T any] struct {
 }
 ```
 
-上面的结构体包含了返回值和错误。考虑到日常使用中采用的是和类型(也就是返回了 error 就不使用)
+上面的结构体包含了返回值和错误。考虑到日常使用中对返回值采用的是和类型(也就是返回了 error 就不使用其他返回值)，所以
+
+* 然后需要一个由 `T` 构造成 `MT` 的函数:
+
+```go
+func Unit[T any] (result T) ErrMonad[T] {
+	return ErrMonad{
+		result: result
+	}
+}
+
+func Err[T any] (err error) ErrMonad[T] {
+
+}
+```
 
 ### monad 如何解决回调地狱
 
