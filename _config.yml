@@ -221,3 +221,15 @@ sitemap:
   rel: false
   tags: true
   categories: true
+
+feed:
+  enable: true
+  type: atom
+  path: feed.xml
+  limit: 20
+  # hub: https://pubsubhubbub.appspot.com
+  # content: true
+  order_by: -date
+  # icon: /images/apple-touch-icon.png
+  autodiscovery: true
+  # template: ./source/uploads/atom_template.xml
