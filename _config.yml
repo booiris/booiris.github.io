@@ -230,6 +230,6 @@ feed:
   # hub: https://pubsubhubbub.appspot.com
   # content: true
   order_by: -date
-  # icon: /images/apple-touch-icon.png
+  icon: /src/icon-32x32.ico
   autodiscovery: true
   # template: ./source/uploads/atom_template.xml
