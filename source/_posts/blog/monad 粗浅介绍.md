@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2023-12-27 23:58:02
+updated: 2024-01-08 00:17:11
 tags: 
 top: false
 mathjax: true
@@ -165,3 +165,7 @@ func (h *ErrMonad[T]) FlatMap[U] (mapFunc func(T) ErrMonad[U] ) ErrMonad[U] {
 * [Functors, Applicatives, And Monads In Pictures - adit.io](https://www.adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
 
 * [什么是 Monad (Functional Programming)？ - Belleve的回答 - 知乎 🤣](https://www.zhihu.com/question/19635359/answer/62415213)
+
+* [深入理解函数式编程（上） - 美团技术团队](https://tech.meituan.com/2022/10/13/dive-into-functional-programming-01.html)
+
+* [深入理解函数式编程（下） - 美团技术团队](https://tech.meituan.com/2022/10/13/dive-into-functional-programming-02.html)
