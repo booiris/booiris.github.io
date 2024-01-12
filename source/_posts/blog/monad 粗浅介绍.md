@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-12 23:09:44
+updated: 2024-01-12 23:16:17
 tags: 
 top: false
 mathjax: true
@@ -70,7 +70,7 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 
 在列举完 monad 的定义后，为了避免陷在抽象的世界里无法自拔，笔者在接下来会具体列举一些例子说明 monad 的作用，帮助更好地说明什么是 monad 。
 
-### 另一个宇宙的 go error
+### 另一个宇宙的 go error monad
 
 在 go 编程中，可能常见如下代码:
 
@@ -169,7 +169,8 @@ func handle() error {
 
 ```
 
-可以看出相较于之前的版本，代码更简洁了一些 (至少少了)
+可以看出相较于之前的版本，代码更简洁了一些 (至少少了 `if err != nil { return err }`)。
+
 ### monad 如何解决回调地狱
 
 现在让我们来看看一点老东西。
