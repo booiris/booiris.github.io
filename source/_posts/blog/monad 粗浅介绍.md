@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-08 00:17:11
+updated: 2024-01-12 23:00:14
 tags: 
 top: false
 mathjax: true
@@ -128,11 +128,6 @@ func Unit[T any] (result T) ErrMonad[T] {
 	}
 }
 
-func Err[T any] (err error) ErrMonad[T] {
-	return ErrMonad[T]{
-		err: err,
-	}
-}
 ```
 
 * 有组合子 `FlatMap` 成员方法:
@@ -142,11 +137,9 @@ func (h *ErrMonad[T]) FlatMap[U] (mapFunc func(T) ErrMonad[U] ) ErrMonad[U] {
 	if h.err != nil{
 		return *h
 	}
-	if mapFunc == nil {
-		// 错误处理
-		return xxx
-	}
-	
+	// 假设 mapFunc 有效
+	res := mapFunc(h.result)
+	return Unit(res)
 }
 ```
 
