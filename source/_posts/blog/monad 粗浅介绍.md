@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-12 23:16:17
+updated: 2024-01-12 23:19:00
 tags: 
 top: false
 mathjax: true
@@ -170,6 +170,8 @@ func handle() error {
 ```
 
 可以看出相较于之前的版本，代码更简洁了一些 (至少少了 `if err != nil { return err }`)。
+
+然而理想是美好的，看着 monad 实现这么简单，为啥群友总说 go 不支持 monad 呢。回看本节标题 "另一个宇宙的 go error monad"，
 
 ### monad 如何解决回调地狱
 
