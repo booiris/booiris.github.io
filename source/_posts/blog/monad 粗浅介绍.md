@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-12 23:00:14
+updated: 2024-01-12 23:05:55
 tags: 
 top: false
 mathjax: true
@@ -76,14 +76,15 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 
 ```go
 // 获取要查询的ID
-func GetID () (int64,error) {}
+func GetID (int64) (int64,error) {}
 // 获取 ID 对应的信息
 func GetInfo (id int64) (Info,error) {}
 // 获取上一个 Info 中 uid 对应的信息
-func GetUserInfo (uid int64) (UserInfo,error) {}
+func GetUserInfo (Info) (UserInfo,error) {}
 
 func handle() error {
-	id, err := GetID()
+	rawID := 0
+	id, err := GetID(rawID)
 	if err != nil {
 		return err
 	}
@@ -91,7 +92,7 @@ func handle() error {
 	if err != nil {
 		return err
  	}
-	userInfo, err := GetUserInfo(info.UID)
+	userInfo, err := GetUserInfo(info)
 	if err != nil {
 		return err
 	}
@@ -141,6 +142,30 @@ func (h *ErrMonad[T]) FlatMap[U] (mapFunc func(T) ErrMonad[U] ) ErrMonad[U] {
 	res := mapFunc(h.result)
 	return Unit(res)
 }
+```
+
+有了上述实现后，之前的流程就可以改写为:
+
+```go
+// 获取要查询的ID
+func GetID (int64) (int64,error) {}
+// 获取 ID 对应的信息
+func GetInfo (id int64) (Info,error) {}
+// 获取上一个 Info 中 uid 对应的信息
+func GetUserInfo (Info) (UserInfo,error) {}
+
+func handle() error {
+	rawID := Unit(int64(0))
+	res := rawID.
+			FlatMap(GetID).
+			FlatMap(GetInfo).
+			FlatMap(GetUserInfo)
+	if res.Err != nil{
+		return res.Err
+	}
+	// use userInfo ...
+}
+
 ```
 
 ### monad 如何解决回调地狱
