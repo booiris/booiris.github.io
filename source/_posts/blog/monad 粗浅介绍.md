@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-12 23:51:12
+updated: 2024-01-12 23:55:29
 tags: 
 top: false
 mathjax: true
@@ -177,14 +177,15 @@ func handle() error {
 func goIsBest( func[T any] () ) bool { return false }
 
 type GGGGGG[T any] struct{}
-func (GGGGGG[T]) gggggggggggg[U any]() {}
+func (GGGGGG[T]) gggggggggggg( func[U any] () ) {}
+func (GGGGGG[T]) gggggggggggg[U any] () {}
 ```
 
-摆个 issue 做参考🤣:
+摆个 issue 做参考🤣 (希望未来会有解决方法吧):
 
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085)
 
-
+这就导致了 `FlatMa`
 
 ### monad 如何解决回调地狱
 
