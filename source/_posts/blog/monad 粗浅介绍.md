@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-12 23:05:55
+updated: 2024-01-12 23:09:44
 tags: 
 top: false
 mathjax: true
@@ -113,8 +113,8 @@ func handle() error {
 
 ```go
 type ErrMonad[T any] struct {
-	result T
-	err  error
+	Result T
+	Err  error
 }
 ```
 
@@ -125,7 +125,7 @@ type ErrMonad[T any] struct {
 ```go
 func Unit[T any] (result T) ErrMonad[T] {
 	return ErrMonad[T]{
-		result: result,
+		Result: result,
 	}
 }
 
@@ -134,9 +134,9 @@ func Unit[T any] (result T) ErrMonad[T] {
 * 有组合子 `FlatMap` 成员方法:
 
 ```go
-func (h *ErrMonad[T]) FlatMap[U] (mapFunc func(T) ErrMonad[U] ) ErrMonad[U] {
+func (h ErrMonad[T]) FlatMap[U] (mapFunc func(T) ErrMonad[U] ) ErrMonad[U] {
 	if h.err != nil{
-		return *h
+		return h
 	}
 	// 假设 mapFunc 有效
 	res := mapFunc(h.result)
@@ -163,11 +163,13 @@ func handle() error {
 	if res.Err != nil{
 		return res.Err
 	}
+	userInfo = res.Result
 	// use userInfo ...
 }
 
 ```
 
+可以看出相较于之前的版本，代码更简洁了一些 (至少少了)
 ### monad 如何解决回调地狱
 
 现在让我们来看看一点老东西。
