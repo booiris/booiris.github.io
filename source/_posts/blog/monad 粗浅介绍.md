@@ -173,6 +173,8 @@ func handle() error {
 
 然而理想是美好的，看着 monad 实现这么简单，为啥群友总说 go 不支持 monad 呢。回看本节标题 "**另一个宇宙**的 go error monad"，非常遗憾的是，在本宇宙中 go 的大道至简使得它不支持一个泛型特性:
 
+[Fetching Title#gmqh](https://github.com/golang/go/issues/49085)
+
 ### monad 如何解决回调地狱
 
 现在让我们来看看一点老东西。
