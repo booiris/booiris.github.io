@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-12 23:55:29
+updated: 2024-01-13 00:01:30
 tags: 
 top: false
 mathjax: true
@@ -185,7 +185,11 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085)
 
-这就导致了 `FlatMa`
+这就导致了 `FlatMap` 方法是不可行的。至此，go 的 monad 之旅到此结束。
+
+[Errors are values - The Go Programming Language](https://go.dev/blog/errors-are-values)
+
+[if err != nil 太烦？Go 创始人教你如何对错误进行编程！ - 知乎](https://zhuanlan.zhihu.com/p/548515367) (评论区是精华🤣)
 
 ### monad 如何解决回调地狱
 
