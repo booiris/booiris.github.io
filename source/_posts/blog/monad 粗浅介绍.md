@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-13 00:01:30
+updated: 2024-01-13 13:15:39
 tags: 
 top: false
 mathjax: true
@@ -138,9 +138,7 @@ func (h ErrMonad[T]) FlatMap[U] (mapFunc func(T) ErrMonad[U] ) ErrMonad[U] {
 	if h.err != nil{
 		return h
 	}
-	// 假设 mapFunc 有效
-	res := mapFunc(h.result)
-	return Unit(res)
+	return mapFunc(h.result)
 }
 ```
 
@@ -148,11 +146,11 @@ func (h ErrMonad[T]) FlatMap[U] (mapFunc func(T) ErrMonad[U] ) ErrMonad[U] {
 
 ```go
 // 获取要查询的ID
-func GetID (int64) (int64,error) {}
+func GetID (int64) ErrMonad[int64] {}
 // 获取 ID 对应的信息
-func GetInfo (id int64) (Info,error) {}
+func GetInfo (id int64) ErrMonad[Info] {}
 // 获取上一个 Info 中 uid 对应的信息
-func GetUserInfo (Info) (UserInfo,error) {}
+func GetUserInfo (Info) ErrMonad[UserInfo] {}
 
 func handle() error {
 	rawID := Unit(int64(0))
