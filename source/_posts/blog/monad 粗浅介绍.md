@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-19 00:03:11
+updated: 2024-01-19 00:07:52
 tags: 
 top: false
 mathjax: true
@@ -68,7 +68,7 @@ func G[U, P any](y U) M<P> { g(y) } // g(y) 是对 y 的一些行为
 res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 ```
 
-所以根据上面三个约束，可以看出 `Unit` 这个函数(签名为 (T -> M T) ) 是
+所以根据上面三个约束，可以看出 `Unit` 这个函数( 签名为 (T -> M T) ) 是**函数集合** `(T -> M U)` 上的单位元，其运算符为 `FlatMap` ，且运算符 `FlatMap` 满足结合律，这就构成了一个幺半群。
 
 ## monad 有什么用?
 
@@ -212,6 +212,8 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 * [Haskell Monad\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV17E411F7cH/)
 
 * [Functors, Applicatives, And Monads In Pictures - adit.io](https://www.adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
+
+* [如何自底向上地建立起对 Monad 的理解 - 知乎](https://zhuanlan.zhihu.com/p/579141325)
 
 * [什么是 Monad (Functional Programming)？ - Belleve的回答 - 知乎 🤣](https://www.zhihu.com/question/19635359/answer/62415213)
 
