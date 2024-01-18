@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-18 23:47:13
+updated: 2024-01-18 23:58:40
 tags: 
 top: false
 mathjax: true
@@ -44,7 +44,7 @@ monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的�
 
 	* 在 go 中可以理解为 `Unit(x).FlatMap(f)` 的执行结果和执行 `f(x)` 结果相同
 
-2. 转换子 `Unit` 是组合子 `>>=` 的右[单位元](https://en.wikipedia.org/wiki/Identity_element): `Mx >>= Unit <-> Mx`
+2. 转换子 `Unit` 是组合子 `>>=` 的右[单位元](https://en.wikipedia.org/wiki/Identity_element): `f(x) >>= Unit <-> f(x)`
 
 	* 在 go 中可以理解为 `M{ val: x }.FlatMap(Unit)` 的执行结果等于 `M{ val: x }`
 
