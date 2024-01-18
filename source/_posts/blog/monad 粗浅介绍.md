@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-13 13:15:39
+updated: 2024-01-18 23:07:24
 tags: 
 top: false
 mathjax: true
@@ -169,7 +169,7 @@ func handle() error {
 
 可以看出相较于之前的版本，代码更简洁了一些 (至少少了 `if err != nil { return err }`)。
 
-然而理想是美好的，看着 monad 实现这么简单，为啥群友总说 go 不支持 monad 呢。回看本节标题 "**另一个宇宙**的 go error monad"，非常遗憾的是，在本宇宙中 go 的大道至简使得它不支持**泛型方法参数** [Type Parameters Proposal](https://go.googlesource.com/proposal/+/master/design/43651-type-parameters.md#no-parameterized-methods)，以至于只能希望另一个宇宙能有个完善的泛型。具体来说就是不支持入参是一个带泛型的方法，即以下函数都是无法实现的:
+然而理想是美好的，看着 monad 实现这么简单，为啥群友总说 go 不支持 monad 呢。回看本节标题 "**另一个宇宙**的 go error monad"，非常遗憾的是，在本宇宙中 go 的大道至简使得它不支持**泛型方法参数** [Type Parameters Proposal](https://go.googlesource.com/proposal/+/master/design/43651-type-parameters.md#no-parameterized-methods)。具体来说就是不支持入参是一个带泛型的方法，即以下函数都是无法实现的:
 
 ```go
 func goIsBest( func[T any] () ) bool { return false }
@@ -179,15 +179,17 @@ func (GGGGGG[T]) gggggggggggg( func[U any] () ) {}
 func (GGGGGG[T]) gggggggggggg[U any] () {}
 ```
 
-摆个 issue 做参考🤣 (希望未来会有解决方法吧):
+摆个 issue 做参考(希望未来会有解决方法吧):
 
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085)
 
 这就导致了 `FlatMap` 方法是不可行的。至此，go 的 monad 之旅到此结束。
 
+附
+
 [Errors are values - The Go Programming Language](https://go.dev/blog/errors-are-values)
 
-[if err != nil 太烦？Go 创始人教你如何对错误进行编程！ - 知乎](https://zhuanlan.zhihu.com/p/548515367) (评论区是精华🤣)
+[if err != nil 太烦？Go 创始人教你如何对错误进行编程！ - 知乎](https://zhuanlan.zhihu.com/p/548515367) (评论区)
 
 ### monad 如何解决回调地狱
 
