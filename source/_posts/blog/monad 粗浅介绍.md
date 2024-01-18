@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-18 23:11:57
+updated: 2024-01-18 23:28:22
 tags: 
 top: false
 mathjax: true
@@ -185,11 +185,11 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 
 这就导致了 `FlatMap` 方法是不可行的。至此，go 的 monad 之旅到此结束。
 
-附 go 创始人的错误处理方法( 感觉就像一种青春版的 monad:
+附 go 创始人的错误处理方法( 感觉就像一种青春版的 monad，在例子中存在类型只有 io.Writer，所以只用在单个类型里打转，省略了由 T 类型到 U 类型的z:
 
-![image.png](https://cdn.jsdelivr.net/gh/booiris-cdn/img/20240118231100.png)
+![image.png](https://cdn.jsdelivr.net/gh/booiris-cdn/img/20240118232621.png)
 
-[Errors are values - The Go Programming Language](https://go.dev/blog/errors-are-values)
+[Errors are values - Thttps://go.dev/blog/errors-are-valueshe Go Programming Language](https://go.dev/blog/errors-are-values)
 
 [if err != nil 太烦？Go 创始人教你如何对错误进行编程！ - 知乎](https://zhuanlan.zhihu.com/p/548515367) (~~评论区~~)
 
