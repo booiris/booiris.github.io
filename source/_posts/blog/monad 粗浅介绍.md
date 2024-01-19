@@ -199,7 +199,7 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 
 现在让我们来看看一点老东西。
 
-异步编程
+异步编程能够提高系统的吞吐量，
 
 ### monad 在流式处理中的应用
 
