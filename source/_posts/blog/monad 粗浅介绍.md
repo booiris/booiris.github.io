@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-20 18:28:06
+updated: 2024-01-20 18:33:15
 tags: 
 top: false
 mathjax: true
@@ -228,13 +228,16 @@ fs.readdir(source, function (err, files) {
 })
 ```
 
-上面的代码具体作用就是通过传入的 `srouce` 读取指定目录下的文件列表，然后使用 `gm` 函数进行图像处理，保存处理后的图像到目标目录。
+上面的代码具体作用就是异步执行如下操作: 通过传入的 `srouce` 读取指定目录下的文件列表，然后使用 `gm` 函数进行图像处理，保存处理后的图像到目标目录。
 
-这就是早期
+可以看到代码的嵌套层级非常深，这就是早期
 
 ```go
 func work(){
-
+	files, _ := ioutil.ReadDir(folder)
+	for _, file := range files {
+		filesList = append(filesList, file.Name())
+	}
 }
 
 func main() {
