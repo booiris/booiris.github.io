@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-20 13:22:20
+updated: 2024-01-20 17:35:00
 tags: 
 top: false
 mathjax: true
@@ -199,7 +199,7 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 
 现在让我们来看看一点老东西。
 
-异步编程能够提高系统的吞吐量，
+
 
 ### monad 在流式处理中的应用
 
