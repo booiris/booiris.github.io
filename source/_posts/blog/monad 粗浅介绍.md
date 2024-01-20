@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-20 18:42:20
+updated: 2024-01-20 18:47:59
 tags: 
 top: false
 mathjax: true
@@ -199,7 +199,7 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 
 现在让我们来看看一点~~老~~(不新又不老)的东西。
 
-即使各位没写过 javascript，也许曾经听说过[回调地狱](http://callbackhell.com/)这个概念，具体来讲这是一种 javascript 异步编程中出现的一种现象。拿[Callback Hell](http://callbackhell.com/)中的例子举例吧:
+即使各位没写过 javascript，也可能听说过[回调地狱](http://callbackhell.com/)这个概念，具体来讲这是一种 javascript 异步编程中出现的一种现象。拿[Callback Hell](http://callbackhell.com/)中的例子举例吧:
 
 ```javascript
 fs.readdir(source, function (err, files) {
@@ -230,17 +230,21 @@ fs.readdir(source, function (err, files) {
 
 上面的代码具体作用就是异步执行如下操作: 通过传入的 `srouce` 读取指定目录下的文件列表，然后使用 `gm` 函数进行图像处理，保存处理后的图像到目标目录。
 
-可以看到代码的嵌套层级非常深，这就是早期
+可以看到代码的嵌套层级非常深，这就是早期 javascript 异步编程的问题，对于异步函数需要传入一个回调函数表明
 
 ```go
-func work(){
-	files, _ := ioutil.ReadDir(folder)
-	for _, file := range files {
-		if !file.IsDir(){
-			
+func work() {
+	entries, _ := os.ReadDir("./")
+	for _, entry := range entries {
+		info, _ := entry.Info()
+		if !info.IsDir() {
+			data, _ := os.ReadFile(entry.Name())
+			go handle_data() 
 		}
 	}
+	// wait 执行代码
 }
+
 
 func main() {
 	// some code
