@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-20 18:33:15
+updated: 2024-01-20 18:37:42
 tags: 
 top: false
 mathjax: true
@@ -70,7 +70,7 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 
 ## monad 有什么用?
 
-在列举完 monad 的定义后，为了避免陷在抽象的世界里无法自拔，笔者在接下来会具体列举一些例子说明 monad 的作用，帮助更好地说明什么是 monad 。
+在列举完 monad 的定义后，为了避免陷在抽象的世界里无法自拔，笔者在接下来会具体列举一些例子说明 monad 的作用 。以笔者的观点来说，monad 的最大作用就是提供了一种隐藏fu'zuo
 
 ### 另一个宇宙的 go error monad
 
@@ -236,15 +236,15 @@ fs.readdir(source, function (err, files) {
 func work(){
 	files, _ := ioutil.ReadDir(folder)
 	for _, file := range files {
-		filesList = append(filesList, file.Name())
+		if !file.IsDir(){
+			
+		}
 	}
 }
 
 func main() {
 	// some code
-
 	go work()
-
 	// some code
 }
 ```
