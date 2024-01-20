@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-20 17:56:17
+updated: 2024-01-20 18:12:06
 tags: 
 top: false
 mathjax: true
@@ -199,6 +199,7 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 
 现在让我们来看看一点~~老~~(不新又不老)的东西。
 
+即使各位没写过 javascript，也许曾经听过过[回调地狱](http://callbackhell.com/)这个概念，具体来讲这是一种 javascript 
 ### monad 在流式处理中的应用
 
 ## 总结
