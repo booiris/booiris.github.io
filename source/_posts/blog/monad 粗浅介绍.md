@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-20 18:12:06
+updated: 2024-01-20 18:16:46
 tags: 
 top: false
 mathjax: true
@@ -199,7 +199,40 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 
 现在让我们来看看一点~~老~~(不新又不老)的东西。
 
-即使各位没写过 javascript，也许曾经听过过[回调地狱](http://callbackhell.com/)这个概念，具体来讲这是一种 javascript 
+即使各位没写过 javascript，也许曾经听说过[回调地狱](http://callbackhell.com/)这个概念，具体来讲这是一种 javascript 异步编程中出现的一种现象。拿[Callback Hell](http://callbackhell.com/)中的例子举例吧:
+
+```javascript
+fs.readdir(source, function (err, files) {
+  if (err) {
+    console.log('Error finding files: ' + err)
+  } else {
+    files.forEach(function (filename, fileIndex) {
+      console.log(filename)
+      gm(source + filename).size(function (err, values) {
+        if (err) {
+          console.log('Error identifying file size: ' + err)
+        } else {
+          console.log(filename + ' : ' + values)
+          aspect = (values.width / values.height)
+          widths.forEach(function (width, widthIndex) {
+            height = Math.round(width / aspect)
+            console.log('resizing ' + filename + 'to ' + height + 'x' + height)
+            this.resize(width, height).write(dest + 'w' + width + '_' + filename, function(err) {
+              if (err) console.log('Error writing file: ' + err)
+            })
+          }.bind(this))
+        }
+      })
+    })
+  }
+})
+```
+
+上面的代码具体作用就是通过传入的 `srouce` 读取文件夹，
+
+```go
+```
+
 ### monad 在流式处理中的应用
 
 ## 总结
