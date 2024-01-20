@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-20 17:35:00
+updated: 2024-01-20 17:56:17
 tags: 
 top: false
 mathjax: true
@@ -197,9 +197,7 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 
 ### monad 如何解决回调地狱
 
-现在让我们来看看一点老东西。
-
-
+现在让我们来看看一点~~老~~(不新又不老)的东西。
 
 ### monad 在流式处理中的应用
 
