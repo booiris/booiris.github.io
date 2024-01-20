@@ -199,7 +199,7 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 
 现在让我们来看看一点~~老~~(不新又不老)的东西。
 
-即使各位没写过 javascript，也可能听说过[回调地狱](http://callbackhell.com/)这个概念，具体来讲这是一种 javascript 异步编程中出现的一种现象。拿[Callback Hell](http://callbackhell.com/)中的例子举例吧:
+即使没写过 javascript，也可能听说过[回调地狱](http://callbackhell.com/)这个概念，具体来讲这是一种 javascript 异步编程中出现的一种现象。拿[Callback Hell](http://callbackhell.com/)中的例子举例吧:
 
 ```javascript
 fs.readdir(source, function (err, files) {
