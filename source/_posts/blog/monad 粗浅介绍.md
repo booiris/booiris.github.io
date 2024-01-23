@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-22 13:37:17
+updated: 2024-01-23 13:11:27
 tags: 
 top: false
 mathjax: true
@@ -257,10 +257,13 @@ c(value) {
 
 在 2015 年后，promise 的出现缓解了 javascript 在异步编程中的问题，首先介绍一下什么是 promise:
 
-* promise 是 javascript 中的一个对象，通过
+* promise 是 javascript 中的一个对象，通过 `new Promise` 方法可以构造出一个 promise 对象。
 
+```javascript
+new Promise((resolve, reject) => { })
 ```
-```
+
+`new Promise` 的参数为一个函数，这个函数有两个入参 `resolve` 和 `reject`。其中 `resolve` 函数作用是将 Promise 的状态从 `padding` 改变成 `fulfilled` ；而 `reject` 函数作用是将 Promise 的状态从 `padding` 改变成 `rejected` 。
 
 ### monad 在流式处理中的应用
 
