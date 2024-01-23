@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-23 22:55:09
+updated: 2024-01-23 22:56:31
 tags: 
 top: false
 mathjax: true
@@ -261,6 +261,8 @@ c(value) {
 
 但上述做法带来的一个小问题是如果需要了解整个运行的流程，需要不断跳转函数才能知道整个运行逻辑，而不能直接在一个 main 函数中知晓。
 
+#### 异步和 monad
+
 #### promise 介绍
 
 在 2015 年后，promise 的出现缓解了 javascript 在异步编程中的问题，首先介绍一下什么是 promise:
@@ -294,8 +296,6 @@ x.catch((reason) => {
     console.log("break at " + reason)
 })
 ```
-
-#### promise 和 monad
 
 ### monad 在流式处理中的应用
 
