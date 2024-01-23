@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-23 23:11:49
+updated: 2024-01-23 23:14:18
 tags: 
 top: false
 mathjax: true
@@ -318,7 +318,6 @@ pre:  now run1
 pre:  run1 run2
 break at run2
 */
-
 ```
 
 ## 总结
