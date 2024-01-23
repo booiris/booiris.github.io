@@ -264,7 +264,7 @@ let x = Promise.resolve(123)
 console.log(x) // Promise { 123 }
 ```
 
-* promise 内部有三种状态 `pending` 、`fulfilled` 和 `rejected` 。
+* promise 内部有三种状态 `pending` 、`fulfilled` 和 `rejected` 。他们的作用在这里不深究，只要了解 `fulfilled` 为fang'fa
 
 * promise 有三个成员方法 `then` ，`catch` 和 `finally`。这里只介绍 `then` 和 `catch` 方法。
 
