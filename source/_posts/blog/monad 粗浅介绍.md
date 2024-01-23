@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-23 23:04:34
+updated: 2024-01-23 23:11:49
 tags: 
 top: false
 mathjax: true
@@ -295,6 +295,30 @@ let x = Promise.reject("now")
 x.catch((reason) => {
     console.log("break at " + reason)
 })
+```
+
+```javascript
+let x = Promise.resolve("now")
+console.log(x)
+x.then((x) => {
+    console.log("pre: ", x, "run1")
+    return Promise.resolve("run1")
+}).then((x) => {
+    console.log("pre: ", x, "run2")
+    return Promise.reject("run2")
+}).then((x) => {
+    console.log("pre: ", x, "run3")
+    return Promise.resolve("run3")
+}).catch((reason) => {
+    console.log("break at " + reason)
+})
+/*
+Promise { 'now' }
+pre:  now run1
+pre:  run1 run2
+break at run2
+*/
+
 ```
 
 ## 总结
