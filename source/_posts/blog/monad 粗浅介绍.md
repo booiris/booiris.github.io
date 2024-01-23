@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-23 22:36:14
+updated: 2024-01-23 22:39:28
 tags: 
 top: false
 mathjax: true
@@ -295,7 +295,9 @@ x.catch((reason) => {
 })
 ```
 
-#### promise 应用
+#### promise 和 monad
+
+下面用 
 
 ### monad 在流式处理中的应用
 
