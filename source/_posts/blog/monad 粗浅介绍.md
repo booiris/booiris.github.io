@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-23 23:28:17
+updated: 2024-01-23 23:42:25
 tags: 
 top: false
 mathjax: true
@@ -298,8 +298,6 @@ x.catch((reason) => {
 ```
 
 #### promise 和 monad
-
-
 
 ```javascript
 let x = Promise.resolve("now")
