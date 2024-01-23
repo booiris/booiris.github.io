@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-23 13:37:57
+updated: 2024-01-23 13:41:50
 tags: 
 top: false
 mathjax: true
@@ -266,9 +266,7 @@ console.log(x) // Promise { 123 }
 
 * promise 有三个成员方法 `then` ，`catch` 和 `finally`。这里只介绍 `then` 和 `catch` 方法。
 
-```javascript
-
-```
+简单来讲，`then` 函数入参是两个函数，返回值是一个 promise 对象。这两个函数一个用于 
 
 ### monad 在流式处理中的应用
 
