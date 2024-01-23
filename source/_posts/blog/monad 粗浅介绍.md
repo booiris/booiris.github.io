@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-23 13:49:18
+updated: 2024-01-23 22:34:50
 tags: 
 top: false
 mathjax: true
@@ -74,6 +74,8 @@ res2 := M{ val: x }.FlatMap(F).FlatMap(G)
 
 ### 另一个宇宙的 go error monad
 
+#### 引言
+
 在 go 编程中，可能常见如下代码:
 
 ```go
@@ -108,6 +110,8 @@ func handle() error {
 ![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/20231224210233.png)
 
 当然笔者并不反对 go 这种严格处理每个函数返回的错误值的思想，不过本文既然是有关 monad 的介绍，自然是想着怎么将 monad 套用到 go 的错误处理中。
+
+#### go 版 monad 式错误处理
 
 回顾 monad 的定义:
 
@@ -199,6 +203,8 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 
 现在让我们来看看一点~~老~~(不新又不老)的东西。
 
+#### 引言
+
 即使没写过 javascript，也可能听说过[回调地狱](http://callbackhell.com/)这个概念，具体来讲这是一种 javascript 异步编程中出现的一种现象。拿[Callback Hell](http://callbackhell.com/)中的例子举例吧:
 
 ```javascript
@@ -255,6 +261,8 @@ c(value) {
 
 但上述做法带来的一个小问题是如果需要了解整个运行的流程，需要不断跳转函数才能知道整个运行逻辑，而不能直接在一个 main 函数中知晓。
 
+#### promise 介绍
+
 在 2015 年后，promise 的出现缓解了 javascript 在异步编程中的问题，首先介绍一下什么是 promise:
 
 * promise 是 javascript 中的一个对象，通过 `Promise.resolve` 方法可以构造出一个 promise 对象。
@@ -264,11 +272,30 @@ let x = Promise.resolve(123)
 console.log(x) // Promise { 123 }
 ```
 
-* promise 内部有三种状态 `pending` 、`fulfilled` 和 `rejected` 。他们的作用在这里不深究，只要了解 `fulfilled` 为fang'fa
+* promise 内部有三种状态 `pending` 、`fulfilled` 和 `rejected` 。他们的作用在这里不深究，只要了解 `fulfilled` 可以认为是方法执行成功的状态，`rejected` 可以认为是方法返回 error 的状态即可。
 
 * promise 有三个成员方法 `then` ，`catch` 和 `finally`。这里只介绍 `then` 和 `catch` 方法。
 
-简单来讲，`then` 函数入参是两个函数，返回值是一个 promise 对象。这两个函数一个用于处 promise
+`then` 方法接受两个类型为函数的参数，一个是当状态为 `fulfilled` 的时候调用，另一个为 `rejected` 的时候调用。一般来说，笔者喜欢只传前一个参数，第二个参数使用缺省值，即只有在状态为成功的时候才执行传入的函数。具体代码例子如下:
+
+```javascript
+let x = Promise.resolve("now")
+x.then((x) => {
+    console.log("pre: ", x, "run1")
+    return Promise.resolve("run1")
+})
+```
+
+和 `then` 类似，`catch` 方法接受一个类型为函数的参数，当状态为 `rejected` 会调用，具体代码例子如下:
+
+```javascript
+let x = Promise.reject("now")
+x.catch((reason) => {
+    console.log("break at " + reason)
+})
+```
+
+#### promise 应用
 
 ### monad 在流式处理中的应用
 
