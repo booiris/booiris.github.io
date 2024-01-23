@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-23 22:34:50
+updated: 2024-01-23 22:36:14
 tags: 
 top: false
 mathjax: true
@@ -272,7 +272,7 @@ let x = Promise.resolve(123)
 console.log(x) // Promise { 123 }
 ```
 
-* promise 内部有三种状态 `pending` 、`fulfilled` 和 `rejected` 。他们的作用在这里不深究，只要了解 `fulfilled` 可以认为是方法执行成功的状态，`rejected` 可以认为是方法返回 error 的状态即可。
+* promise 内部有三种状态 `pending` 、`fulfilled` 和 `rejected` 。他们的作用在这里不深究，只要粗略地了解： `fulfilled` 可以认为是方法执行成功的状态，`rejected` 可以认为是方法返回 error 的状态。
 
 * promise 有三个成员方法 `then` ，`catch` 和 `finally`。这里只介绍 `then` 和 `catch` 方法。
 
@@ -281,7 +281,7 @@ console.log(x) // Promise { 123 }
 ```javascript
 let x = Promise.resolve("now")
 x.then((x) => {
-    console.log("pre: ", x, "run1")
+    console.log("pre: ", x, "running 1")
     return Promise.resolve("run1")
 })
 ```
