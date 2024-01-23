@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-23 13:11:27
+updated: 2024-01-23 13:15:06
 tags: 
 top: false
 mathjax: true
@@ -263,7 +263,9 @@ c(value) {
 new Promise((resolve, reject) => { })
 ```
 
-`new Promise` 的参数为一个函数，这个函数有两个入参 `resolve` 和 `reject`。其中 `resolve` 函数作用是将 Promise 的状态从 `padding` 改变成 `fulfilled` ；而 `reject` 函数作用是将 Promise 的状态从 `padding` 改变成 `rejected` 。
+`new Promise` 的参数为一个函数，这个函数有两个入参 `resolve` 和 `reject`。其中 `resolve` 函数作用是将 promise 的状态从 `padding` 改变成 `fulfilled` ；而 `reject` 函数作用是将 promise 的状态从 `padding` 改变成 `rejected` 。
+
+* promise 有三个成员方法 `then` ，`catch` 和 `finally`。
 
 ### monad 在流式处理中的应用
 
