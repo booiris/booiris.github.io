@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-23 13:41:50
+updated: 2024-01-23 13:49:18
 tags: 
 top: false
 mathjax: true
@@ -189,7 +189,7 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 
 附一篇经典的错误处理方法 blog ( 感觉就像一种青春版的 monad，在所举的例子中存在类型只有 io.Writer，所以只用在单个类型里打转，省略了由 T 类型到 U 类型的转换，所以这种形式可以在 go 中实现:
 
-![image.png](https://cdn.jsdelivr.net/gh/booiris-cdn/img/20240118232621.png)
+![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/20240118232621.png)
 
 [Errors are values - Thttps://go.dev/blog/errors-are-valueshe Go Programming Language](https://go.dev/blog/errors-are-values)
 
@@ -264,9 +264,11 @@ let x = Promise.resolve(123)
 console.log(x) // Promise { 123 }
 ```
 
+* promise 内部有三种状态 `pending` 、`fulfilled` 和 `rejected` 。
+
 * promise 有三个成员方法 `then` ，`catch` 和 `finally`。这里只介绍 `then` 和 `catch` 方法。
 
-简单来讲，`then` 函数入参是两个函数，返回值是一个 promise 对象。这两个函数一个用于 
+简单来讲，`then` 函数入参是两个函数，返回值是一个 promise 对象。这两个函数一个用于处 promise
 
 ### monad 在流式处理中的应用
 
