@@ -265,7 +265,7 @@ new Promise((resolve, reject) => { })
 
 `new Promise` 的参数为一个函数，这个函数有两个入参 `resolve` 和 `reject`。其中 `resolve` 函数作用是将 promise 的状态从 `pending` 改变成 `fulfilled` ；而 `reject` 函数作用是将 promise 的状态从 `pending` 改变成 `rejected` 。
 
-* promise 有三个成员方法 `then` ，`catch` 和 `finally`。
+* promise 有三个成员方法 `then` ，`catch` 和 `finally`。这里
 
 ### monad 在流式处理中的应用
 
