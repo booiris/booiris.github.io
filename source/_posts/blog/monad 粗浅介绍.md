@@ -299,6 +299,8 @@ x.catch((reason) => {
 
 #### promise 和 monad
 
+在了解了什么是 promise 后，
+
 ```javascript
 let x = Promise.resolve("now")
 console.log(x)
