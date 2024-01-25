@@ -126,7 +126,7 @@ type ErrMonad[T any] struct {
 
 上面的结构体包含了返回值和错误。
 
-* 然后需要一个由 `T` 构造成 `MT` 的函数:
+* 然后需要一个由 `T` 构造成 `M T` 的函数:
 
 ```go
 func Unit[T any] (result T) ErrMonad[T] {
