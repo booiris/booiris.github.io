@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-29 22:57:59
+updated: 2024-01-29 23:12:59
 tags: 
 top: false
 mathjax: true
@@ -301,6 +301,11 @@ x.catch((reason) => {
 
 在了解了 promise 的概念后，可以看出 promise 非常像一个 monad。下面来点证明：
 
+* 类型构造子：Promise <\T>
+
+* 类型转换子：Promise.resolve
+
+* 组合子：Promise<\T>.then( (value: T) => U )
 
 ```javascript
 let x = Promise.resolve("now")
