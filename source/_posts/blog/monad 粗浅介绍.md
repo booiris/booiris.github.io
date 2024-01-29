@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-29 23:12:59
+updated: 2024-01-29 23:29:08
 tags: 
 top: false
 mathjax: true
@@ -263,7 +263,7 @@ c(value) {
 
 #### 异步和 monad
 
-
+上述问题的根本原因在于异步过程是一个具有
 
 #### promise 介绍
 
@@ -303,11 +303,11 @@ x.catch((reason) => {
 
 在了解了 promise 的概念后，可以看出 promise 非常像一个 monad。下面来点证明：
 
-* 类型构造子：Promise <\T>
+* 类型构造子：Promise < T >
 
 * 类型转换子：Promise.resolve
 
-* 组合子：Promise<\T>.then( (value: T) => U )
+* 组合子：Promise< T >.then( (value: T) => U )
 
 ```javascript
 let x = Promise.resolve("now")
