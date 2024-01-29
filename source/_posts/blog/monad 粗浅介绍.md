@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-29 22:48:24
+updated: 2024-01-29 22:57:59
 tags: 
 top: false
 mathjax: true
@@ -299,7 +299,8 @@ x.catch((reason) => {
 
 #### promise 和 monad
 
-在了解了 promise 的概念后，可以看出
+在了解了 promise 的概念后，可以看出 promise 非常像一个 monad。下面来点证明：
+
 
 ```javascript
 let x = Promise.resolve("now")
@@ -340,4 +341,4 @@ break at run2
 
 * [深入理解函数式编程（下） - 美团技术团队](https://tech.meituan.com/2022/10/13/dive-into-functional-programming-02.html)
 
-* [Future与promise - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/Future%E4%B8%8Epromise#cite_note-1)
+* [Future与promise - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/Future%E4%B8%8Epromise)
