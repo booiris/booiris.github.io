@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-01-24 00:12:33
+updated: 2024-01-29 22:05:54
 tags: 
 top: false
 mathjax: true
@@ -205,7 +205,7 @@ func (GGGGGG[T]) gggggggggggg[U any] () {}
 
 #### 引言
 
-即使没写过 javascript，也可能听说过[回调地狱](http://callbackhell.com/)这个概念，具体来讲这是一种 javascript 异步编程中出现的一种现象。拿[Callback Hell](http://callbackhell.com/)中的例子举例吧:
+各位即使没写过 javascript，也可能听说过[回调地狱](http://callbackhell.com/)这个概念，具体来讲这是一种 javascript 异步编程中出现的一种现象。拿[Callback Hell](http://callbackhell.com/)中的例子举例吧:
 
 ```javascript
 fs.readdir(source, function (err, files) {
