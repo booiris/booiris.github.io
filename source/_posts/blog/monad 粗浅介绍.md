@@ -263,6 +263,8 @@ c(value) {
 
 #### 异步和 monad
 
+
+
 #### promise 介绍
 
 在 2015 年后，promise 的出现缓解了 javascript 在异步编程中的问题，首先介绍一下什么是 promise:
