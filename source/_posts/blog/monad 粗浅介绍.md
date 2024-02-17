@@ -1,7 +1,7 @@
 ---
 title: monad 粗浅介绍
 date: 2023-12-12 21:20:47
-updated: 2024-02-06 21:41:28
+updated: 2024-02-17 17:02:32
 tags: 
 top: false
 mathjax: true
@@ -175,7 +175,7 @@ func handle() error {
 
 可以看出相较于之前的版本，代码更简洁了一些 (至少少了 `if err != nil { return err }`)。
 
-然而理想是美好的，看着 monad 实现这么简单，为啥群友总说 go 不支持 monad 呢。回看本节标题 "**另一个宇宙**的 go error monad"，非常遗憾的是，在本宇宙中 go 的大道至简使得它不支持**泛型方法参数** [Type Parameters Proposal](https://go.googlesource.com/proposal/+/master/design/43651-type-parameters.md#no-parameterized-methods)。具体来说就是不支持入参是一个带泛型的方法，即以下函数都是无法实现的:
+然而理想是美好的，看着 monad 实现这么简单，为啥群友总说 go 不支持 monad 呢。回看本节标题 "**另一个宇宙**的 go error monad"，非常遗憾的是，目前的 go 不支持**泛型方法参数** [Type Parameters Proposal](https://go.googlesource.com/proposal/+/master/design/43651-type-parameters.md#no-parameterized-methods)。具体来说就是不支持入参是一个带泛型的方法，即以下函数都是无法实现的:
 
 ```go
 func goIsBest( func[T any] () ) bool { return false }
