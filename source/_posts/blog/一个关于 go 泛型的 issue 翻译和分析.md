@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-21 00:42:32
+updated: 2024-02-21 00:43:35
 tags: 
 top: false
 mathjax: true
@@ -12,30 +12,30 @@ author: booiris
 
 ## 引言
 
-众所周知 go 的泛型是个残废，由于其不支持 parameterized methods (泛型方法不能作为函数参数)，导致其无法实现 monad、链式调用等等操作。在这个 issue 中 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085) 有着充分的讨论，本文旨在对其中的讨论进行翻译与分析，如有错误恳请斧正。
+众所周知， go 的泛型是个残废，由于其不支持 parameterized methods (泛型方法不能作为函数参数)，导致其无法实现 monad、链式调用等等操作。在这个 issue 中 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085) 有着充分的讨论，本文旨在对其中的讨论进行翻译与分析，如有错误恳请斧正。
 
 ## 前置知识
 
 在看 issue 之前，首先介绍一下泛型的通常实现方式，一般有如下几种方式
 
 1. **类型擦除**: 这是 Java 泛型的实现方式。在编译时，泛型类型信息会被擦除，所有的泛型被转换为基类 Object (在 go 中相当于将所有的类型变成 interface{} )，编译器同时会在必要时插入类型转换代码来确保类型安全。
-2. **模板实例化**： C++ 使用模板来实现泛型。在编译时，模板会生成对应于每种具体类型的实例化代码。如 `T add(T a, T b) `的泛型方法，对于 `add(1,2)` 和 `add(1.0,2.0)` 会生成两个函数 `int add(int a, int b)` 和 `double add( double a, double b)` 。
+2. **模板实例化**： C++ 使用模板来实现泛型。在编译时，模板会生成对应于每种具体类型的实例化代码。如 `T add(T a, T b) ` 的泛型方法，对于 `add(1,2)` 和 `add(1.0,2.0)` 会生成两个函数 `int add(int a, int b)` 和 `double add( double a, double b)` 。
 3. **即时编译**: [How Generics Differ in Java and C# | HackerNoon](https://hackernoon.com/how-generics-differ-in-java-and-c), [C#泛型详解 - 知乎](https://zhuanlan.zhihu.com/p/348761322), [c# - What is reification? - Stack Overflow](https://stackoverflow.com/questions/31876372/what-is-reification)，从这些链接可以大致看出，c# 的泛型实现是编译时使用占位符表示泛型类型，然后在运行时动态实例化各种类型。
 
 回到 go 的泛型，实际上 go 的泛型实现方式有三种提案，下面分别介绍这三种提案，有助于后续对 issue 中的讨论进行分析:
 
-## Stenciling
+### Stenciling
 
 [Generics implementation - Stenciling](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-stenciling.md)
 
 首先是被称为蜡印(Stenciling) 的实现，实际上这个 c++、rust 的泛型实现方法很相似，都是在编译实例化所有的类型，生成多个对应类型的函数。
 
-## Dictionaries
+### Dictionaries
 
 [Generics implementation - Dictionaries](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-dictionaries.md)
 
-## GC Shape Stenciling
+### GC Shape Stenciling
 
 [Generics implementation - GC Shape Stenciling](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-gcshape.md)
 
-# 正文
+## 正文
