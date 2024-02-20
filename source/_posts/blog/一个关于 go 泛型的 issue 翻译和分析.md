@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-21 00:37:14
+updated: 2024-02-21 00:42:32
 tags: 
 top: false
 mathjax: true
@@ -10,11 +10,11 @@ categories:
 author: booiris
 ---
 
-# 引言
+## 引言
 
 众所周知 go 的泛型是个残废，由于其不支持 parameterized methods (泛型方法不能作为函数参数)，导致其无法实现 monad、链式调用等等操作。在这个 issue 中 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085) 有着充分的讨论，本文旨在对其中的讨论进行翻译与分析，如有错误恳请斧正。
 
-# 前置知识
+## 前置知识
 
 在看 issue 之前，首先介绍一下泛型的通常实现方式，一般有如下几种方式
 
@@ -24,19 +24,18 @@ author: booiris
 
 回到 go 的泛型，实际上 go 的泛型实现方式有三种提案，下面分别介绍这三种提案，有助于后续对 issue 中的讨论进行分析:
 
-[Generics implementation - Stenciling](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-stenciling.md)
-
-[Generics implementation - Dictionaries](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-dictionaries.md)
-
-[Generics implementation - GC Shape Stenciling](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-gcshape.md)
-
 ## Stenciling
 
-首先是被称为layin
+[Generics implementation - Stenciling](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-stenciling.md)
+
+首先是被称为蜡印(Stenciling) 的实现，实际上这个 c++、rust 的泛型实现方法很相似，都是在编译实例化所有的类型，生成多个对应类型的函数。
 
 ## Dictionaries
 
+[Generics implementation - Dictionaries](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-dictionaries.md)
+
 ## GC Shape Stenciling
 
-# 正文
+[Generics implementation - GC Shape Stenciling](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-gcshape.md)
 
+# 正文
