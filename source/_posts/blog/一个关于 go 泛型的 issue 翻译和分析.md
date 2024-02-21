@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-21 23:28:15
+updated: 2024-02-21 23:38:59
 tags: 
 top: false
 mathjax: true
@@ -67,13 +67,42 @@ func f2(x int, y complex128) struct{f int} {
 
 > I suspect there will be lots of cases where sharing is possible, if the underlying types are indistinguishable w.r.t. the garbage collector (same size and ptr/nonptr layout)
 
-作者认为尽管类型可以有很多个(如 `int` `type myInt int` )，但实际上内存布局都是相同的，所以实际上相同内存布局的值类型可以共享代码，这就减少了生成的代码大小同时也加快了编译时间。事实上这就是 go 实际的泛型实现(GC Shape Stenciling) 。
+作者认为尽管类型可以有很多个(如 `int` `type myInt int` )，但实际上内存布局都是相同的，相同内存布局的值类型可以共享代码，这就减少了生成的代码大小同时也加快了编译时间。事实上这就是 go 实际的泛型实现(GC Shape Stenciling) 。
 
 ### Dictionaries
 
 [Generics implementation - Dictionaries](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-dictionaries.md)
 
+字典(Dictionaries)方式的实现方式正如其名，对于如下泛型函数:
 
+```go
+func f[T1, T2 any](x int, y T1) T2 {
+    ...
+}
+```
+
+存在如下两个调用:
+
+```go
+var a float64 = f[int, float64](7, 8.0)
+var b struct{f int} = f[complex128, struct{f int}](3, 1+1i)
+```
+
+那么编译其会实例化**一个**函数和一个字典:
+
+```go
+type dictionary struct {
+    T1 *runtime._type
+    T2 *runtime._type
+    ...
+}
+
+
+
+func f (type_info dictionary, x int, y T1) T2 {
+    ...
+}
+```
 
 ### GC Shape Stenciling
 
