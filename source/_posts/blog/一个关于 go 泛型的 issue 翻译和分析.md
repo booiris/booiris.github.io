@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-21 12:57:28
+updated: 2024-02-21 13:14:25
 tags: 
 top: false
 mathjax: true
@@ -29,6 +29,32 @@ author: booiris
 [Generics implementation - Stenciling](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-stenciling.md)
 
 首先是被称为蜡印(Stenciling) 的实现，实际上这个 c++、rust 的泛型实现方法很相似，都是在编译实例化所有的类型，生成多个对应类型的函数。
+
+具体例子在开头已经指出，对于如下泛型函数
+
+```go
+func f[T1, T2 any](x int, y T1) T2 {
+    ...
+}
+```
+
+存在如下两个调用
+
+```go
+var a float64 = f[int, float64](7, 8.0)
+var b struct{f int} = f[complex128, struct{f int}](3, 1+1i)
+```
+
+使用 Stenciling 方法会实例化两个类型函数用于调用:
+
+```go
+func f1(x int, y int) float64 {
+    ... identical bodies ...
+}
+func f2(x int, y complex128) struct{f int} {
+    ... identical bodies ...
+}
+```
 
 ### Dictionaries
 
