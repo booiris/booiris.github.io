@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-21 13:23:17
+updated: 2024-02-21 13:31:54
 tags: 
 top: false
 mathjax: true
@@ -60,7 +60,8 @@ func f2(x int, y complex128) struct{f int} {
 
 对于 Stenciling 方法，提案提出两个问题:
 
-1. 实例
+1. 编译期实例化泛型导致编译时间变长
+2. 编译期实例化泛型导致生成的代码变多，生成的二进制文件变大，有可能导致instruction cache miss 和 分支预测失效(为啥?)等问题。
 
 ### Dictionaries
 
