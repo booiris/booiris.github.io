@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-21 13:31:54
+updated: 2024-02-21 23:08:59
 tags: 
 top: false
 mathjax: true
