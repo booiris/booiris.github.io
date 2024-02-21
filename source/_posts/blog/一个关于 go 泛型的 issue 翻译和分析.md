@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-21 13:18:08
+updated: 2024-02-21 13:23:17
 tags: 
 top: false
 mathjax: true
@@ -12,7 +12,7 @@ author: booiris
 
 ## 引言
 
-众所周知， go 的泛型是个残废，由于其不支持 parameterized methods (泛型方法不能作为函数参数)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085) 有着充分的讨论，本文旨在对其中的讨论进行翻译与分析，找出 go 是 xx 的原因，如有错误恳请斧正。
+众所周知， go 的泛型并不完善，由于其不支持 parameterized methods (泛型方法不能作为函数参数)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085) 有着充分的讨论，本文旨在对其中的讨论进行翻译与分析，找出 go 是 xx 的原因，如有错误恳请斧正。
 
 ## 前置知识
 
@@ -56,7 +56,11 @@ func f2(x int, y complex128) struct{f int} {
 }
 ```
 
-由于不是 go 泛型的实际实现，所以其中举例的命名实现、实例化方法、类型
+由于不是 go 泛型的实际实现，所以其中所提到的命名实现、实例化方法、类型约束和重复实例化代码处理就不细说了。具体提一下其中的 risks 部分。
+
+对于 Stenciling 方法，提案提出两个问题:
+
+1. 实例
 
 ### Dictionaries
 
