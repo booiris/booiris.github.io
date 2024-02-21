@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-21 23:38:59
+updated: 2024-02-21 23:41:37
 tags: 
 top: false
 mathjax: true
@@ -30,7 +30,7 @@ author: booiris
 
 首先是被称为蜡印(Stenciling) 的实现，实际上这个 c++、rust 的泛型实现方法很相似，都是在编译实例化所有的类型，生成多个对应类型的函数。
 
-具体例子在开头已经指出，对于如下泛型函数:
+对于如下泛型函数:
 
 ```go
 func f[T1, T2 any](x int, y T1) T2 {
@@ -96,8 +96,6 @@ type dictionary struct {
     T2 *runtime._type
     ...
 }
-
-
 
 func f (type_info dictionary, x int, y T1) T2 {
     ...
