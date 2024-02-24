@@ -176,7 +176,7 @@ func main() {
 	f.Func.Call([]reflect.Value{reflect.ValueOf(S{}), reflect.ValueOf(0)})
 }
 ```
-
+[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)
 ### 翻译
 
 由于之后的讨论太长，所以接下来省略部分评论(有些不是关于泛型的讨论+有些真的是很呆…)并且根据 issue 里提出的不同解决方案进行分类。
