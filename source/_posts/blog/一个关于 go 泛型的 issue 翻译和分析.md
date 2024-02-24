@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 17:30:05
+updated: 2024-02-24 17:39:03
 tags: 
 top: false
 mathjax: true
@@ -183,6 +183,10 @@ func main() {
 
 #### interface 约束派 **[deanveloper](https://github.com/deanveloper)**
 
-和我的想法一样，[Fetching Title#g2hz](https://github.com/golang/go/issues/49085#issuecomment-948108705)
+和我的想法一样，认为给 interface 加入不能有 `type parameters` 的约束，剩下就只用处理反射的问题就行了。即使存在一些约束，但是残缺的 `type parameters` 也能实现 monad 、简单的流式调用等操作。
+
+> I think this solution makes the most sense. They could then (under the hood) be treated a regular function. The reason why this would be useful is that methods do not only serve the purpose of implementing interfaces; methods also serve as a means of organization for functions that operate on particular structures. It may be a bit of a challenge about how type-parameterized methods would appear in `"reflect"`, though.
+
+链接： [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-948108705)
 
 ## 总结
