@@ -189,4 +189,9 @@ func main() {
 
 链接： [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-948108705)
 
+#### gava派 **[mariomac](https://github.com/mariomac)**
+
+链接：[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-986056824)
+
+
 ## 总结
