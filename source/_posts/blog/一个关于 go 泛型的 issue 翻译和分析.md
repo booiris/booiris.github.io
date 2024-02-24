@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 15:42:45
+updated: 2024-02-24 15:49:09
 tags: 
 top: false
 mathjax: true
@@ -109,3 +109,7 @@ func f (type_info dictionary, x int, y T1) T2 {
 [Generics implementation - GC Shape Stenciling](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-gcshape.md)
 
 ## 正文
+
+下面终于来到 [issue](https://github.com/golang/go/issues/49085) 分析环节。
+
+首先是问题提出人由于 go 的泛型
