@@ -195,4 +195,6 @@ func main() {
 
 #### 语法糖派 **[wxblue](https://github.com/wxblue)**
 
+#### 显式声明派 **[changkun](https://github.com/changkun)** 
+
 ## 总结
