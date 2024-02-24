@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 23:34:21
+updated: 2024-02-25 01:12:52
 tags: 
 top: false
 mathjax: true
@@ -165,7 +165,7 @@ func CheckSIdentity() {
 
 1. 编译器努努力，根据函数的调用链实例化对应的函数。然而由于 go 中的**反射**的存在，在编译期实际上无法确定所有的函数调用链 。(**这个也是我感觉 go 支持 `type parameters` 里最难受的地方**)
 2. 学习 java or C#，运行时实例化，这就导致了 go 需要支持某种 JIT，或者使用基于反射的方法，这些实现起来都十分复杂，而且会导致运行时速度变慢。
-3. 约束 interface 中不能有 `type parameters` ，因为无法感知类型的原因就是因为 interface 将实际类型信息隐藏了，不过还是存在反射的问题(给 reflect 加个 hook 记录调用?或者直接禁止反射调用泛型函数)：
+3. 约束 interface 中禁用 `type parameters` ，因为无法感知类型的原因就是因为 interface 将实际类型信息隐藏了，不过还是存在反射的问题(给 reflect 加个 hook 记录调用?或者直接禁止反射调用泛型函数)：
 
 ```go
 type S struct{}
@@ -176,7 +176,11 @@ func main() {
 	f.Func.Call([]reflect.Value{reflect.ValueOf(S{}), reflect.ValueOf(0)})
 }
 ```
+
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)
+
+interface 中禁用 `type parameters` 无法实现通用 iter
+
 ### 翻译
 
 由于之后的讨论太长，所以接下来省略部分评论(有些不是关于泛型的讨论+有些真的是很呆…)并且根据 issue 里提出的不同解决方案进行分类。
@@ -193,7 +197,7 @@ func main() {
 
 链接：[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-986056824)
 
-#### 语法糖派 **[wxblue](https://github.com/wxblue)**
+#### 语法糖派(投降派) **[wxblue](https://github.com/wxblue)**
 
 #### 显式声明派 **[changkun](https://github.com/changkun)**、**[seborama](https://github.com/seborama)**
 
