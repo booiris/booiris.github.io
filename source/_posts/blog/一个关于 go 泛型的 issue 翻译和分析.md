@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 18:14:36
+updated: 2024-02-24 21:39:30
 tags: 
 top: false
 mathjax: true
@@ -192,5 +192,7 @@ func main() {
 #### gava派 **[mariomac](https://github.com/mariomac)**
 
 链接：[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-986056824)
+
+#### 语法糖派 **[wxblue](https://github.com/wxblue)**
 
 ## 总结
