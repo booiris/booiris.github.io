@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 15:53:40
+updated: 2024-02-24 15:58:25
 tags: 
 top: false
 mathjax: true
@@ -118,4 +118,8 @@ func f (type_info dictionary, x int, y T1) T2 {
 func (si *stream[IN]) Map[OUT any](f func(IN) OUT) stream[OUT]
 ```
 
-这就导致了在 go 中无法实现常规的流式处理方法。同时**[mariomac](https://github.com/mariomac)** 也提出 
+这就导致了在 go 中无法实现常规的流式处理方法。同时 **[mariomac](https://github.com/mariomac)** 也提出如果 go 能支持 `type parameters`，那么某些领域在构造代码的时候会更加简便，例如:
+
+1. testing: `Assert(actual).ToBe(expected)`
+2. mocking: `On(obj.Sum).WithArgs(7, 8).ThenReturn(15)`
+
