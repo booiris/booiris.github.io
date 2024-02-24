@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 21:39:30
+updated: 2024-02-24 21:54:51
 tags: 
 top: false
 mathjax: true
@@ -195,6 +195,6 @@ func main() {
 
 #### 语法糖派 **[wxblue](https://github.com/wxblue)**
 
-#### 显式声明派 **[changkun](https://github.com/changkun)** 
+#### 显式声明派 **[changkun](https://github.com/changkun)** **[seborama](https://github.com/seborama)**
 
 ## 总结
