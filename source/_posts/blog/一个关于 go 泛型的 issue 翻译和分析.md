@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 18:09:14
+updated: 2024-02-24 18:14:36
 tags: 
 top: false
 mathjax: true
@@ -181,7 +181,7 @@ func main() {
 
 由于之后的讨论太长，所以接下来省略部分评论并且根据 issue 里提出的不同解决方案进行分类。
 
-#### interface 约束派 **[deanveloper](https://github.com/deanveloper)**
+#### 妥协派 **[deanveloper](https://github.com/deanveloper)**
 
 和我的想法一样，认为给 interface 加入不能有 `type parameters` 的约束，剩下就只用处理反射的问题就行了。即使存在一些约束，但是残缺的 `type parameters` 也能实现 monad 、简单的流式调用等操作。
 
