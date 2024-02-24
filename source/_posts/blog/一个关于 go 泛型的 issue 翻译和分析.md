@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 16:04:26
+updated: 2024-02-24 16:17:00
 tags: 
 top: false
 mathjax: true
@@ -157,4 +157,6 @@ func CheckSIdentity() {
 }
 ```
 
-在上面的代码中，
+在上面的代码中，p1 中的 S 实现了 p2 中的 `HasIdentity` 接口，在 p3 中有一个函数实现了将入参断言为 `HasIdentity` 并调用其中的函数的功能。在 p4 中调用了 p3 中的函数并传入了 p1 中定义的 S。
+
+看着还挺合理，但是问题来了，在 p3 中的函数在断言完入参后，将qi'z
