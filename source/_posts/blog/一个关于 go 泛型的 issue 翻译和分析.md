@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 17:26:18
+updated: 2024-02-24 17:30:05
 tags: 
 top: false
 mathjax: true
@@ -12,7 +12,7 @@ author: booiris
 
 ## 引言
 
-众所周知， go 的泛型并不完善，由于其不支持 parameterized methods (泛型方法不能作为函数参数)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085) 有着充分的讨论，本文旨在对其中的讨论进行翻译与分析，找出 go 是 xx 的原因，如有错误恳请斧正。
+众所周知， go 的泛型并不完善，由于其不支持 `type parameters` (泛型方法不能作为函数参数)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085) 有着充分的讨论，本文旨在对其中的讨论进行翻译与分析，找出 go 是 xx 的原因，如有错误恳请斧正。
 
 ## 前置知识
 
@@ -183,6 +183,6 @@ func main() {
 
 #### interface 约束派 **[deanveloper](https://github.com/deanveloper)**
 
-和我的想法
+和我的想法一样，[Fetching Title#g2hz](https://github.com/golang/go/issues/49085#issuecomment-948108705)
 
 ## 总结
