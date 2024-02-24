@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 16:29:30
+updated: 2024-02-24 16:34:29
 tags: 
 top: false
 mathjax: true
@@ -161,4 +161,9 @@ func CheckSIdentity() {
 
 看着还挺合理，但是问题来了，在 p3 中的 `CheckIdentity` 在断言完入参后，调用了一个类型为 `int` 的 `Identity` 函数。根据上面函数的调用链我们可以知道，它其实是在调用 `p1.S.Identity[ int ]`，只需要实例化一个 `p1.S.Identity[ int ]` 代码块即可。然而，由于 go 的**大道至简**，类型只有通过 import 才可见，也就是说 p3 是无法感知到 p1.S 这个类型的，所以实例化 `p1.S.Identity[ int ]` 也就无从说起了。
 
-之后
+之后提案中给出了三个方案:
+
+1. 编译器努努力，根据函数的调用链实例化对应的函数。然而由于 go 中的**反射**的存在，在编译期实际上无法确定所有的函数调用链 (这个也是我感觉 go 支持 `type parameters` 里最难受的地方)。
+2. 
+
+## 总结
