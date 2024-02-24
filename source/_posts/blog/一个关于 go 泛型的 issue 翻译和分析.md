@@ -123,4 +123,38 @@ func (si *stream[IN]) Map[OUT any](f func(IN) OUT) stream[OUT]
 1. testing (?): `Assert(actual).ToBe(expected)`
 2. mocking (?): `On(obj.Sum).WithArgs(7, 8).ThenReturn(15)`
 
-之后有人贴出 go 不支持 `type parameters` 的原因: [Type Parameters Proposal](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#No-parameterized-methods)
+### 原因
+
+之后有人贴出 go 不支持 `type parameters` 的原因: [Type Parameters Proposal](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#No-parameterized-methods)。考虑如下代码:
+
+```go
+package p1
+type S struct{}
+func (S) Identity[T any](v T) T { return v }
+
+package p2
+type HasIdentity interface {
+	Identity[T any](T) T
+}
+
+package p3
+import "p2"
+func CheckIdentity(v interface{}) {
+	if vi, ok := v.(p2.HasIdentity); ok {
+		if got := vi.Identity[int](0); got != 0 {
+			panic(got)
+		}
+	}
+}
+
+package p4
+import (
+	"p1"
+	"p3"
+)
+func CheckSIdentity() {
+	p3.CheckIdentity(p1.S{})
+}
+```
+
+在上面的代码中，
