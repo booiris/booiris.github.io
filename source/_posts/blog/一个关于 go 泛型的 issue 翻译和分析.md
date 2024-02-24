@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 22:00:36
+updated: 2024-02-24 22:16:39
 tags: 
 top: false
 mathjax: true
@@ -179,7 +179,7 @@ func main() {
 
 ### 翻译
 
-由于之后的讨论太长，所以接下来省略部分评论并且根据 issue 里提出的不同解决方案进行分类。
+由于之后的讨论太长，所以接下来省略部分评论(有些真的是很呆…)并且根据 issue 里提出的不同解决方案进行分类。
 
 #### 妥协派 **[deanveloper](https://github.com/deanveloper)**
 
@@ -193,6 +193,6 @@ func main() {
 
 #### 语法糖派 **[wxblue](https://github.com/wxblue)**
 
-#### 显式声明派 **[changkun](https://github.com/changkun)** **[seborama](https://github.com/seborama)**
+#### 显式声明派 **[changkun](https://github.com/changkun)**、**[seborama](https://github.com/seborama)**
 
 ## 总结
