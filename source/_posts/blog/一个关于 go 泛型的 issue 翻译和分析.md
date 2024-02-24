@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 16:34:29
+updated: 2024-02-24 16:44:07
 tags: 
 top: false
 mathjax: true
@@ -165,6 +165,6 @@ func CheckSIdentity() {
 
 1. 编译器努努力，根据函数的调用链实例化对应的函数。然而由于 go 中的**反射**的存在，在编译期实际上无法确定所有的函数调用链 (这个也是我感觉 go 支持 `type parameters` 里最难受的地方)。
 2. 学习 java or C#，运行时实例化，这就导致了 go 需要支持某种 JIT，或者使用基于反射的方法，这些实现起来都十分复杂，而且会导致运行时速度变慢。
-3. 约束 interface 中不能有 `type parameters` 。(这个靠谱点，由二级)
+3. 约束 interface 中不能有 `type parameters` ，因为无法感知类型的原因就是因为 interface 将实际类型信息隐藏了。(这个靠谱点，由特别难用变成一般难用)
 
 ## 总结
