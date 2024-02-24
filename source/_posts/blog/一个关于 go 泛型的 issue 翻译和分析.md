@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 17:22:01
+updated: 2024-02-24 17:26:18
 tags: 
 top: false
 mathjax: true
@@ -177,8 +177,12 @@ func main() {
 }
 ```
 
+### 翻译
+
 由于之后的讨论太长，所以接下来省略部分评论并且根据 issue 里提出的不同解决方案分块进行翻译。
 
+#### interface 约束派 **[deanveloper](https://github.com/deanveloper)**
 
+和我的想法
 
 ## 总结
