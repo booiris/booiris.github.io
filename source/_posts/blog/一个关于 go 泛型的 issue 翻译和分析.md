@@ -122,3 +122,5 @@ func (si *stream[IN]) Map[OUT any](f func(IN) OUT) stream[OUT]
 
 1. testing (?): `Assert(actual).ToBe(expected)`
 2. mocking (?): `On(obj.Sum).WithArgs(7, 8).ThenReturn(15)`
+
+之后有人贴出 go 不支持 `type parameters` 的原因: [Type Parameters Proposal](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#No-parameterized-methods)
