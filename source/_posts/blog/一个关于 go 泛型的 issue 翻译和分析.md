@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 17:07:06
+updated: 2024-02-24 17:22:01
 tags: 
 top: false
 mathjax: true
@@ -112,7 +112,7 @@ func f (type_info dictionary, x int, y T1) T2 {
 
 下面终于来到 [issue](https://github.com/golang/go/issues/49085) 分析环节。
 
-首先是问题提出人 **[mariomac](https://github.com/mariomac)** 由于 go 的泛型不支持 `type parameters`，所以如下代码无法编译:
+首先是问题提出人 **[mariomac](https://github.com/mariomac)** 提出由于 go 的泛型不支持 `type parameters`，所以如下代码无法编译:
 
 ```go
 func (si *stream[IN]) Map[OUT any](f func(IN) OUT) stream[OUT]
@@ -177,5 +177,8 @@ func main() {
 }
 ```
 
-由于之后的讨论太长，所以接下来
+由于之后的讨论太长，所以接下来省略部分评论并且根据 issue 里提出的不同解决方案分块进行翻译。
+
+
+
 ## 总结
