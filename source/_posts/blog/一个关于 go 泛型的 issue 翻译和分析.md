@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-22 14:31:24
+updated: 2024-02-24 14:33:24
 tags: 
 top: false
 mathjax: true
@@ -63,7 +63,7 @@ func f2(x int, y complex128) struct{f int} {
 1. 编译期实例化泛型导致编译时间变长
 2. 编译期实例化泛型导致生成的代码变多，生成的二进制文件变大，有可能导致 instruction cache miss 和 分支预测失效(为啥?)等问题。
 
-提案末尾中大致提出了使用增量编译减少编译时间、多次调用编译器来去除重复的实例化代码(因为 go 是以包维度进行编译的)等方案。不过这些都不重要，重要的是文中的一段话:
+提案末尾中大致提出了使用增量编译减少编译时间、多次调用编译器来去除重复的实例化代码(因为 go 是以包维度进行编译的)等方案。不过这些都不重要，重要的是提案中的一段话:
 
 > I suspect there will be lots of cases where sharing is possible, if the underlying types are indistinguishable w.r.t. the garbage collector (same size and ptr/nonptr layout)
 
