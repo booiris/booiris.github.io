@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-24 15:38:43
+updated: 2024-02-24 15:42:45
 tags: 
 top: false
 mathjax: true
@@ -91,13 +91,18 @@ var b struct{f int} = f[complex128, struct{f int}](3, 1+1i)
 那么编译其会实例化**一个**函数和**多个**字典:
 
 ```go
-type dictionary struct {
+type pos1CallSiteDictionary struct {
+}
+
+type pos2CallSiteDictionary struct {
 }
 
 func f (type_info dictionary, x int, y T1) T2 {
     ...
 }
 ```
+
+#### dictionary 包含的信息
 
 ### GC Shape Stenciling
 
