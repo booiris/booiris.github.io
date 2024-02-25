@@ -12,7 +12,7 @@ author: booiris
 
 ## 引言
 
-众所周知， go 的泛型并不完善，由于其不支持 `type parameters` (泛型方法)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085) 有着充分的讨论，本文旨在对其中的讨论进行翻译与分析，找出 go 是 xx 的原因，如有错误恳请斧正。
+众所周知， go 的泛型并不完善，由于其不支持 `parameterized methods` (泛型方法)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085) 有着充分的讨论，本文旨在对其中的讨论进行翻译与分析，找出 go 是 xx 的原因，如有错误恳请斧正。
 
 ## 前置知识
 
@@ -112,20 +112,20 @@ func f (type_info dictionary, x int, y T1) T2 {
 
 下面终于来到 [issue](https://github.com/golang/go/issues/49085) 分析环节。
 
-首先是问题提出人 **[mariomac](https://github.com/mariomac)** 提出由于 go 的泛型不支持 `type parameters`，所以如下代码无法编译:
+首先是问题提出人 **[mariomac](https://github.com/mariomac)** 提出由于 go 的泛型不支持 `parameterized methods`，所以如下代码无法编译:
 
 ```go
 func (si *stream[IN]) Map[OUT any](f func(IN) OUT) stream[OUT]
 ```
 
-这就导致了在 go 中无法实现常规的流式处理方法。同时 **[mariomac](https://github.com/mariomac)** 也提出如果 go 能支持 `type parameters`，那么某些领域在构造代码的时候会更加简便，例如(举的例子奇奇怪怪的，看着也没用到 `type parameters`):
+这就导致了在 go 中无法实现常规的流式处理方法。同时 **[mariomac](https://github.com/mariomac)** 也提出如果 go 能支持 `parameterized methods`，那么某些领域在构造代码的时候会更加简便，例如(举的例子奇奇怪怪的，看着也没用到 `parameterized methods`):
 
 1. testing (?): `Assert(actual).ToBe(expected)`
 2. mocking (?): `On(obj.Sum).WithArgs(7, 8).ThenReturn(15)`
 
 ### 原因
 
-之后有人贴出 go 不支持 `type parameters` 的原因: [Type Parameters Proposal](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#No-parameterized-methods)。考虑如下代码:
+之后有人贴出 go 不支持 `parameterized methods` 的原因: [parameterized methods Proposal](https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#No-parameterized-methods)。考虑如下代码:
 
 ```go
 package p1
@@ -163,9 +163,9 @@ func CheckSIdentity() {
 
 之后提案中给出了三个方案:
 
-1. 编译器努努力，根据函数的调用链实例化对应的函数。然而由于 go 中的**反射**的存在，在编译期实际上无法确定所有的函数调用链 。(**这个也是我感觉 go 支持 `type parameters` 里最难受的地方**)
+1. 编译器努努力，根据函数的调用链实例化对应的函数。然而由于 go 中的**反射**的存在，在编译期实际上无法确定所有的函数调用链 。(**这个也是我感觉 go 支持 `parameterized methods` 里最难受的地方**)
 2. 学习 java or C#，运行时实例化，这就导致了 go 需要支持某种 JIT，或者使用基于反射的方法，这些实现起来都十分复杂，而且会导致运行时速度变慢。
-3. 约束 interface 中禁用 `type parameters` ，因为无法感知类型的原因就是因为 interface 将实际类型信息隐藏了，不过还是存在反射的问题(给 reflect 加个 hook 记录调用?或者直接禁止反射调用泛型函数)：
+3. 约束 interface 中禁用 `parameterized methods` ，因为无法感知类型的原因就是因为 interface 将实际类型信息隐藏了，不过还是存在反射的问题(给 reflect 加个 hook 记录调用?或者直接禁止反射调用泛型函数)：
 
 ```go
 type S struct{}
@@ -183,9 +183,9 @@ func main() {
 
 后面这一段真的是迷惑发言(issue 里有些人也对这段提出疑问)，提案作者认为
 
-[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)
+[proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)
 
-interface 中禁用 `type parameters` 无法实现通用 iter
+interface 中禁用 `parameterized methods` 无法实现通用 iter
 
 ### 翻译
 
@@ -193,15 +193,15 @@ interface 中禁用 `type parameters` 无法实现通用 iter
 
 #### 妥协派 **[deanveloper](https://github.com/deanveloper)**
 
-和我的想法一样，认为给 interface 加入不能有 `type parameters` 的约束，剩下就只用处理反射的问题就行了。即使存在一些约束，但是残缺的 `type parameters` 也能实现 monad 、简单的流式调用等操作。
+和我的想法一样，认为给 interface 加入不能有 `parameterized methods` 的约束，剩下就只用处理反射的问题就行了。即使存在一些约束，但是残缺的 `parameterized methods` 也能实现 monad 、简单的流式调用等操作。
 
-链接： [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-948108705)
+链接： [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-948108705)
 
 #### 实战派 **[jpap](https://github.com/jpap)**
 
 #### gava派 **[mariomac](https://github.com/mariomac)**
 
-链接：[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-986056824)
+链接：[proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-986056824)
 
 #### 语法糖派(投降派) **[wxblue](https://github.com/wxblue)**
 
