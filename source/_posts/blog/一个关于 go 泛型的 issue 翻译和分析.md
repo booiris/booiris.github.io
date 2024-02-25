@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-26 00:25:01
+updated: 2024-02-26 00:28:18
 tags: 
 top: false
 mathjax: true
@@ -185,7 +185,9 @@ func main() {
 
 难道作者觉得将 `func (S[T]) F[U any] () U` 可以简单等效为 `func F[T, U] (T) U` ，然后调用方式由 `x.f(y).g(z)` 变成 `g(f(x, y), z)`？具体来说请看这个[评论](https://github.com/golang/go/issues/49085#issuecomment-995993517) 。(我怀疑作者对函数式语言有偏见
 
-[proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)
+后面作者的补充也很迷惑: [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)，不予置评了。
+
+
 
 interface 中禁用 `parameterized methods` 无法实现通用 iter
 
