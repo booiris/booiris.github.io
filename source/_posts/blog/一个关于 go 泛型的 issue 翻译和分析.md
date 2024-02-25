@@ -177,6 +177,12 @@ func main() {
 }
 ```
 
+在这里我想讲一讲第三点，首先提案给出的原文是:
+
+> Or, we could decide that parameterized methods do not, in fact, implement interfaces, but then it's much less clear why we need methods at all. If we disregard interfaces, any parameterized method can be implemented as a parameterized function.
+
+
+
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)
 
 interface 中禁用 `type parameters` 无法实现通用 iter
