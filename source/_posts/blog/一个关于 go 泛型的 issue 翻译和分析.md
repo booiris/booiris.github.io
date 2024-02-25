@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-25 01:12:52
+updated: 2024-02-25 16:54:11
 tags: 
 top: false
 mathjax: true
@@ -177,11 +177,11 @@ func main() {
 }
 ```
 
-在这里我想讲一讲第三点，首先提案给出的原文是:
+在这里我想讲一讲第三点，提案给出的原文是:
 
-> Or, we could decide that parameterized methods do not, in fact, implement interfaces, but then it's much less clear why we need methods at all. If we disregard interfaces, any parameterized method can be implemented as a parameterized function.
+> Or, we could decide that parameterized methods do not, in fact, implement interfaces, _but then it's much less clear why we need methods at all. If we disregard interfaces, any parameterized method can be implemented as a parameterized function._
 
-
+后面这一段真的是迷惑发言，提案作者认为
 
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)
 
