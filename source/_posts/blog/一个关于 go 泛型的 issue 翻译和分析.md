@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-26 00:06:41
+updated: 2024-02-26 00:17:43
 tags: 
 top: false
 mathjax: true
@@ -183,7 +183,7 @@ func main() {
 
 后面这一段真的是迷惑发言(issue 里有些人也对这段提出疑问)，提案作者认为如果 interface 中禁用 `parameterized methods`, 那所有的 `parameterized method` 都可以用 `parameterized function` 实现？？？？
 
-难道作者觉得将 `func (S[T]) F[U any] () U` 可以等效替换为 `func F[T, U] (T) U` ，然后
+难道作者觉得将 `func (S[T]) F[U any] () U` 可以等效替换为 `func F[T, U] (T) U` ，然后由原来的 `x.f(y).g(z)` 变成 `g(f(x, y), z)`？ (我怀疑作者对函数式语言有偏见
 
 [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)
 
