@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-25 23:52:14
+updated: 2024-02-26 00:06:41
 tags: 
 top: false
 mathjax: true
@@ -181,7 +181,9 @@ func main() {
 
 > Or, we could decide that parameterized methods do not, in fact, implement interfaces, _but then it's much less clear why we need methods at all. If we disregard interfaces, any parameterized method can be implemented as a parameterized function._
 
-后面这一段真的是迷惑发言(issue 里有些人也对这段提出疑问)，提案作者认为
+后面这一段真的是迷惑发言(issue 里有些人也对这段提出疑问)，提案作者认为如果 interface 中禁用 `parameterized methods`, 那所有的 `parameterized method` 都可以用 `parameterized function` 实现？？？？
+
+难道作者觉得将 `func (S[T]) F[U any] (T) U` 用 `func ()`
 
 [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)
 
