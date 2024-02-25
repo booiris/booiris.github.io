@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-26 00:28:18
+updated: 2024-02-26 00:39:36
 tags: 
 top: false
 mathjax: true
@@ -165,7 +165,7 @@ func CheckSIdentity() {
 
 1. 编译器努努力，根据函数的调用链实例化对应的函数。然而由于 go 中的**反射**的存在，在编译期实际上无法确定所有的函数调用链 。(**这个也是我感觉 go 支持 `parameterized methods` 里最难受的地方**)
 2. 学习 java or C#，运行时实例化，这就导致了 go 需要支持某种 JIT，或者使用基于反射的方法，这些实现起来都十分复杂，而且会导致运行时速度变慢。
-3. 约束 interface 中禁用 `parameterized methods` ，因为无法感知类型的原因就是因为 interface 将实际类型信息隐藏了，不过还是存在反射的问题(给 reflect 加个 hook 记录调用?或者直接禁止反射调用泛型函数)：
+3. 约束 interface 中禁用 `parameterized methods` ，因为无法感知类型的原因就是 interface 将实际类型信息隐藏了，不过还是存在反射的问题(给 reflect 加个 hook 记录调用?或者直接禁止反射调用泛型函数)：
 
 ```go
 type S struct{}
@@ -181,13 +181,15 @@ func main() {
 
 > Or, we could decide that parameterized methods do not, in fact, implement interfaces, _but then it's much less clear why we need methods at all. If we disregard interfaces, any parameterized method can be implemented as a parameterized function._
 
-后面这一段真的是迷惑发言(issue 里有些人也对这段提出疑问)，提案作者认为如果 interface 中禁用 `parameterized methods`, 那所有的 `parameterized method` 都可以用 `parameterized function` 实现？？？？
+后面这一段真的是迷惑发言(issue 里有些人也对这段提出疑问)，提案作者认为如果 interface 中禁用 `parameterized methods`, 那为啥还需要 `parameterized method`，因为所有的 `parameterized method` 都可以用 `parameterized function` 实现？？？？
 
-难道作者觉得将 `func (S[T]) F[U any] () U` 可以简单等效为 `func F[T, U] (T) U` ，然后调用方式由 `x.f(y).g(z)` 变成 `g(f(x, y), z)`？具体来说请看这个[评论](https://github.com/golang/go/issues/49085#issuecomment-995993517) 。(我怀疑作者对函数式语言有偏见
+难不成作者认为 `func (S[T]) F[U] () U` 可以简单等效为 `func F[T, U] (T) U` ，然后调用方式 `x.f(y).g(z)` 和 `g(f(x, y), z)` 没区别 🤔？那 go 语言写起来那么啰嗦的原因找到了。 具体来说请看这个[评论](https://github.com/golang/go/issues/49085#issuecomment-995993517) 。
 
 后面作者的补充也很迷惑: [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)，不予置评了。
 
+下面是我认为第三种方法最可行的原因:
 
+1. 首先
 
 interface 中禁用 `parameterized methods` 无法实现通用 iter
 
