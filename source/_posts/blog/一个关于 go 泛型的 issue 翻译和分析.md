@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-25 16:54:11
+updated: 2024-02-25 23:52:14
 tags: 
 top: false
 mathjax: true
@@ -181,7 +181,7 @@ func main() {
 
 > Or, we could decide that parameterized methods do not, in fact, implement interfaces, _but then it's much less clear why we need methods at all. If we disregard interfaces, any parameterized method can be implemented as a parameterized function._
 
-后面这一段真的是迷惑发言，提案作者认为
+后面这一段真的是迷惑发言(issue 里有些人也对这段提出疑问)，提案作者认为
 
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)
 
@@ -189,7 +189,7 @@ interface 中禁用 `type parameters` 无法实现通用 iter
 
 ### 翻译
 
-由于之后的讨论太长，所以接下来省略部分评论(有些不是关于泛型的讨论+有些真的是很呆…)并且根据 issue 里提出的不同解决方案进行分类。
+由于之后的讨论太长，所以接下来省略部分评论(有些不是关于泛型的讨论)并且根据 issue 里提出的不同解决方案进行分类。
 
 #### 妥协派 **[deanveloper](https://github.com/deanveloper)**
 
