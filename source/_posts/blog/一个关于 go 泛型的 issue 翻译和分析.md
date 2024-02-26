@@ -187,7 +187,9 @@ func main() {
 
 后面作者的补充也很迷惑: [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)，不予置评了。
 
+```
 interface 中禁用 `parameterized methods` 无法实现通用 iter
+```
 
 ### 翻译
 
