@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-26 00:40:46
+updated: 2024-02-26 22:10:22
 tags: 
 top: false
 mathjax: true
@@ -186,10 +186,6 @@ func main() {
 难不成作者认为 `func (S[T]) F[U] () U` 可以简单等效为 `func F[T, U] (T) U` ，然后调用方式 `x.f(y).g(z)` 和 `g(f(x, y), z)` 没区别 🤔？那 go 语言写起来那么啰嗦的原因找到了(。 具体来说请看这个[评论](https://github.com/golang/go/issues/49085#issuecomment-995993517) 。
 
 后面作者的补充也很迷惑: [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)，不予置评了。
-
-下面是我认为第三种方法最可行的原因:
-
-1. 首先
 
 interface 中禁用 `parameterized methods` 无法实现通用 iter
 
