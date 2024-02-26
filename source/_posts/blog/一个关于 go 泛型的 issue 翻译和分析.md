@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-26 22:10:22
+updated: 2024-02-26 22:33:18
 tags: 
 top: false
 mathjax: true
@@ -187,19 +187,19 @@ func main() {
 
 后面作者的补充也很迷惑: [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)，不予置评了。
 
-```
-interface 中禁用 `parameterized methods` 无法实现通用 iter
-```
-
 ### 翻译
 
 由于之后的讨论太长，所以接下来省略部分评论(有些不是关于泛型的讨论)并且根据 issue 里提出的不同解决方案进行分类。
 
-#### 妥协派 **[deanveloper](https://github.com/deanveloper)**
+#### 妥协派
 
-和我的想法一样，认为给 interface 加入不能有 `parameterized methods` 的约束，剩下就只用处理反射的问题就行了。即使存在一些约束，但是残缺的 `parameterized methods` 也能实现 monad 、简单的流式调用等操作。
+**[deanveloper](https://github.com/deanveloper)**:
 
-链接： [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-948108705)
+[changkun (Changkun Ou) · GitHub](https://github.com/changkun)
+
+1. [链接1](https://github.com/golang/go/issues/49085#issuecomment-948108705)
+
+和我的想法一样，认为给 interface 加入不能有 `parameterized methods` 的约束，剩下就只用处理反射的问题就行了。虽然没了泛型 interface 就不能实现通用迭代器，但是残缺的 `parameterized methods` 也能实现 monad 、简单的流式调用等操作。
 
 #### 实战派 **[jpap](https://github.com/jpap)**
 
