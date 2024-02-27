@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-26 22:33:18
+updated: 2024-02-27 12:49:44
 tags: 
 top: false
 mathjax: true
@@ -195,9 +195,7 @@ func main() {
 
 **[deanveloper](https://github.com/deanveloper)**:
 
-[changkun (Changkun Ou) · GitHub](https://github.com/changkun)
-
-1. [链接1](https://github.com/golang/go/issues/49085#issuecomment-948108705)
+1. 
 
 和我的想法一样，认为给 interface 加入不能有 `parameterized methods` 的约束，剩下就只用处理反射的问题就行了。虽然没了泛型 interface 就不能实现通用迭代器，但是残缺的 `parameterized methods` 也能实现 monad 、简单的流式调用等操作。
 
@@ -208,7 +206,5 @@ func main() {
 链接：[proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-986056824)
 
 #### 语法糖派(投降派) **[wxblue](https://github.com/wxblue)**
-
-#### 显式声明派 **[changkun](https://github.com/changkun)**、**[seborama](https://github.com/seborama)**
 
 ## 总结
