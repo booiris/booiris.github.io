@@ -198,7 +198,7 @@ func main() {
 > I think this solution makes the most sense. They could then (under the hood) be treated a regular function. The reason why this would be useful is that methods do not only serve the purpose of implementing interfaces; methods also serve as a means of organization for functions that operate on particular structures.
 > It may be a bit of a challenge about how type-parameterized methods would appear in `"reflect"`, though. -- [link](https://github.com/golang/go/issues/49085#issuecomment-948108705)
 
-
+[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-952701440)
 
 和我的想法一样，认为给 interface 加入不能有 `parameterized methods` 的约束，剩下就只用处理反射的问题就行了。虽然没了泛型 interface 就不能实现通用迭代器，但是残缺的 `parameterized methods` 也能实现 monad 、简单的流式调用等操作。
 
