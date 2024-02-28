@@ -1,7 +1,7 @@
 ---
-title: 一个关于 go 泛型的 issue 翻译和分析
+title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-02-28 13:06:37
+updated: 2024-02-28 13:11:36
 tags: 
 top: false
 mathjax: true
@@ -193,8 +193,6 @@ func main() {
 
 #### 退让派
 
-**[deanveloper](https://github.com/deanveloper)**:
-
 > I think this solution makes the most sense. They could then (under the hood) be treated a regular function. The reason why this would be useful is that methods do not only serve the purpose of implementing interfaces; methods also serve as a means of organization for functions that operate on particular structures.
 > It may be a bit of a challenge about how type-parameterized methods would appear in `"reflect"`, though. ---- [link](https://github.com/golang/go/issues/49085#issuecomment-948108705)
 
@@ -212,12 +210,8 @@ func main() {
 
 #### 语法糖派(投降派)
 
-**[wxblue](https://github.com/wxblue)**:
-
 > This works fine, but breaks the chained call.  
 > Maybe add some syntactic sugar like extension methods in C#. ----[link](https://github.com/golang/go/issues/49085#issuecomment-1064889791)
-
-**[DeedleFake](https://github.com/DeedleFake)**:
 
 > Something similar that's been proposed before and is more explicit and thus feels, at least to me, more Go-like is to add a new operator, such as `->` or `|>`, that chains functions such that `a -> f(b, c)` is equivalent to `f(a, b, c)`. That would allow the benefit of a method-like ordering to the execution without needing to actually support methods with extra types or method implementations for interface types. ----[link](https://github.com/golang/go/issues/49085#issuecomment-1278630794)
 
@@ -226,3 +220,5 @@ func main() {
 在之前提到过，在不支持 `parameterized methods` 的情况下， `func (S[T]) F[U] () U` 可以由 `func F[T, U] (T) U` 替换，但是随之而来的是深层次的调用嵌套，由原本的 `x.f(y).g(z)` 变成了 `g(f(x, y), z)` 。如果有一种中缀语法糖 `x -> f(y)` 表达 `f(x,y)`，那么 `g(f(x, y), z)` 就能变成 `x -> f(y) -> g(z)`，调用嵌套就没有了，流式调用看起来也能写了。(这很难评，加这种晦涩的函数式语法糖不如改进一下泛型)
 
 ## 总结
+
+![image.png](https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20240228131110.png)
