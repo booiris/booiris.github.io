@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-28 13:00:57
+updated: 2024-02-28 13:06:37
 tags: 
 top: false
 mathjax: true
@@ -12,7 +12,7 @@ author: booiris
 
 ## 引言
 
-众所周知， go 的泛型并不完善，由于其不支持 `parameterized methods` (泛型方法)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085) 有着充分的讨论，本文旨在对其中的讨论进行翻译与分析，找出 go 是 xx 的原因，如有错误恳请斧正。
+众所周知， go 的泛型并不完善，由于其不支持 `parameterized methods` (泛型方法)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085) 有着充分的讨论，本文旨在对其中的讨论进行总结(加一点~~指指点点~~)，找出 go 是 xx 的原因，如有错误恳请斧正。
 
 ## 前置知识
 
@@ -223,6 +223,6 @@ func main() {
 
 这一派对 go 语言的泛型彻底的妥协，不要求改变目前的泛型现状，只要求添加一个中缀调用的语法糖。
 
-在之前提到过，在不支持 `parameterized methods` 的情况下， `func (S[T]) F[U] () U` 可以由 `func F[T, U] (T) U` 替换，但是随之而来的是深层次的调用嵌套，由原本的 `x.f(y).g(z)` 变成了 `g(f(x, y), z)` 。如果有一种中缀语法糖 `x -> f(y)` 表达 `f(x,y)`，那么 `g(f(x, y), z)` 就能变成 `x -> f(y) -> g(z)`，调用嵌套就没有了。(这很难评，加这种函数shi)
+在之前提到过，在不支持 `parameterized methods` 的情况下， `func (S[T]) F[U] () U` 可以由 `func F[T, U] (T) U` 替换，但是随之而来的是深层次的调用嵌套，由原本的 `x.f(y).g(z)` 变成了 `g(f(x, y), z)` 。如果有一种中缀语法糖 `x -> f(y)` 表达 `f(x,y)`，那么 `g(f(x, y), z)` 就能变成 `x -> f(y) -> g(z)`，调用嵌套就没有了，流式调用看起来也能写了。(这很难评，加这种晦涩的函数式语法糖不如改进一下泛型)
 
 ## 总结
