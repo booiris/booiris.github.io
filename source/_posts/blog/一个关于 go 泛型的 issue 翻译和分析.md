@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-28 12:36:56
+updated: 2024-02-28 12:46:37
 tags: 
 top: false
 mathjax: true
@@ -196,7 +196,7 @@ func main() {
 **[deanveloper](https://github.com/deanveloper)**:
 
 > I think this solution makes the most sense. They could then (under the hood) be treated a regular function. The reason why this would be useful is that methods do not only serve the purpose of implementing interfaces; methods also serve as a means of organization for functions that operate on particular structures.
-> It may be a bit of a challenge about how type-parameterized methods would appear in `"reflect"`, though. -- [link](https://github.com/golang/go/issues/49085#issuecomment-948108705)
+> It may be a bit of a challenge about how type-parameterized methods would appear in `"reflect"`, though. ---- [link](https://github.com/golang/go/issues/49085#issuecomment-948108705)
 
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-952701440)
 
@@ -204,12 +204,17 @@ func main() {
 
 #### 实战派 **[jpap](https://github.com/jpap)**
 
-
-
 #### gava派 **[mariomac](https://github.com/mariomac)**
 
 链接：[proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-986056824)
 
-#### 语法糖派(投降派) **[wxblue](https://github.com/wxblue)**
+#### 语法糖派(投降派)
+
+**[wxblue](https://github.com/wxblue)**:
+
+> This works fine, but breaks the chained call.  
+> Maybe add some syntactic sugar like extension methods in C#. ----[link](https://github.com/golang/go/issues/49085#issuecomment-1064889791)
+
+这一派
 
 ## 总结
