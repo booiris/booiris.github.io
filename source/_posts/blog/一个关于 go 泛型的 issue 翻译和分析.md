@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-28 12:46:37
+updated: 2024-02-28 12:50:16
 tags: 
 top: false
 mathjax: true
@@ -191,7 +191,7 @@ func main() {
 
 由于之后的讨论太长，所以接下来省略部分评论(有些不是关于泛型的讨论)并且根据 issue 里提出的不同解决方案进行分类。
 
-#### 妥协派
+#### 退让派
 
 **[deanveloper](https://github.com/deanveloper)**:
 
@@ -200,7 +200,8 @@ func main() {
 
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-952701440)
 
-和我的想法一样，认为给 interface 加入不能有 `parameterized methods` 的约束，剩下就只用处理反射的问题就行了。虽然没了泛型 interface 就不能实现通用迭代器，但是残缺的 `parameterized methods` 也能实现 monad 、简单的流式调用等操作。
+和我的想法一样，认为给 interface 加入不能有 `parameterized methods` 的约束，剩下就只用处理反射的问题就行了。
+虽然没了泛型 interface 就不能实现通用迭代器，但是残缺的 `parameterized methods` 也能实现 monad 、简单的流式调用等操作。
 
 #### 实战派 **[jpap](https://github.com/jpap)**
 
@@ -215,6 +216,12 @@ func main() {
 > This works fine, but breaks the chained call.  
 > Maybe add some syntactic sugar like extension methods in C#. ----[link](https://github.com/golang/go/issues/49085#issuecomment-1064889791)
 
-这一派
+**[DeedleFake](https://github.com/DeedleFake)**:
+
+> Something similar that's been proposed before and is more explicit and thus feels, at least to me, more Go-like is to add a new operator, such as `->` or `|>`, that chains functions such that `a -> f(b, c)` is equivalent to `f(a, b, c)`. That would allow the benefit of a method-like ordering to the execution without needing to actually support methods with extra types or method implementations for interface types. ----[link](https://github.com/golang/go/issues/49085#issuecomment-1278630794)
+
+这一派对 go 语言的泛型彻底的妥协，不要求改变目前的泛型现状，只要求添加一个中缀调用的语法糖。
+
+由于
 
 ## 总结
