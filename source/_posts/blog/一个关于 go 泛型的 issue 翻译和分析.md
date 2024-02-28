@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-28 12:55:11
+updated: 2024-02-28 13:00:57
 tags: 
 top: false
 mathjax: true
@@ -223,6 +223,6 @@ func main() {
 
 这一派对 go 语言的泛型彻底的妥协，不要求改变目前的泛型现状，只要求添加一个中缀调用的语法糖。
 
-在之前提到过，在不支持 `parameterized methods` 的情况下， `func (S[T]) F[U] () U` 可以由 `func F[T, U] (T) U` 替换，但是随之而来的是深层次的调用嵌套，由原本的 `x.f(y).g(z)` 变成了 `g(f(x, y), z)` 。如果有一种中缀语法糖 `x -> f(y)` 表达 `f(x,y)`，
+在之前提到过，在不支持 `parameterized methods` 的情况下， `func (S[T]) F[U] () U` 可以由 `func F[T, U] (T) U` 替换，但是随之而来的是深层次的调用嵌套，由原本的 `x.f(y).g(z)` 变成了 `g(f(x, y), z)` 。如果有一种中缀语法糖 `x -> f(y)` 表达 `f(x,y)`，那么 `g(f(x, y), z)` 就能变成 `x -> f(y) -> g(z)`，调用嵌套就没有了。(这很难评，加这种函数shi)
 
 ## 总结
