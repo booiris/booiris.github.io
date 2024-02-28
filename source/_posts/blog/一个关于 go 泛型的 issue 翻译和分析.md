@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 翻译和分析
 date: 2024-02-20 22:10:20
-updated: 2024-02-28 12:50:16
+updated: 2024-02-28 12:55:11
 tags: 
 top: false
 mathjax: true
@@ -201,6 +201,7 @@ func main() {
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-952701440)
 
 和我的想法一样，认为给 interface 加入不能有 `parameterized methods` 的约束，剩下就只用处理反射的问题就行了。
+
 虽然没了泛型 interface 就不能实现通用迭代器，但是残缺的 `parameterized methods` 也能实现 monad 、简单的流式调用等操作。
 
 #### 实战派 **[jpap](https://github.com/jpap)**
@@ -222,6 +223,6 @@ func main() {
 
 这一派对 go 语言的泛型彻底的妥协，不要求改变目前的泛型现状，只要求添加一个中缀调用的语法糖。
 
-由于
+在之前提到过，在不支持 `parameterized methods` 的情况下， `func (S[T]) F[U] () U` 可以由 `func F[T, U] (T) U` 替换，但是随之而来的是深层次的调用嵌套，由原本的 `x.f(y).g(z)` 变成了 `g(f(x, y), z)` 。如果有一种中缀语法糖 `x -> f(y)` 表达 `f(x,y)`，
 
 ## 总结
