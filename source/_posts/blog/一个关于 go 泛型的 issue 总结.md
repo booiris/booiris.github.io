@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-02-28 13:15:12
+updated: 2024-02-28 13:20:59
 tags: 
 top: false
 mathjax: true
@@ -204,9 +204,9 @@ func main() {
 
 #### 实战派 **[jpap](https://github.com/jpap)**
 
-#### gava派 **[mariomac](https://github.com/mariomac)**
+#### gava派
 
-链接：[proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-986056824)
+> I think that the example issue can be approached the same way as Java does: using `interface{}` behind the scenes and panic if the customer did a bad assignment (also the compiler could warn about the unsafe operation). --[link](https://github.com/golang/go/issues/49085#issuecomment-986056824)
 
 #### 语法糖派(投降派)
 
