@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-02-28 13:20:59
+updated: 2024-02-29 22:12:28
 tags: 
 top: false
 mathjax: true
