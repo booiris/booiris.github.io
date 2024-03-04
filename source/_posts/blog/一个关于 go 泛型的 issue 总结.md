@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-04 22:46:55
+updated: 2024-03-04 23:14:05
 tags: 
 top: false
 mathjax: true
@@ -214,14 +214,17 @@ func main() {
 
 > I think that the example issue can be approached the same way as Java does: using `interface{}` behind the scenes and panic if the customer did a bad assignment (also the compiler could warn about the unsafe operation). --[link](https://github.com/golang/go/issues/49085#issuecomment-986056824)
 
-interface 代表一切！
+> How about using type erasure to handle the generic method issue? --[link](https://github.com/golang/go/issues/49085#issuecomment-1857277699)
+
+interface 代表一切！不过x
 
 #### 语法糖派(投降派)
 
-> This works fine, but breaks the chained call.  
 > Maybe add some syntactic sugar like extension methods in C#. ----[link](https://github.com/golang/go/issues/49085#issuecomment-1064889791)
 
 > Something similar that's been proposed before and is more explicit and thus feels, at least to me, more Go-like is to add a new operator, such as `->` or `|>`, that chains functions such that `a -> f(b, c)` is equivalent to `f(a, b, c)`. That would allow the benefit of a method-like ordering to the execution without needing to actually support methods with extra types or method implementations for interface types. ----[link](https://github.com/golang/go/issues/49085#issuecomment-1278630794)
+
+> For the solution [#49085 (comment)](https://github.com/golang/go/issues/49085#issuecomment-1464887534), the problem is that functions with `infix` are different from normal functions, and it may requires to write a function twice to provide both forms. I'd like to have a new way to call a function at the right position of a value, like [using `|`](https://pkg.go.dev/text/template#hdr-Examples) in `template`. So I propose following: --[link](https://github.com/golang/go/issues/49085#issuecomment-1600571377)
 
 这一派对 go 语言的泛型彻底的妥协，不要求改变目前的泛型现状，只要求添加一个中缀调用的语法糖(不过这个也老早被 go 团队打了回去)。
 
