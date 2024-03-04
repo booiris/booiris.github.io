@@ -220,9 +220,9 @@ interface 代表一切！不过显然 gava 和 anygo 是不行滴。
 
 #### 语法糖派(投降派)
 
-> Maybe add some syntactic sugar like extension methods in C#. ----[link](https://github.com/golang/go/issues/49085#issuecomment-1064889791)
+> Maybe add some syntactic sugar like extension methods in C#. --[link](https://github.com/golang/go/issues/49085#issuecomment-1064889791)
 
-> Something similar that's been proposed before and is more explicit and thus feels, at least to me, more Go-like is to add a new operator, such as `->` or `|>`, that chains functions such that `a -> f(b, c)` is equivalent to `f(a, b, c)`. That would allow the benefit of a method-like ordering to the execution without needing to actually support methods with extra types or method implementations for interface types. ----[link](https://github.com/golang/go/issues/49085#issuecomment-1278630794)
+> Something similar that's been proposed before and is more explicit and thus feels, at least to me, more Go-like is to add a new operator, such as `->` or `|>`, that chains functions such that `a -> f(b, c)` is equivalent to `f(a, b, c)`. That would allow the benefit of a method-like ordering to the execution without needing to actually support methods with extra types or method implementations for interface types. --[link](https://github.com/golang/go/issues/49085#issuecomment-1278630794)
 
 > For the solution [#49085 (comment)](https://github.com/golang/go/issues/49085#issuecomment-1464887534), the problem is that functions with `infix` are different from normal functions, and it may requires to write a function twice to provide both forms. I'd like to have a new way to call a function at the right position of a value, like [using `|`](https://pkg.go.dev/text/template#hdr-Examples) in `template`. So I propose following: --[link](https://github.com/golang/go/issues/49085#issuecomment-1600571377)
 
