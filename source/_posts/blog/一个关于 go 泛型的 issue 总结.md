@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-02-29 22:12:28
+updated: 2024-03-04 22:08:50
 tags: 
 top: false
 mathjax: true
@@ -187,7 +187,7 @@ func main() {
 
 后面作者的补充也很迷惑: [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)，不予置评了。
 
-### 翻译
+### 讨论
 
 由于之后的讨论太长，所以接下来省略部分评论(有些不是关于泛型的讨论)并且根据 issue 里提出的不同解决方案进行分类。
 
