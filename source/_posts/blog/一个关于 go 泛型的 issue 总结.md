@@ -208,6 +208,8 @@ func main() {
 
 > I think that the example issue can be approached the same way as Java does: using `interface{}` behind the scenes and panic if the customer did a bad assignment (also the compiler could warn about the unsafe operation). --[link](https://github.com/golang/go/issues/49085#issuecomment-986056824)
 
+interface 代表一切！
+
 #### 语法糖派(投降派)
 
 > This works fine, but breaks the chained call.  
