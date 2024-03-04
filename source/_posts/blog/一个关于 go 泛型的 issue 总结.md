@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-04 23:14:05
+updated: 2024-03-04 23:17:43
 tags: 
 top: false
 mathjax: true
@@ -191,7 +191,7 @@ func main() {
 
 由于之后的讨论太长，所以接下来省略部分评论(有些不是关于泛型的讨论)并且根据 issue 里提出的不同解决方案进行分类。
 
-#### 退让派
+#### 派
 
 > I think this solution makes the most sense. They could then (under the hood) be treated a regular function. The reason why this would be useful is that methods do not only serve the purpose of implementing interfaces; methods also serve as a means of organization for functions that operate on particular structures.
 > It may be a bit of a challenge about how type-parameterized methods would appear in `"reflect"`, though. ---- [link](https://github.com/golang/go/issues/49085#issuecomment-948108705)
@@ -216,7 +216,7 @@ func main() {
 
 > How about using type erasure to handle the generic method issue? --[link](https://github.com/golang/go/issues/49085#issuecomment-1857277699)
 
-interface 代表一切！不过x
+interface 代表一切！不过显然 gava 和 anygo 是不行滴。
 
 #### 语法糖派(投降派)
 
@@ -231,5 +231,7 @@ interface 代表一切！不过x
 在之前提到过，虽然不支持 `parameterized methods` ， `func (S[T]) F[U] () U` 也可以由 `func F[T, U] (T) U` 替换，但是随之而来的是深层次的调用嵌套，由原本的 `x.f(y).g(z)` 变成了 `g(f(x, y), z)` 。如果有一种中缀语法糖 `x -> f(y)` 表达 `f(x,y)`，那么 `g(f(x, y), z)` 就能变成 `x -> f(y) -> g(z)`，调用嵌套就没有了，流式调用看起来也能写了。(这很难评，加这种晦涩的函数式语法糖不如改进一下泛型)
 
 ## 总结
+
+考虑到 go 语言团队已经在泛型实现上考虑了 10 年zhi'jiu
 
 ![image.png](https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20240228131110.png)
