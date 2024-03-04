@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-04 23:17:43
+updated: 2024-03-04 23:22:33
 tags: 
 top: false
 mathjax: true
@@ -232,6 +232,6 @@ interface 代表一切！不过显然 gava 和 anygo 是不行滴。
 
 ## 总结
 
-考虑到 go 语言团队已经在泛型实现上考虑了 10 年zhi'jiu
+考虑到 go 语言团队已经在泛型实现上已经[考虑了 10 年](https://github.com/golang/go/issues/49085#issuecomment-1290106303)达到如今的成就，那么在不违反泛型在 interface 
 
 ![image.png](https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20240228131110.png)
