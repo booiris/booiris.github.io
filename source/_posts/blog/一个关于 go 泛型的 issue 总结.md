@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-05 22:40:03
+updated: 2024-03-05 22:44:27
 tags: 
 top: false
 mathjax: true
@@ -106,13 +106,25 @@ func f (type_info dictionary, x int, y T1) T2 {
 }
 ```
 
-对于泛型函数，会添加一个额外的 dictionary 参数，用于实例化泛型函数中的类型，传入的 dictionary 内容由调用点生成和传入。
+对于泛型函数，会添加一个额外的 dictionary 参数，用于实例化泛型函数中的类型，传入的 dictionary 内容由**调用点生成和传入**。
 
 #### dictionary 包含的信息
 
 整个 dictionary 需要保存整个函数执行的环境，其中包含的信息是十分多的。在提案中列举了需要的信息:
 
 ##### Instantiated types
+
+首先需要包含函数签名上的类型，可能以如下形式进行存储
+
+```go
+type dictionary struct {
+    T1 *runtime._type
+    T2 *runtime._type
+    ...
+}
+```
+
+出于打印栈的目的，dictionary 中需要包含未被使用的类型。
 
 ##### Derived types
 
@@ -121,6 +133,8 @@ func f (type_info dictionary, x int, y T1) T2 {
 ##### Helper methods
 
 ##### Stack layout
+
+##### Pointer maps
 
 #### 问题
 
