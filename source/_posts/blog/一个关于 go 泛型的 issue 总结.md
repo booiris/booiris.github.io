@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-05 23:23:55
+updated: 2024-03-05 23:30:01
 tags: 
 top: false
 mathjax: true
@@ -162,9 +162,27 @@ type dictionary struct {
 
 ##### Helper methods
 
-字典中还需要保存
+字典中还需要保存泛型类型的操作符，比如对于如下运算:
+
+```go
+y2 := y + 1
+if y2 > y { … }
+```
+
+为了表达泛型操作，需要将其中的 `+` 和 `>` 抽象出来变成一种方法保存到字典中:
+
+```go
+type dictionary struct {
+    ...
+    plus func(z, x, y *T1)      // does *z = *x+*y
+    greater func(x, y *T1) bool // computes *x>*y
+    ...
+}
+```
 
 ##### Stack layout
+
+
 
 ##### Pointer maps
 
