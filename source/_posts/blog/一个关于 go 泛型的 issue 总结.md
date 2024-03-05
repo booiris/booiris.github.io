@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-05 22:46:22
+updated: 2024-03-05 23:04:01
 tags: 
 top: false
 mathjax: true
@@ -221,7 +221,7 @@ func main() {
 
 后面这一段真的是迷惑发言(issue 里有些人也对这段提出疑问)，提案作者认为如果 interface 中禁用 `parameterized methods`, 那为啥还需要 `parameterized method`，因为所有的 `parameterized method` 都可以用 `parameterized function` 实现？？？？
 
-难不成作者认为 `func (S[T]) F[U] () U` 可以简单等效为 `func F[T, U] (T) U` ，所以调用方式 `x.f().g()` 和 `g(f(x))` 没区别 🤔？那 go 语言写起来那么啰嗦的原因找到了(。 具体来说请看这个[评论](https://github.com/golang/go/issues/49085#issuecomment-995993517) 。
+难不成作者认为 `func (S[T]) F[ M, U] ( M ) U` 可以简单等效为 `func F[T, M, U] (T, M) U` ，所以调用方式 `x.f(y).g(z)` 和 `g(f(x,y),z)` 没区别 🤔？那 go 语言写起来那么啰嗦的原因找到了(。 具体来说请看这个[评论](https://github.com/golang/go/issues/49085#issuecomment-995993517) 。
 
 后面作者的补充也很迷惑: [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)，不予置评了。
 
@@ -266,7 +266,7 @@ interface 代表一切！不过显然 gava 和 anygo 是不行滴。
 
 这一派对 go 语言的泛型彻底的妥协，不要求改变目前的泛型现状，只要求添加一个中缀调用的语法糖(不过这个也老早被 go 团队打了回去)。
 
-在之前提到过，虽然不支持 `parameterized methods` ， `func (S[T]) F[U] () U` 也可以由 `func F[T, U] (T) U` 替换，但是随之而来的是深层次的调用嵌套，由原本的 `x.f(y).g(z)` 变成了 `g(f(x, y), z)` 。如果有一种中缀语法糖 `x -> f(y)` 表达 `f(x,y)`，那么 `g(f(x, y), z)` 就能变成 `x -> f(y) -> g(z)`，调用嵌套就没有了，流式调用看起来也能写了。(这很难评，加这种晦涩的函数式语法糖不如改进一下泛型)
+在之前提到过，虽然不支持泛型方法 ， `func (S[T]) F[ M, U] ( M ) U` 也可以由 `func F[T, M, U] (T, M) U` 替换，但是随之而来的是深层次的调用嵌套，由原本的 `x.f(y).g(z)` 变成了 `g(f(x, y), z)` 。如果有一种中缀语法糖 `x -> f(y)` 表达 `f(x,y)`，那么 `g(f(x, y), z)` 就能变成 `x -> f(y) -> g(z)`，调用嵌套就没有了，流式调用看起来也能写了。(这很难评，加这种晦涩的函数式语法糖不如改进一下泛型)
 
 ## 总结
 
