@@ -104,7 +104,7 @@ func f (type_info dictionary, x int, y T1) T2 {
 }
 ```
 
-对于泛型函数的每个调用
+对于泛型函数，会添加一个额外的参数用于存储
 
 #### dictionary 包含的信息
 
