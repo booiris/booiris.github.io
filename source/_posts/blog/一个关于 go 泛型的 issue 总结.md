@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-05 22:17:13
+updated: 2024-03-05 22:22:31
 tags: 
 top: false
 mathjax: true
@@ -88,7 +88,7 @@ var a float64 = f[int, float64](7, 8.0)
 var b struct{f int} = f[complex128, struct{f int}](3, 1+1i)
 ```
 
-那么编译其会实例化**一个**函数和**多个**字典，每个字典包含一些运行时需要的信息:
+那么编译其会实例化**一个**函数，同时会有多个字典，每个字典包含一些运行时需要的信息:
 
 ```go
 type pos1CallSiteDictionary struct {
@@ -104,9 +104,11 @@ func f (type_info dictionary, x int, y T1) T2 {
 }
 ```
 
-对于泛型函数，会添加一个额外的 dictionary 参数，用于实例化泛型函数中的类型，传入的 dictionary 内容由调用点生成。
+对于泛型函数，会添加一个额外的 dictionary 参数，用于实例化泛型函数中的类型，传入的 dictionary 内容由调用点生成和传入。
 
 #### dictionary 包含的信息
+
+毫无疑问 dictionary 中需要许多内存保存运行时的消息，提案中也提到了虽然采用 dictionary 方法减少了代码的生成，但是占用的内存变多了，
 
 ### GC Shape Stenciling
 
