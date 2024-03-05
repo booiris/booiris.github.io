@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-05 23:14:25
+updated: 2024-03-05 23:23:55
 tags: 
 top: false
 mathjax: true
@@ -14,7 +14,7 @@ author: booiris
 
 众所周知， go 的泛型并不完善，由于其不支持 `parameterized methods` (泛型方法)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085) 有着充分的讨论，本文旨在对其中的讨论进行总结(加一点~~指指点点~~)，找出 go 是 xx 的原因，如有错误恳请斧正。
 
-## 前置知识
+## 有点长的前置知识…
 
 在看 issue 之前，首先介绍一下泛型的通常实现方式，一般有如下几种方式
 
@@ -148,9 +148,21 @@ type dictionary struct {
 
 ##### Subdictionaries
 
+如果泛型中函数调用了其他的泛型函数，还需要保存对应泛型函数的字典。这样才能接着传递 dictionary 参数，调用对应的泛型函数，提案中称之为子字典:
 
+```go
+//  func g[T](g T) { ... }
+//  in f[T1]: g[T1](y)
+type dictionary struct {
+    ...
+    S1 *dictionary // SubDictionary for call to g
+    ...
+}
+```
 
 ##### Helper methods
+
+字典中还需要保存
 
 ##### Stack layout
 
@@ -239,7 +251,7 @@ func main() {
 
 > Or, we could decide that parameterized methods do not, in fact, implement interfaces, _but then it's much less clear why we need methods at all. If we disregard interfaces, any parameterized method can be implemented as a parameterized function._
 
-后面这一段真的是迷惑发言(issue 里有些人也对这段提出疑问)，提案作者认为如果 interface 中禁用 `parameterized methods`, 那为啥还需要 `parameterized method`，因为所有的 `parameterized method` 都可以用 `parameterized function` 实现？？？？
+后面这一段真的是迷惑发言(issue 里有些人也对这段提出疑问)，提案作者认为如果 `parameterized methods` 不参与 interface 的实现（相当于在 interface 中禁用 `parameterized methods` 了）, 那为啥还需要 `parameterized method`，因为所有的 `parameterized method` 都可以用 `parameterized function` 实现？？？？
 
 难不成作者认为 `func (S[T]) F[ M, U] ( M ) U` 可以简单等效为 `func F[T, M, U] (T, M) U` ，所以调用方式 `x.f(y).g(z)` 和 `g(f(x,y),z)` 没区别 🤔？那 go 语言写起来那么啰嗦的原因找到了(。 具体来说请看这个[评论](https://github.com/golang/go/issues/49085#issuecomment-995993517) 。
 
