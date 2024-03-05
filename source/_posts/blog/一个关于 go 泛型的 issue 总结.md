@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-05 22:34:57
+updated: 2024-03-05 22:40:03
 tags: 
 top: false
 mathjax: true
@@ -58,6 +58,8 @@ func f2(x int, y complex128) struct{f int} {
 
 由于不是 go 泛型的实际实现，所以其中所提到的命名实现、实例化方法、类型约束和重复实例化代码处理就不细说了。具体提一下其中的 risks 部分。
 
+#### 问题
+
 对于 Stenciling 方法，提案提出两个问题:
 
 1. 编译期实例化泛型导致编译时间变长
@@ -67,7 +69,7 @@ func f2(x int, y complex128) struct{f int} {
 
 > I suspect there will be lots of cases where sharing is possible, if the underlying types are indistinguishable w.r.t. the garbage collector (same size and ptr/nonptr layout)
 
-作者认为尽管类型可以有很多个(如 `int` 、`type myInt int` )，但实际上内存布局都是相同的，相同内存布局的值类型可以共享代码，这就减少了生成的代码大小同时也加快了编译时间。事实上这就是 go 实际的泛型实现(GC Shape Stenciling) 。
+提案认为尽管类型可以有很多个(如 `int` 、`type myInt int` )，但实际上内存布局都是相同的，相同内存布局的值类型可以共享代码，这就减少了生成的代码大小同时也加快了编译时间。事实上这就是 go 实际的泛型实现(GC Shape Stenciling) 。
 
 ### Dictionaries
 
@@ -108,9 +110,23 @@ func f (type_info dictionary, x int, y T1) T2 {
 
 #### dictionary 包含的信息
 
-毫无疑问 dictionary 中需要许多内存保存运行时的消息，提案中也提到了虽然采用字典方法减少了代码的生成，但是占用的内存变多了。这就出现了 data cache misses 和 instruction cache misses 的替换。需要找一种折中的方法。
+整个 dictionary 需要保存整个函数执行的环境，其中包含的信息是十分多的。在提案中列举了需要的信息:
 
-还有提案中提到使用字典方法也有可能导致性能的下降，比如当泛型方法中具体类型为 int 的情况，`x=y` 的操作在使用蜡印方法可以优化成一次寄存器复制的操作，而使用字典的方法，由于需要处理不同类型的数据，只能使用 `memmove` 操作复制数据。
+##### Instantiated types
+
+##### Derived types
+
+##### Subdictionaries
+
+##### Helper methods
+
+##### Stack layout
+
+#### 问题
+
+提案中提到了虽然采用字典方法减少了代码的生成，但是占用的内存变多了。这就出现了 data cache misses 和 instruction cache misses 的替换。需要找一种折中的方法。
+
+还有提案中提到使用字典方法也有可能导致性能的下降，比如当泛型方法中具体类型为 int 的情况，`x=y` 的操作在使用蜡印方法可以优化成一次寄存器复制的操作，而使用字典的方法，由于需要处理不同类型的数据，只能使用 `memmove` 操作复制数据，这无疑是一种额外的开销。
 
 ### GC Shape Stenciling
 
