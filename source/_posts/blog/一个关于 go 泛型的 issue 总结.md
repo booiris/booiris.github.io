@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-05 23:04:01
+updated: 2024-03-05 23:14:25
 tags: 
 top: false
 mathjax: true
@@ -110,7 +110,7 @@ func f (type_info dictionary, x int, y T1) T2 {
 
 #### dictionary 包含的信息
 
-整个 dictionary 需要保存整个函数执行的环境，其中包含的信息是十分多的。在提案中列举了需要的信息:
+整个字典需要保存整个函数执行的环境，其中包含的信息是十分多的。在提案中列举了需要的信息:
 
 ##### Instantiated types
 
@@ -124,11 +124,31 @@ type dictionary struct {
 }
 ```
 
-出于打印栈的目的，dictionary 中需要包含未被使用的类型。
+出于打印栈的目的，字典中需要包含未被使用的类型。
 
 ##### Derived types
 
+除了函数签名上的类型，字典中还需要保存函数中派生出的类型，比如泛型函数中如果定义了如下类型:
+
+```go
+type X struct { x int; y T1 }
+m := map[string] T1{}
+```
+
+那么需要保存派生出来的类型:
+
+```go
+type dictionary struct {
+    ...
+    D1 *runtime._type // struct { x int; y T1 }
+    D2 *runtime._type // map[string] T1
+    ...
+}
+```
+
 ##### Subdictionaries
+
+
 
 ##### Helper methods
 
