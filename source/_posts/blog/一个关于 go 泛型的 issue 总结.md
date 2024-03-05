@@ -88,10 +88,11 @@ var a float64 = f[int, float64](7, 8.0)
 var b struct{f int} = f[complex128, struct{f int}](3, 1+1i)
 ```
 
-那么编译其会实例化**一个**函数和**多个**字典:
+那么编译其会实例化**一个**函数和**多个**字典，:
 
 ```go
 type pos1CallSiteDictionary struct {
+	... runtime
 }
 
 type pos2CallSiteDictionary struct {
@@ -101,6 +102,8 @@ func f (type_info dictionary, x int, y T1) T2 {
     ...
 }
 ```
+
+对于泛型函数的每个调用
 
 #### dictionary 包含的信息
 
