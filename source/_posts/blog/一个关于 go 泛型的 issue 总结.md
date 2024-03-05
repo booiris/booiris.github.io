@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-05 22:22:31
+updated: 2024-03-05 22:25:59
 tags: 
 top: false
 mathjax: true
@@ -108,7 +108,9 @@ func f (type_info dictionary, x int, y T1) T2 {
 
 #### dictionary 包含的信息
 
-毫无疑问 dictionary 中需要许多内存保存运行时的消息，提案中也提到了虽然采用 dictionary 方法减少了代码的生成，但是占用的内存变多了，
+毫无疑问 dictionary 中需要许多内存保存运行时的消息，提案中也提到了虽然采用 dictionary 方法减少了代码的生成，但是占用的内存变多了。这就出现了 data cache misses 和 instruction cache misses 的替换。需要找一种折中的方法。
+
+还有提案中提到
 
 ### GC Shape Stenciling
 
