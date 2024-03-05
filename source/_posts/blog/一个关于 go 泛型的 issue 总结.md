@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-05 23:30:01
+updated: 2024-03-05 23:35:51
 tags: 
 top: false
 mathjax: true
@@ -152,7 +152,7 @@ type dictionary struct {
 
 ```go
 //  func g[T](g T) { ... }
-//  in f[T1]: g[T1](y)
+//  in f[T1]: g[T1] (y)
 type dictionary struct {
     ...
     S1 *dictionary // SubDictionary for call to g
@@ -181,8 +181,6 @@ type dictionary struct {
 ```
 
 ##### Stack layout
-
-
 
 ##### Pointer maps
 
