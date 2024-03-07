@@ -197,7 +197,7 @@ type stackObject struct {
 }
 ```
 
-对于泛型函数的返回值，
+对于泛型函数的嵌套调用也需要特殊处理，提案中提出l
 
 ##### Pointer maps
 
