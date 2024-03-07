@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-07 23:47:08
+updated: 2024-03-07 23:50:12
 tags: 
 top: false
 mathjax: true
@@ -197,9 +197,7 @@ type stackObject struct {
 }
 ```
 
-对于泛型函数的嵌套调用也需要特殊处理。
-
-对于如下函数调用:
+对于泛型函数的嵌套调用也需要特殊处理。对于如下函数调用:
 
 ```go
 func f[T1, T2 any](x int, y T1, h func(x T1, y int, z T2) int) T2 {
@@ -231,8 +229,19 @@ r = *(*int)argPtr
 
 2. 使用字典存储偏移量
 
-或者提前计算出调用函数的入参出参在栈上的偏移量，然后保存到字典中，使用的时候根据偏移量
+或者提前计算出调用函数的入参出参在栈上的偏移量，然后保存到字典中，使用的时候根据偏移量复制参数:
+
+```go
+memmove(SP + dictionary.callsite1.arg1offset, &y, dictionary.T1.size)
+*(*int)(SP + dictionary.callsite1.arg2offset) = x
+memmove(SP + dictionary.callsite1.arg3offset, &z, dictionary.T2.size)
+call h
+r = *(*int)(SP + dictionary.callsite1.ret1offset)
+```
+
 ##### Pointer maps
+
+需要一个 bitMap 表示参数是否是指针类型。
 
 ```go
 type dictionary struct {
