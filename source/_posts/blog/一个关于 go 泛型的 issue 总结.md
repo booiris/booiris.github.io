@@ -241,7 +241,7 @@ r = *(*int)(SP + dictionary.callsite1.ret1offset)
 
 ##### Pointer maps
 
-需要一个 bitMap 表示参数是否是指针类型。
+需要一个 bitMap 表示参数是否是指针类型。用于
 
 ```go
 type dictionary struct {
