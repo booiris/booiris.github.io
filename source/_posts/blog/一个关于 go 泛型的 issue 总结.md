@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-07 22:33:59
+updated: 2024-03-07 22:40:36
 tags: 
 top: false
 mathjax: true
@@ -182,7 +182,7 @@ type dictionary struct {
 
 ##### Stack layout
 
-因为类型不确定，字典中还需要保存函数中所有非指针lei'x临时变量的占用空间，用于分配栈空间。而之前提到过，字典是由调用点传入的，因为只有调用点才知道所有的类型，所以在调用点需要计算所需要的栈空间。然后字典中还需要保存每个临时对象在栈内的地址。
+因为类型不确定，字典中还需要保存函数中所有非指针类型临时变量 ([4]T 是栈变量，[]T 不是栈变量) 的占用空间，用于分配栈空间。而之前提到过，字典是由调用点传入的，因为只有调用点才知道所有的类型，所以在调用点需要计算所需要的栈空间。然后字典中还需要保存每个临时对象在栈内的地址。
 
 ```go
 type dictionary struct {
@@ -197,7 +197,17 @@ type stackObject struct {
 }
 ```
 
+对于泛型函数的返回值，
+
 ##### Pointer maps
+
+```go
+type dictionary struct {
+    ...
+    argPointerMap bitMap // arg size and ptr/nonptr bitmap
+    ...
+}
+```
 
 #### 问题
 
