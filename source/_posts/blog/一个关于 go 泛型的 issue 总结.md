@@ -201,6 +201,8 @@ type stackObject struct {
 
 ##### Pointer maps
 
+
+
 ```go
 type dictionary struct {
     ...
