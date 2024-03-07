@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-07 22:40:36
+updated: 2024-03-07 23:47:08
 tags: 
 top: false
 mathjax: true
@@ -197,11 +197,42 @@ type stackObject struct {
 }
 ```
 
-对于泛型函数的嵌套调用也需要特殊处理，提案中提出l
+对于泛型函数的嵌套调用也需要特殊处理。
 
+对于如下函数调用:
+
+```go
+func f[T1, T2 any](x int, y T1, h func(x T1, y int, z T2) int) T2 {
+    var z T2
+    ....
+    r := h(y, x, z)
+}
+```
+
+提案中提出了两种方法:
+
+1. 逐个参数处理
+
+逐个处理参数，将参数复制到栈上正确的位置:
+
+```go
+argPtr = SP
+memmove(argPtr, &y, dictionary.T1.size)
+argPtr += T1.size
+argPtr = roundUp(argPtr, alignof(int))
+*(*int)argPtr = x
+argPtr += sizeof(int)
+memmove(argPtr, &z, dictionary.T2.size)
+argPtr += T2.size
+call h
+argPtr = roundUp(argPtr, 8) // alignment of return value start
+r = *(*int)argPtr
+```
+
+2. 使用字典存储偏移量
+
+或者提前计算出调用函数的入参出参在栈上的偏移量，然后保存到字典中，使用的时候根据偏移量
 ##### Pointer maps
-
-
 
 ```go
 type dictionary struct {
