@@ -263,8 +263,7 @@ type dictionary struct {
 
 [proposal/design/generics-implementation-dictionaries-go1.18.md at master · golang/proposal · GitHub](https://github.com/golang/proposal/blob/master/design/generics-implementation-dictionaries-go1.18.md)
 
-GC Shape Stenciling 是 go 的真正泛型实现。
-
+GC Shape Stenciling 是 go 的真正泛型实现。它是 Stenciling 和 Dictionaries 的折中实现。对于同一个 
  
 
 ## 正文
