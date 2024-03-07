@@ -182,6 +182,8 @@ type dictionary struct {
 
 ##### Stack layout
 
+因为类型不确定，字典中还需要保存函数中所有临时变量的长度，用于分配栈空间
+
 ##### Pointer maps
 
 #### 问题
