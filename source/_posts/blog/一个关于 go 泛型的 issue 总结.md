@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-08 00:03:07
+updated: 2024-03-08 00:07:12
 tags: 
 top: false
 mathjax: true
@@ -241,7 +241,7 @@ r = *(*int)(SP + dictionary.callsite1.ret1offset)
 
 ##### Pointer maps
 
-需要一个 bitMap 存储入参出参的空间大小和是否是指针类型。用于被调用时分配空间。
+需要一个 bitMap 存储入参出参的空间大小和是否是指针类型。用于被调用时分配空间(但这玩意不是调用点算的吗，为啥还得存一遍)。
 
 ```go
 type dictionary struct {
@@ -260,6 +260,12 @@ type dictionary struct {
 ### GC Shape Stenciling
 
 [Generics implementation - GC Shape Stenciling](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-gcshape.md)
+
+[proposal/design/generics-implementation-dictionaries-go1.18.md at master · golang/proposal · GitHub](https://github.com/golang/proposal/blob/master/design/generics-implementation-dictionaries-go1.18.md)
+
+GC Shape Stenciling 是 go 的真正泛型实现。
+
+ 
 
 ## 正文
 
