@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-10 17:56:17
+updated: 2024-03-10 19:34:54
 tags: 
 top: false
 mathjax: true
@@ -263,8 +263,11 @@ type dictionary struct {
 
 [proposal/design/generics-implementation-dictionaries-go1.18.md at master · golang/proposal · GitHub](https://github.com/golang/proposal/blob/master/design/generics-implementation-dictionaries-go1.18.md)
 
-GC Shape Stenciling 是 go 的真正泛型实现。它是 Stenciling 和 Dictionaries 的折中实现。对于同一个
+GC Shape Stenciling 是 go 的真正泛型实现。它是 Stenciling 和 Dictionaries 的折中实现。GC Shape 在提案中的解释是:
 
+> The _GC shape_ of a type means how that type appears to the allocator / garbage collector.
+
+举例来说 `int` 和 `time.Time`
 ## 正文
 
 下面终于来到 [issue](https://github.com/golang/go/issues/49085) 分析环节。
