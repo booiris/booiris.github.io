@@ -267,9 +267,9 @@ GC Shape Stenciling 是 go 的真正泛型实现。它是 Stenciling 和 Diction
 
 > The _GC shape_ of a type means how that type appears to the allocator / garbage collector.
 
-举例来说 `int` 和 `type MyInt int` 是属于一个 GC Shape，比较特别的是对于所有的指针类型属于一个 GC Shape，使用虚表进行方法的派发。
+举例来说 `int` 和 `type MyInt int` 是属于一个 GC Shape，比较特别的是对于所有的指针类型属于一个 GC Shape，使用虚表进行方法的调用。
 
-对于每一个 GC Shape
+对于每一个 GC Shape 
 
 ## 正文
 
