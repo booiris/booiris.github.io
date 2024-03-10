@@ -1,7 +1,7 @@
 ---
 title: 一个关于 go 泛型的 issue 总结
 date: 2024-02-20 22:10:20
-updated: 2024-03-10 17:55:40
+updated: 2024-03-10 17:56:17
 tags: 
 top: false
 mathjax: true
@@ -241,7 +241,7 @@ r = *(*int)(SP + dictionary.callsite1.ret1offset)
 
 ##### Pointer maps
 
-需要一个 bitMap 存储入参出参的空间大小和是否是指针类型。用于被调用时分配空间。
+需要一个 bitMap 存储入参出参的空间大小和是否是指针类型。用于调用者分配空间入参和出参空间。
 
 ```go
 type dictionary struct {
