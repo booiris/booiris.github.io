@@ -1,7 +1,7 @@
 ---
 title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-03-11 22:25:47
+updated: 2024-03-11 22:26:12
 tags: 
 top: false
 mathjax: true
@@ -259,7 +259,7 @@ type dictionary struct {
 
 ### GC Shape Stenciling
 
-！本节的分析基于提案和 go 1.18，部分信息可能和高版本的 go 有所不同，请注意区分。
+**！本节的分析基于提案和 go 1.18，部分信息可能和高版本的 go 有所不同，请注意区分。**
 
 [Generics implementation - GC Shape Stenciling](https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-gcshape.md)
 
