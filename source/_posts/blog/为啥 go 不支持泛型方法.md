@@ -1,7 +1,7 @@
 ---
-title: 一个关于 go 泛型的 issue 总结
+title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-03-10 22:40:28
+updated: 2024-03-11 17:31:22
 tags: 
 top: false
 mathjax: true
@@ -269,7 +269,7 @@ GC Shape Stenciling 是 go 的真正泛型实现。它是 Stenciling 和 Diction
 
 举例来说 `int` 和 `type MyInt int` 是属于一个 GC Shape，比较特别的是对于所有的指针类型属于一个 GC Shape，使用虚表进行方法的调用。
 
-对于每一个 GC Shape 
+对于每一个 GC Shape
 
 ## 正文
 
