@@ -1,7 +1,7 @@
 ---
 title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-03-12 12:40:10
+updated: 2024-03-12 13:03:37
 tags: 
 top: false
 mathjax: true
@@ -69,7 +69,7 @@ func f2(x int, y complex128) struct{f int} {
 
 > I suspect there will be lots of cases where sharing is possible, if the underlying types are indistinguishable w.r.t. the garbage collector (same size and ptr/nonptr layout)
 
-提案认为尽管类型可以有很多个(如 `int` 、`type myInt int` )，但实际上内存布局都是相同的，相同内存布局的值类型可以共享代码，这就减少了生成的代码大小同时也加快了编译时间。事实上这就是 go 实际的泛型实现(GC Shape Stenciling) 。
+提案认为尽管类型可以有很多个(如 `int` 、`type IntAlias = int` )，但实际上内存布局都是相同的，相同内存布局的值类型可以共享代码，这就减少了生成的代码大小同时也加快了编译时间。事实上这就是 go 实际的泛型实现(GC Shape Stenciling) 。
 
 ### Dictionaries
 
@@ -269,9 +269,38 @@ GC Shape Stenciling 是 go 的真正泛型实现。它是 Stenciling 和 Diction
 
 > The _GC shape_ of a type means how that type appears to the allocator / garbage collector.
 
-举例来说 `int` 和 `type MyInt int` 是属于一个 GC Shape，比较特别的是对于所有的指针类型属于一个 GC Shape，使用虚表进行方法的调用。
+举例来说 `int` 和 `type IntAlias = int` 是属于一个 GC Shape，比较特别的是对于所有的指针类型属于一个 GC Shape，使用虚表进行方法的调用。
 
 对于每一个 GC Shape
+
+```go
+package main
+
+// gcshape.go
+
+//go:noinline
+func f[T any](t T) T {
+	var x T
+	return x
+}
+
+func xxxx[T any](t T) T {
+	return t
+}
+
+type A struct {
+}
+
+type MyInt int
+type IntAlias = int
+
+func main() {
+	f[int](5)
+	f[MyInt](5)
+	f[IntAlias](5)
+}
+
+```
 
 ## 正文
 
