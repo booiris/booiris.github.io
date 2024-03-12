@@ -1,7 +1,7 @@
 ---
 title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-03-11 22:26:12
+updated: 2024-03-12 12:40:10
 tags: 
 top: false
 mathjax: true
