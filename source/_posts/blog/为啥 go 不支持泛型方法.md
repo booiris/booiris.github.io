@@ -271,12 +271,11 @@ GC Shape Stenciling 是 go 的真正泛型实现。它是 Stenciling 和 Diction
 
 举例来说 `int` 和 `type IntAlias = int` 是属于一个 GC Shape，比较特别的是对于所有的指针类型属于一个 GC Shape，使用虚表进行方法的调用。
 
-对于每一个 GC Shape，go 会实例化一个具体的代码，
+对于每一个 GC Shape，go 会实例化一个具体的代码，具体来说，对于如下
 
 ```go
 package main
 
-//go:noinline
 func f[T any] (t T) T {
 	var x T
 	return x
