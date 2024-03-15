@@ -1,7 +1,7 @@
 ---
 title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-03-15 22:54:17
+updated: 2024-03-15 22:58:40
 tags: 
 top: false
 mathjax: true
@@ -299,13 +299,13 @@ func main() {
 
 下面终于来到 [issue](https://github.com/golang/go/issues/49085) 分析环节。
 
-首先是问题提出人 **[mariomac](https://github.com/mariomac)** 提出由于 go 的泛型不支持 `parameterized methods`，所以如下代码无法编译:
+首先是有人提出由于 go 的泛型不支持 `parameterized methods`，所以如下代码无法编译:
 
 ```go
 func (si *stream[IN]) Map[OUT any](f func(IN) OUT) stream[OUT]
 ```
 
-这就导致了在 go 中无法实现常规的流式处理方法。同时 **[mariomac](https://github.com/mariomac)** 也提出如果 go 能支持 `parameterized methods`，那么某些领域在构造代码的时候会更加简便，例如(举的例子奇奇怪怪的，看着也没用到 `parameterized methods`):
+这就导致了在 go 中无法实现常规的流式处理方法。提问人也提出如果 go 能支持 `parameterized methods`，那么某些领域在构造代码的时候会更加简便，例如(举的例子奇奇怪怪的，看着也没用到 `parameterized methods`):
 
 1. testing (?): `Assert(actual).ToBe(expected)`
 2. mocking (?): `On(obj.Sum).WithArgs(7, 8).ThenReturn(15)`
@@ -376,7 +376,7 @@ func main() {
 
 ### 讨论
 
-由于之后的讨论太长，所以接下来省略部分评论(有些不是关于泛型的讨论)并且根据 issue 里提出的不同解决方案进行分类。
+由于之后的关于解决泛型方法的问题讨论太长，所以接下来省略部分评论(有些不是关于泛型的讨论)并且根据 issue 里提出的不同解决方案进行分类。
 
 #### gava派
 
@@ -425,6 +425,8 @@ interface 代表一切！不过显然 gava 和 anygo 是不行滴。
 > 2. Types having generic method(s) cannot be typecast to `interface{}` or a generic interface unless it is an "instantiated generic type". By instantiated generic type, I mean a type that has one or more generic method instantiations. -- [link](https://github.com/golang/go/issues/49085#issuecomment-1186380446)
 
 #### 反对派
+
+[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-948191212)
 
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-952701440)
 
