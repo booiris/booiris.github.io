@@ -1,7 +1,7 @@
 ---
 title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-03-15 22:10:14
+updated: 2024-03-15 22:14:24
 tags: 
 top: false
 mathjax: true
@@ -407,9 +407,9 @@ interface 代表一切！不过显然 gava 和 anygo 是不行滴。
 1. 最重要的一点是向下兼容，这种修改没有对 go 的语义有重大改变，同时是大范围约束到小范围约束的过程，不会影响以前的代码运行。
 2. **可以用上 monad and stream call** 。众所周知，合理地使用函数式能够减少临时变量和冗长的代码。有较大概率能减少下图中的代码(什么时候才能看到这张图不吐槽呢。。。)
 ![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/20231224210233.png)
-3. 实现起来相对的不是特别复杂(相较于分析调用链来说)。
+3. 实现起来相对的不是特别复杂(相较于分析调用链来说)，因为泛型结构本身是可以具有方法的，也许可能再支持一个泛型方法相对来说没那么困难?
 
-以上
+以上为笔者个人观点。实际上，这一派为 issue 中大多数人的观点，其中
 
 > I think this solution makes the most sense. They could then (under the hood) be treated a regular function. The reason why this would be useful is that methods do not only serve the purpose of implementing interfaces; methods also serve as a means of organization for functions that operate on particular structures.
 > It may be a bit of a challenge about how type-parameterized methods would appear in `"reflect"`, though. ---- [link](https://github.com/golang/go/issues/49085#issuecomment-948108705)
