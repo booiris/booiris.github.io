@@ -1,7 +1,7 @@
 ---
 title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-03-15 23:04:08
+updated: 2024-03-15 23:25:00
 tags: 
 top: false
 mathjax: true
@@ -428,6 +428,15 @@ interface 代表一切！不过显然 gava 和 anygo 是不行滴。
 
 1. 泛型 interface 断言的时候必须指定具体类型。
 2. 具有泛型方法的类型除非
+
+在这段讨论中还对反射处理有所补充:
+
+> On the reflect package, I propose we simply add a new "[law of reflection](https://go.dev/blog/laws-of-reflection)" that says that any compile-time uninstantiated type realizations are unavailable at run-time.
+>
+> Reflection in computing is the **ability of a program to examine its own structure**, particularly through types; it’s a form of metaprogramming. It’s also a great source of confusion.
+
+非常简单，就是检查泛型函数是否实例化，没有实例化的函数就是一调一个不吱声。
+
 #### 反对派
 
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-948191212)
