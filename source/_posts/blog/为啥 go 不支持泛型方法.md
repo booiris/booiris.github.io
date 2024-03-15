@@ -1,7 +1,7 @@
 ---
 title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-03-15 22:58:40
+updated: 2024-03-15 23:04:08
 tags: 
 top: false
 mathjax: true
@@ -424,6 +424,9 @@ interface 代表一切！不过显然 gava 和 anygo 是不行滴。
 > 1. Generic interfaces must be made "concrete" when used in a type assertion, within a type switch, and when invoking associated methods. By concrete, I mean that all type parameters on the generic interface are specified.
 > 2. Types having generic method(s) cannot be typecast to `interface{}` or a generic interface unless it is an "instantiated generic type". By instantiated generic type, I mean a type that has one or more generic method instantiations. -- [link](https://github.com/golang/go/issues/49085#issuecomment-1186380446)
 
+对于提案中提出的问题，这位提出了两个约束:
+
+1. 
 #### 反对派
 
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-948191212)
