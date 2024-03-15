@@ -420,6 +420,8 @@ interface 代表一切！不过显然 gava 和 anygo 是不行滴。
 
 ##### 二
 
+#### fa
+
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-952701440)
 
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1280087495)
