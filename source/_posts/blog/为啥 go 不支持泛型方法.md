@@ -1,7 +1,7 @@
 ---
 title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-03-15 22:43:32
+updated: 2024-03-15 22:54:17
 tags: 
 top: false
 mathjax: true
@@ -370,7 +370,7 @@ func main() {
 
 后面这一段真的是迷惑发言(issue 里有些人也对这段提出疑问)，提案作者认为如果 `parameterized methods` 不参与 interface 的实现（相当于在 interface 中禁用 `parameterized methods` 了）, 那为啥还需要 `parameterized method`，因为所有的 `parameterized method` 都可以用 `parameterized function` 实现？？？？
 
-难不成作者认为 `func (S[T]) F[ M, U] ( M ) U` 可以简单等效为 `func F[T, M, U] (T, M) U` ，所以调用方式 `x.f(y).g(z)` 和 `g(f(x,y),z)` 没区别 🤔？那 go 语言写起来那么啰嗦的原因找到了(。 具体来说请看这个[评论](https://github.com/golang/go/issues/49085#issuecomment-995993517) 。
+难不成作者认为 `func (S[T]) F[ M, U] ( M ) U` 可以简单等效为 `func F[T, M, U] (T, M) U` ，所以调用方式 `x.f(y).g(z)` 和 `g(f(x,y),z)` 没区别 🤔？那 go 语言写起来那么啰嗦的原因找到了(。 具体来说请看这个[评论](https://github.com/golang/go/issues/49085#issuecomment-995993517) 和这个[评论](https://github.com/golang/go/issues/49085#issuecomment-1144311517)。
 
 后面作者的补充也很迷惑: [proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1291237249)，不予置评了。
 
@@ -419,6 +419,10 @@ interface 代表一切！不过显然 gava 和 anygo 是不行滴。
 把这段话放到第一个的原因是这是第一个提出这一派观点的人，还顺便吐槽了下提案中的 "any parameterized method can be implemented as a parameterized function"😚。
 
 ##### 二
+
+> I propose two constraints:
+> 1. Generic interfaces must be made "concrete" when used in a type assertion, within a type switch, and when invoking associated methods. By concrete, I mean that all type parameters on the generic interface are specified.
+> 2. Types having generic method(s) cannot be typecast to `interface{}` or a generic interface unless it is an "instantiated generic type". By instantiated generic type, I mean a type that has one or more generic method instantiations. -- [link](https://github.com/golang/go/issues/49085#issuecomment-1186380446)
 
 #### 反对派
 
