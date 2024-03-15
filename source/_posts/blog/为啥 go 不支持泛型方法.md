@@ -1,7 +1,7 @@
 ---
 title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-03-15 21:58:03
+updated: 2024-03-15 22:01:24
 tags: 
 top: false
 mathjax: true
@@ -378,31 +378,6 @@ func main() {
 
 由于之后的讨论太长，所以接下来省略部分评论(有些不是关于泛型的讨论)并且根据 issue 里提出的不同解决方案进行分类。
 
-#### 派(想不出名字了)
-
-首先因为 go 团队的 less is more 理念，让编译器做分析调用链这么重的活也不太现实（这里也辩解一下，即使调用链分析也无法覆盖反射、传 interface 调用、[插件模式](https://pkg.go.dev/plugin)等场景，所以调用链分析是不现实的）。
-
-但是禁用整个泛型方法也太过极端了，如果只禁用 interface 中的 `parameterized methods` ，而放过成员方法的 `parameterized methods` ，我认为有几点好处吧:
-
-1. 最重要的一点是向下兼容，
-
-> I think this solution makes the most sense. They could then (under the hood) be treated a regular function. The reason why this would be useful is that methods do not only serve the purpose of implementing interfaces; methods also serve as a means of organization for functions that operate on particular structures.
-> It may be a bit of a challenge about how type-parameterized methods would appear in `"reflect"`, though. ---- [link](https://github.com/golang/go/issues/49085#issuecomment-948108705)
-
-[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-952701440)
-
-和我的想法一样，认为给 interface 加入不能有 `parameterized methods` 的约束，剩下就只用处理反射的问题就行了。
-
-虽然没了泛型 interface 就不能实现通用迭代器，但是残缺的 `parameterized methods` 也能实现 monad 、简单的流式调用等操作。
-
-[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1280087495)
-
-[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1281552328)
-
-[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1290043476)
-
-#### 实战派 **[jpap](https://github.com/jpap)**
-
 #### gava派
 
 > I think that the example issue can be approached the same way as Java does: using `interface{}` behind the scenes and panic if the customer did a bad assignment (also the compiler could warn about the unsafe operation). --[link](https://github.com/golang/go/issues/49085#issuecomment-986056824)
@@ -422,6 +397,30 @@ interface 代表一切！不过显然 gava 和 anygo 是不行滴。
 这一派对 go 语言的泛型彻底的妥协，不要求改变目前的泛型现状，只要求添加一个中缀调用的语法糖(不过这个也老早被 go 团队打了回去)。
 
 在之前提到过，虽然不支持泛型方法 ， `func (S[T]) F[ M, U] ( M ) U` 也可以由 `func F[T, M, U] (T, M) U` 替换，但是随之而来的是深层次的调用嵌套，由原本的 `x.f(y).g(z)` 变成了 `g(f(x, y), z)` 。如果有一种中缀语法糖 `x -> f(y)` 表达 `f(x,y)`，那么 `g(f(x, y), z)` 就能变成 `x -> f(y) -> g(z)`，调用嵌套就没有了，流式调用看起来也能写了。(这很难评，加这种晦涩的函数式语法糖不如改进一下泛型)
+
+#### xx派(想不出名字了)
+
+首先因为 go 团队的 less is more 理念，让编译器做分析调用链这么重的活也不太现实（这里也辩解一下，即使调用链分析也无法覆盖反射、传 interface 调用、[插件模式](https://pkg.go.dev/plugin)等场景，所以调用链分析是不现实的）。
+
+但是禁用整个泛型方法也太过极端了，如果只禁用 interface 中的 `parameterized methods` ，而放过成员方法的 `parameterized methods` ，我认为有几点好处吧:
+
+1. 最重要的一点是向下兼容，这种修改没有对 go 的语义有重大改变，同时是大范围约束到小范围约束的过程，不会影响以前的代码运行。
+2. **可以用上 monad and stream call** 。众所周知
+
+> I think this solution makes the most sense. They could then (under the hood) be treated a regular function. The reason why this would be useful is that methods do not only serve the purpose of implementing interfaces; methods also serve as a means of organization for functions that operate on particular structures.
+> It may be a bit of a challenge about how type-parameterized methods would appear in `"reflect"`, though. ---- [link](https://github.com/golang/go/issues/49085#issuecomment-948108705)
+
+[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-952701440)
+
+和我的想法一样，认为给 interface 加入不能有 `parameterized methods` 的约束，剩下就只用处理反射的问题就行了。
+
+虽然没了泛型 interface 就不能实现通用迭代器，但是残缺的 `parameterized methods` 也能实现 monad 、简单的流式调用等操作。
+
+[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1280087495)
+
+[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1281552328)
+
+[proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-1290043476)
 
 ## 总结
 
