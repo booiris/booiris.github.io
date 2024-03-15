@@ -1,7 +1,7 @@
 ---
 title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-03-15 23:26:35
+updated: 2024-03-15 23:32:49
 tags: 
 top: false
 mathjax: true
@@ -352,7 +352,7 @@ func CheckSIdentity() {
 
 1. 编译器努努力，根据函数的调用链实例化对应的函数。然而由于 go 中的**反射**的存在，在编译期实际上无法确定所有的函数调用链 。(**这个也是我感觉 go 支持 `parameterized methods` 里最难受的地方**)
 2. 学习 java or C#，运行时实例化，这就导致了 go 需要支持某种 JIT，或者使用基于反射的方法，这些实现起来都十分复杂，而且会导致运行时速度变慢。
-3. 约束 interface 中禁用 `parameterized methods` ，因为无法感知类型的原因就是 interface 将实际类型信息隐藏了，不过还是存在反射的问题(给 reflect 加个 hook 记录调用?或者直接禁止反射调用泛型函数)：
+3. 约束 interface 中禁用 `parameterized methods` ，因为无法感知类型的原因就是 interface 将实际类型信息隐藏了，不过还是存在反射的问题(直接禁止反射调用泛型函数?)：
 
 ```go
 type S struct{}
