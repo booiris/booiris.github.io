@@ -426,7 +426,8 @@ interface 代表一切！不过显然 gava 和 anygo 是不行滴。
 
 对于提案中提出的问题，这位提出了两个约束:
 
-1. 
+1. 泛型 interface 断言的时候必须指定具体类型。
+2. 具有泛型方法的类型除非
 #### 反对派
 
 [proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub](https://github.com/golang/go/issues/49085#issuecomment-948191212)
