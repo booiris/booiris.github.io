@@ -31,6 +31,10 @@ author: booiris
 
 ## 正文
 
+rust 标准库只提供了一些基本和常用的数据结构和一套特征，所以
+
+### 输入问题
+
 相较于 c++ 的 `scanf` 、`cin` ，rust 的标准库中缺少一种方便地从标准输入中读取并构造数据的方法，网上也存在一些讨论:
 
 1. [Why is it so difficult to get user input in Rust? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/why-is-it-so-difficult-to-get-user-input-in-rust/27444/11)
