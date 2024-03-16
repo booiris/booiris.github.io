@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 codeforces 的姿势 
 date: 2024-03-15 21:36:47 
-updated: 2024-03-16 21:13:50
+updated: 2024-03-16 21:43:28
 tags: [] 
 top: false
 mathjax: true
@@ -31,9 +31,9 @@ author: booiris
 
 ## 正文
 
-rust 标准库只提供了一些基本和常用的数据结构和一套特征，所以
+rust 标准库只提供了一些基本和常用的数据结构和一套特性，所以可能需要手动造一些轮子，比如处理输入和随机数生成等等，下面将介绍对应的实现代码。
 
-### 输入问题
+### 处理输入
 
 相较于 c++ 的 `scanf` 、`cin` ，rust 的标准库中缺少一种方便地从标准输入中读取并构造数据的方法，网上也存在一些讨论:
 
@@ -42,3 +42,7 @@ rust 标准库只提供了一些基本和常用的数据结构和一套特征，
 3. [Why is it so painful to read user inputs in Rust](https://www.reddit.com/r/rust/comments/8lfuh7/why_isnt_there_an_easy_way_to_get_input_in_std_as/)
 
 所以使用 rust 解决 codeforces 中的问题所遇到的第一个困难就是如何处理输入，所幸的是这个问题在[这里](https://codeforces.com/blog/entry/67391)有所讨论，
+
+### 处理输出
+
+### 处理随机数
