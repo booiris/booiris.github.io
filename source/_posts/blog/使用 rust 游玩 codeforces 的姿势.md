@@ -30,3 +30,5 @@ author: booiris
 网站: [Rust Programming Language](https://www.rust-lang.org/)
 
 ## 正文
+
+相较于 c++ 的 `scanf` 、`printf` 、`cin` 、`cout` ，rust 的标准库中
