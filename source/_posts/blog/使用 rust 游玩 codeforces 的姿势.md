@@ -37,4 +37,4 @@ author: booiris
 2. [Why is it so painful to read user inputs in Rust](https://www.reddit.com/r/rust/comments/ifpi8p/why_is_it_so_painful_to_read_user_inputs_in_rust/)
 3. [Why is it so painful to read user inputs in Rust](https://www.reddit.com/r/rust/comments/8lfuh7/why_isnt_there_an_easy_way_to_get_input_in_std_as/)
 
-所以使用 rust 解决 codeforces 
+所以使用 rust 解决 codeforces 中的问题suo
