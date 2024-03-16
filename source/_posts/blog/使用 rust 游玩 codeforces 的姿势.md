@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 codeforces 的姿势 
 date: 2024-03-15 21:36:47 
-updated: 2024-03-16 20:59:22
+updated: 2024-03-16 21:05:45
 tags: [] 
 top: false
 mathjax: true
@@ -31,4 +31,10 @@ author: booiris
 
 ## 正文
 
-相较于 c++ 的 `scanf` 、`printf` 、`cin` 、`cout` ，rust 的标准库中
+相较于 c++ 的 `scanf` 、`cin` ，rust 的标准库中缺少一种方便地从标准输入中读取并构造数据的方法，网上也存在一些讨论:
+
+1. [Why is it so difficult to get user input in Rust? - help - The Rust Programming Language Forum](https://users.rust-lang.org/t/why-is-it-so-difficult-to-get-user-input-in-rust/27444/11)
+2. [Why is it so painful to read user inputs in Rust](https://www.reddit.com/r/rust/comments/ifpi8p/why_is_it_so_painful_to_read_user_inputs_in_rust/)
+3. [Why is it so painful to read user inputs in Rust](https://www.reddit.com/r/rust/comments/8lfuh7/why_isnt_there_an_easy_way_to_get_input_in_std_as/)
+
+所以使用 rust 解决 codeforces 
