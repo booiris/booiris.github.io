@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 codeforces 的姿势 
 date: 2024-03-15 21:36:47 
-updated: 2024-03-16 21:05:45
+updated: 2024-03-16 21:13:50
 tags: [] 
 top: false
 mathjax: true
@@ -37,4 +37,4 @@ author: booiris
 2. [Why is it so painful to read user inputs in Rust](https://www.reddit.com/r/rust/comments/ifpi8p/why_is_it_so_painful_to_read_user_inputs_in_rust/)
 3. [Why is it so painful to read user inputs in Rust](https://www.reddit.com/r/rust/comments/8lfuh7/why_isnt_there_an_easy_way_to_get_input_in_std_as/)
 
-所以使用 rust 解决 codeforces 中的问题suo
+所以使用 rust 解决 codeforces 中的问题所遇到的第一个困难就是如何处理输入，所幸的是这个问题在[这里](https://codeforces.com/blog/entry/67391)有所讨论，
