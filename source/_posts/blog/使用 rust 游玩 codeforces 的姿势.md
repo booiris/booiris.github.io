@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 codeforces 的姿势 
 date: 2024-03-15 21:36:47 
-updated: 2024-03-17 21:20:30
+updated: 2024-03-18 00:36:01
 tags: [] 
 top: false
 mathjax: true
@@ -100,7 +100,26 @@ fn main() {
 
 一个读入的过程为: 从 `Reader` 中根据换行符为分隔读取数据，保存到 `buf_str` 中，然后根据空白符做切分保存到 `buf_iter` 中，然后对每一块做解析转换成需要的格式。
 
-下面是一个宏，用于优化使用体验。
+在之后是一个宏，用于优化使用体验。
+
+```rust
+thread_local! {
+    pub static STDIN: std::cell::RefCell<Scanner<StdinLock<'static>>> =
+    std::cell::RefCell::new(Scanner::new(io::stdin().lock()));
+}
+#[allow(unused_macros)]
+macro_rules! safe_i {
+    () => {{
+        safe_i!(i32)
+    }};
+    ($t:ty) => {
+        STDIN.with(|r| {
+            let mut r = r.borrow_mut();
+            r.sc::<$t>()
+        })
+    };
+}
+```
 
 ---
 
