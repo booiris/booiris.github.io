@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 codeforces 的姿势 
 date: 2024-03-15 21:36:47 
-updated: 2024-03-16 21:43:28
+updated: 2024-03-17 18:57:39
 tags: [] 
 top: false
 mathjax: true
