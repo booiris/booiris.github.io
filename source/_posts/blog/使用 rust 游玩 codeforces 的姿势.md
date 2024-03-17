@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 codeforces 的姿势 
 date: 2024-03-15 21:36:47 
-updated: 2024-03-17 19:31:40
+updated: 2024-03-17 19:35:59
 tags: [] 
 top: false
 mathjax: true
@@ -14,8 +14,7 @@ author: booiris
 具体来说就是
 
 >   Codeforces 是一个在线编程和算法竞赛平台，广受全球程序员和算法爱好者的欢迎。它提供了一个平台，用户可以通过参加定期举办的编程比赛来提高自己的编程技能和算法知识。这些比赛通常分为几个不同的难度等级，适合从初学者到高级程序员的各个水平。
->
-> 	  在Codeforces上，参赛者需要在限定时间内解决一系列编程问题。这些问题覆盖了数据结构、算法、数学、字符串处理、图论等众多领域。参赛者的表现根据解决问题的速度和正确性来评分，并在全球范围内进行排名。 -- chatgpt 生成
+>在Codeforces上，参赛者需要在限定时间内解决一系列编程问题。这些问题覆盖了数据结构、算法、数学、字符串处理、图论等众多领域。参赛者的表现根据解决问题的速度和正确性来评分，并在全球范围内进行排名。 -- chatgpt 生成
 
 网站: [Codeforces](https://codeforces.com/)
 
@@ -87,7 +86,12 @@ macro_rules! i {
 
 // 使用方法
 fn main() {
-	let t = i!(i32); // 从标准输入中读入一个 i32
+	// 需要首先初始化全局的读入器。
+    unsafe {
+        IN = Box::leak(Box::new(Scanner::new(io::stdin().lock()))) as *mut Scanner<StdinLock<'_>>;
+    }
+	let t = i!(String); // 从标准输入中读入一个 string。
+	let a = i!();    //  默认读入的类型为 i32。
 }
 ```
 
