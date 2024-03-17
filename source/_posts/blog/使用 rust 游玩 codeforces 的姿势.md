@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 codeforces 的姿势 
 date: 2024-03-15 21:36:47 
-updated: 2024-03-17 19:37:46
+updated: 2024-03-17 20:54:16
 tags: [] 
 top: false
 mathjax: true
@@ -41,7 +41,7 @@ rust 标准库只提供了一些基本和常用的数据结构和一套特性，
 2. [Why is it so painful to read user inputs in Rust](https://www.reddit.com/r/rust/comments/ifpi8p/why_is_it_so_painful_to_read_user_inputs_in_rust/)
 3. [Why is it so painful to read user inputs in Rust](https://www.reddit.com/r/rust/comments/8lfuh7/why_isnt_there_an_easy_way_to_get_input_in_std_as/)
 
-所以使用 rust 解决 codeforces 中的问题所遇到的第一个困难就是如何处理输入，所幸的是这个问题在[这里](https://codeforces.com/blog/entry/67391)有所讨论，具体的解决方法参考这个[回复](https://codeforces.com/blog/entry/67391?#comment-516341)。笔者使用的模板代码如下:
+所以使用 rust 解决 codeforces 中的问题所遇到的第一个困难就是如何处理输入，所幸的是这个问题在[这里](https://codeforces.com/blog/entry/67391)有所讨论，具体的解决方法参考这个[回复](https://codeforces.com/blog/entry/67391?#comment-516341)。根据讨论中的代码修改，笔者使用的模板代码如下:
 
 ```rust
 pub struct Scanner<B> {
@@ -96,7 +96,7 @@ fn main() {
 }
 ```
 
-下面大致解释一下代码的实现，首先核心的式
+下面大致解释一下代码的实现，首先核心的是一个名为 `Scanner` 的结构体，其中的 `Reader` 保存了数据的来源，它是一个 trait ，可以认为是实现了 `BufRead`
 
 除了上面的解决方式之外，讨论中还出现了一种[解决方式](https://codeforces.com/blog/entry/67391?#comment-515870)，具体实现原理基本上和 c++ 的[快读方式](https://oi-wiki.org/contest/io/#%E8%AF%BB%E5%85%A5%E4%BC%98%E5%8C%96)相似，然后通过把快读封装成 trait，给基本类型使用宏实现快读的 trait 实现数据的读入。理论上这种读取方式应该更快，请读者自行取用。
 
