@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 codeforces 的姿势 
 date: 2024-03-15 21:36:47 
-updated: 2024-03-17 20:58:21
+updated: 2024-03-17 21:05:34
 tags: [] 
 top: false
 mathjax: true
@@ -96,7 +96,7 @@ fn main() {
 }
 ```
 
-下面大致解释一下代码的实现，首先核心的是一个名为 `Scanner` 的结构体，其中的 `Reader` 保存了数据的来源，它是一个 trait ，可以认为是任意实现了 `std::io::BufRead` 这一"规范"的结构体。具体到本代码则为
+下面大致解释一下代码的实现，首先核心的是一个名为 `Scanner` 的结构体，其中的 `Reader` 保存了数据的来源，它是一个 trait ，可以认为是任意实现了 `std::io::BufRead` 这一"规范"的结构体。具体到本代码则为标准输入流。
 
 除了上面的解决方式之外，讨论中还出现了一种[解决方式](https://codeforces.com/blog/entry/67391?#comment-515870)，具体实现原理基本上和 c++ 的[快读方式](https://oi-wiki.org/contest/io/#%E8%AF%BB%E5%85%A5%E4%BC%98%E5%8C%96)相似，然后通过把快读封装成 trait，给基本类型使用宏实现快读的 trait 实现数据的读入。理论上这种读取方式应该更快，请读者自行取用。
 
