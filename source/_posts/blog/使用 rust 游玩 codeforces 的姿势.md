@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 codeforces 的姿势 
 date: 2024-03-15 21:36:47 
-updated: 2024-03-17 19:26:53
+updated: 2024-03-17 19:31:40
 tags: [] 
 top: false
 mathjax: true
@@ -41,7 +41,55 @@ rust 标准库只提供了一些基本和常用的数据结构和一套特性，
 2. [Why is it so painful to read user inputs in Rust](https://www.reddit.com/r/rust/comments/ifpi8p/why_is_it_so_painful_to_read_user_inputs_in_rust/)
 3. [Why is it so painful to read user inputs in Rust](https://www.reddit.com/r/rust/comments/8lfuh7/why_isnt_there_an_easy_way_to_get_input_in_std_as/)
 
-所以使用 rust 解决 codeforces 中的问题所遇到的第一个困难就是如何处理输入，所幸的是这个问题在[这里](https://codeforces.com/blog/entry/67391)有所讨论，具体的解决方法参考这个[回复](https://codeforces.com/blog/entry/67391?#comment-516341)。
+所以使用 rust 解决 codeforces 中的问题所遇到的第一个困难就是如何处理输入，所幸的是这个问题在[这里](https://codeforces.com/blog/entry/67391)有所讨论，具体的解决方法参考这个[回复](https://codeforces.com/blog/entry/67391?#comment-516341)。笔者使用的模板代码如下:
+
+```rust
+pub struct Scanner<B> {
+    reader: B,
+    buf_str: Vec<u8>,
+    buf_iter: std::str::SplitWhitespace<'static>,
+}
+impl<B: BufRead> Scanner<B> {
+    pub fn new(reader: B) -> Self {
+        Self {
+            reader,
+            buf_str: Vec::new(),
+            buf_iter: "".split_whitespace(),
+        }
+    }
+    pub fn sc<T: std::str::FromStr>(&mut self) -> T {
+        loop {
+            if let Some(token) = self.buf_iter.next() {
+                return token.parse().ok().expect("Failed parse");
+            }
+            self.buf_str.clear();
+            self.reader
+                .read_until(b'\n', &mut self.buf_str)
+                .expect("Failed read");
+            self.buf_iter = unsafe {
+                let slice = std::str::from_utf8_unchecked(&self.buf_str);
+                std::mem::transmute(slice.split_whitespace())
+            }
+        }
+    }
+}
+
+static mut IN: *mut Scanner<StdinLock<'static>> = std::ptr::null_mut();
+#[allow(unused_macros)]
+macro_rules! i {
+    () => {{
+        i!(i32)
+    }};
+    ($t:ty) => {{
+        unsafe { (*IN).sc::<$t>() }
+    }};
+}
+
+// 使用方法
+fn main() {
+	let t = i!(i32); // 从标准输入中读入一个 i32
+}
+```
 
 除了上面的解决方式之外，讨论中还出现了一种[解决方式](https://codeforces.com/blog/entry/67391?#comment-515870)，具体实现原理基本上和 c++ 的[快读方式](https://oi-wiki.org/contest/io/#%E8%AF%BB%E5%85%A5%E4%BC%98%E5%8C%96)相似，然后通过把快读封装成 trait，给基本类型使用宏实现快读的 trait 实现数据的读入。理论上这种读取方式应该更快，请读者自行取用。
 
