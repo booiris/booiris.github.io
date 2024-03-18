@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-18 13:31:20
+updated: 2024-03-18 13:36:35
 tags: 
 top: false
 mathjax: true
@@ -141,6 +141,48 @@ macro_rules! safe_i {
 
 ### 处理输出
 
+对于输出
 
+```rust
+static mut OUT: *mut std::io::BufWriter<std::io::StdoutLock<'_>> = std::ptr::null_mut();
+#[allow(unused_macros)]
+macro_rules! w {
+    ($fmt:expr) => {
+    unsafe{ write!(*OUT, "{}", $fmt);}
+    };
+    ($fmt:expr, $($args:tt)*) => {
+    unsafe{  write!(*OUT, $fmt, $($args)*);}
+    };
+}
+#[allow(unused_macros)]
+macro_rules! wln {
+    () => {
+    unsafe{ writeln!(*OUT);}
+    };
+    ($fmt:expr) => {
+    unsafe{ writeln!(*OUT, "{}", $fmt);}
+    };
+    ($fmt:expr, $($args:tt)*) => {
+    unsafe{  writeln!(*OUT, $fmt, $($args)*);}
+    };
+}
+#[allow(unused_macros)]
+macro_rules! flush {
+    () => {
+        unsafe {
+            (*OUT).flush();
+        }
+    };
+}
+
+fn main(){
+    OUT = Box::leak(Box::new(io::BufWriter::new(io::stdout().lock())))
+            as *mut std::io::BufWriter<std::io::StdoutLock<'_>>;
+    let a: i32 = 1;
+	wln!(a);  // 输出 1\n
+	w!(a);    //  输出 1
+	wln!("test: {}",a); // 输出 test: 1\n 
+}
+```
 
 ### 处理随机数
