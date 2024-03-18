@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-18 13:36:35
+updated: 2024-03-18 13:39:21
 tags: 
 top: false
 mathjax: true
@@ -108,7 +108,7 @@ fn main() {
 
 在之后是一个宏，用于优化使用体验。然而一定会使用到全局变量，rust 中全局变量的使用较为繁琐，这里采用两种方法:
 
-1. 使用全局裸指针，使用 `box::leak` 将读取器内存泄漏，然后将裸指针指向这块内存进行调用，不过这个需要用到 unsafe 。
+1. 使用全局裸指针，使用 `box::leak` 将读取器内存泄漏，然后将裸指针指向这块内存进行调用，不过这个需要用到 unsafe ，由于 codeforces 算法都为单线程，所以不用考虑并发问题，所以这个 unsafe 是可控的。
 2. 使用 `RefCell` 获取内部可变性。
 
 通常来说，应该是使用全局裸指针性能更好，因为 `RefCell` 会在运行期进行借用检测。但经测试两者的性能差距不明显，所以读者自行选择。
@@ -141,7 +141,7 @@ macro_rules! safe_i {
 
 ### 处理输出
 
-对于输出
+对于输出也需要特殊处理一下，
 
 ```rust
 static mut OUT: *mut std::io::BufWriter<std::io::StdoutLock<'_>> = std::ptr::null_mut();
@@ -179,10 +179,13 @@ fn main(){
     OUT = Box::leak(Box::new(io::BufWriter::new(io::stdout().lock())))
             as *mut std::io::BufWriter<std::io::StdoutLock<'_>>;
     let a: i32 = 1;
+    wln!();    // 输出 \n
 	wln!(a);  // 输出 1\n
 	w!(a);    //  输出 1
 	wln!("test: {}",a); // 输出 test: 1\n 
 }
 ```
+
+同样的，对应输出器的全局变量也有两种
 
 ### 处理随机数
