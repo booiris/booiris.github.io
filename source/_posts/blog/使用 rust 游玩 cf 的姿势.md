@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-18 13:24:07
+updated: 2024-03-18 13:31:20
 tags: 
 top: false
 mathjax: true
@@ -108,12 +108,15 @@ fn main() {
 
 在之后是一个宏，用于优化使用体验。然而一定会使用到全局变量，rust 中全局变量的使用较为繁琐，这里采用两种方法:
 
-1. 使用全局裸指针，使用 `box::leak` 将读取器内存泄漏，然后裸指针指向这块内存进行调用。
-2. 使用 `RefCell` 
+1. 使用全局裸指针，使用 `box::leak` 将读取器内存泄漏，然后将裸指针指向这块内存进行调用，不过这个需要用到 unsafe 。
+2. 使用 `RefCell` 获取内部可变性。
+
+通常来说，应该是使用全局裸指针性能更好，因为 `RefCell` 会在运行期进行借用检测。但经测试两者的性能差距不明显，所以读者自行选择。
 
 [全局读取器使用裸指针和 refcell 性能测试 · GitHub](https://gist.github.com/booiris/68b0def25da4d820b52a65bebe3017eb)
 
 ```rust
+// RefCell 方式的全局变量
 thread_local! {
     pub static STDIN: std::cell::RefCell<Scanner<StdinLock<'static>>> =
     std::cell::RefCell::new(Scanner::new(io::stdin().lock()));
@@ -137,5 +140,7 @@ macro_rules! safe_i {
 除了上面的解决方式之外，讨论中还出现了一种[解决方式](https://codeforces.com/blog/entry/67391?#comment-515870)，具体实现原理基本上和 c++ 的[快读方式](https://oi-wiki.org/contest/io/#%E8%AF%BB%E5%85%A5%E4%BC%98%E5%8C%96)相似，然后通过把快读封装成 trait，给基本类型使用宏实现快读的 trait 实现数据的读入。理论上这种读取方式应该更快，请读者自行取用。
 
 ### 处理输出
+
+
 
 ### 处理随机数
