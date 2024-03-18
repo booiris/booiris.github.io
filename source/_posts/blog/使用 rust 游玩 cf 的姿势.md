@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-18 13:39:21
+updated: 2024-03-18 13:49:48
 tags: 
 top: false
 mathjax: true
@@ -141,7 +141,9 @@ macro_rules! safe_i {
 
 ### 处理输出
 
-对于输出也需要特殊处理一下，
+对于输出也需要特殊处理一下，使用普通的 `println!` 宏可能会导致输出时间过长导致超时。原因是[每次调用 `println!` 的时候都会给标准输出上锁](https://doc.rust-lang.org/std/macro.println.html)。遇到需要许多输出的题目可能会因为频繁上锁解锁导致输出时间过长。
+
+`println!` 的注释中也提到可以使用 `writeln!` 宏进行输出。对于输出的问题
 
 ```rust
 static mut OUT: *mut std::io::BufWriter<std::io::StdoutLock<'_>> = std::ptr::null_mut();
