@@ -108,6 +108,8 @@ fn main() {
 
 在之后是一个宏，用于优化使用体验。然而一定会使用到全局变量，rust 中
 
+[全局读取器使用裸指针和 refcell 性能测试 · GitHub](https://gist.github.com/booiris/68b0def25da4d820b52a65bebe3017eb)
+
 ```rust
 thread_local! {
     pub static STDIN: std::cell::RefCell<Scanner<StdinLock<'static>>> =
