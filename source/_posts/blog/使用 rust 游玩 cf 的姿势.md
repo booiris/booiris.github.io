@@ -1,15 +1,16 @@
 ---
-title: 使用 rust 游玩 codeforces 的姿势 
-date: 2024-03-15 21:36:47 
-updated: 2024-03-18 00:36:01
-tags: [] 
+title: 使用 rust 游玩 cf 的姿势
+date: 2024-03-15 21:36:47
+updated: 2024-03-18 12:44:38
+tags: 
 top: false
 mathjax: true
-categories: [ blog ]
+categories:
+  - blog
 author: booiris
 ---
 
-## codeforces 是什么
+## cf 是什么
 
 具体来说就是
 
