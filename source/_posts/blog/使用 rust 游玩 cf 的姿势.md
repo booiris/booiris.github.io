@@ -191,3 +191,6 @@ fn main(){
 同样的，对应输出器的全局变量也有两种
 
 ### 处理随机数
+
+
+[图结构性能测试 · GitHub](https://gist.github.com/booiris/cf5cc7dbec64051e62244ca9143e8a5d)
