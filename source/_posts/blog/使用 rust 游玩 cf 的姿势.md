@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-18 13:49:48
+updated: 2024-03-21 23:07:36
 tags: 
 top: false
 mathjax: true
@@ -143,7 +143,7 @@ macro_rules! safe_i {
 
 对于输出也需要特殊处理一下，使用普通的 `println!` 宏可能会导致输出时间过长导致超时。原因是[每次调用 `println!` 的时候都会给标准输出上锁](https://doc.rust-lang.org/std/macro.println.html)。遇到需要许多输出的题目可能会因为频繁上锁解锁导致输出时间过长。
 
-`println!` 的注释中也提到可以使用 `writeln!` 宏进行输出。对于输出的问题
+`println!` 的注释中也提到可以使用 `writeln!` 宏进行输出。对于输出加锁导致变慢的问题可以使用缓冲区解决。将输出保存到缓冲区中，最后调用 `flush!` 将缓冲区的内容写入输出流，这样就减少了加锁解锁的时间，实现了快速输出。
 
 ```rust
 static mut OUT: *mut std::io::BufWriter<std::io::StdoutLock<'_>> = std::ptr::null_mut();
@@ -188,9 +188,10 @@ fn main(){
 }
 ```
 
-同样的，对应输出器的全局变量也有两种
+同样的，对应输出器的全局变量也有两种写法，一种 `static mut` 的全局变量，一种是 `Refcell` ，这里作为思考题请读者自行实现。
 
 ### 处理随机数
+
 
 
 [图结构性能测试 · GitHub](https://gist.github.com/booiris/cf5cc7dbec64051e62244ca9143e8a5d)
