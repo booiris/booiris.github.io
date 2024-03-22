@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-22 19:31:38
+updated: 2024-03-22 23:44:00
 tags: 
 top: false
 mathjax: true
@@ -193,6 +193,14 @@ fn main(){
 
 ### 处理随机数
 
+[Submission #252682933 - Codeforces](https://codeforces.com/contest/1310/submission/252682933)
+
 [vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf](http://vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf)
 
+### 图模板
+
 [图结构性能测试 · GitHub](https://gist.github.com/booiris/cf5cc7dbec64051e62244ca9143e8a5d)
+
+### 树模板
+
+### 柯里化
