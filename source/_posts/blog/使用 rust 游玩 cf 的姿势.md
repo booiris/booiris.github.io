@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-23 00:39:01
+updated: 2024-03-23 00:46:57
 tags: 
 top: false
 mathjax: true
@@ -404,4 +404,6 @@ macro_rules! curry3 (
         |a| move |b| move |c| $f(a, b, c)
     };
 );
+// 源自 Rust 如何实现柯里化？ - Spore的回答 - 知乎
+// https://www.zhihu.com/question/437123518/answer/1655807344
 ```
