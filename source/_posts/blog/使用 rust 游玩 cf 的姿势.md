@@ -194,4 +194,6 @@ fn main(){
 
 
 
+[vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf](http://vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf)
+
 [图结构性能测试 · GitHub](https://gist.github.com/booiris/cf5cc7dbec64051e62244ca9143e8a5d)
