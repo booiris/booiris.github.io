@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-23 00:30:20
+updated: 2024-03-23 00:39:01
 tags: 
 top: false
 mathjax: true
@@ -246,12 +246,149 @@ impl Rand {
 
 [图结构性能测试 · GitHub](https://gist.github.com/booiris/cf5cc7dbec64051e62244ca9143e8a5d)
 
+```rust
+struct PathType {
+    from: usize,
+    to: usize,
+    v: i64,
+}
+
+impl fmt::Display for PathType {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "({}, {}, {})", self.from, self.to, self.v)
+    }
+}
+static mut PATHS: Vec<PathType> = vec![];
+static mut POINT: Vec<Vec<usize>> = vec![];
+
+struct Graph {
+    pub start_from: usize,
+}
+
+#[allow(dead_code)]
+impl Graph {
+    pub fn new(p_size: usize, start_from: usize) -> Graph {
+        unsafe {
+            PATHS.clear();
+            POINT.reserve((p_size + start_from).saturating_sub(POINT.capacity()));
+            POINT.clear();
+            POINT.resize_with(p_size + start_from, || vec![]);
+        }
+        Graph { start_from }
+    }
+
+    pub fn add_path(&mut self, from: usize, to: usize, v: i64) {
+        unsafe {
+            POINT[from].push(PATHS.len());
+            PATHS.push(PathType { from, to, v });
+        }
+    }
+
+    pub fn add_bi_path(&mut self, from: usize, to: usize, v: i64) {
+        unsafe {
+            POINT[from].push(PATHS.len());
+            PATHS.push(PathType { from, to, v });
+            POINT[to].push(PATHS.len());
+            PATHS.push(PathType {
+                from: to,
+                to: from,
+                v,
+            });
+        }
+    }
+
+    pub fn get(&self, now_p: usize) -> impl Iterator<Item = &'_ PathType> {
+        unsafe { POINT[now_p].iter().map(move |x| PATHS.get_unchecked(*x)) }
+    }
+}
+
+impl fmt::Display for Graph {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        unsafe {
+            for now_p in self.start_from..POINT.len() {
+                write!(f, "{} -- ", now_p);
+                for path in self.get(now_p) {
+                    write!(f, "{} ", path)?
+                }
+                writeln!(f)?
+            }
+        }
+        Ok(())
+    }
+}
+```
+
 ### 树模板
+
+```rust
+#[allow(dead_code)]
+static mut TREENODES: Vec<Option<TreeNode>> = vec![];
+struct Tree {
+    start_from: usize,
+}
+
+#[allow(dead_code)]
+impl Tree {
+    pub fn new(n: usize, start_from: usize) -> Tree {
+        unsafe {
+            TREENODES.reserve((n + start_from).saturating_sub(INV.capacity()));
+            TREENODES.clear();
+            TREENODES.resize_with(n + start_from, Default::default)
+        }
+        Tree { start_from }
+    }
+
+    pub fn add_node(&self, root: usize, left: Option<usize>, right: Option<usize>, val: i64) {
+        unsafe {
+            TREENODES[root] = Some(TreeNode {
+                _left: left,
+                _right: right,
+                val,
+                index: root,
+            })
+        }
+    }
+
+    pub fn get_node(&self, p: usize) -> Option<&mut TreeNode> {
+        unsafe { TREENODES[p].as_mut() }
+    }
+
+    pub fn get(&self, p: usize) -> &TreeNode {
+        unsafe { TREENODES[p].as_mut().unwrap() }
+    }
+
+    pub fn get_mut(&mut self, p: usize) -> &mut TreeNode {
+        unsafe { TREENODES[p].as_mut().unwrap() }
+    }
+
+    pub fn root(&mut self) -> &mut TreeNode {
+        self.get_mut(self.start_from)
+    }
+}
+
+struct TreeNode {
+    _left: Option<usize>,
+    _right: Option<usize>,
+    pub val: i64,
+    pub index: usize,
+}
+
+impl TreeNode {
+    pub fn right(&self) -> Option<&mut TreeNode> {
+        unsafe { self._right.and_then(|x| TREENODES[x].as_mut()) }
+    }
+
+    pub fn left(&self) -> Option<&mut TreeNode> {
+        unsafe { self._left.and_then(|x| TREENODES[x].as_mut()) }
+    }
+}
+```
 
 ### 柯里化
 
 柯里化在算法题中使用不多，大部分作用都是为了保存局部变量，用于传递给函数(由于 rust 不鼓励使用全局变量，所以容易导致传递较多的变量)。当然这种功能也能使用闭包实现，就请读者自行取用吧。使用方法参见:
 
+[Submission #252806831 - Codeforces](https://codeforces.com/contest/1933/submission/252806831)
 
 ```rust
 #[allow(unused_macros)]
