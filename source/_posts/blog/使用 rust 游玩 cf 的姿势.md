@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-22 23:50:18
+updated: 2024-03-23 00:20:16
 tags: 
 top: false
 mathjax: true
@@ -250,3 +250,20 @@ impl Rand {
 
 ### 柯里化
 
+
+
+```rust
+#[allow(unused_macros)]
+macro_rules! curry2 (
+    ($f:expr) => {
+        |a| move |b|  $f(a, b)
+    };
+);
+
+#[allow(unused_macros)]
+macro_rules! curry3 (
+    ($f:expr) => {
+        |a| move |b| move |c| $f(a, b, c)
+    };
+);
+```
