@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-21 23:11:30
+updated: 2024-03-22 12:30:05
 tags: 
 top: false
 mathjax: true
@@ -191,5 +191,7 @@ fn main(){
 同样的，对应输出器的全局变量也有两种写法，一种 `static mut` 的全局变量，一种是 `Refcell` ，这里作为思考题请读者自行实现。
 
 ### 处理随机数
+
+
 
 [图结构性能测试 · GitHub](https://gist.github.com/booiris/cf5cc7dbec64051e62244ca9143e8a5d)
