@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-22 23:44:00
+updated: 2024-03-22 23:50:18
 tags: 
 top: false
 mathjax: true
@@ -192,6 +192,51 @@ fn main(){
 同样的，对应输出器的全局变量也有两种写法，一种 `static mut` 的全局变量，一种是 `Refcell` ，这里作为思考题请读者自行实现。
 
 ### 处理随机数
+
+```rust
+#[derive(Debug, Clone, PartialEq, Eq)]
+struct Rand {
+    s: [u64; 4],
+}
+
+impl Rand {
+    pub fn new(mut state: u64) -> Self {
+        const PHI: u64 = 0x9e3779b97f4a7c15;
+        let mut seed = <[u64; 4]>::default();
+        for chunk in &mut seed {
+            state = state.wrapping_add(PHI);
+            let mut z = state;
+            z = (z ^ (z >> 30)).wrapping_mul(0xbf58476d1ce4e5b9);
+            z = (z ^ (z >> 27)).wrapping_mul(0x94d049bb133111eb);
+            z = z ^ (z >> 31);
+            *chunk = z;
+        }
+        Self { s: seed }
+    }
+
+    #[inline]
+    pub fn next_u32(&mut self) -> u32 {
+        (self.next_u64() >> 32) as u32
+    }
+
+    #[inline]
+    pub fn next_u64(&mut self) -> u64 {
+        let result_plusplus = self.s[0]
+            .wrapping_add(self.s[3])
+            .rotate_left(23)
+            .wrapping_add(self.s[0]);
+
+        let t = self.s[1] << 17;
+        self.s[2] ^= self.s[0];
+        self.s[3] ^= self.s[1];
+        self.s[1] ^= self.s[2];
+        self.s[0] ^= self.s[3];
+        self.s[2] ^= t;
+        self.s[3] = self.s[3].rotate_left(45);
+        result_plusplus
+    }
+}
+```
 
 [Submission #252682933 - Codeforces](https://codeforces.com/contest/1310/submission/252682933)
 
