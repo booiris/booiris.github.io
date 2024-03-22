@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-22 12:30:05
+updated: 2024-03-22 19:31:38
 tags: 
 top: false
 mathjax: true
@@ -182,17 +182,16 @@ fn main(){
             as *mut std::io::BufWriter<std::io::StdoutLock<'_>>;
     let a: i32 = 1;
     wln!();    // 输出 \n
-	wln!(a);  // 输出 1\n
-	w!(a);    //  输出 1
-	wln!("test: {}",a); // 输出 test: 1\n 
+    wln!(a);  // 输出 1\n
+    w!(a);    //  输出 1
+    wln!("test: {}",a); // 输出 test: 1\n 
+    flush!(); // 最后需要调用 flush 将数据输入到缓冲区
 }
 ```
 
 同样的，对应输出器的全局变量也有两种写法，一种 `static mut` 的全局变量，一种是 `Refcell` ，这里作为思考题请读者自行实现。
 
 ### 处理随机数
-
-
 
 [vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf](http://vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf)
 
