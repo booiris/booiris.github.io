@@ -193,6 +193,8 @@ fn main(){
 
 ### 处理随机数
 
+同样的，rust 的 std 中没有随机数库，
+
 ```rust
 #[derive(Debug, Clone, PartialEq, Eq)]
 struct Rand {
