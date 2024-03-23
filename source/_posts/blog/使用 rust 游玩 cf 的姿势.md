@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-23 17:52:36
+updated: 2024-03-23 21:24:16
 tags: 
 top: false
 mathjax: true
@@ -185,7 +185,7 @@ fn main(){
     wln!(a);  // 输出 1\n
     w!(a);    //  输出 1
     wln!("test: {}",a); // 输出 test: 1\n 
-    flush!(); // 最后需要调用 flush 将数据输入到缓冲区
+    flush!(); // 因为全局变量已经主动泄露，所以最后不会自动 drop ，最后需要手动调用 flush 将数据输入到缓冲区
 }
 ```
 
