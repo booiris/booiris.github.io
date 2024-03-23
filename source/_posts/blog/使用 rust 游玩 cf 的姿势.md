@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-23 22:29:17
+updated: 2024-03-23 22:43:34
 tags: 
 top: false
 mathjax: true
@@ -248,9 +248,11 @@ impl Rand {
 
 ### 图模板
 
-图的表示一般为邻接表和邻接矩阵。对于邻接矩阵注意如果能用定长数组就用定长数组。而对于邻接表的数据存储可以有两种方式，一种是放在 struct 中，每次创建的时候都分配一次内存，或者将数据存储再全局变量中，dong'tai
+图的表示一般为邻接表和邻接矩阵。对于邻接矩阵注意如果能用定长数组就用定长数组。而对于邻接表的数据存储可以有两种方式，一种是放在 struct 中，每次创建的时候都分配一次内存，或者将数据存储再全局变量中，动态地扩展长度。从性能测试的结果也能看出后面一种方式是更快的，由于算法题中不涉及到并发问题，所以操作全局变量是安全的，所以请尽情地使用 unsafe 吧(
 
 [图结构性能测试 · GitHub](https://gist.github.com/booiris/cf5cc7dbec64051e62244ca9143e8a5d)
+
+![](https://cdn.jsdelivr.net/gh/booiris-cdn/img/rust_cf_1.svg)
 
 ```rust
 struct PathType {
@@ -352,4 +354,4 @@ macro_rules! curry3 (
 // https://www.zhihu.com/question/437123518/answer/1655807344
 ```
 
-至此，
+至此，相信读者应该具有
