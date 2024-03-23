@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-23 22:19:01
+updated: 2024-03-23 22:29:17
 tags: 
 top: false
 mathjax: true
@@ -325,6 +325,8 @@ impl fmt::Display for Graph {
 ```
 
 使用方法参见:
+
+[Submission #252942104 - Codeforces](https://codeforces.com/contest/1929/submission/252942104)
 
 ### 柯里化
 
