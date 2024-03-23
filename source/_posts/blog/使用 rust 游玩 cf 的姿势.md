@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-23 00:46:57
+updated: 2024-03-23 17:52:36
 tags: 
 top: false
 mathjax: true
@@ -316,72 +316,6 @@ impl fmt::Display for Graph {
             }
         }
         Ok(())
-    }
-}
-```
-
-### 树模板
-
-```rust
-#[allow(dead_code)]
-static mut TREENODES: Vec<Option<TreeNode>> = vec![];
-struct Tree {
-    start_from: usize,
-}
-
-#[allow(dead_code)]
-impl Tree {
-    pub fn new(n: usize, start_from: usize) -> Tree {
-        unsafe {
-            TREENODES.reserve((n + start_from).saturating_sub(INV.capacity()));
-            TREENODES.clear();
-            TREENODES.resize_with(n + start_from, Default::default)
-        }
-        Tree { start_from }
-    }
-
-    pub fn add_node(&self, root: usize, left: Option<usize>, right: Option<usize>, val: i64) {
-        unsafe {
-            TREENODES[root] = Some(TreeNode {
-                _left: left,
-                _right: right,
-                val,
-                index: root,
-            })
-        }
-    }
-
-    pub fn get_node(&self, p: usize) -> Option<&mut TreeNode> {
-        unsafe { TREENODES[p].as_mut() }
-    }
-
-    pub fn get(&self, p: usize) -> &TreeNode {
-        unsafe { TREENODES[p].as_mut().unwrap() }
-    }
-
-    pub fn get_mut(&mut self, p: usize) -> &mut TreeNode {
-        unsafe { TREENODES[p].as_mut().unwrap() }
-    }
-
-    pub fn root(&mut self) -> &mut TreeNode {
-        self.get_mut(self.start_from)
-    }
-}
-
-struct TreeNode {
-    _left: Option<usize>,
-    _right: Option<usize>,
-    pub val: i64,
-    pub index: usize,
-}
-
-impl TreeNode {
-    pub fn right(&self) -> Option<&mut TreeNode> {
-        unsafe { self._right.and_then(|x| TREENODES[x].as_mut()) }
-    }
-
-    pub fn left(&self) -> Option<&mut TreeNode> {
-        unsafe { self._left.and_then(|x| TREENODES[x].as_mut()) }
     }
 }
 ```
