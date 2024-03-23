@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-23 22:13:42
+updated: 2024-03-23 22:19:01
 tags: 
 top: false
 mathjax: true
@@ -248,7 +248,7 @@ impl Rand {
 
 ### 图模板
 
-图的表示一般为邻接表和邻接矩阵。对于邻接矩阵
+图的表示一般为邻接表和邻接矩阵。对于邻接矩阵注意如果能用定长数组就用定长数组。而对于邻接表
 
 [图结构性能测试 · GitHub](https://gist.github.com/booiris/cf5cc7dbec64051e62244ca9143e8a5d)
 
