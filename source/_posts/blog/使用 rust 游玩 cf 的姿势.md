@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-23 21:30:35
+updated: 2024-03-23 21:44:24
 tags: 
 top: false
 mathjax: true
@@ -194,6 +194,8 @@ fn main(){
 ### 处理随机数
 
 同样的，rust 的 std 中没有随机数库，需要自己手动造一下轮子。
+
+代码来源不可考了，贴一下原始的论文
 
 [vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf](http://vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf)
 
