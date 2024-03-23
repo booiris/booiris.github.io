@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-23 21:44:24
+updated: 2024-03-23 21:49:14
 tags: 
 top: false
 mathjax: true
@@ -193,9 +193,7 @@ fn main(){
 
 ### 处理随机数
 
-同样的，rust 的 std 中没有随机数库，需要自己手动造一下轮子。
-
-代码来源不可考了，贴一下原始的论文
+同样的，rust 的 std 中没有随机数库，需要自己手动造一下轮子。代码来源不可考了，贴一下原始的论文吧：
 
 [vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf](http://vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf)
 
@@ -249,6 +247,8 @@ impl Rand {
 [Submission #252682933 - Codeforces](https://codeforces.com/contest/1310/submission/252682933)
 
 ### 图模板
+
+图的表示一般为邻接表和邻接矩阵。对于邻接矩阵
 
 [图结构性能测试 · GitHub](https://gist.github.com/booiris/cf5cc7dbec64051e62244ca9143e8a5d)
 
