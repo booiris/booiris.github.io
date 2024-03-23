@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-23 21:29:35
+updated: 2024-03-23 21:30:35
 tags: 
 top: false
 mathjax: true
@@ -242,6 +242,8 @@ impl Rand {
 }
 ```
 
+使用随机化算法的题目不是特别多，具体使用方法请看如下示例:
+
 [Submission #252682933 - Codeforces](https://codeforces.com/contest/1310/submission/252682933)
 
 ### 图模板
@@ -343,3 +345,5 @@ macro_rules! curry3 (
 // 源自 Rust 如何实现柯里化？ - Spore的回答 - 知乎
 // https://www.zhihu.com/question/437123518/answer/1655807344
 ```
+
+至此，
