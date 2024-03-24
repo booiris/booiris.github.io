@@ -1,7 +1,7 @@
 ---
 title: 使用 rust 游玩 cf 的姿势
 date: 2024-03-15 21:36:47
-updated: 2024-03-23 22:52:18
+updated: 2024-03-24 18:28:30
 tags: 
 top: false
 mathjax: true
@@ -354,4 +354,4 @@ macro_rules! curry3 (
 // https://www.zhihu.com/question/437123518/answer/1655807344
 ```
 
-至此，相信读者应该具有使用 rust 游玩 cf 的能力，请愉快地玩耍吧(
+至此，请愉快地使用 rust ~~受苦~~玩耍吧(
