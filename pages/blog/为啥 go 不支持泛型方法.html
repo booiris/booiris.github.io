@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta name="generator" content="Hexo 6.2.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>为啥 go 不支持泛型方法 - Booiris</title>
+
+  
+    <meta name="description" content="引言 众所周知， go 的泛型并不完善，由于其不支持 parameterized methods (泛型方法)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 proposal: spec: allow parameterized methods in methods · Issue #49085 · golang&#x2F;go · GitHub 有着充分的讨论，本文旨在对其中的讨">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为啥 go 不支持泛型方法">
+<meta property="og:url" content="https://booiris.space/pages/blog/%E4%B8%BA%E5%95%A5%20go%20%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95.html">
+<meta property="og:site_name" content="Booiris">
+<meta property="og:description" content="引言 众所周知， go 的泛型并不完善，由于其不支持 parameterized methods (泛型方法)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 proposal: spec: allow parameterized methods in methods · Issue #49085 · golang&#x2F;go · GitHub 有着充分的讨论，本文旨在对其中的讨">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/booiris-cdn/img/20231224210233.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20240228131110.png">
+<meta property="article:published_time" content="2024-02-20T14:10:20.000Z">
+<meta property="article:modified_time" content="2024-03-15T15:32:49.000Z">
+<meta property="article:author" content="booiris">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/booiris-cdn/img/20231224210233.png">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/feed.xml" title="Booiris" >
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/%5Bobject%20Object%5D">
+  
+
+  
+    
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/atom-one-dark.min.css">
+
+  
+
+  
+
+
+  
+    
+      <link rel="preconnect" href="https://s1.hdslb.com/" />
+    
+      <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'" />
+    
+      <link rel="icon" type="32x32" href="https://cdn.jsdelivr.net/gh/booiris-cdn/img/icon-32x32.ico">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+    
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+    
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/atom-one-dark.min.css">
+    
+  
+<link rel="alternate" href="/feed.xml" title="Booiris" type="application/atom+xml">
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Booiris</div><div class="sub cap">English by default🤖</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">Blog</a><a class="nav-item" href="/wiki/">Doc</a><a class="nav-item" href="/game/">Game</a><a class="nav-item" href="/about/">About</a><a class="nav-item" href="/pic">Picture</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">为啥 go 不支持泛型方法</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text"> 引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E7%82%B9%E9%95%BF%E7%9A%84%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="toc-text"> 有点长的前置知识…</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#stenciling"><span class="toc-text"> Stenciling</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text"> 问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dictionaries"><span class="toc-text"> Dictionaries</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dictionary-%E5%8C%85%E5%90%AB%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="toc-text"> dictionary 包含的信息</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#instantiated-types"><span class="toc-text"> Instantiated types</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#derived-types"><span class="toc-text"> Derived types</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#subdictionaries"><span class="toc-text"> Subdictionaries</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#helper-methods"><span class="toc-text"> Helper methods</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#stack-layout"><span class="toc-text"> Stack layout</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#pointer-maps"><span class="toc-text"> Pointer maps</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-2"><span class="toc-text"> 问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gc-shape-stenciling"><span class="toc-text"> GC Shape Stenciling</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-text"> 正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-text"> 原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A8%E8%AE%BA"><span class="toc-text"> 讨论</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#gava%E6%B4%BE"><span class="toc-text"> gava派</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E7%B3%96%E6%B4%BE%E6%8A%95%E9%99%8D%E6%B4%BE"><span class="toc-text"> 语法糖派(投降派)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#xx%E6%B4%BE%E6%83%B3%E4%B8%8D%E5%87%BA%E5%90%8D%E5%AD%97%E4%BA%86"><span class="toc-text"> xx派(想不出名字了)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C"><span class="toc-text"> 二</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E5%AF%B9%E6%B4%BE"><span class="toc-text"> 反对派</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text"> 总结</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/booiris" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/08a41b181ce68.svg"/></a><a class="social" href="mailto:booiris02@gmail.com" rel="noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/a1b00e20f425d.svg"/></a><a class="social" href="https://steamcommunity.com/profiles/76561198081152126/" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/steam_47012.png"/></a><a class="social" href="https://screeps.com/a/#!/profile/booiris" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/screep.png"/></a></div></footer>
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+    
+
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a><span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/blog/">blog</a></div><div id="post-meta">Posted on&nbsp;<time datetime="2024-02-20T14:10:20.000Z">2024-02-20</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>为啥 go 不支持泛型方法</span></h1>
+<h2 id="引言"><a class="markdownIt-Anchor" href="#引言"></a> 引言</h2>
+<p>众所周知， go 的泛型并不完善，由于其不支持 <code>parameterized methods</code> (泛型方法)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 <a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085">proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub</a> 有着充分的讨论，本文旨在对其中的讨论进行总结(加一点<s>指指点点</s>)，找出 go 是 xx 的原因，如有错误恳请斧正。</p>
+<h2 id="有点长的前置知识"><a class="markdownIt-Anchor" href="#有点长的前置知识"></a> 有点长的前置知识…</h2>
+<p>在看 issue 之前，首先介绍一下泛型的通常实现方式，一般有如下几种方式</p>
+<ol>
+<li><strong>类型擦除+虚函数表</strong>: 这是 Java 泛型的实现方式。在编译时，泛型类型信息会被擦除，所有的泛型被转换为基类 Object (在 go 中相当于将所有的类型变成 interface{} )，编译器同时会在必要时插入类型转换代码来确保类型安全。</li>
+<li><strong>模板实例化</strong>: C++ 使用模板来实现泛型。在编译时，模板会生成对应于每种具体类型的实例化代码。如 <code>T add(T a, T b)</code> 的泛型方法，对于 <code>add(1,2)</code> 和 <code>add(1.0,2.0)</code> 会生成两个函数 <code>int add(int a, int b)</code> 和 <code>double add( double a, double b)</code> 。</li>
+<li><strong>即时编译</strong>: <a target="_blank" rel="noopener" href="https://hackernoon.com/how-generics-differ-in-java-and-c">How Generics Differ in Java and C# | HackerNoon</a>, <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/348761322">C#泛型详解 - 知乎</a>, <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/31876372/what-is-reification">c# - What is reification? - Stack Overflow</a>，从这些链接可以大致看出，c# 的泛型实现是编译时使用占位符表示泛型类型，然后在运行时动态实例化各种类型。</li>
+</ol>
+<p>回到 go 的泛型，实际上 go 的泛型实现方式有三种提案，下面分别介绍这三种提案，有助于后续对 issue 中的讨论进行分析。(本来想简单写写的，写着写着太长了，不想看的请跳至正文部分)</p>
+<h3 id="stenciling"><a class="markdownIt-Anchor" href="#stenciling"></a> Stenciling</h3>
+<p><a target="_blank" rel="noopener" href="https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-stenciling.md">Generics implementation - Stenciling</a></p>
+<p>首先是被称为蜡印(Stenciling) 的实现，实际上这个 c++、rust 的泛型实现方法很相似，都是在编译实例化所有的类型，生成多个对应类型的函数。</p>
+<p>对于如下泛型函数:</p>
+<pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f</span>[<span class="hljs-title">T1</span>, <span class="hljs-title">T2</span> <span class="hljs-title">any</span>]<span class="hljs-params">(x <span class="hljs-type">int</span>, y T1)</span></span> T2 &#123;
+    ...
+&#125;</code></pre>
+<p>存在如下两个调用:</p>
+<pre><code class="hljs go"><span class="hljs-keyword">var</span> a <span class="hljs-type">float64</span> = f[<span class="hljs-type">int</span>, <span class="hljs-type">float64</span>](<span class="hljs-number">7</span>, <span class="hljs-number">8.0</span>)
+<span class="hljs-keyword">var</span> b <span class="hljs-keyword">struct</span>&#123;f <span class="hljs-type">int</span>&#125; = f[<span class="hljs-type">complex128</span>, <span class="hljs-keyword">struct</span>&#123;f <span class="hljs-type">int</span>&#125;](<span class="hljs-number">3</span>, <span class="hljs-number">1</span>+<span class="hljs-number">1i</span>)</code></pre>
+<p>使用 Stenciling 方法会实例化两个类型函数用于调用:</p>
+<pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f1</span><span class="hljs-params">(x <span class="hljs-type">int</span>, y <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">float64</span> &#123;
+    ... identical bodies ...
+&#125;
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f2</span><span class="hljs-params">(x <span class="hljs-type">int</span>, y <span class="hljs-type">complex128</span>)</span></span> <span class="hljs-keyword">struct</span>&#123;f <span class="hljs-type">int</span>&#125; &#123;
+    ... identical bodies ...
+&#125;</code></pre>
+<p>由于不是 go 泛型的实际实现，所以其中所提到的命名实现、实例化方法、类型约束和重复实例化代码处理就不细说了。具体提一下其中的 risks 部分。</p>
+<h4 id="问题"><a class="markdownIt-Anchor" href="#问题"></a> 问题</h4>
+<p>对于 Stenciling 方法，提案提出两个问题:</p>
+<ol>
+<li>编译期实例化泛型导致编译时间变长</li>
+<li>编译期实例化泛型导致生成的代码变多，生成的二进制文件变大，有可能导致 instruction cache miss 和 分支预测失效(为啥?)等问题。</li>
+</ol>
+<p>提案末尾中大致提出了使用增量编译减少编译时间、多次调用编译器来去除重复的实例化代码(因为 go 是以包维度进行编译的)等方案。不过这些都不重要，重要的是提案中的一段话:</p>
+<blockquote>
+<p>I suspect there will be lots of cases where sharing is possible, if the underlying types are indistinguishable w.r.t. the garbage collector (same size and ptr/nonptr layout)</p>
+</blockquote>
+<p>提案认为尽管类型可以有很多个(如 <code>int</code> 、<code>type IntAlias = int</code> )，但实际上内存布局都是相同的，相同内存布局的值类型可以共享代码，这就减少了生成的代码大小同时也加快了编译时间。事实上这就是 go 实际的泛型实现(GC Shape Stenciling) 。</p>
+<h3 id="dictionaries"><a class="markdownIt-Anchor" href="#dictionaries"></a> Dictionaries</h3>
+<p><a target="_blank" rel="noopener" href="https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-dictionaries.md">Generics implementation - Dictionaries</a></p>
+<p>字典(Dictionaries)方式的实现方式正如其名，对于如下泛型函数:</p>
+<pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f</span>[<span class="hljs-title">T1</span>, <span class="hljs-title">T2</span> <span class="hljs-title">any</span>]<span class="hljs-params">(x <span class="hljs-type">int</span>, y T1)</span></span> T2 &#123;
+    ...
+&#125;</code></pre>
+<p>存在如下两个调用:</p>
+<pre><code class="hljs go"><span class="hljs-keyword">var</span> a <span class="hljs-type">float64</span> = f[<span class="hljs-type">int</span>, <span class="hljs-type">float64</span>](<span class="hljs-number">7</span>, <span class="hljs-number">8.0</span>)
+<span class="hljs-keyword">var</span> b <span class="hljs-keyword">struct</span>&#123;f <span class="hljs-type">int</span>&#125; = f[<span class="hljs-type">complex128</span>, <span class="hljs-keyword">struct</span>&#123;f <span class="hljs-type">int</span>&#125;](<span class="hljs-number">3</span>, <span class="hljs-number">1</span>+<span class="hljs-number">1i</span>)</code></pre>
+<p>那么编译其会实例化<strong>一个</strong>函数，同时会有多个字典，每个字典包含一些运行时需要的信息:</p>
+<pre><code class="hljs go"><span class="hljs-keyword">type</span> pos1CallSiteDictionary <span class="hljs-keyword">struct</span> &#123;
+        ... runtime._type
+&#125;
+
+<span class="hljs-keyword">type</span> pos2CallSiteDictionary <span class="hljs-keyword">struct</span> &#123;
+        ... runtime._type
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f</span> <span class="hljs-params">(type_info dictionary, x <span class="hljs-type">int</span>, y T1)</span></span> T2 &#123;
+    ...
+&#125;</code></pre>
+<p>对于泛型函数，会添加一个额外的 dictionary 参数，用于实例化泛型函数中的类型，传入的 dictionary 内容由<strong>调用点生成和传入</strong>。</p>
+<h4 id="dictionary-包含的信息"><a class="markdownIt-Anchor" href="#dictionary-包含的信息"></a> dictionary 包含的信息</h4>
+<p>整个字典需要保存整个函数执行的环境，其中包含的信息是十分多的。在提案中列举了需要的信息:</p>
+<h5 id="instantiated-types"><a class="markdownIt-Anchor" href="#instantiated-types"></a> Instantiated types</h5>
+<p>首先需要包含函数签名上的类型，可能以如下形式进行存储</p>
+<pre><code class="hljs go"><span class="hljs-keyword">type</span> dictionary <span class="hljs-keyword">struct</span> &#123;
+    T1 *runtime._type
+    T2 *runtime._type
+    ...
+&#125;</code></pre>
+<p>出于打印栈的目的，字典中需要包含未被使用的类型。</p>
+<h5 id="derived-types"><a class="markdownIt-Anchor" href="#derived-types"></a> Derived types</h5>
+<p>除了函数签名上的类型，字典中还需要保存函数中派生出的类型，比如泛型函数中如果定义了如下类型:</p>
+<pre><code class="hljs go"><span class="hljs-keyword">type</span> X <span class="hljs-keyword">struct</span> &#123; x <span class="hljs-type">int</span>; y T1 &#125;
+m := <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>] T1&#123;&#125;</code></pre>
+<p>那么需要保存派生出来的类型:</p>
+<pre><code class="hljs go"><span class="hljs-keyword">type</span> dictionary <span class="hljs-keyword">struct</span> &#123;
+    ...
+    D1 *runtime._type <span class="hljs-comment">// struct &#123; x int; y T1 &#125;</span>
+    D2 *runtime._type <span class="hljs-comment">// map[string] T1</span>
+    ...
+&#125;</code></pre>
+<h5 id="subdictionaries"><a class="markdownIt-Anchor" href="#subdictionaries"></a> Subdictionaries</h5>
+<p>如果泛型中函数调用了其他的泛型函数，还需要保存对应泛型函数的字典。这样才能接着传递 dictionary 参数，调用对应的泛型函数，提案中称之为子字典:</p>
+<pre><code class="hljs go"><span class="hljs-comment">//  func g[T](g T) &#123; ... &#125;</span>
+<span class="hljs-comment">//  in f[T1]: g[T1] (y)</span>
+<span class="hljs-keyword">type</span> dictionary <span class="hljs-keyword">struct</span> &#123;
+    ...
+    S1 *dictionary <span class="hljs-comment">// SubDictionary for call to g</span>
+    ...
+&#125;</code></pre>
+<h5 id="helper-methods"><a class="markdownIt-Anchor" href="#helper-methods"></a> Helper methods</h5>
+<p>字典中还需要保存泛型类型的操作符，比如对于如下运算:</p>
+<pre><code class="hljs go">y2 := y + <span class="hljs-number">1</span>
+<span class="hljs-keyword">if</span> y2 &gt; y &#123; … &#125;</code></pre>
+<p>为了表达泛型操作，需要将其中的 <code>+</code> 和 <code>&gt;</code> 抽象出来变成一种方法保存到字典中:</p>
+<pre><code class="hljs go"><span class="hljs-keyword">type</span> dictionary <span class="hljs-keyword">struct</span> &#123;
+    ...
+    plus <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(z, x, y *T1)</span></span>      <span class="hljs-comment">// does *z = *x+*y</span>
+    greater <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(x, y *T1)</span></span> <span class="hljs-type">bool</span> <span class="hljs-comment">// computes *x&gt;*y</span>
+    ...
+&#125;</code></pre>
+<h5 id="stack-layout"><a class="markdownIt-Anchor" href="#stack-layout"></a> Stack layout</h5>
+<p>因为类型不确定，字典中还需要保存函数中所有非指针类型临时变量 ([4]T 是栈变量，[]T 不是栈变量) 的占用空间，用于分配栈空间。而之前提到过，字典是由调用点传入的，因为只有调用点才知道所有的类型，所以在调用点需要计算所需要的栈空间。然后字典中还需要保存每个临时对象在栈内的地址。</p>
+<pre><code class="hljs go"><span class="hljs-keyword">type</span> dictionary <span class="hljs-keyword">struct</span> &#123;
+    ...
+    frameSize <span class="hljs-type">uintptr</span>
+    stackObjects []stackObject
+    ...
+&#125;
+<span class="hljs-keyword">type</span> stackObject <span class="hljs-keyword">struct</span> &#123;
+    offset <span class="hljs-type">uintptr</span>
+    typ *runtime._type
+&#125;</code></pre>
+<p>对于泛型函数的嵌套调用也需要特殊处理。对于如下函数调用:</p>
+<pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f</span>[<span class="hljs-title">T1</span>, <span class="hljs-title">T2</span> <span class="hljs-title">any</span>]<span class="hljs-params">(x <span class="hljs-type">int</span>, y T1, h <span class="hljs-keyword">func</span>(x T1, y <span class="hljs-type">int</span>, z T2)</span></span> <span class="hljs-type">int</span>) T2 &#123;
+    <span class="hljs-keyword">var</span> z T2
+    ....
+    r := h(y, x, z)
+&#125;</code></pre>
+<p>提案中提出了两种方法:</p>
+<ol>
+<li>逐个参数处理</li>
+</ol>
+<p>逐个处理参数，将参数复制到栈上正确的位置:</p>
+<pre><code class="hljs go">argPtr = SP
+memmove(argPtr, &amp;y, dictionary.T1.size)
+argPtr += T1.size
+argPtr = roundUp(argPtr, alignof(<span class="hljs-type">int</span>))
+*(*<span class="hljs-type">int</span>)argPtr = x
+argPtr += sizeof(<span class="hljs-type">int</span>)
+memmove(argPtr, &amp;z, dictionary.T2.size)
+argPtr += T2.size
+call h
+argPtr = roundUp(argPtr, <span class="hljs-number">8</span>) <span class="hljs-comment">// alignment of return value start</span>
+r = *(*<span class="hljs-type">int</span>)argPtr</code></pre>
+<ol start="2">
+<li>使用字典存储偏移量</li>
+</ol>
+<p>或者提前计算出调用函数的入参出参在栈上的偏移量，然后保存到字典中，使用的时候根据偏移量复制参数:</p>
+<pre><code class="hljs go">memmove(SP + dictionary.callsite1.arg1offset, &amp;y, dictionary.T1.size)
+*(*<span class="hljs-type">int</span>)(SP + dictionary.callsite1.arg2offset) = x
+memmove(SP + dictionary.callsite1.arg3offset, &amp;z, dictionary.T2.size)
+call h
+r = *(*<span class="hljs-type">int</span>)(SP + dictionary.callsite1.ret1offset)</code></pre>
+<h5 id="pointer-maps"><a class="markdownIt-Anchor" href="#pointer-maps"></a> Pointer maps</h5>
+<p>需要一个 bitMap 存储入参出参的空间大小和是否是指针类型。用于调用者分配空间入参和出参空间。</p>
+<pre><code class="hljs go"><span class="hljs-keyword">type</span> dictionary <span class="hljs-keyword">struct</span> &#123;
+    ...
+    argPointerMap bitMap <span class="hljs-comment">// arg size and ptr/nonptr bitmap</span>
+    ...
+&#125;</code></pre>
+<h4 id="问题-2"><a class="markdownIt-Anchor" href="#问题-2"></a> 问题</h4>
+<p>提案中提到了虽然采用字典方法减少了代码的生成，但是占用的内存变多了。这就出现了 data cache misses 和 instruction cache misses 的替换。需要找一种折中的方法。</p>
+<p>还有提案中提到使用字典方法也有可能导致性能的下降，比如当泛型方法中具体类型为 int 的情况，<code>x=y</code> 的操作在使用蜡印方法可以优化成一次寄存器复制的操作，而使用字典的方法，由于需要处理不同类型的数据，只能使用 <code>memmove</code> 操作复制数据，这无疑是一种额外的开销。</p>
+<h3 id="gc-shape-stenciling"><a class="markdownIt-Anchor" href="#gc-shape-stenciling"></a> GC Shape Stenciling</h3>
+<p><strong>！本节的分析基于提案和 go 1.18，部分信息可能和高版本的 go 有所不同，请注意区分。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://go.googlesource.com/proposal/+/refs/heads/master/design/generics-implementation-gcshape.md">Generics implementation - GC Shape Stenciling</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/proposal/blob/master/design/generics-implementation-dictionaries-go1.18.md">proposal/design/generics-implementation-dictionaries-go1.18.md at master · golang/proposal · GitHub</a></p>
+<p>GC Shape Stenciling 是 go 的真正泛型实现。它是 Stenciling 和 Dictionaries 的折中实现。GC Shape 在提案中的解释是:</p>
+<blockquote>
+<p>The <em>GC shape</em> of a type means how that type appears to the allocator / garbage collector.</p>
+</blockquote>
+<p>举例来说 <code>int</code> 和 <code>type IntAlias = int</code> 是属于一个 GC Shape，比较特别的是对于所有的指针类型属于一个 GC Shape，使用虚表进行方法的调用。</p>
+<p>对于每一个 GC Shape，go 会实例化一个具体的代码，具体来说，对于如下</p>
+<pre><code class="hljs go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">f</span>[<span class="hljs-title">T</span> <span class="hljs-title">any</span>] <span class="hljs-params">(t T)</span></span> T &#123;
+        <span class="hljs-keyword">var</span> x T
+        <span class="hljs-keyword">return</span> x
+&#125;
+
+<span class="hljs-keyword">type</span> MyInt <span class="hljs-type">int</span>
+<span class="hljs-keyword">type</span> IntAlias = <span class="hljs-type">int</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;
+        f[<span class="hljs-type">int</span>](<span class="hljs-number">5</span>)
+        f[MyInt](<span class="hljs-number">5</span>)
+        f[IntAlias](<span class="hljs-number">5</span>)
+        f[*<span class="hljs-type">int</span>](<span class="hljs-literal">nil</span>)
+        f[*MyInt](<span class="hljs-literal">nil</span>)
+        f[<span class="hljs-keyword">interface</span>&#123;&#125;](<span class="hljs-literal">nil</span>)
+&#125;
+</code></pre>
+<h2 id="正文"><a class="markdownIt-Anchor" href="#正文"></a> 正文</h2>
+<p>下面终于来到 <a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085">issue</a> 分析环节。</p>
+<p>首先是有人提出由于 go 的泛型不支持 <code>parameterized methods</code>，所以如下代码无法编译:</p>
+<pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(si *stream[IN])</span></span> Map[OUT any](f <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(IN)</span></span> OUT) stream[OUT]</code></pre>
+<p>这就导致了在 go 中无法实现常规的流式处理方法。提问人也提出如果 go 能支持 <code>parameterized methods</code>，那么某些领域在构造代码的时候会更加简便，例如(举的例子奇奇怪怪的，看着也没用到 <code>parameterized methods</code>):</p>
+<ol>
+<li>testing (?): <code>Assert(actual).ToBe(expected)</code></li>
+<li>mocking (?): <code>On(obj.Sum).WithArgs(7, 8).ThenReturn(15)</code></li>
+</ol>
+<h3 id="原因"><a class="markdownIt-Anchor" href="#原因"></a> 原因</h3>
+<p>之后有人贴出 go 不支持 <code>parameterized methods</code> 的原因: <a target="_blank" rel="noopener" href="https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#No-parameterized-methods">parameterized methods Proposal</a>。考虑如下代码:</p>
+<pre><code class="hljs go"><span class="hljs-keyword">package</span> p1
+<span class="hljs-keyword">type</span> S <span class="hljs-keyword">struct</span>&#123;&#125;
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(S)</span></span> Identity[T any] (v T) T &#123; <span class="hljs-keyword">return</span> v &#125;
+
+<span class="hljs-keyword">package</span> p2
+<span class="hljs-keyword">type</span> HasIdentity <span class="hljs-keyword">interface</span> &#123;
+        Identity[T any] (T) T
+&#125;
+
+<span class="hljs-keyword">package</span> p3
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;p2&quot;</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">CheckIdentity</span><span class="hljs-params">(v <span class="hljs-keyword">interface</span>&#123;&#125;)</span></span> &#123;
+        <span class="hljs-keyword">if</span> vi, ok := v.(p2.HasIdentity); ok &#123;
+                <span class="hljs-keyword">if</span> got := vi.Identity[<span class="hljs-type">int</span>] (<span class="hljs-number">0</span>); got != <span class="hljs-number">0</span> &#123;
+                        <span class="hljs-built_in">panic</span>(got)
+                &#125;
+        &#125;
+&#125;
+
+<span class="hljs-keyword">package</span> p4
+<span class="hljs-keyword">import</span> (
+        <span class="hljs-string">&quot;p1&quot;</span>
+        <span class="hljs-string">&quot;p3&quot;</span>
+)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">CheckSIdentity</span><span class="hljs-params">()</span></span> &#123;
+        p3.CheckIdentity(p1.S&#123;&#125;)
+&#125;</code></pre>
+<p>在上面的代码中，p1 中的 S 实现了 p2 中的 <code>HasIdentity</code> 接口，在 p3 中有一个函数实现了将入参断言为 <code>HasIdentity</code> 并调用其中的函数的功能。在 p4 中调用了 p3 中的函数并传入了 p1 中定义的 S。</p>
+<p>看着还挺合理，但是问题来了，在 p3 中的 <code>CheckIdentity</code> 在断言完入参后，调用了一个类型为 <code>int</code> 的 <code>Identity</code> 函数。根据上面函数的调用链我们可以知道，它其实是在调用 <code>p1.S.Identity[int]</code>，只需要实例化一个 <code>p1.S.Identity[int]</code> 代码块即可。然而，由于 go 的<strong>大道至简</strong>，类型只有通过 import 才可见，也就是说 p3 是无法感知到 p1.S 这个类型的，所以实例化 <code>p1.S.Identity[int]</code> 也就无从说起了。</p>
+<p>之后提案中给出了三个方案:</p>
+<ol>
+<li>编译器努努力，根据函数的调用链实例化对应的函数。然而由于 go 中的<strong>反射</strong>的存在，在编译期实际上无法确定所有的函数调用链 。(<strong>这个也是我感觉 go 支持 <code>parameterized methods</code> 里最难受的地方</strong>)</li>
+<li>学习 java or C#，运行时实例化，这就导致了 go 需要支持某种 JIT，或者使用基于反射的方法，这些实现起来都十分复杂，而且会导致运行时速度变慢。</li>
+<li>约束 interface 中禁用 <code>parameterized methods</code> ，因为无法感知类型的原因就是 interface 将实际类型信息隐藏了，不过还是存在反射的问题(直接禁止反射调用泛型函数?)：</li>
+</ol>
+<pre><code class="hljs go"><span class="hljs-keyword">type</span> S <span class="hljs-keyword">struct</span>&#123;&#125;
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(S)</span></span> Identity[T any] (v T) T &#123; <span class="hljs-keyword">return</span> v &#125;
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> &#123;
+        f, _ := reflect.TypeOf(S&#123;&#125;).MethodByName(<span class="hljs-string">&quot;Identity&quot;</span>)
+        f.Func.Call([]reflect.Value&#123;reflect.ValueOf(S&#123;&#125;), reflect.ValueOf(<span class="hljs-number">0</span>)&#125;)
+&#125;</code></pre>
+<p>在这里我想讲一讲第三点，提案给出的原文是:</p>
+<blockquote>
+<p>Or, we could decide that parameterized methods do not, in fact, implement interfaces, <em>but then it’s much less clear why we need methods at all. If we disregard interfaces, any parameterized method can be implemented as a parameterized function.</em></p>
+</blockquote>
+<p>后面这一段真的是迷惑发言(issue 里有些人也对这段提出疑问)，提案作者认为如果 <code>parameterized methods</code> 不参与 interface 的实现（相当于在 interface 中禁用 <code>parameterized methods</code> 了）, 那为啥还需要 <code>parameterized method</code>，因为所有的 <code>parameterized method</code> 都可以用 <code>parameterized function</code> 实现？？？？</p>
+<p>难不成作者认为 <code>func (S[T]) F[ M, U] ( M ) U</code> 可以简单等效为 <code>func F[T, M, U] (T, M) U</code> ，所以调用方式 <code>x.f(y).g(z)</code> 和 <code>g(f(x,y),z)</code> 没区别 🤔？那 go 语言写起来那么啰嗦的原因找到了(。 具体来说请看这个<a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-995993517">评论</a> 和这个<a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1144311517">评论</a>。</p>
+<p>后面作者的补充也很迷惑: <a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1291237249">proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub</a>，不予置评了。</p>
+<h3 id="讨论"><a class="markdownIt-Anchor" href="#讨论"></a> 讨论</h3>
+<p>由于之后的关于解决泛型方法的问题讨论太长，所以接下来省略部分评论(有些不是关于泛型的讨论)并且根据 issue 里提出的不同解决方案进行分类。</p>
+<h4 id="gava派"><a class="markdownIt-Anchor" href="#gava派"></a> gava派</h4>
+<blockquote>
+<p>I think that the example issue can be approached the same way as Java does: using <code>interface&#123;&#125;</code> behind the scenes and panic if the customer did a bad assignment (also the compiler could warn about the unsafe operation). –<a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-986056824">link</a></p>
+</blockquote>
+<blockquote>
+<p>How about using type erasure to handle the generic method issue? –<a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1857277699">link</a></p>
+</blockquote>
+<p>interface 代表一切！不过显然 gava 和 anygo 是不行滴。</p>
+<h4 id="语法糖派投降派"><a class="markdownIt-Anchor" href="#语法糖派投降派"></a> 语法糖派(投降派)</h4>
+<blockquote>
+<p>Maybe add some syntactic sugar like extension methods in C#. –<a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1064889791">link</a></p>
+</blockquote>
+<blockquote>
+<p>Something similar that’s been proposed before and is more explicit and thus feels, at least to me, more Go-like is to add a new operator, such as <code>-&gt;</code> or <code>|&gt;</code>, that chains functions such that <code>a -&gt; f(b, c)</code> is equivalent to <code>f(a, b, c)</code>. That would allow the benefit of a method-like ordering to the execution without needing to actually support methods with extra types or method implementations for interface types. –<a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1278630794">link</a></p>
+</blockquote>
+<blockquote>
+<p>For the solution <a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1464887534">#49085 (comment)</a>, the problem is that functions with <code>infix</code> are different from normal functions, and it may requires to write a function twice to provide both forms. I’d like to have a new way to call a function at the right position of a value, like <a target="_blank" rel="noopener" href="https://pkg.go.dev/text/template#hdr-Examples">using <code>|</code></a> in <code>template</code>. So I propose following: –<a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1600571377">link</a></p>
+</blockquote>
+<p>这一派对 go 语言的泛型彻底的妥协，不要求改变目前的泛型现状，只要求添加一个中缀调用的语法糖(不过这个也老早被 go 团队打了回去)。</p>
+<p>在之前提到过，虽然不支持泛型方法 ， <code>func (S[T]) F[ M, U] ( M ) U</code> 也可以由 <code>func F[T, M, U] (T, M) U</code> 替换，但是随之而来的是深层次的调用嵌套，由原本的 <code>x.f(y).g(z)</code> 变成了 <code>g(f(x, y), z)</code> 。如果有一种中缀语法糖 <code>x -&gt; f(y)</code> 表达 <code>f(x,y)</code>，那么 <code>g(f(x, y), z)</code> 就能变成 <code>x -&gt; f(y) -&gt; g(z)</code>，调用嵌套就没有了，流式调用看起来也能写了。(这很难评，加这种晦涩的函数式语法糖不如改进一下泛型)</p>
+<h4 id="xx派想不出名字了"><a class="markdownIt-Anchor" href="#xx派想不出名字了"></a> xx派(想不出名字了)</h4>
+<p>首先因为 go 团队的 less is more 理念，让编译器做分析调用链这么重的活也不太现实（这里也辩解一下，即使调用链分析也无法覆盖反射、传 interface 调用、<a target="_blank" rel="noopener" href="https://pkg.go.dev/plugin">插件模式</a>等场景，所以调用链分析是不现实的）。</p>
+<p>但是禁用整个泛型方法也太过极端了，如果只禁用 interface 中的 <code>parameterized methods</code> ，而放过成员方法的 <code>parameterized methods</code> ，我认为有几点好处吧:</p>
+<ol>
+<li>最重要的一点是向下兼容，这种修改没有对 go 的语义有重大改变，同时是大范围约束到小范围约束的过程，不会影响以前的代码运行。</li>
+<li><strong>可以用上 monad and stream call</strong> 。众所周知，合理地使用函数式能够减少临时变量和冗长的代码。有较大概率能减少下图中的代码(什么时候才能看到这张图不吐槽呢。。。)</li>
+</ol>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/20231224210233.png"/></div></div>
+<ol start="3">
+<li>实现起来相对的不是特别复杂(相较于分析调用链来说)，因为泛型结构本身是可以具有方法的，也许可能再支持一个泛型方法相对来说没那么困难?</li>
+</ol>
+<p>以上为笔者个人观点。实际上，这一派为 issue 中大多数人的观点，其中有几位有较深入的讨论，下面对他们的讨论做下分析:</p>
+<h6 id="一"><a class="markdownIt-Anchor" href="#一"></a> 一</h6>
+<blockquote>
+<p>I think this solution makes the most sense. They could then (under the hood) be treated a regular function. The reason why this would be useful is that methods do not only serve the purpose of implementing interfaces; methods also serve as a means of organization for functions that operate on particular structures.<br />
+It may be a bit of a challenge about how type-parameterized methods would appear in <code>&quot;reflect&quot;</code>, though. – <a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-948108705">link</a></p>
+</blockquote>
+<p>把这段话放到第一个的原因是这是第一个提出这一派观点的人，还顺便吐槽了下提案中的 &quot;any parameterized method can be implemented as a parameterized function&quot;😚。</p>
+<h5 id="二"><a class="markdownIt-Anchor" href="#二"></a> 二</h5>
+<blockquote>
+<p>I propose two constraints:</p>
+<ol>
+<li>Generic interfaces must be made “concrete” when used in a type assertion, within a type switch, and when invoking associated methods. By concrete, I mean that all type parameters on the generic interface are specified.</li>
+<li>Types having generic method(s) cannot be typecast to <code>interface&#123;&#125;</code> or a generic interface unless it is an “instantiated generic type”. By instantiated generic type, I mean a type that has one or more generic method instantiations. – <a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1186380446">link</a></li>
+</ol>
+</blockquote>
+<p>对于提案中提出的问题，这位提出了两个约束:</p>
+<ol>
+<li>泛型 interface 断言的时候必须指定具体类型。</li>
+<li>具有泛型方法的类型除非</li>
+</ol>
+<p>在这段讨论中还对反射处理有所补充:</p>
+<blockquote>
+<p>On the reflect package, I propose we simply add a new “<a target="_blank" rel="noopener" href="https://go.dev/blog/laws-of-reflection">law of reflection</a>” that says that any compile-time uninstantiated type realizations are unavailable at run-time. –<a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1186380446">link</a></p>
+</blockquote>
+<p>非常简单，就是检查泛型函数是否实例化，没有实例化的函数就是一调一个不吱声(panic 就完事了)。</p>
+<h4 id="反对派"><a class="markdownIt-Anchor" href="#反对派"></a> 反对派</h4>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-948191212">proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-952701440">proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1280087495">proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1281552328">proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1290043476">proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub</a></p>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<p>考虑到 go 语言团队已经在泛型实现上已经<a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1290106303">考虑了 10 年</a>达到如今的成就，那么希望 go 团队能在不违反&quot;<a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085#issuecomment-1291237249">泛型方法在 interface 中的正交性</a>🤗&quot;的约束下在下个 10 年实现泛型方法吧。在此之前，如果各位看官想使用泛型方法，请看下面评论(</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20240228131110.png"/></div></div>
+
+
+
+
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/pages/blog/%E4%BD%BF%E7%94%A8%20rust%20%E6%B8%B8%E7%8E%A9%20cf%20%E7%9A%84%E5%A7%BF%E5%8A%BF.html">使用 rust 游玩 cf 的姿势</a></div><div class="item" id="next"><div class="note">Older</div><a href="/pages/blog/rust%20%E6%97%A0%E6%A0%88%E5%8D%8F%E7%A8%8B%E4%BB%8B%E7%BB%8D.html">rust 无栈协程介绍</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">blog</span><a href="/">recent</a><a href="/categories">categories</a><a href="/tags">tags</a><a href="/archives">archives</a></div><div class="sitemap-group"><span class="fs14">wiki</span><a href="/wiki">main</a><a href="/wiki/leetcode">leetcode</a><a href="/wiki/redis">redis</a><a href="/wiki/rust_code">rust_code</a></div></div><div class="text"><p>本站由 <a href="/">@booiris</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br />
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: 'Just',
+      min: 'minutes ago',
+      hour: 'hours ago',
+      day: 'days ago',
+      month: 'months ago',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

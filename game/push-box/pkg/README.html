@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta name="generator" content="Hexo 6.2.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Booiris</title>
+
+  
+    <meta name="description" content="wasm-pack-template A template for kick starting a Rust and WebAssembly project using wasm-pack.                   Tutorial      |      Chat    Built with 🦀🕸 by The Rust and WebAssembly Working Gr">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Booiris">
+<meta property="og:url" content="https://booiris.space/game/push-box/pkg/README.html">
+<meta property="og:site_name" content="Booiris">
+<meta property="og:description" content="wasm-pack-template A template for kick starting a Rust and WebAssembly project using wasm-pack.                   Tutorial      |      Chat    Built with 🦀🕸 by The Rust and WebAssembly Working Gr">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img.shields.io/travis/rustwasm/wasm-pack-template.svg?style=flat-square">
+<meta property="article:published_time" content="2024-03-25T04:40:19.826Z">
+<meta property="article:modified_time" content="2024-03-25T04:40:19.826Z">
+<meta property="article:author" content="booiris">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.shields.io/travis/rustwasm/wasm-pack-template.svg?style=flat-square">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/feed.xml" title="Booiris" >
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/%5Bobject%20Object%5D">
+  
+
+  
+    
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/atom-one-dark.min.css">
+
+  
+
+  
+
+
+  
+    
+      <link rel="preconnect" href="https://s1.hdslb.com/" />
+    
+      <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'" />
+    
+      <link rel="icon" type="32x32" href="https://cdn.jsdelivr.net/gh/booiris-cdn/img/icon-32x32.ico">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+    
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+    
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/atom-one-dark.min.css">
+    
+  
+<link rel="alternate" href="/feed.xml" title="Booiris" type="application/atom+xml">
+</head>
+
+<body>
+  
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='page'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Booiris</div><div class="sub cap">English by default🤖</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item" href="/">Blog</a><a class="nav-item" href="/wiki/">Doc</a><a class="nav-item" href="/game/">Game</a><a class="nav-item" href="/about/">About</a><a class="nav-item" href="/pic">Picture</a></nav>
+</header>
+
+
+<div class="widgets">
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">TOC</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-text">
+    Tutorial
+     | 
+    Chat
+  </span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#about"><span class="toc-text"> About</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#usage"><span class="toc-text"> 🚴 Usage</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#use-cargo-generate-to-clone-this-template"><span class="toc-text"> 🐑 Use cargo generate to Clone this Template</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%B8%8F-build-with-wasm-pack-build"><span class="toc-text"> 🛠️ Build with wasm-pack build</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#test-in-headless-browsers-with-wasm-pack-test"><span class="toc-text"> 🔬 Test in Headless Browsers with wasm-pack test</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#publish-to-npm-with-wasm-pack-publish"><span class="toc-text"> 🎁 Publish to NPM with wasm-pack publish</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#batteries-included"><span class="toc-text"> 🔋 Batteries Included</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#license"><span class="toc-text"> License</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#contribution"><span class="toc-text"> Contribution</span></a></li></ol></div></div></widget>
+
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" placeholder="Search"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div></div></widget>
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/booiris" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/08a41b181ce68.svg"/></a><a class="social" href="mailto:booiris02@gmail.com" rel="noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/a1b00e20f425d.svg"/></a><a class="social" href="https://steamcommunity.com/profiles/76561198081152126/" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/steam_47012.png"/></a><a class="social" href="https://screeps.com/a/#!/profile/booiris" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/screep.png"/></a></div></footer>
+
+    </aside>
+    <div class='l_main'>
+      
+  
+
+<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Booiris</div><div class="sub cap">English by default🤖</div></a></div></header>
+
+
+
+      
+
+
+
+<article class="md-text content page"><div align="center">
+  <h1><code>wasm-pack-template</code></h1>
+<p><strong>A template for kick starting a Rust and WebAssembly project using <a target="_blank" rel="noopener" href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>.</strong></p>
+  <p>
+    <a target="_blank" rel="noopener" href="https://travis-ci.org/rustwasm/wasm-pack-template"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://img.shields.io/travis/rustwasm/wasm-pack-template.svg?style=flat-square" alt="Build Status" /></a>
+  </p>
+  <h3>
+    <a target="_blank" rel="noopener" href="https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/index.html">Tutorial</a>
+    <span> | </span>
+    <a target="_blank" rel="noopener" href="https://discordapp.com/channels/442252698964721669/443151097398296587">Chat</a>
+  </h3>
+<p><sub>Built with 🦀🕸 by <a target="_blank" rel="noopener" href="https://rustwasm.github.io/">The Rust and WebAssembly Working Group</a></sub></p>
+</div>
+<h2 id="about"><a class="markdownIt-Anchor" href="#about"></a> About</h2>
+<p><a target="_blank" rel="noopener" href="https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/index.html"><strong>📚 Read this template tutorial! 📚</strong></a></p>
+<p>This template is designed for compiling Rust libraries into WebAssembly and<br />
+publishing the resulting package to NPM.</p>
+<p>Be sure to check out <a target="_blank" rel="noopener" href="https://rustwasm.github.io/docs/wasm-pack/tutorials/index.html">other <code>wasm-pack</code> tutorials online</a> for other<br />
+templates and usages of <code>wasm-pack</code>.</p>
+<h2 id="usage"><a class="markdownIt-Anchor" href="#usage"></a> 🚴 Usage</h2>
+<h3 id="use-cargo-generate-to-clone-this-template"><a class="markdownIt-Anchor" href="#use-cargo-generate-to-clone-this-template"></a> 🐑 Use <code>cargo generate</code> to Clone this Template</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/ashleygwilliams/cargo-generate">Learn more about <code>cargo generate</code> here.</a></p>
+<pre><code class="hljs plaintext">cargo generate --git https://github.com/rustwasm/wasm-pack-template.git --name my-project
+cd my-project</code></pre>
+<h3 id="️-build-with-wasm-pack-build"><a class="markdownIt-Anchor" href="#️-build-with-wasm-pack-build"></a> 🛠️ Build with <code>wasm-pack build</code></h3>
+<pre><code class="hljs plaintext">wasm-pack build</code></pre>
+<h3 id="test-in-headless-browsers-with-wasm-pack-test"><a class="markdownIt-Anchor" href="#test-in-headless-browsers-with-wasm-pack-test"></a> 🔬 Test in Headless Browsers with <code>wasm-pack test</code></h3>
+<pre><code class="hljs plaintext">wasm-pack test --headless --firefox</code></pre>
+<h3 id="publish-to-npm-with-wasm-pack-publish"><a class="markdownIt-Anchor" href="#publish-to-npm-with-wasm-pack-publish"></a> 🎁 Publish to NPM with <code>wasm-pack publish</code></h3>
+<pre><code class="hljs plaintext">wasm-pack publish</code></pre>
+<h2 id="batteries-included"><a class="markdownIt-Anchor" href="#batteries-included"></a> 🔋 Batteries Included</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/rustwasm/wasm-bindgen"><code>wasm-bindgen</code></a> for communicating<br />
+between WebAssembly and JavaScript.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rustwasm/console_error_panic_hook"><code>console_error_panic_hook</code></a><br />
+for logging panic messages to the developer console.</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rustwasm/wee_alloc"><code>wee_alloc</code></a>, an allocator optimized<br />
+for small code size.</li>
+<li><code>LICENSE-APACHE</code> and <code>LICENSE-MIT</code>: most Rust projects are licensed this way, so these are included for you</li>
+</ul>
+<h2 id="license"><a class="markdownIt-Anchor" href="#license"></a> License</h2>
+<p>Licensed under either of</p>
+<ul>
+<li>Apache License, Version 2.0, (<a href="/game/push-box/pkg/README.html/../LICENSE-APACHE">LICENSE-APACHE</a> or <a target="_blank" rel="noopener" href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a>)</li>
+<li>MIT license (<a href="/game/push-box/pkg/README.html/../LICENSE-MIT">LICENSE-MIT</a> or <a target="_blank" rel="noopener" href="http://opensource.org/licenses/MIT">http://opensource.org/licenses/MIT</a>)</li>
+</ul>
+<p>at your option.</p>
+<h3 id="contribution"><a class="markdownIt-Anchor" href="#contribution"></a> Contribution</h3>
+<p>Unless you explicitly state otherwise, any contribution intentionally<br />
+submitted for inclusion in the work by you, as defined in the Apache-2.0<br />
+license, shall be dual licensed as above, without any additional terms or<br />
+conditions.</p>
+</article>
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">blog</span><a href="/">recent</a><a href="/categories">categories</a><a href="/tags">tags</a><a href="/archives">archives</a></div><div class="sitemap-group"><span class="fs14">wiki</span><a href="/wiki">main</a><a href="/wiki/leetcode">leetcode</a><a href="/wiki/redis">redis</a><a href="/wiki/rust_code">rust_code</a></div></div><div class="text"><p>本站由 <a href="/">@booiris</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br />
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: 'Just',
+      min: 'minutes ago',
+      hour: 'hours ago',
+      day: 'days ago',
+      month: 'months ago',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

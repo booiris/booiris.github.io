@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta name="generator" content="Hexo 6.2.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>Rust For Screeps (2): 自定义存储模型 - Booiris</title>
+
+  
+    <meta name="description" content="Screeps 存储模型 screeps 的存储模型基本如图所示。 image.png 其中存在两种类型的 memory，一个是 memory object ，另一个是 raw memory 。  memory object memory object 的具体介绍在 Global Objects | Screeps Documentation。  Each player has access t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust For Screeps (2): 自定义存储模型">
+<meta property="og:url" content="https://booiris.space/pages/blog/Rust%20For%20Screeps%20(2)%20%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B.html">
+<meta property="og:site_name" content="Booiris">
+<meta property="og:description" content="Screeps 存储模型 screeps 的存储模型基本如图所示。 image.png 其中存在两种类型的 memory，一个是 memory object ，另一个是 raw memory 。  memory object memory object 的具体介绍在 Global Objects | Screeps Documentation。  Each player has access t">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/booiris-cdn/img//20230722224904.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/booiris-cdn/img//20230722234254.png">
+<meta property="article:published_time" content="2023-07-22T13:05:20.000Z">
+<meta property="article:modified_time" content="2023-10-13T14:33:49.000Z">
+<meta property="article:author" content="booiris">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/booiris-cdn/img//20230722224904.png">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/feed.xml" title="Booiris" >
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/%5Bobject%20Object%5D">
+  
+
+  
+    
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/atom-one-dark.min.css">
+
+  
+
+  
+
+
+  
+    
+      <link rel="preconnect" href="https://s1.hdslb.com/" />
+    
+      <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'" />
+    
+      <link rel="icon" type="32x32" href="https://cdn.jsdelivr.net/gh/booiris-cdn/img/icon-32x32.ico">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+    
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+    
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/atom-one-dark.min.css">
+    
+  
+<link rel="alternate" href="/feed.xml" title="Booiris" type="application/atom+xml">
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Booiris</div><div class="sub cap">English by default🤖</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">Blog</a><a class="nav-item" href="/wiki/">Doc</a><a class="nav-item" href="/game/">Game</a><a class="nav-item" href="/about/">About</a><a class="nav-item" href="/pic">Picture</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">Rust For Screeps (2): 自定义存储模型</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#screeps-%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B"><span class="toc-text"> Screeps 存储模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#memory-object"><span class="toc-text"> memory object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#raw-memory"><span class="toc-text"> raw memory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E4%BC%A0%E9%80%92%E8%BF%87%E7%A8%8B"><span class="toc-text"> 存储传递过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rust-%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B"><span class="toc-text"> Rust 存储模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E5%AE%9E%E7%8E%B0"><span class="toc-text"> 自定义存储实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#raw-memory-%E4%BD%BF%E7%94%A8"><span class="toc-text"> raw memory 使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rust-%E9%83%A8%E5%88%86%E5%AE%9E%E7%8E%B0"><span class="toc-text"> rust 部分实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#javascript-%E9%83%A8%E5%88%86%E5%AE%9E%E7%8E%B0"><span class="toc-text"> javaScript 部分实现</span></a></li></ol></li></ol></div></div></widget>
+
+
+
+
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/booiris" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/08a41b181ce68.svg"/></a><a class="social" href="mailto:booiris02@gmail.com" rel="noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/a1b00e20f425d.svg"/></a><a class="social" href="https://steamcommunity.com/profiles/76561198081152126/" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/steam_47012.png"/></a><a class="social" href="https://screeps.com/a/#!/profile/booiris" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/screep.png"/></a></div></footer>
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+    
+
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a><span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/screeps/">screeps</a></div><div id="post-meta">Posted on&nbsp;<time datetime="2023-07-22T13:05:20.000Z">2023-07-22</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>Rust For Screeps (2): 自定义存储模型</span></h1>
+<h2 id="screeps-存储模型"><a class="markdownIt-Anchor" href="#screeps-存储模型"></a> Screeps 存储模型</h2>
+<p>screeps 的存储模型基本如图所示。</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img//20230722224904.png" alt="image.png"/></div><div class="image-meta"><span class="image-caption center">image.png</span></div></div>
+<p>其中存在两种类型的 memory，一个是 <code>memory object</code> ，另一个是 <code>raw memory</code> 。</p>
+<h3 id="memory-object"><a class="markdownIt-Anchor" href="#memory-object"></a> memory object</h3>
+<p><code>memory object</code> 的具体介绍在 <a target="_blank" rel="noopener" href="https://docs.screeps.com/global-objects.html#Memory-object">Global Objects | Screeps Documentation</a>。</p>
+<blockquote>
+<p>Each player has access to the global object <code>Memory</code> in which he/she may store any information in the JSON format.</p>
+</blockquote>
+<pre><code class="hljs javascript"><span class="hljs-title class_">Memory</span>.<span class="hljs-property">someData</span> = &#123;...&#125;;</code></pre>
+<p>可以看出 screeps 本身内置了一个 <code>Memory</code> 的对象实例。可以往其中添加各种属性来达到存储信息的目的。</p>
+<h3 id="raw-memory"><a class="markdownIt-Anchor" href="#raw-memory"></a> raw memory</h3>
+<p><code>raw memory</code> 在这里被提到 <a target="_blank" rel="noopener" href="https://docs.screeps.com/global-objects.html#Serialization">Global Objects | Screeps Documentation</a></p>
+<blockquote>
+<p>The Memory object is stored in the stringified form and is parsed each time upon the first in the tick access from your script with the help of the <code>JSON.parse</code> method.</p>
+</blockquote>
+<p>可以看出 <code>Memory</code> 的对象实例最终会被序列化为字符串存储到 <code>raw memory</code> 中，在游戏的每个 tick 进行传递。</p>
+<h3 id="存储传递过程"><a class="markdownIt-Anchor" href="#存储传递过程"></a> 存储传递过程</h3>
+<p>在游戏的进行每个 tick ，screeps 系统会反序列化 <code>raw memory</code> 到 <code>Memory Object</code> (代码见 <a target="_blank" rel="noopener" href="https://github.com/screeps/engine/blob/c6c4fc9e656f160e0e0174b0dd9a817d2dd18976/src/game/game.js#L470">game.js</a>、<a target="_blank" rel="noopener" href="https://github.com/screeps/engine/blob/c6c4fc9e656f160e0e0174b0dd9a817d2dd18976/src/game/game.js#L478C13-L478C76">game.js</a>)</p>
+<pre><code class="hljs javascript">_.<span class="hljs-title function_">extend</span>(runCodeCache[userId].<span class="hljs-property">globals</span>, &#123;
+        <span class="hljs-title class_">RawMemory</span>: runCodeCache[userId].<span class="hljs-property">memory</span>,
+        <span class="hljs-attr">console</span>: runCodeCache[userId].<span class="hljs-property">fakeConsole</span>
+&#125;);</code></pre>
+<pre><code class="hljs javascript"><span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(runCodeCache[userId].<span class="hljs-property">globals</span>, <span class="hljs-string">&#x27;Memory&#x27;</span>, &#123;
+        <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>,
+        <span class="hljs-title function_">get</span>(<span class="hljs-params"></span>) &#123;
+
+                <span class="hljs-keyword">try</span> &#123;
+                        runCodeCache[userId].<span class="hljs-property">memory</span>.<span class="hljs-property">_parsed</span> = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(runCodeCache[userId].<span class="hljs-property">memory</span>.<span class="hljs-title function_">get</span>() || <span class="hljs-string">&quot;&#123;&#125;&quot;</span>);
+                        runCodeCache[userId].<span class="hljs-property">memory</span>.<span class="hljs-property">_parsed</span>.<span class="hljs-property">__proto__</span> = <span class="hljs-literal">null</span>;
+                &#125;
+                <span class="hljs-keyword">catch</span> (e) &#123;
+                        runCodeCache[userId].<span class="hljs-property">memory</span>.<span class="hljs-property">_parsed</span> = <span class="hljs-literal">null</span>;
+                &#125;
+
+                <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">defineProperty</span>(runCodeCache[userId].<span class="hljs-property">globals</span>, <span class="hljs-string">&#x27;Memory&#x27;</span>, &#123;
+                        <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>,
+                        <span class="hljs-attr">value</span>: runCodeCache[userId].<span class="hljs-property">memory</span>.<span class="hljs-property">_parsed</span>
+                &#125;);
+
+                <span class="hljs-keyword">return</span> runCodeCache[userId].<span class="hljs-property">memory</span>.<span class="hljs-property">_parsed</span>;
+        &#125;
+&#125;);</code></pre>
+<p>在每个 tick 最后，再将 <code>Memory</code> 序列化到 <code>raw memory</code> 里。所以，<strong>在每个 tick 间，真正传递的是 <code>raw memory</code></strong>。</p>
+<h2 id="rust-存储模型"><a class="markdownIt-Anchor" href="#rust-存储模型"></a> Rust 存储模型</h2>
+<p>从上面可以知道，Screeps 有一个 JavaScript 对象 <code>Memory</code> 保存需要的信息。但是要从 rust 中访问 JavaScript 里的对象十分麻烦。同时 <a target="_blank" rel="noopener" href="https://github.com/rustyscreeps/screeps-game-api/">screeps-game-api</a> 里似乎只有 <code>raw memory</code> 的获取方法，而没有 <code>memory</code> 对象的获取方法。</p>
+<p>所以显然易见，我们的存储信息需要放到 rust 里。在上一章的示例代码中，有这样一个变量:</p>
+<pre><code class="hljs rust"><span class="hljs-comment">// this is one way to persist data between ticks within Rust&#x27;s memory, as opposed to</span>
+<span class="hljs-comment">// keeping state in memory on game objects - but will be lost on global resets!</span>
+thread_local! &#123;
+    <span class="hljs-keyword">static</span> CREEP_TARGETS: RefCell&lt;HashMap&lt;<span class="hljs-type">String</span>, CreepTarget&gt;&gt; = RefCell::<span class="hljs-title function_ invoke__">new</span>(HashMap::<span class="hljs-title function_ invoke__">new</span>());
+&#125;</code></pre>
+<p>我们可以使用 <code>RefCell</code> 创建一个全局变量 (类似 javaScript 里的 <code>Memory</code> 对象) 存储到 wasm 的线性内存里。只要 wasm 的实例没有被销毁，那么这个全局变量就可以随着 wasm 实例在每个 tick 传递。</p>
+<h2 id="自定义存储实现"><a class="markdownIt-Anchor" href="#自定义存储实现"></a> 自定义存储实现</h2>
+<p>通过 rust 的全局变量我们实现了信息跨 tick 存储，但注意到注释中存在着一句话。</p>
+<blockquote>
+<p>keeping state in memory on game objects - but will be lost on global resets!</p>
+</blockquote>
+<p>Screeps 系统存在着一个机制，就是 <code>global reset</code> ，会定时销毁 javaScript 里的对象并且重建，这就导致了这会销毁 wasm 的实例，进而导致存储的信息丢失。</p>
+<h3 id="raw-memory-使用"><a class="markdownIt-Anchor" href="#raw-memory-使用"></a> raw memory 使用</h3>
+<p>从第一部分可以知道 <code>raw memory</code> 可以认为是 Screeps 中的持久性存储。所以如果可以在每个 tick 最后把 rust 里的全局变量序列化到 <code>raw memory</code> 里，然后在 wasm 实例初始化时再从 <code>raw memory</code> 里反序列化回 rust 的全局变量，这就实现了信息的跨 tick 保存而又不会受到 <code>global reset</code> 的影响。</p>
+<h3 id="rust-部分实现"><a class="markdownIt-Anchor" href="#rust-部分实现"></a> rust 部分实现</h3>
+<p>Screeps 的 api 存在对 <code>raw memory</code> 的操作方法 <a target="_blank" rel="noopener" href="https://docs.screeps.com/api/#RawMemory">Screeps Documentation</a>。</p>
+<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img//20230722234254.png" width=65% >
+<p>储存全局变量参考代码:</p>
+<pre><code class="hljs rust">thread_local! &#123;
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">static</span> GLOBAL_LONG_MEMORY: RefCell&lt;GlobalMemory&gt; = RefCell::<span class="hljs-title function_ invoke__">new</span>(GlobalMemory::<span class="hljs-title function_ invoke__">new</span>());
+&#125;
+
+GLOBAL_LONG_MEMORY.<span class="hljs-title function_ invoke__">with</span>(|mem| &#123;
+        <span class="hljs-keyword">let</span> <span class="hljs-variable">mem</span> = &amp;*mem.<span class="hljs-title function_ invoke__">borrow</span>();
+        <span class="hljs-keyword">let</span> <span class="hljs-variable">mem</span>: <span class="hljs-type">String</span> = mem.<span class="hljs-title function_ invoke__">into</span>();
+        raw_memory::<span class="hljs-title function_ invoke__">set</span>(&amp;JsString::<span class="hljs-title function_ invoke__">from_str</span>(&amp;mem).<span class="hljs-title function_ invoke__">expect</span>(<span class="hljs-string">&quot;can conver global mem to string&quot;</span>))
+&#125;);</code></pre>
+<p>其中 <code>GlobalMemory</code> 是一个结构体，并且实现了 <code>into String</code> 的方法，所以可以使用 <code>mem.into()</code> 转换为 <code>String</code> 类型，最后通过 api 的 <code>raw_memory::set</code> 方法将全局变量保存到 <code>raw memory</code> 中。</p>
+<p>初始化全局变量参考代码:</p>
+<pre><code class="hljs rust">GLOBAL_LONG_MEMORY.<span class="hljs-title function_ invoke__">with</span>(|mem| &#123;
+        <span class="hljs-keyword">let</span> <span class="hljs-variable">raw_memory</span>: <span class="hljs-type">String</span> = raw_memory::<span class="hljs-title function_ invoke__">get</span>()
+                .<span class="hljs-title function_ invoke__">try_into</span>()
+                .<span class="hljs-title function_ invoke__">expect</span>(<span class="hljs-string">&quot;can not get raw memory&quot;</span>);
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Ok</span>(raw_mem) = GlobalMemory::<span class="hljs-title function_ invoke__">try_from</span>(raw_memory) &#123;
+                *mem.<span class="hljs-title function_ invoke__">borrow_mut</span>() = raw_mem;
+        &#125; <span class="hljs-keyword">else</span> &#123;
+                log::error!(<span class="hljs-string">&quot;old mem can not match new struct!&quot;</span>);
+                *mem.<span class="hljs-title function_ invoke__">borrow_mut</span>() = GlobalMemory::<span class="hljs-title function_ invoke__">new</span>();
+        &#125;
+&#125;);</code></pre>
+<p>可以看出，<strong>存在无法从 <code>raw memory</code> 还原回全局变量的情况</strong> ( <code>GlobalMemory</code> 的结构出现了破坏性的更改导致无法从之前的结构反序列化回去)。这时候需要考虑构建一个在空的全局变量下还能继续运行并且还原的系统。</p>
+<h3 id="javascript-部分实现"><a class="markdownIt-Anchor" href="#javascript-部分实现"></a> javaScript 部分实现</h3>
+<p>本来存储 <code>raw memory</code> 的过程在 rust 中实现即可。但是存在一个问题，Screeps 系统运行中，某些动作 (比如 creep_move) 会使用的 <code>memory object</code> 实例，所以会对 <code>raw memory</code> 进行反序列化。为了不必要的消耗，我们可以持有一个 <code>mem_proxy</code> 对象实例，每个 tick 开始，就对 <code>memory object</code> 进行赋值，这样就不会触发反序列化，减少 cpu 消耗。</p>
+<blockquote>
+<p>参考 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c6413d67893b">Screeps游戏 Memory仙术 - 简书</a></p>
+</blockquote>
+<p>实现代码如下:</p>
+<pre><code class="hljs javaScript"><span class="hljs-meta">&quot;use strict&quot;</span>;
+<span class="hljs-keyword">let</span> wasm_module;
+
+<span class="hljs-keyword">const</span> <span class="hljs-variable constant_">MODULE_NAME</span> = <span class="hljs-string">&quot;rust-screep-world&quot;</span>;
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">console_error</span>(<span class="hljs-params">...args</span>) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(...args);
+    <span class="hljs-title class_">Game</span>.<span class="hljs-title function_">notify</span>(args.<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27; &#x27;</span>));
+&#125;
+
+<span class="hljs-keyword">let</span> mem_proxy = &#123; <span class="hljs-attr">creeps</span>: &#123;&#125; &#125;
+
+<span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span>.<span class="hljs-property">loop</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">delete</span> <span class="hljs-variable language_">global</span>.<span class="hljs-property">Memory</span>;
+    <span class="hljs-variable language_">global</span>.<span class="hljs-property">Memory</span> = mem_proxy
+    <span class="hljs-title class_">RawMemory</span>.<span class="hljs-property">_parsed</span> = mem_proxy
+    <span class="hljs-keyword">try</span> &#123;
+        <span class="hljs-keyword">if</span> (wasm_module) &#123;
+            wasm_module.<span class="hljs-title function_">loop</span>();
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            <span class="hljs-comment">// attempt to load the wasm only if there&#x27;s enough bucket to do a bunch of work this tick</span>
+            <span class="hljs-keyword">if</span> (<span class="hljs-title class_">Game</span>.<span class="hljs-property">cpu</span>.<span class="hljs-property">bucket</span> &lt; <span class="hljs-number">500</span>) &#123;
+                <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;we are running out of time, pausing compile!!!&quot;</span> + <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(<span class="hljs-title class_">Game</span>.<span class="hljs-property">cpu</span>));
+                <span class="hljs-keyword">return</span>;
+            &#125;
+
+            <span class="hljs-comment">// delect the module from the cache, so we can reload it</span>
+            <span class="hljs-keyword">if</span> (<span class="hljs-variable constant_">MODULE_NAME</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">require</span>.<span class="hljs-property">cache</span>) &#123;
+                <span class="hljs-keyword">delete</span> <span class="hljs-built_in">require</span>.<span class="hljs-property">cache</span>[<span class="hljs-variable constant_">MODULE_NAME</span>];
+            &#125;
+            <span class="hljs-comment">// replace this initialize function on the module</span>
+            wasm_module = <span class="hljs-built_in">require</span>(<span class="hljs-variable constant_">MODULE_NAME</span>);
+            <span class="hljs-comment">// load the wasm instance!</span>
+            wasm_module.<span class="hljs-title function_">initialize_instance</span>();
+            <span class="hljs-comment">// run the setup function, which configures logging</span>
+            wasm_module.<span class="hljs-title function_">setup</span>();
+            <span class="hljs-comment">// go ahead and run the loop for its first tick</span>
+            wasm_module.<span class="hljs-title function_">loop</span>();
+        &#125;
+    &#125; <span class="hljs-keyword">catch</span> (error) &#123;
+        <span class="hljs-title function_">console_error</span>(<span class="hljs-string">&quot;caught exception err:&quot;</span>, error);
+        <span class="hljs-keyword">if</span> (error.<span class="hljs-property">stack</span>) &#123;
+            <span class="hljs-title function_">console_error</span>(<span class="hljs-string">&quot;stack trace:&quot;</span>, error.<span class="hljs-property">stack</span>);
+        &#125;
+        <span class="hljs-title function_">console_error</span>(<span class="hljs-string">&quot;resetting VM next tick.&quot;</span>);
+        wasm_module = <span class="hljs-literal">null</span>;
+    &#125;
+    mem_proxy = <span class="hljs-variable language_">global</span>.<span class="hljs-property">Memory</span>
+&#125;</code></pre>
+
+
+
+
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/pages/blog/Rust%20For%20Screeps%20(3)%20%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%92%8C%20panic%20%E5%A4%84%E7%90%86.html">Rust For Screeps (3): 系统监控和 panic 处理</a></div><div class="item" id="next"><div class="note">Older</div><a href="/pages/blog/Rust%20For%20Screeps%20(1)%20%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.html">Rust For Screeps (1): 初始环境搭建</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">blog</span><a href="/">recent</a><a href="/categories">categories</a><a href="/tags">tags</a><a href="/archives">archives</a></div><div class="sitemap-group"><span class="fs14">wiki</span><a href="/wiki">main</a><a href="/wiki/leetcode">leetcode</a><a href="/wiki/redis">redis</a><a href="/wiki/rust_code">rust_code</a></div></div><div class="text"><p>本站由 <a href="/">@booiris</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br />
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: 'Just',
+      min: 'minutes ago',
+      hour: 'hours ago',
+      day: 'days ago',
+      month: 'months ago',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

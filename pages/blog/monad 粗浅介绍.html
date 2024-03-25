@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta name="generator" content="Hexo 6.2.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>monad 粗浅介绍 - Booiris</title>
+
+  
+    <meta name="description" content="什么是 monad? monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的粗浅介绍，所以跳过其数学上的定义和结构性证明(其实是目前笔者也不太懂🤫)，通过一些具体的例子说明它的概念和作用。  定义 尽管没有太复杂的数学概念，但还是需要一个定义说明什么样的东西才能称之为 monad。在接下来的说明中，除了列举出数学定义以外，还有其在 go 语言中的具体表现形式。在 wiki 的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="monad 粗浅介绍">
+<meta property="og:url" content="https://booiris.space/pages/blog/monad%20%E7%B2%97%E6%B5%85%E4%BB%8B%E7%BB%8D.html">
+<meta property="og:site_name" content="Booiris">
+<meta property="og:description" content="什么是 monad? monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的粗浅介绍，所以跳过其数学上的定义和结构性证明(其实是目前笔者也不太懂🤫)，通过一些具体的例子说明它的概念和作用。  定义 尽管没有太复杂的数学概念，但还是需要一个定义说明什么样的东西才能称之为 monad。在接下来的说明中，除了列举出数学定义以外，还有其在 go 语言中的具体表现形式。在 wiki 的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/booiris-cdn/img/20231224210233.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/booiris-cdn/img/20240118232621.png">
+<meta property="article:published_time" content="2023-12-12T13:20:47.000Z">
+<meta property="article:modified_time" content="2024-03-15T14:47:03.000Z">
+<meta property="article:author" content="booiris">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/booiris-cdn/img/20231224210233.png">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/feed.xml" title="Booiris" >
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/%5Bobject%20Object%5D">
+  
+
+  
+    
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/atom-one-dark.min.css">
+
+  
+
+  
+
+
+  
+    
+      <link rel="preconnect" href="https://s1.hdslb.com/" />
+    
+      <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'" />
+    
+      <link rel="icon" type="32x32" href="https://cdn.jsdelivr.net/gh/booiris-cdn/img/icon-32x32.ico">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+    
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+    
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/atom-one-dark.min.css">
+    
+  
+<link rel="alternate" href="/feed.xml" title="Booiris" type="application/atom+xml">
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Booiris</div><div class="sub cap">English by default🤖</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">Blog</a><a class="nav-item" href="/wiki/">Doc</a><a class="nav-item" href="/game/">Game</a><a class="nav-item" href="/about/">About</a><a class="nav-item" href="/pic">Picture</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">monad 粗浅介绍</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-monad"><span class="toc-text"> 什么是 monad?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-text"> 定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E4%B8%A5%E6%A0%BC%E7%9A%84%E5%AE%9A%E4%B9%89"><span class="toc-text"> 更严格的定义</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#monad-%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8"><span class="toc-text"> monad 有什么用?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%AE%87%E5%AE%99%E7%9A%84-go-error-monad"><span class="toc-text"> 另一个宇宙的 go error monad</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text"> 引言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#go-%E7%89%88-monad-%E5%BC%8F%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86"><span class="toc-text"> go 版 monad 式错误处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#monad-%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%9B%9E%E8%B0%83%E5%9C%B0%E7%8B%B1"><span class="toc-text"> monad 如何解决回调地狱</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E8%A8%80-2"><span class="toc-text"> 引言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E5%92%8C-monad"><span class="toc-text"> 异步和 monad</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#promise-%E4%BB%8B%E7%BB%8D"><span class="toc-text"> promise 介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#promise-%E5%92%8C-monad"><span class="toc-text"> promise 和 monad</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text"> 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E9%98%85%E8%AF%BB"><span class="toc-text"> 相关阅读</span></a></li></ol></div></div></widget>
+
+
+
+
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/booiris" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/08a41b181ce68.svg"/></a><a class="social" href="mailto:booiris02@gmail.com" rel="noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/a1b00e20f425d.svg"/></a><a class="social" href="https://steamcommunity.com/profiles/76561198081152126/" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/steam_47012.png"/></a><a class="social" href="https://screeps.com/a/#!/profile/booiris" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/screep.png"/></a></div></footer>
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+    
+
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a><span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/blog/">blog</a></div><div id="post-meta">Posted on&nbsp;<time datetime="2023-12-12T13:20:47.000Z">2023-12-12</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>monad 粗浅介绍</span></h1>
+<h2 id="什么是-monad"><a class="markdownIt-Anchor" href="#什么是-monad"></a> 什么是 monad?</h2>
+<p>monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的粗浅介绍，所以跳过其数学上的定义和结构性证明(其实是目前笔者也不太懂🤫)，通过一些具体的例子说明它的概念和作用。</p>
+<h3 id="定义"><a class="markdownIt-Anchor" href="#定义"></a> 定义</h3>
+<p>尽管没有太复杂的数学概念，但还是需要一个定义说明什么样的东西才能称之为 monad。在接下来的说明中，除了列举出数学定义以外，还有其在 go 语言中的具体表现形式。在 wiki 的定义中:</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Monad_(functional_programming)#Definition">Monad (functional programming) - Wikipedia</a></p>
+</blockquote>
+<p>一个 monad 包含三个部分:</p>
+<ol>
+<li>
+<p>类型构造子 <code>M</code> 。</p>
+<ul>
+<li>在 go 中可以理解为一种名为 <code>M</code> 包裹着 <code>T</code> 的泛型结构体 <code>M&lt;T&gt;&#123; val: T &#125;</code></li>
+</ul>
+</li>
+<li>
+<p>类型转换子 <code>Unit :: T -&gt; M T</code>。</p>
+<ul>
+<li>在 go 中可以理解为由值 <code>T</code> 构造 <code>M</code> 的函数 <code>func Unit[T any] (val T) -&gt; M&lt;T&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>组合子 <code>&gt;&gt;= or FlatMap :: M T -&gt; ( T -&gt; M U) -&gt; M U</code> 。</p>
+<ul>
+<li>在 go 中可以理解为 <code>M&lt;T&gt;&#123; val: T &#125;</code> 这个结构体具有一个成员方法 <code>func flatMap[T, U any] (func(T) -&gt; M&lt;U&gt;) -&gt; M&lt;U&gt;</code> ，能够接受一个函数参数实现从 <code>M&lt;T&gt;</code> 到 <code>M&lt;U&gt;</code> 的变换。</li>
+</ul>
+</li>
+</ol>
+<p>那么我们可以称这个具有 <code>FlatMap</code> 方法的 <strong>M</strong> 为一个 Monad (请注意不是 M&lt;\T&gt; )。</p>
+<h4 id="更严格的定义"><a class="markdownIt-Anchor" href="#更严格的定义"></a> 更严格的定义</h4>
+<p>一个 monad 还必须含有以下三个约束:</p>
+<ol>
+<li>
+<p>转换子 <code>Unit</code> 是组合子 <code>&gt;&gt;=</code> 的左<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Identity_element">单位元</a>: <code>Unit &gt;&gt;= f &lt;-&gt; f</code> 。</p>
+<ul>
+<li>在 go 中可以理解为：如果有一个函数为 <code>F[ T, U any] (T) M U</code>, 那么 <code>Unit(x).FlatMap(f)</code> 的执行结果和执行 <code>f(x)</code> 结果相同</li>
+</ul>
+</li>
+<li>
+<p>转换子 <code>Unit</code> 是组合子 <code>&gt;&gt;=</code> 的右<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Identity_element">单位元</a>: <code>f &gt;&gt;= Unit &lt;-&gt; f</code></p>
+<ul>
+<li>在 go 中可以理解为：如果有一个函数为 <code>F[ T, U any] (T) M U</code>, <code>F(x).FlatMap(Unit)</code> 的执行结果等于 <code>F(x)</code></li>
+</ul>
+</li>
+<li>
+<p>组合子 <code>&gt;&gt;=</code> 满足结合律: <code>ma &gt;&gt;= λx -&gt; (f(x) &gt;&gt;= λy -&gt; g(y)) &lt;-&gt; (ma &gt;&gt;= λx -&gt; f(x)) &gt;&gt;= λy -&gt; g(y)</code></p>
+<ul>
+<li>在 go 中可以理解为以下两个过程执行结果相等</li>
+</ul>
+</li>
+</ol>
+<pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">F</span>[<span class="hljs-title">T</span>, <span class="hljs-title">U</span> <span class="hljs-title">any</span>]<span class="hljs-params">(x T)</span></span> M&lt;U&gt;  &#123; f(x) &#125; <span class="hljs-comment">// f(x) 是对 x 的一些行为</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">G</span>[<span class="hljs-title">U</span>, <span class="hljs-title">P</span> <span class="hljs-title">any</span>]<span class="hljs-params">(y U)</span></span> M&lt;P&gt; &#123; g(y) &#125; <span class="hljs-comment">// g(y) 是对 y 的一些行为</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">H</span>[<span class="hljs-title">T</span>, <span class="hljs-title">P</span> <span class="hljs-title">any</span>]<span class="hljs-params">(x T)</span></span> M&lt;P&gt; &#123; F(x).FlatMap(G) &#125; <span class="hljs-comment">// g(f(x))</span>
+
+res1 := M&#123;val: x&#125;.FlatMap(H)</code></pre>
+<pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">F</span>[<span class="hljs-title">T</span>, <span class="hljs-title">U</span> <span class="hljs-title">any</span>]<span class="hljs-params">(x T)</span></span> M&lt;U&gt;  &#123; f(x) &#125; <span class="hljs-comment">// f(x) 是对 x 的一些行为</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">G</span>[<span class="hljs-title">U</span>, <span class="hljs-title">P</span> <span class="hljs-title">any</span>]<span class="hljs-params">(y U)</span></span> M&lt;P&gt; &#123; g(y) &#125; <span class="hljs-comment">// g(y) 是对 y 的一些行为</span>
+
+res2 := M&#123; val: x &#125;.FlatMap(F).FlatMap(G)</code></pre>
+<h2 id="monad-有什么用"><a class="markdownIt-Anchor" href="#monad-有什么用"></a> monad 有什么用?</h2>
+<p>在列举完 monad 的定义后，为了避免陷在抽象的世界里无法自拔，笔者在接下来会具体列举一些例子说明 monad 的作用 。以笔者的观点来说，monad 的作用就是提供了一种隐藏副作用的形式，使得在编写处理函数的时候只用考虑预期的输入，将副作用延续到最后处理。</p>
+<h3 id="另一个宇宙的-go-error-monad"><a class="markdownIt-Anchor" href="#另一个宇宙的-go-error-monad"></a> 另一个宇宙的 go error monad</h3>
+<h4 id="引言"><a class="markdownIt-Anchor" href="#引言"></a> 引言</h4>
+<p>在 go 编程中，可能常见如下代码:</p>
+<pre><code class="hljs go"><span class="hljs-comment">// 获取要查询的ID</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">GetID</span> <span class="hljs-params">(<span class="hljs-type">int64</span>)</span></span> (<span class="hljs-type">int64</span>,<span class="hljs-type">error</span>) &#123;&#125;
+<span class="hljs-comment">// 获取 ID 对应的信息</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">GetInfo</span> <span class="hljs-params">(id <span class="hljs-type">int64</span>)</span></span> (Info,<span class="hljs-type">error</span>) &#123;&#125;
+<span class="hljs-comment">// 获取上一个 Info 中 uid 对应的信息</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">GetUserInfo</span> <span class="hljs-params">(Info)</span></span> (UserInfo,<span class="hljs-type">error</span>) &#123;&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">handle</span><span class="hljs-params">()</span></span> <span class="hljs-type">error</span> &#123;
+        rawID := <span class="hljs-number">0</span>
+        id, err := GetID(rawID)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;
+                <span class="hljs-keyword">return</span> err
+        &#125;
+        info, err := GetInfo(id)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;
+                <span class="hljs-keyword">return</span> err
+         &#125;
+        userInfo, err := GetUserInfo(info)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &#123;
+                <span class="hljs-keyword">return</span> err
+        &#125;
+        <span class="hljs-comment">// use userInfo ...</span>
+&#125;
+</code></pre>
+<p>可以看到 go 的灵魂出现了🤗</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/20231224210233.png"/></div></div>
+<p>当然笔者并不反对 go 这种严格处理每个函数返回的错误值的思想，不过本文既然是有关 monad 的介绍，自然是想着怎么将 monad 套用到 go 的错误处理中。</p>
+<h4 id="go-版-monad-式错误处理"><a class="markdownIt-Anchor" href="#go-版-monad-式错误处理"></a> go 版 monad 式错误处理</h4>
+<p>回顾 monad 的定义:</p>
+<ul>
+<li>首先 monad 是一个结构体:</li>
+</ul>
+<pre><code class="hljs go"><span class="hljs-keyword">type</span> ErrMonad[T any] <span class="hljs-keyword">struct</span> &#123;
+        Result T
+        Err  <span class="hljs-type">error</span>
+&#125;</code></pre>
+<p>上面的结构体包含了返回值和错误。</p>
+<ul>
+<li>然后需要一个由 <code>T</code> 构造成 <code>M T</code> 的函数:</li>
+</ul>
+<pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Unit</span>[<span class="hljs-title">T</span> <span class="hljs-title">any</span>] <span class="hljs-params">(result T)</span></span> ErrMonad[T] &#123;
+        <span class="hljs-keyword">return</span> ErrMonad[T]&#123;
+                Result: result,
+        &#125;
+&#125;
+</code></pre>
+<ul>
+<li>有组合子 <code>FlatMap</code> 成员方法:</li>
+</ul>
+<pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(h ErrMonad[T])</span></span> FlatMap[U] (mapFunc <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(T)</span></span> ErrMonad[U] ) ErrMonad[U] &#123;
+        <span class="hljs-keyword">if</span> h.err != <span class="hljs-literal">nil</span>&#123;
+                <span class="hljs-keyword">return</span> h
+        &#125;
+        <span class="hljs-keyword">return</span> mapFunc(h.result)
+&#125;</code></pre>
+<p>有了上述实现后，之前的流程就可以改写为:</p>
+<pre><code class="hljs go"><span class="hljs-comment">// 获取要查询的ID</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">GetID</span> <span class="hljs-params">(<span class="hljs-type">int64</span>)</span></span> ErrMonad[<span class="hljs-type">int64</span>] &#123;&#125;
+<span class="hljs-comment">// 获取 ID 对应的信息</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">GetInfo</span> <span class="hljs-params">(id <span class="hljs-type">int64</span>)</span></span> ErrMonad[Info] &#123;&#125;
+<span class="hljs-comment">// 获取上一个 Info 中 uid 对应的信息</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">GetUserInfo</span> <span class="hljs-params">(Info)</span></span> ErrMonad[UserInfo] &#123;&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">handle</span><span class="hljs-params">()</span></span> <span class="hljs-type">error</span> &#123;
+        rawID := Unit(<span class="hljs-type">int64</span>(<span class="hljs-number">0</span>))
+        res := rawID.
+                        FlatMap(GetID).
+                        FlatMap(GetInfo).
+                        FlatMap(GetUserInfo)
+        <span class="hljs-keyword">if</span> res.Err != <span class="hljs-literal">nil</span>&#123;
+                <span class="hljs-keyword">return</span> res.Err
+        &#125;
+        userInfo = res.Result
+        <span class="hljs-comment">// use userInfo ...</span>
+&#125;
+</code></pre>
+<p>可以看出相较于之前的版本，代码更简洁了一些 (至少少了 <code>if err != nil &#123; return err &#125;</code>)。</p>
+<p>然而理想是美好的，看着 monad 实现这么简单，为啥群友总说 go 不支持 monad 呢。回看本节标题 “<strong>另一个宇宙</strong>的 go error monad”，非常遗憾的是，目前的 go 不支持<strong>泛型方法参数</strong> <a target="_blank" rel="noopener" href="https://go.googlesource.com/proposal/+/master/design/43651-type-parameters.md#no-parameterized-methods">Type Parameters Proposal</a>。具体来说就是不支持入参是一个带泛型的方法，即以下函数都是无法实现的:</p>
+<pre><code class="hljs go"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">goIsBest</span><span class="hljs-params">( <span class="hljs-keyword">func</span>[T any] ()</span></span> ) <span class="hljs-type">bool</span> &#123; <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span> &#125;
+
+<span class="hljs-keyword">type</span> GGGGGG[T any] <span class="hljs-keyword">struct</span>&#123;&#125;
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(GGGGGG[T])</span></span> gggggggggggg( <span class="hljs-function"><span class="hljs-keyword">func</span>[<span class="hljs-title">U</span> <span class="hljs-title">any</span>] <span class="hljs-params">()</span></span> ) &#123;&#125;
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(GGGGGG[T])</span></span> gggggggggggg[U any] () &#123;&#125;</code></pre>
+<p>摆个 issue 做参考(希望未来会有解决方法吧):</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/49085">proposal: spec: allow type parameters in methods · Issue #49085 · golang/go · GitHub</a></p>
+<p>这就导致了 <code>FlatMap</code> 方法是不可行的。至此，go 的 monad 之旅到此结束。</p>
+<p>附一篇经典的错误处理方法 blog ( 感觉就像一种青春版的 monad，在所举的例子中存在类型只有 io.Writer，所以只用在单个类型里打转，省略了由 T 类型到 U 类型的转换，所以这种形式可以在 go 中实现:</p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/20240118232621.png"/></div></div>
+<p><a target="_blank" rel="noopener" href="https://go.dev/blog/errors-are-values">Errors are values - Thttps://go.dev/blog/errors-are-valueshe Go Programming Language</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/548515367">if err != nil 太烦？Go 创始人教你如何对错误进行编程！ - 知乎</a> (<s>评论区</s>)</p>
+<h3 id="monad-如何解决回调地狱"><a class="markdownIt-Anchor" href="#monad-如何解决回调地狱"></a> monad 如何解决回调地狱</h3>
+<p>现在让我们来看看一点<s>老</s>(不新又不老)的东西。</p>
+<h4 id="引言-2"><a class="markdownIt-Anchor" href="#引言-2"></a> 引言</h4>
+<p>各位即使没写过 javascript，也可能听说过<a target="_blank" rel="noopener" href="http://callbackhell.com/">回调地狱</a>这个概念，具体来讲这是一种 javascript 异步编程中出现的一种现象。拿<a target="_blank" rel="noopener" href="http://callbackhell.com/">Callback Hell</a>中的例子举例吧:</p>
+<pre><code class="hljs javascript">fs.<span class="hljs-title function_">readdir</span>(source, <span class="hljs-keyword">function</span> (<span class="hljs-params">err, files</span>) &#123;
+  <span class="hljs-keyword">if</span> (err) &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Error finding files: &#x27;</span> + err)
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    files.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">filename, fileIndex</span>) &#123;
+      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(filename)
+      <span class="hljs-title function_">gm</span>(source + filename).<span class="hljs-title function_">size</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">err, values</span>) &#123;
+        <span class="hljs-keyword">if</span> (err) &#123;
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Error identifying file size: &#x27;</span> + err)
+        &#125; <span class="hljs-keyword">else</span> &#123;
+          <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(filename + <span class="hljs-string">&#x27; : &#x27;</span> + values)
+          aspect = (values.<span class="hljs-property">width</span> / values.<span class="hljs-property">height</span>)
+          widths.<span class="hljs-title function_">forEach</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params">width, widthIndex</span>) &#123;
+            height = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(width / aspect)
+            <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;resizing &#x27;</span> + filename + <span class="hljs-string">&#x27;to &#x27;</span> + height + <span class="hljs-string">&#x27;x&#x27;</span> + height)
+            <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">resize</span>(width, height).<span class="hljs-title function_">write</span>(dest + <span class="hljs-string">&#x27;w&#x27;</span> + width + <span class="hljs-string">&#x27;_&#x27;</span> + filename, <span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) &#123;
+              <span class="hljs-keyword">if</span> (err) <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;Error writing file: &#x27;</span> + err)
+            &#125;)
+          &#125;.<span class="hljs-title function_">bind</span>(<span class="hljs-variable language_">this</span>))
+        &#125;
+      &#125;)
+    &#125;)
+  &#125;
+&#125;)</code></pre>
+<p>上面的代码具体作用就是异步执行如下操作: 通过传入的 <code>srouce</code> 读取指定目录下的文件列表，然后使用 <code>gm</code> 函数进行图像处理，保存处理后的图像到目标目录。</p>
+<p>可以看到代码的嵌套层级非常深，这就是早期 javascript 异步编程的问题。对于异步函数，需要传入一个回调函数表明在当前状态结束后 (如读取文件结束后) 应该继续执行的动作。可以想象一旦异步处理过程多了，如果没有合适的方法，必然会导致深层次的函数嵌套。一般的做法就是将嵌套的函数抽出来，将异步调用拆解到每个函数中：</p>
+<pre><code class="hljs javascript"><span class="hljs-title function_">main</span>(<span class="hljs-params"></span>) &#123;
+        <span class="hljs-title function_">a</span>(value, <span class="hljs-title function_">b</span>(value, c (value)))
+&#125;
+
+<span class="hljs-comment">// -------------------------------------------------</span>
+
+<span class="hljs-title function_">main</span>(<span class="hljs-params"></span>) &#123;
+        <span class="hljs-title function_">a</span>(value, B)
+&#125;
+
+<span class="hljs-title function_">B</span>(<span class="hljs-params">value</span>) &#123;
+        <span class="hljs-comment">// do something</span>
+        <span class="hljs-title function_">b</span>(value, c)
+&#125;
+
+<span class="hljs-title function_">c</span>(<span class="hljs-params">value</span>) &#123;
+        <span class="hljs-comment">// do something</span>
+&#125;</code></pre>
+<p>但上述做法带来的一个小问题是如果需要了解整个运行的流程，需要不断跳转函数才能知道整个运行逻辑，而不能直接在一个 main 函数中知晓。</p>
+<h4 id="异步和-monad"><a class="markdownIt-Anchor" href="#异步和-monad"></a> 异步和 monad</h4>
+<p>上述问题的根本原因在于异步过</p>
+<h4 id="promise-介绍"><a class="markdownIt-Anchor" href="#promise-介绍"></a> promise 介绍</h4>
+<p>在 2015 年后，promise 的出现缓解了 javascript 在异步编程中的问题，首先介绍一下什么是 promise:</p>
+<ul>
+<li>promise 是 javascript 中的一个对象，通过 <code>Promise.resolve</code> 方法可以构造出一个 promise 对象。</li>
+</ul>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> x = <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(<span class="hljs-number">123</span>)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x) <span class="hljs-comment">// Promise &#123; 123 &#125;</span></code></pre>
+<ul>
+<li>
+<p>promise 内部有三种状态 <code>pending</code> 、<code>fulfilled</code> 和 <code>rejected</code> 。他们的作用在这里不深究，只要粗略地了解： <code>fulfilled</code> 可以认为是方法执行成功的状态，<code>rejected</code> 可以认为是方法返回 error 的状态。</p>
+</li>
+<li>
+<p>promise 有三个成员方法 <code>then</code> ，<code>catch</code> 和 <code>finally</code>。这里只介绍 <code>then</code> 和 <code>catch</code> 方法。</p>
+</li>
+</ul>
+<p><code>then</code> 方法接受两个类型为函数的参数，一个是当状态为 <code>fulfilled</code> 的时候调用，另一个为 <code>rejected</code> 的时候调用。一般来说，笔者喜欢只传前一个参数，第二个参数使用缺省值，即只有在状态为成功的时候才执行传入的函数。具体代码例子如下:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> x = <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&quot;now&quot;</span>)
+x.<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;pre: &quot;</span>, x, <span class="hljs-string">&quot;running 1&quot;</span>)
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&quot;run1&quot;</span>)
+&#125;)</code></pre>
+<p>和 <code>then</code> 类似，<code>catch</code> 方法接受一个类型为函数的参数，当状态为 <code>rejected</code> 会调用，具体代码例子如下:</p>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> x = <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(<span class="hljs-string">&quot;now&quot;</span>)
+x.<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">reason</span>) =&gt;</span> &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;break at &quot;</span> + reason)
+&#125;)</code></pre>
+<h4 id="promise-和-monad"><a class="markdownIt-Anchor" href="#promise-和-monad"></a> promise 和 monad</h4>
+<p>在了解了 promise 的概念后，可以看出 promise 非常像一个 monad。下面来点证明：</p>
+<ul>
+<li>
+<p>类型构造子：Promise &lt; T &gt;</p>
+</li>
+<li>
+<p>类型转换子：Promise.resolve</p>
+</li>
+<li>
+<p>组合子：Promise&lt; T &gt;.then( (value: T) =&gt; U )</p>
+</li>
+</ul>
+<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> x = <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&quot;now&quot;</span>)
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(x)
+x.<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;pre: &quot;</span>, x, <span class="hljs-string">&quot;run1&quot;</span>)
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&quot;run1&quot;</span>)
+&#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;pre: &quot;</span>, x, <span class="hljs-string">&quot;run2&quot;</span>)
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">reject</span>(<span class="hljs-string">&quot;run2&quot;</span>)
+&#125;).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">x</span>) =&gt;</span> &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;pre: &quot;</span>, x, <span class="hljs-string">&quot;run3&quot;</span>)
+    <span class="hljs-keyword">return</span> <span class="hljs-title class_">Promise</span>.<span class="hljs-title function_">resolve</span>(<span class="hljs-string">&quot;run3&quot;</span>)
+&#125;).<span class="hljs-title function_">catch</span>(<span class="hljs-function">(<span class="hljs-params">reason</span>) =&gt;</span> &#123;
+    <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&quot;break at &quot;</span> + reason)
+&#125;)
+<span class="hljs-comment">/*</span>
+<span class="hljs-comment">Promise &#123; &#x27;now&#x27; &#125;</span>
+<span class="hljs-comment">pre:  now run1</span>
+<span class="hljs-comment">pre:  run1 run2</span>
+<span class="hljs-comment">break at run2</span>
+<span class="hljs-comment">*/</span></code></pre>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<h2 id="相关阅读"><a class="markdownIt-Anchor" href="#相关阅读"></a> 相关阅读</h2>
+<ul>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV17E411F7cH/">Haskell Monad_哔哩哔哩_bilibili</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html">Functors, Applicatives, And Monads In Pictures - adit.io</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/579141325">如何自底向上地建立起对 Monad 的理解 - 知乎</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19635359/answer/62415213">什么是 Monad (Functional Programming)？ - Belleve的回答 - 知乎 🤣</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2022/10/13/dive-into-functional-programming-01.html">深入理解函数式编程（上） - 美团技术团队</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://tech.meituan.com/2022/10/13/dive-into-functional-programming-02.html">深入理解函数式编程（下） - 美团技术团队</a></p>
+</li>
+<li>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Future%E4%B8%8Epromise">Future与promise - 维基百科，自由的百科全书</a></p>
+</li>
+</ul>
+
+
+
+
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/pages/blog/rust%20%E6%97%A0%E6%A0%88%E5%8D%8F%E7%A8%8B%E4%BB%8B%E7%BB%8D.html">rust 无栈协程介绍</a></div><div class="item" id="next"><div class="note">Older</div><a href="/pages/todo/todo.html">todo</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">blog</span><a href="/">recent</a><a href="/categories">categories</a><a href="/tags">tags</a><a href="/archives">archives</a></div><div class="sitemap-group"><span class="fs14">wiki</span><a href="/wiki">main</a><a href="/wiki/leetcode">leetcode</a><a href="/wiki/redis">redis</a><a href="/wiki/rust_code">rust_code</a></div></div><div class="text"><p>本站由 <a href="/">@booiris</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br />
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: 'Just',
+      min: 'minutes ago',
+      hour: 'hours ago',
+      day: 'days ago',
+      month: 'months ago',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>

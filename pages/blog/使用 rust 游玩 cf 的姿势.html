@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta name="generator" content="Hexo 6.2.0">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0">
+  <meta charset="utf-8">
+  
+
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  <link rel='dns-prefetch' href='https://gcore.jsdelivr.net'>
+  <link rel="preconnect" href="https://gcore.jsdelivr.net" crossorigin>
+  <link rel='dns-prefetch' href='//unpkg.com'>
+
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#f8f8f8">
+  
+  <title>使用 rust 游玩 cf 的姿势 - Booiris</title>
+
+  
+    <meta name="description" content="cf 是什么 具体来说就是  穿越火线是一款非常受欢迎的第一人称射击网络游戏，它也被称作&quot;CrossFire&quot;。它最早由韩国SmileGate公司开发，后来在中国由腾讯公司运营。这个游戏在中国有着庞大的玩家基础，在亚洲其他地区以及全球也有相当多的粉丝。 游戏提供了多种模式，包括经典的团队对战、爆破模式、生化模式等。玩家能选择成为全球反恐精英的一员，或者加入恐怖分子阵营。在游戏">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 rust 游玩 cf 的姿势">
+<meta property="og:url" content="https://booiris.space/pages/blog/%E4%BD%BF%E7%94%A8%20rust%20%E6%B8%B8%E7%8E%A9%20cf%20%E7%9A%84%E5%A7%BF%E5%8A%BF.html">
+<meta property="og:site_name" content="Booiris">
+<meta property="og:description" content="cf 是什么 具体来说就是  穿越火线是一款非常受欢迎的第一人称射击网络游戏，它也被称作&quot;CrossFire&quot;。它最早由韩国SmileGate公司开发，后来在中国由腾讯公司运营。这个游戏在中国有着庞大的玩家基础，在亚洲其他地区以及全球也有相当多的粉丝。 游戏提供了多种模式，包括经典的团队对战、爆破模式、生化模式等。玩家能选择成为全球反恐精英的一员，或者加入恐怖分子阵营。在游戏">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/booiris-cdn/img/rust_cf_2.svg">
+<meta property="article:published_time" content="2024-03-15T13:36:47.000Z">
+<meta property="article:modified_time" content="2024-03-24T10:28:30.000Z">
+<meta property="article:author" content="booiris">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/booiris-cdn/img/rust_cf_2.svg">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+    <link rel="alternate" href="/feed.xml" title="Booiris" >
+  
+
+  
+    
+<link rel="stylesheet" href="/css/main.css">
+
+  
+
+  
+    <link rel="shortcut icon" href="/%5Bobject%20Object%5D">
+  
+
+  
+    
+<link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/atom-one-dark.min.css">
+
+  
+
+  
+
+
+  
+    
+      <link rel="preconnect" href="https://s1.hdslb.com/" />
+    
+      <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'" />
+    
+      <link rel="icon" type="32x32" href="https://cdn.jsdelivr.net/gh/booiris-cdn/img/icon-32x32.ico">
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+    
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+    
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+    
+      <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/atom-one-dark.min.css">
+    
+  
+<link rel="alternate" href="/feed.xml" title="Booiris" type="application/atom+xml">
+</head>
+
+<body>
+  
+
+
+
+
+  <div class='l_body' id='start'>
+    <aside class='l_left' layout='post'>
+    
+
+  
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.4/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Booiris</div><div class="sub cap">English by default🤖</div></a></div>
+
+<nav class="menu dis-select"><a class="nav-item active" href="/">Blog</a><a class="nav-item" href="/wiki/">Doc</a><a class="nav-item" href="/game/">Game</a><a class="nav-item" href="/about/">About</a><a class="nav-item" href="/pic">Picture</a></nav>
+</header>
+
+
+<div class="widgets">
+<widget class="widget-wrapper search"><div class="widget-body"><div class="search-wrapper" id="search"><form class="search-form"><input type="text" class="search-input" id="search-input" data-filter="/blog/" placeholder="文章搜索"><svg t="1670596976048" class="icon search-icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2676" width="200" height="200"><path d="M938.2 832.6L723.8 618.1c-2.5-2.5-5.3-4.4-7.9-6.4 36.2-55.6 57.3-121.8 57.3-193.1C773.3 222.8 614.6 64 418.7 64S64 222.8 64 418.6c0 195.9 158.8 354.6 354.6 354.6 71.3 0 137.5-21.2 193.2-57.4 2 2.7 3.9 5.4 6.3 7.8L832.5 938c14.6 14.6 33.7 21.9 52.8 21.9 19.1 0 38.2-7.3 52.8-21.8 29.2-29.1 29.2-76.4 0.1-105.5M418.7 661.3C284.9 661.3 176 552.4 176 418.6 176 284.9 284.9 176 418.7 176c133.8 0 242.6 108.9 242.6 242.7 0 133.7-108.9 242.6-242.6 242.6" p-id="2677"></path></svg></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div></div></widget>
+
+
+<widget class="widget-wrapper toc single" id="data-toc"><div class="widget-header cap dis-select"><span class="name">使用 rust 游玩 cf 的姿势</span></div><div class="widget-body fs14"><div class="doc-tree active"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#cf-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text"> cf 是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rust-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text"> rust 是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-text"> 正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E8%BE%93%E5%85%A5"><span class="toc-text"> 处理输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E8%BE%93%E5%87%BA"><span class="toc-text"> 处理输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-text"> 处理随机数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E6%A8%A1%E6%9D%BF"><span class="toc-text"> 图模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%AF%E9%87%8C%E5%8C%96"><span class="toc-text"> 柯里化</span></a></li></ol></li></ol></div></div></widget>
+
+
+
+
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/booiris" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/08a41b181ce68.svg"/></a><a class="social" href="mailto:booiris02@gmail.com" rel="noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/a1b00e20f425d.svg"/></a><a class="social" href="https://steamcommunity.com/profiles/76561198081152126/" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/steam_47012.png"/></a><a class="social" href="https://screeps.com/a/#!/profile/booiris" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/screep.png"/></a></div></footer>
+
+    </aside>
+    <div class='l_main'>
+      
+
+      
+
+    
+
+
+
+
+<div class="bread-nav fs12"><div id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a><span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/blog/">blog</a></div><div id="post-meta">Posted on&nbsp;<time datetime="2024-03-15T13:36:47.000Z">2024-03-15</time></div></div>
+
+<article class='md-text content post'>
+<h1 class="article-title"><span>使用 rust 游玩 cf 的姿势</span></h1>
+<h2 id="cf-是什么"><a class="markdownIt-Anchor" href="#cf-是什么"></a> cf 是什么</h2>
+<p>具体来说就是</p>
+<blockquote>
+<p><s>穿越火线是一款非常受欢迎的第一人称射击网络游戏，它也被称作&quot;CrossFire&quot;。它最早由韩国SmileGate公司开发，后来在中国由腾讯公司运营。这个游戏在中国有着庞大的玩家基础，在亚洲其他地区以及全球也有相当多的粉丝。</s></p>
+<p><s>游戏提供了多种模式，包括经典的团队对战、爆破模式、生化模式等。玩家能选择成为全球反恐精英的一员，或者加入恐怖分子阵营。在游戏中，玩家可以购买和升级各种武器装备，与队友协同作战，完成不同的任务和挑战。</s></p>
+</blockquote>
+<blockquote>
+<p>Codeforces 是一个在线编程和算法竞赛平台，广受全球程序员和算法爱好者的欢迎。它提供了一个平台，用户可以通过参加定期举办的编程比赛来提高自己的编程技能和算法知识。这些比赛通常分为几个不同的难度等级，适合从初学者到高级程序员的各个水平。</p>
+<p>在Codeforces上，参赛者需要在限定时间内解决一系列编程问题。这些问题覆盖了数据结构、算法、数学、字符串处理、图论等众多领域。参赛者的表现根据解决问题的速度和正确性来评分，并在全球范围内进行排名。 – chatgpt 生成</p>
+</blockquote>
+<p>网站: <a target="_blank" rel="noopener" href="https://codeforces.com/">Codeforces</a></p>
+<h2 id="rust-是什么"><a class="markdownIt-Anchor" href="#rust-是什么"></a> rust 是什么</h2>
+<p>具体来说就是</p>
+<blockquote>
+<p><s>《Rust》是一款多人生存游戏，玩家需收集资源，建造庇护所，与环境和其他玩家互动以求生存。游戏以其开放世界、真实的生存挑战和玩家之间的复杂互动闻名。</s></p>
+</blockquote>
+<blockquote>
+<p>Rust是一种开源的系统编程语言，以安全性、速度和并发性为设计目标。它旨在帮助开发者构建高效、可靠的软件，同时避免常见的内存安全错误，如缓冲区溢出。Rust通过一套严格的编译时检查机制实现这些目标，而无需依赖于传统的垃圾回收机制或大量的运行时检查。</p>
+<p>Rust的设计充分考虑了现代硬件的特性，提供了零成本抽象、安全的并发编程模型，以及对内存布局的精细控制。这些特性使Rust成为开发操作系统、游戏引擎、浏览器组件以及需要高性能和高可靠性的应用程序的理想选择。 – chatgpt 生成</p>
+</blockquote>
+<p>网站: <a target="_blank" rel="noopener" href="https://www.rust-lang.org/">Rust Programming Language</a></p>
+<h2 id="正文"><a class="markdownIt-Anchor" href="#正文"></a> 正文</h2>
+<p>rust 标准库只提供了一些基本和常用的数据结构和一套&quot;抽象特性&quot;(或者说规范)，所以可能需要手动造一些轮子，比如处理输入和随机数生成等等，下面将介绍对应的实现代码。</p>
+<h3 id="处理输入"><a class="markdownIt-Anchor" href="#处理输入"></a> 处理输入</h3>
+<p>相较于 c++ 的 <code>scanf</code> 、<code>cin</code> ，rust 的标准库中缺少一种方便地从标准输入中读取并构造数据的方法，网上也存在一些讨论:</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://users.rust-lang.org/t/why-is-it-so-difficult-to-get-user-input-in-rust/27444/11">Why is it so difficult to get user input in Rust? - help - The Rust Programming Language Forum</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.reddit.com/r/rust/comments/ifpi8p/why_is_it_so_painful_to_read_user_inputs_in_rust/">Why is it so painful to read user inputs in Rust</a></li>
+</ol>
+<p>所以使用 rust 解决 codeforces 中的问题所遇到的第一个困难就是如何处理输入，所幸的是这个问题在<a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/67391">这里</a>有所讨论，具体的解决方法参考这个<a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/67391?#comment-516341">回复</a>。根据讨论中的代码修改，笔者使用的模板代码如下:</p>
+<pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Scanner</span>&lt;B&gt; &#123;
+    reader: B,
+    buf_str: <span class="hljs-type">Vec</span>&lt;<span class="hljs-type">u8</span>&gt;,
+    buf_iter: std::str::SplitWhitespace&lt;<span class="hljs-symbol">&#x27;static</span>&gt;,
+&#125;
+<span class="hljs-keyword">impl</span>&lt;B: BufRead&gt; Scanner&lt;B&gt; &#123;
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(reader: B) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">Self</span> &#123;
+        <span class="hljs-keyword">Self</span> &#123;
+            reader,
+            buf_str: Vec::<span class="hljs-title function_ invoke__">new</span>(),
+            buf_iter: <span class="hljs-string">&quot;&quot;</span>.<span class="hljs-title function_ invoke__">split_whitespace</span>(),
+        &#125;
+    &#125;
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">sc</span>&lt;T: std::str::FromStr&gt;(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> T &#123;
+        <span class="hljs-keyword">loop</span> &#123;
+            <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(token) = <span class="hljs-keyword">self</span>.buf_iter.<span class="hljs-title function_ invoke__">next</span>() &#123;
+                <span class="hljs-keyword">return</span> token.<span class="hljs-title function_ invoke__">parse</span>().<span class="hljs-title function_ invoke__">ok</span>().<span class="hljs-title function_ invoke__">expect</span>(<span class="hljs-string">&quot;Failed parse&quot;</span>);
+            &#125;
+            <span class="hljs-keyword">self</span>.buf_str.<span class="hljs-title function_ invoke__">clear</span>();
+            <span class="hljs-keyword">self</span>.reader
+                .<span class="hljs-title function_ invoke__">read_until</span>(<span class="hljs-string">b&#x27;\n&#x27;</span>, &amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>.buf_str)
+                .<span class="hljs-title function_ invoke__">expect</span>(<span class="hljs-string">&quot;Failed read&quot;</span>);
+            <span class="hljs-keyword">self</span>.buf_iter = <span class="hljs-keyword">unsafe</span> &#123;
+                <span class="hljs-keyword">let</span> <span class="hljs-variable">slice</span> = std::str::<span class="hljs-title function_ invoke__">from_utf8_unchecked</span>(&amp;<span class="hljs-keyword">self</span>.buf_str);
+                std::mem::<span class="hljs-title function_ invoke__">transmute</span>(slice.<span class="hljs-title function_ invoke__">split_whitespace</span>())
+            &#125;
+        &#125;
+    &#125;
+&#125;
+
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">mut</span> IN: *<span class="hljs-keyword">mut</span> Scanner&lt;StdinLock&lt;<span class="hljs-symbol">&#x27;static</span>&gt;&gt; = std::ptr::<span class="hljs-title function_ invoke__">null_mut</span>();
+<span class="hljs-meta">#[allow(unused_macros)]</span>
+<span class="hljs-built_in">macro_rules!</span> i &#123;
+    () =&gt; &#123;&#123;
+        i!(<span class="hljs-type">i32</span>)
+    &#125;&#125;;
+    ($t:ty) =&gt; &#123;&#123;
+        <span class="hljs-keyword">unsafe</span> &#123; (*IN).sc::&lt;$t&gt;() &#125;
+    &#125;&#125;;
+&#125;
+
+<span class="hljs-comment">// 使用方法</span>
+<span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>() &#123;
+        <span class="hljs-comment">// 需要首先初始化全局的读入器。</span>
+    <span class="hljs-keyword">unsafe</span> &#123;
+        IN = Box::<span class="hljs-title function_ invoke__">leak</span>(Box::<span class="hljs-title function_ invoke__">new</span>(Scanner::<span class="hljs-title function_ invoke__">new</span>(io::<span class="hljs-title function_ invoke__">stdin</span>().<span class="hljs-title function_ invoke__">lock</span>()))) <span class="hljs-keyword">as</span> *<span class="hljs-keyword">mut</span> Scanner&lt;StdinLock&lt;<span class="hljs-symbol">&#x27;_</span>&gt;&gt;;
+    &#125;
+        <span class="hljs-keyword">let</span> <span class="hljs-variable">t</span> = i!(<span class="hljs-type">String</span>); <span class="hljs-comment">// 从标准输入中读入一个 string。</span>
+        <span class="hljs-keyword">let</span> <span class="hljs-variable">a</span> = i!();    <span class="hljs-comment">//  默认读入的类型为 i32。</span>
+&#125;</code></pre>
+<p>下面大致解释一下代码的实现，首先核心的是一个名为 <code>Scanner</code> 的结构体，其中的 <code>Reader</code> 保存了数据的来源，它是一个 trait ，可以认为是任意实现了 <code>std::io::BufRead</code> 这一&quot;规范&quot;的结构体。具体到本代码则为标准输入流。<code>buf_str</code> 则是用于储存从 reader 中获取的数据(每次以行为单位读取数据)。<code>buf_iter</code> 用于解析和迭代遍历行内的数据。</p>
+<p>一个读入的过程为: 从 <code>Reader</code> 中根据换行符为分隔读取数据，保存到 <code>buf_str</code> 中，然后根据空白符做切分保存到 <code>buf_iter</code> 中，然后对每一块做解析转换成需要的格式。</p>
+<p>在之后是一个宏，用于优化使用体验。然而一定会使用到全局变量，rust 中对于全局变量的使用较为繁琐，这里采用两种方法:</p>
+<ol>
+<li>使用全局裸指针，使用 <code>box::leak</code> 将读取器内存泄漏，然后将裸指针指向这块内存进行调用，不过这个需要用到 unsafe ，由于 codeforces 算法都为单线程，所以不用考虑并发问题，所以这个 unsafe 是可控的。</li>
+<li>使用 <code>RefCell</code> 获取内部可变性。</li>
+</ol>
+<p>通常来说，应该是使用全局裸指针性能更好，因为 <code>RefCell</code> 会在运行期进行借用检测。但经测试两者的性能差距不明显，所以读者自行选择。</p>
+<p><a target="_blank" rel="noopener" href="https://gist.github.com/booiris/68b0def25da4d820b52a65bebe3017eb">全局读取器使用裸指针和 refcell 性能测试 · GitHub</a></p>
+<pre><code class="hljs rust"><span class="hljs-comment">// RefCell 方式的全局变量</span>
+thread_local! &#123;
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">static</span> STDIN: std::cell::RefCell&lt;Scanner&lt;StdinLock&lt;<span class="hljs-symbol">&#x27;static</span>&gt;&gt;&gt; =
+    std::cell::RefCell::<span class="hljs-title function_ invoke__">new</span>(Scanner::<span class="hljs-title function_ invoke__">new</span>(io::<span class="hljs-title function_ invoke__">stdin</span>().<span class="hljs-title function_ invoke__">lock</span>()));
+&#125;
+<span class="hljs-meta">#[allow(unused_macros)]</span>
+<span class="hljs-built_in">macro_rules!</span> safe_i &#123;
+    () =&gt; &#123;&#123;
+        safe_i!(<span class="hljs-type">i32</span>)
+    &#125;&#125;;
+    ($t:ty) =&gt; &#123;
+        STDIN.<span class="hljs-title function_ invoke__">with</span>(|r| &#123;
+            <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">r</span> = r.<span class="hljs-title function_ invoke__">borrow_mut</span>();
+            r.sc::&lt;$t&gt;()
+        &#125;)
+    &#125;;
+&#125;</code></pre>
+<hr />
+<p>除了上面的解决方式之外，讨论中还出现了一种<a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/67391?#comment-515870">解决方式</a>，具体实现原理基本上和 c++ 的<a target="_blank" rel="noopener" href="https://oi-wiki.org/contest/io/#%E8%AF%BB%E5%85%A5%E4%BC%98%E5%8C%96">快读方式</a>相似，然后通过把快读封装成 trait，给基本类型使用宏实现快读的 trait 实现数据的读入。理论上这种读取方式应该更快，请读者自行取用。</p>
+<h3 id="处理输出"><a class="markdownIt-Anchor" href="#处理输出"></a> 处理输出</h3>
+<p>对于输出也需要特殊处理一下，使用普通的 <code>println!</code> 宏可能会导致输出时间过长导致超时。原因是<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/std/macro.println.html">每次调用 <code>println!</code> 的时候都会给标准输出上锁</a>。遇到需要许多输出的题目可能会因为频繁上锁解锁导致输出时间过长。</p>
+<p><code>println!</code> 的注释中也提到可以使用 <code>writeln!</code> 宏进行输出。对于输出加锁导致变慢的问题可以使用缓冲区解决。将输出保存到缓冲区中，最后调用 <code>flush!</code> 将缓冲区的内容写入输出流，这样就减少了加锁解锁的时间，实现了快速输出。</p>
+<pre><code class="hljs rust"><span class="hljs-keyword">static</span> <span class="hljs-keyword">mut</span> OUT: *<span class="hljs-keyword">mut</span> std::io::BufWriter&lt;std::io::StdoutLock&lt;<span class="hljs-symbol">&#x27;_</span>&gt;&gt; = std::ptr::<span class="hljs-title function_ invoke__">null_mut</span>();
+<span class="hljs-meta">#[allow(unused_macros)]</span>
+<span class="hljs-built_in">macro_rules!</span> w &#123;
+    ($fmt:expr) =&gt; &#123;
+    <span class="hljs-keyword">unsafe</span>&#123; <span class="hljs-built_in">write!</span>(*OUT, <span class="hljs-string">&quot;&#123;&#125;&quot;</span>, $fmt);&#125;
+    &#125;;
+    ($fmt:expr, $($args:tt)*) =&gt; &#123;
+    <span class="hljs-keyword">unsafe</span>&#123;  <span class="hljs-built_in">write!</span>(*OUT, $fmt, $($args)*);&#125;
+    &#125;;
+&#125;
+<span class="hljs-meta">#[allow(unused_macros)]</span>
+<span class="hljs-built_in">macro_rules!</span> wln &#123;
+    () =&gt; &#123;
+    <span class="hljs-keyword">unsafe</span>&#123; <span class="hljs-built_in">writeln!</span>(*OUT);&#125;
+    &#125;;
+    ($fmt:expr) =&gt; &#123;
+    <span class="hljs-keyword">unsafe</span>&#123; <span class="hljs-built_in">writeln!</span>(*OUT, <span class="hljs-string">&quot;&#123;&#125;&quot;</span>, $fmt);&#125;
+    &#125;;
+    ($fmt:expr, $($args:tt)*) =&gt; &#123;
+    <span class="hljs-keyword">unsafe</span>&#123;  <span class="hljs-built_in">writeln!</span>(*OUT, $fmt, $($args)*);&#125;
+    &#125;;
+&#125;
+<span class="hljs-meta">#[allow(unused_macros)]</span>
+<span class="hljs-built_in">macro_rules!</span> flush &#123;
+    () =&gt; &#123;
+        <span class="hljs-keyword">unsafe</span> &#123;
+            (*OUT).<span class="hljs-title function_ invoke__">flush</span>();
+        &#125;
+    &#125;;
+&#125;
+
+<span class="hljs-keyword">fn</span> <span class="hljs-title function_">main</span>()&#123;
+    OUT = Box::<span class="hljs-title function_ invoke__">leak</span>(Box::<span class="hljs-title function_ invoke__">new</span>(io::BufWriter::<span class="hljs-title function_ invoke__">new</span>(io::<span class="hljs-title function_ invoke__">stdout</span>().<span class="hljs-title function_ invoke__">lock</span>())))
+            <span class="hljs-keyword">as</span> *<span class="hljs-keyword">mut</span> std::io::BufWriter&lt;std::io::StdoutLock&lt;<span class="hljs-symbol">&#x27;_</span>&gt;&gt;;
+    <span class="hljs-keyword">let</span> <span class="hljs-variable">a</span>: <span class="hljs-type">i32</span> = <span class="hljs-number">1</span>;
+    wln!();    <span class="hljs-comment">// 输出 \n</span>
+    wln!(a);  <span class="hljs-comment">// 输出 1\n</span>
+    w!(a);    <span class="hljs-comment">//  输出 1</span>
+    wln!(<span class="hljs-string">&quot;test: &#123;&#125;&quot;</span>,a); <span class="hljs-comment">// 输出 test: 1\n </span>
+    flush!(); <span class="hljs-comment">// 因为全局变量已经主动泄露，所以最后不会自动 drop ，最后需要手动调用 flush 将数据由缓冲区输入到标准输出流</span>
+&#125;</code></pre>
+<p>同样的，对应输出器的全局变量也有两种写法，一种 <code>static mut</code> 的全局变量，一种是 <code>Refcell</code> ，这里作为思考题请读者自行实现。</p>
+<h3 id="处理随机数"><a class="markdownIt-Anchor" href="#处理随机数"></a> 处理随机数</h3>
+<p>同样的，rust 的 std 中没有随机数库，需要自己手动造一下轮子。代码来源不可考了，贴一下原始的论文吧：</p>
+<p><a target="_blank" rel="noopener" href="http://vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf">vigna.di.unimi.it/ftp/papers/ScrambledLinear.pdf</a></p>
+<pre><code class="hljs rust"><span class="hljs-meta">#[derive(Debug, Clone, PartialEq, Eq)]</span>
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Rand</span> &#123;
+    s: [<span class="hljs-type">u64</span>; <span class="hljs-number">4</span>],
+&#125;
+
+<span class="hljs-keyword">impl</span> <span class="hljs-title class_">Rand</span> &#123;
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(<span class="hljs-keyword">mut</span> state: <span class="hljs-type">u64</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">Self</span> &#123;
+        <span class="hljs-keyword">const</span> PHI: <span class="hljs-type">u64</span> = <span class="hljs-number">0x9e3779b97f4a7c15</span>;
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">seed</span> = &lt;[<span class="hljs-type">u64</span>; <span class="hljs-number">4</span>]&gt;::<span class="hljs-title function_ invoke__">default</span>();
+        <span class="hljs-keyword">for</span> <span class="hljs-variable">chunk</span> <span class="hljs-keyword">in</span> &amp;<span class="hljs-keyword">mut</span> seed &#123;
+            state = state.<span class="hljs-title function_ invoke__">wrapping_add</span>(PHI);
+            <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">z</span> = state;
+            z = (z ^ (z &gt;&gt; <span class="hljs-number">30</span>)).<span class="hljs-title function_ invoke__">wrapping_mul</span>(<span class="hljs-number">0xbf58476d1ce4e5b9</span>);
+            z = (z ^ (z &gt;&gt; <span class="hljs-number">27</span>)).<span class="hljs-title function_ invoke__">wrapping_mul</span>(<span class="hljs-number">0x94d049bb133111eb</span>);
+            z = z ^ (z &gt;&gt; <span class="hljs-number">31</span>);
+            *chunk = z;
+        &#125;
+        <span class="hljs-keyword">Self</span> &#123; s: seed &#125;
+    &#125;
+
+    <span class="hljs-meta">#[inline]</span>
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">next_u32</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">u32</span> &#123;
+        (<span class="hljs-keyword">self</span>.<span class="hljs-title function_ invoke__">next_u64</span>() &gt;&gt; <span class="hljs-number">32</span>) <span class="hljs-keyword">as</span> <span class="hljs-type">u32</span>
+    &#125;
+
+    <span class="hljs-meta">#[inline]</span>
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">next_u64</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">u64</span> &#123;
+        <span class="hljs-keyword">let</span> <span class="hljs-variable">result_plusplus</span> = <span class="hljs-keyword">self</span>.s[<span class="hljs-number">0</span>]
+            .<span class="hljs-title function_ invoke__">wrapping_add</span>(<span class="hljs-keyword">self</span>.s[<span class="hljs-number">3</span>])
+            .<span class="hljs-title function_ invoke__">rotate_left</span>(<span class="hljs-number">23</span>)
+            .<span class="hljs-title function_ invoke__">wrapping_add</span>(<span class="hljs-keyword">self</span>.s[<span class="hljs-number">0</span>]);
+
+        <span class="hljs-keyword">let</span> <span class="hljs-variable">t</span> = <span class="hljs-keyword">self</span>.s[<span class="hljs-number">1</span>] &lt;&lt; <span class="hljs-number">17</span>;
+        <span class="hljs-keyword">self</span>.s[<span class="hljs-number">2</span>] ^= <span class="hljs-keyword">self</span>.s[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">self</span>.s[<span class="hljs-number">3</span>] ^= <span class="hljs-keyword">self</span>.s[<span class="hljs-number">1</span>];
+        <span class="hljs-keyword">self</span>.s[<span class="hljs-number">1</span>] ^= <span class="hljs-keyword">self</span>.s[<span class="hljs-number">2</span>];
+        <span class="hljs-keyword">self</span>.s[<span class="hljs-number">0</span>] ^= <span class="hljs-keyword">self</span>.s[<span class="hljs-number">3</span>];
+        <span class="hljs-keyword">self</span>.s[<span class="hljs-number">2</span>] ^= t;
+        <span class="hljs-keyword">self</span>.s[<span class="hljs-number">3</span>] = <span class="hljs-keyword">self</span>.s[<span class="hljs-number">3</span>].<span class="hljs-title function_ invoke__">rotate_left</span>(<span class="hljs-number">45</span>);
+        result_plusplus
+    &#125;
+&#125;</code></pre>
+<p>使用随机化算法的题目不是特别多，具体使用方法请看如下示例:</p>
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1310/submission/252682933">Submission #252682933 - Codeforces</a></p>
+<h3 id="图模板"><a class="markdownIt-Anchor" href="#图模板"></a> 图模板</h3>
+<p>图的表示一般为邻接表和邻接矩阵。对于邻接矩阵注意如果能用定长数组就用定长数组。而对于邻接表的数据存储可以有两种方式，一种是放在 struct 中，每次创建的时候都分配一次内存，或者将数据存储再全局变量中，动态地扩展长度。从性能测试的结果也能看出后面一种方式是更快的，由于算法题中不涉及到并发问题，所以操作全局变量是安全的，所以请尽情地使用 unsafe 吧(</p>
+<p><a target="_blank" rel="noopener" href="https://gist.github.com/booiris/cf5cc7dbec64051e62244ca9143e8a5d">图结构性能测试 · GitHub</a></p>
+<div class="tag-plugin image"><div class="image-bg"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/rust_cf_2.svg"/></div></div>
+<pre><code class="hljs rust"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">PathType</span> &#123;
+    from: <span class="hljs-type">usize</span>,
+    to: <span class="hljs-type">usize</span>,
+    v: <span class="hljs-type">i64</span>,
+&#125;
+
+<span class="hljs-keyword">impl</span> <span class="hljs-title class_">fmt</span>::Display <span class="hljs-keyword">for</span> <span class="hljs-title class_">PathType</span> &#123;
+    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">fmt</span>(&amp;<span class="hljs-keyword">self</span>, f: &amp;<span class="hljs-keyword">mut</span> fmt::Formatter&lt;<span class="hljs-symbol">&#x27;_</span>&gt;) <span class="hljs-punctuation">-&gt;</span> fmt::<span class="hljs-type">Result</span> &#123;
+        <span class="hljs-built_in">write!</span>(f, <span class="hljs-string">&quot;(&#123;&#125;, &#123;&#125;, &#123;&#125;)&quot;</span>, <span class="hljs-keyword">self</span>.from, <span class="hljs-keyword">self</span>.to, <span class="hljs-keyword">self</span>.v)
+    &#125;
+&#125;
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">mut</span> PATHS: <span class="hljs-type">Vec</span>&lt;PathType&gt; = <span class="hljs-built_in">vec!</span>[];
+<span class="hljs-keyword">static</span> <span class="hljs-keyword">mut</span> POINT: <span class="hljs-type">Vec</span>&lt;<span class="hljs-type">Vec</span>&lt;<span class="hljs-type">usize</span>&gt;&gt; = <span class="hljs-built_in">vec!</span>[];
+
+<span class="hljs-keyword">struct</span> <span class="hljs-title class_">Graph</span> &#123;
+    <span class="hljs-keyword">pub</span> start_from: <span class="hljs-type">usize</span>,
+&#125;
+
+<span class="hljs-meta">#[allow(dead_code)]</span>
+<span class="hljs-keyword">impl</span> <span class="hljs-title class_">Graph</span> &#123;
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(p_size: <span class="hljs-type">usize</span>, start_from: <span class="hljs-type">usize</span>) <span class="hljs-punctuation">-&gt;</span> Graph &#123;
+        <span class="hljs-keyword">unsafe</span> &#123;
+            PATHS.<span class="hljs-title function_ invoke__">clear</span>();
+            POINT.<span class="hljs-title function_ invoke__">reserve</span>((p_size + start_from).<span class="hljs-title function_ invoke__">saturating_sub</span>(POINT.<span class="hljs-title function_ invoke__">capacity</span>()));
+            POINT.<span class="hljs-title function_ invoke__">clear</span>();
+            POINT.<span class="hljs-title function_ invoke__">resize_with</span>(p_size + start_from, || <span class="hljs-built_in">vec!</span>[]);
+        &#125;
+        Graph &#123; start_from &#125;
+    &#125;
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">add_path</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, from: <span class="hljs-type">usize</span>, to: <span class="hljs-type">usize</span>, v: <span class="hljs-type">i64</span>) &#123;
+        <span class="hljs-keyword">unsafe</span> &#123;
+            POINT[from].<span class="hljs-title function_ invoke__">push</span>(PATHS.<span class="hljs-title function_ invoke__">len</span>());
+            PATHS.<span class="hljs-title function_ invoke__">push</span>(PathType &#123; from, to, v &#125;);
+        &#125;
+    &#125;
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">add_bi_path</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, from: <span class="hljs-type">usize</span>, to: <span class="hljs-type">usize</span>, v: <span class="hljs-type">i64</span>) &#123;
+        <span class="hljs-keyword">unsafe</span> &#123;
+            POINT[from].<span class="hljs-title function_ invoke__">push</span>(PATHS.<span class="hljs-title function_ invoke__">len</span>());
+            PATHS.<span class="hljs-title function_ invoke__">push</span>(PathType &#123; from, to, v &#125;);
+            POINT[to].<span class="hljs-title function_ invoke__">push</span>(PATHS.<span class="hljs-title function_ invoke__">len</span>());
+            PATHS.<span class="hljs-title function_ invoke__">push</span>(PathType &#123;
+                from: to,
+                to: from,
+                v,
+            &#125;);
+        &#125;
+    &#125;
+
+    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">get</span>(&amp;<span class="hljs-keyword">self</span>, now_p: <span class="hljs-type">usize</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">impl</span> <span class="hljs-title class_">Iterator</span>&lt;Item = &amp;<span class="hljs-symbol">&#x27;_</span> PathType&gt; &#123;
+        <span class="hljs-keyword">unsafe</span> &#123; POINT[now_p].<span class="hljs-title function_ invoke__">iter</span>().<span class="hljs-title function_ invoke__">map</span>(<span class="hljs-keyword">move</span> |x| PATHS.<span class="hljs-title function_ invoke__">get_unchecked</span>(*x)) &#125;
+    &#125;
+&#125;
+
+<span class="hljs-keyword">impl</span> <span class="hljs-title class_">fmt</span>::Display <span class="hljs-keyword">for</span> <span class="hljs-title class_">Graph</span> &#123;
+    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">fmt</span>(&amp;<span class="hljs-keyword">self</span>, f: &amp;<span class="hljs-keyword">mut</span> fmt::Formatter&lt;<span class="hljs-symbol">&#x27;_</span>&gt;) <span class="hljs-punctuation">-&gt;</span> fmt::<span class="hljs-type">Result</span> &#123;
+        <span class="hljs-keyword">unsafe</span> &#123;
+            <span class="hljs-keyword">for</span> <span class="hljs-variable">now_p</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">self</span>.start_from..POINT.<span class="hljs-title function_ invoke__">len</span>() &#123;
+                <span class="hljs-built_in">write!</span>(f, <span class="hljs-string">&quot;&#123;&#125; -- &quot;</span>, now_p);
+                <span class="hljs-keyword">for</span> <span class="hljs-variable">path</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">self</span>.<span class="hljs-title function_ invoke__">get</span>(now_p) &#123;
+                    <span class="hljs-built_in">write!</span>(f, <span class="hljs-string">&quot;&#123;&#125; &quot;</span>, path)?
+                &#125;
+                <span class="hljs-built_in">writeln!</span>(f)?
+            &#125;
+        &#125;
+        <span class="hljs-title function_ invoke__">Ok</span>(())
+    &#125;
+&#125;</code></pre>
+<p>使用方法参见:</p>
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1929/submission/252942104">Submission #252942104 - Codeforces</a></p>
+<h3 id="柯里化"><a class="markdownIt-Anchor" href="#柯里化"></a> 柯里化</h3>
+<p>柯里化在算法题中使用不多，大部分作用都是为了保存局部变量，用于传递给函数(由于 rust 不鼓励使用全局变量，所以容易导致传递较多的变量)。当然这种功能也能使用闭包实现，就请读者自行取用吧。使用方法参见:</p>
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1933/submission/252806831">Submission #252806831 - Codeforces</a></p>
+<pre><code class="hljs rust"><span class="hljs-meta">#[allow(unused_macros)]</span>
+<span class="hljs-built_in">macro_rules!</span> <span class="hljs-title function_ invoke__">curry2</span> (
+    ($f:expr) =&gt; &#123;
+        |a| <span class="hljs-keyword">move</span> |b|  $<span class="hljs-title function_ invoke__">f</span>(a, b)
+    &#125;;
+);
+
+<span class="hljs-meta">#[allow(unused_macros)]</span>
+<span class="hljs-built_in">macro_rules!</span> <span class="hljs-title function_ invoke__">curry3</span> (
+    ($f:expr) =&gt; &#123;
+        |a| <span class="hljs-keyword">move</span> |b| <span class="hljs-keyword">move</span> |c| $<span class="hljs-title function_ invoke__">f</span>(a, b, c)
+    &#125;;
+);
+<span class="hljs-comment">// 源自 Rust 如何实现柯里化？ - Spore的回答 - 知乎</span>
+<span class="hljs-comment">// https://www.zhihu.com/question/437123518/answer/1655807344</span></code></pre>
+<p>至此，请愉快地使用 rust <s>受苦</s>玩耍吧(</p>
+
+
+
+
+
+</article>
+
+<div class="related-wrap reveal" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">Older</div><a href="/pages/blog/%E4%B8%BA%E5%95%A5%20go%20%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95.html">为啥 go 不支持泛型方法</a></div></section></div>
+
+
+
+
+
+
+
+
+      
+<footer class="page-footer reveal fs12"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs14">blog</span><a href="/">recent</a><a href="/categories">categories</a><a href="/tags">tags</a><a href="/archives">archives</a></div><div class="sitemap-group"><span class="fs14">wiki</span><a href="/wiki">main</a><a href="/wiki/leetcode">leetcode</a><a href="/wiki/redis">redis</a><a href="/wiki/rust_code">rust_code</a></div></div><div class="text"><p>本站由 <a href="/">@booiris</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar">Stellar</a> 主题创建。<br />
+本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+
+      <div class='float-panel mobile-only blur' style='display:none'>
+  <button type='button' class='sidebar-toggle mobile' onclick='sidebar.toggle()'>
+    <svg class="icon" style="width: 1em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15301"><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 2.3 26.8 24.6 47.5 51.6 47.6h416.5v4z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15302"></path><path d="M566.407 808.3c26.9-0.1 49.3-20.8 51.6-47.6-1.9-27.7-23.9-49.7-51.6-51.6h-412.6c-28.2-1.4-52.6 19.5-55.5 47.6 1.9 27.7 23.9 49.7 51.6 51.6h416.5z m309.3-249.9c26.9-0.1 49.3-20.8 51.6-47.6-2.2-26.8-24.6-47.5-51.6-47.6h-721.9c-27.7-2.8-52.5 17.4-55.3 45.1-0.1 0.8-0.1 1.7-0.2 2.5 0.9 27.2 23.6 48.5 50.7 47.6H875.707z m-103.1-245.9c26.9-0.1 49.3-20.8 51.6-47.6-0.4-28.3-23.2-51.1-51.5-51.6h-618.9c-29.5-1.1-54.3 21.9-55.5 51.4v0.2c1.4 27.8 25.2 49.2 53 47.8 0.8 0 1.7-0.1 2.5-0.2h618.8z" p-id="15303"></path></svg>
+  </button>
+</div>
+
+    </div>
+  </div>
+  <div class='scripts'>
+    <script type="text/javascript">
+  const stellar = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    loadCSS: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    // 从 butterfly 和 volantis 获得灵感
+    loadScript: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    // https://github.com/jerryc127/hexo-theme-butterfly
+    jQuery: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        stellar.loadScript(stellar.plugins.jQuery).then(fn)
+      } else {
+        fn()
+      }
+    }
+  };
+  stellar.version = '1.19.0';
+  stellar.github = 'https://github.com/xaoxuu/hexo-theme-stellar/tree/1.19.0';
+  stellar.config = {
+    date_suffix: {
+      just: 'Just',
+      min: 'minutes ago',
+      hour: 'hours ago',
+      day: 'days ago',
+      month: 'months ago',
+    },
+    root : '/',
+  };
+
+  // required plugins (only load if needs)
+  stellar.plugins = {
+    jQuery: 'https://gcore.jsdelivr.net/npm/jquery@3.6.2/dist/jquery.min.js'
+  };
+
+  if ('local_search') {
+    stellar.search = {};
+    stellar.search.service = 'local_search';
+    if (stellar.search.service == 'local_search') {
+      let service_obj = Object.assign({}, {"field":"all","path":"/search.json","content":true,"sort":"-date"});
+      stellar.search[stellar.search.service] = service_obj;
+    }
+  }
+
+  // stellar js
+  stellar.plugins.stellar = Object.assign({"sites":"/js/plugins/sites.js","friends":"/js/plugins/friends.js","ghinfo":"/js/plugins/ghinfo.js","timeline":"/js/plugins/timeline.js","linkcard":"/js/plugins/linkcard.js","fcircle":"/js/plugins/fcircle.js","weibo":"/js/plugins/weibo.js"});
+
+  stellar.plugins.marked = Object.assign("https://cdn.bootcdn.net/ajax/libs/marked/4.0.18/marked.min.js");
+  // optional plugins
+  if ('true' == 'true') {
+    stellar.plugins.lazyload = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js","transition":"blur"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.swiper = Object.assign({"enable":true,"css":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.css","js":"https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"});
+  }
+  if ('' == 'true') {
+    stellar.plugins.scrollreveal = Object.assign({"enable":null,"js":"https://gcore.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js","distance":"8px","duration":500,"interval":100,"scale":1});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+  }
+  if ('false' == 'true') {
+    stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
+  }
+  if ('true' == 'true') {
+    stellar.plugins.copycode = Object.assign({"enable":true,"js":"/js/plugins/copycode.js","default_text":"Copy","success_text":"Copied"});
+  }
+</script>
+
+<!-- required -->
+
+  
+<script src="/js/main.js" async></script>
+
+
+
+<!-- optional -->
+
+
+
+<!-- inject -->
+
+
+  </div>
+</body>
+</html>
