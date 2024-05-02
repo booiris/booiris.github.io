@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2023-11-30 01:02:06
+updated: 2024-05-02 21:11:01
 tags:
   - rust
 top: false
@@ -12,7 +12,7 @@ layout: wiki
 wiki: rust
 order: 6
 ---
-> rust 源码版本: [1.72.0](https://github.com/rust-lang/rust/tree/1.72.0)
+> rust 源码版本: [1.78.0](https://github.com/rust-lang/rust/tree/1.780)
 
 ## 文件位置
 
