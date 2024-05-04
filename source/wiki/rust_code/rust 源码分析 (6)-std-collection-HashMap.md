@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2024-05-04 22:38:45
+updated: 2024-05-04 22:53:28
 tags:
   - rust
 top: false
@@ -12,11 +12,11 @@ layout: wiki
 wiki: rust
 order: 6
 ---
-> rust 源码版本: [1.78.0](https://github.com/rust-lang/rust/tree/1.780)
+> rust 源码版本: [1.78.0](https://github.com/rust-lang/rust/tree/1.78.0)
 
 ## 文件位置
 
-> [library/std/src/collections/hash/map.rs](https://github.com/rust-lang/rust/blob/1.72.0/library/std/src/collections/hash/map.rs)
+> [library/std/src/collections/hash/map.rs](https://github.com/rust-lang/rust/blob/1.78.0/library/std/src/collections/hash/map.rs)
 
 `HashMap` 和 `HashSet` 位于 `std` 库中， 而其余的容器则在 `alloc` 库中，由 `std` 库重导出。
 
@@ -28,10 +28,6 @@ order: 6
 
 ## 实现
 
-### 数据结构
-
-#### HashMap
-
 ```rust
 pub struct HashMap<K, V, S = RandomState> {
     base: base::HashMap<K, V, S>,
@@ -40,20 +36,11 @@ pub struct HashMap<K, V, S = RandomState> {
 
 其中 `K`、`V` 、`S` 分别表示键类型、值类型和哈希函数。`std` 的 `hashMap` 实际上的底层实现实际上是 [GitHub - rust-lang/hashbrown](https://github.com/rust-lang/hashbrown) 。
 
-由于 `hashMap` 内基本为 ``
+由于 `hashMap` 内基本为 `hashbrown` 的封装，所以其中的常规函数和迭代器就省略不讲，下面讲一下其中有趣的地方。
 
-#### 默认随机函数实现
+HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) ，用的是 `SipHash-1-3` 。
 
-```rust
-pub struct RandomState {
-    k0: u64,
-    k1: u64,
-}
-
-pub struct DefaultHasher(SipHasher13);
-```
-
-HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) 。
+下面这这段代码来自 [rust/library/std/src/hash/random.rs](https://github.com/rust-lang/rust/blob/9b00956e56009bab2aa15d7bff10916599e3d6d6/library/std/src/hash/random.rs#L55)，为默认哈希函数的实现。
 
 ```rust
     pub fn new() -> RandomState {
@@ -80,7 +67,7 @@ HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) 。
     }
 ```
 
-哈希函数参数的初始化从注释中能看出有点说法，最初参数是在初始化随机数生成器后，调用两次随机数生成器分别生成`k0`，`k1` 两个参数，代码为:
+哈希函数参数的初始化从注释中能看出有点说法，最初参数是在初始化随机数生成器后，调用两次随机数生成器分别生成`k0`，`k1` 两个参数，最初的代码为:
 
 ```rust
  pub fn new() -> RandomState {
