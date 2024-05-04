@@ -98,7 +98,7 @@ HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) ，用的
 
 在
 
-协变:
+协变: [子类型化和变异性 - Rust 秘典（死灵书）](https://nomicon.purewhite.io/subtyping.html)
 
 ```rust
 fn assert_covariance() {
