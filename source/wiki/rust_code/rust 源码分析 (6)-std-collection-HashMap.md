@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2024-05-04 22:53:28
+updated: 2024-05-04 23:14:05
 tags:
   - rust
 top: false
@@ -75,6 +75,10 @@ HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) ，用的
         RandomState { k0: r.gen(), k1: r.gen() }
 }
 ```
+
+* rand 代码位于 [rust/src/libstd/rand/mod.rs](https://github.com/rust-lang/rust/blob/a59de37e99060162a2674e3ff45409ac73595c0e/src/libstd/rand/mod.rs#L159)
+
+* randomState 代码位于 [rust/src/libstd/collections/hash/map.rs](https://github.com/rust-lang/rust/blob/a59de37e99060162a2674e3ff45409ac73595c0e/src/libstd/collections/hash/map.rs#L1613)
 
 在 [#31356](https://github.com/rust-lang/rust/pull/31356) 中提出，在每个线程缓存随机数种子对于 hashMap 的初始化速度有显著的提升，最终在 [std: Cache HashMap keys in TLS by alexcrichton · Pull Request #33318 · rust-lang/rust · GitHub](https://github.com/rust-lang/rust/pull/33318/files) 中这个改动被合入，代码为:
 
