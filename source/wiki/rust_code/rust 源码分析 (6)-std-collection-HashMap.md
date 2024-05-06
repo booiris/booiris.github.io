@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2024-05-06 12:39:48
+updated: 2024-05-06 12:59:07
 tags:
   - rust
 top: false
@@ -28,7 +28,7 @@ order: 6
 
 ## 实现
 
-### 类型
+### type
 
 ```rust
 pub struct HashMap<K, V, S = RandomState> {
@@ -100,13 +100,15 @@ HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) ，用的
     }
 ```
 
-### 协变:
+### variance
 
-为了让生命周期更为智能， rust 引入了子类型的概念，
+为了让生命周期更为智能， rust 引入了子类型和变异性(**subtyping** and **variance**)，具体来说可以参考以下两个链接。
 
 [子类型化和变异性 - Rust 秘典（死灵书）](https://nomicon.purewhite.io/subtyping.html)
 
 [Subtyping and Variance - The Rustonomicon](https://doc.rust-lang.org/nomicon/subtyping.html)
+
+可以看出 HashMap 的各种迭代器对于生命周期是协变的。
 
 ```rust
 fn assert_covariance() {
