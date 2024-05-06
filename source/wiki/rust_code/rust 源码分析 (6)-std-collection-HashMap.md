@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2024-05-06 13:10:12
+updated: 2024-05-06 13:14:33
 tags:
   - rust
 top: false
@@ -102,7 +102,9 @@ HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) ，用的
 
 这个 mr 的做法为为每个线程生成两个随机种子，之后的同一线程初始化的 HashMap 都使用固定的随机种子(这个操作有点骚气)。然后在 [#36481](https://github.com/rust-lang/rust/issues/36481) 中问题被逮住了，这种做法会被 Hash DoS attack。具体是这样的
 
+[#37470](https://github.com/rust-lang/rust/pull/37470)
 
+[#38368](https://github.com/rust-lang/rust/pull/38368)
 
 ### variance
 
