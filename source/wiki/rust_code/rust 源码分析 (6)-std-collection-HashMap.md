@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2024-05-06 12:59:07
+updated: 2024-05-06 13:10:12
 tags:
   - rust
 top: false
@@ -84,7 +84,7 @@ HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) ，用的
 
 * randomState 代码位于 [rust/src/libstd/collections/hash/map.rs](https://github.com/rust-lang/rust/blob/a59de37e99060162a2674e3ff45409ac73595c0e/src/libstd/collections/hash/map.rs#L1613)
 
-在 [#31356](https://github.com/rust-lang/rust/pull/31356) 中提出，在每个线程缓存随机数种子对于 hashMap 的初始化速度有显著的提升，最终在 [std: Cache HashMap keys in TLS by alexcrichton · Pull Request #33318 · rust-lang/rust · GitHub](https://github.com/rust-lang/rust/pull/33318/files) 中这个改动被合入，代码为:
+在 [#27243](https://github.com/rust-lang/rust/issues/27243) 和 [#31356](https://github.com/rust-lang/rust/pull/31356) 中提出，每个线程使用固定的随机数种子对于初始化速度有显著的提升(64倍)，最终在 [#33318](https://github.com/rust-lang/rust/pull/33318/files) 中这个改动被合入，代码为:
 
 ```rust
     pub fn new() -> RandomState {
@@ -99,6 +99,10 @@ HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) ，用的
         })
     }
 ```
+
+这个 mr 的做法为为每个线程生成两个随机种子，之后的同一线程初始化的 HashMap 都使用固定的随机种子(这个操作有点骚气)。然后在 [#36481](https://github.com/rust-lang/rust/issues/36481) 中问题被逮住了，这种做法会被 Hash DoS attack。具体是这样的
+
+
 
 ### variance
 
