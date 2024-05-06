@@ -1,7 +1,7 @@
 ---
 title: rust 源码分析 (6)-std-collection-HashMap
 date: 2023-10-05 16:32:12
-updated: 2024-05-05 00:29:37
+updated: 2024-05-06 12:39:48
 tags:
   - rust
 top: false
@@ -28,6 +28,8 @@ order: 6
 
 ## 实现
 
+### 类型
+
 ```rust
 pub struct HashMap<K, V, S = RandomState> {
     base: base::HashMap<K, V, S>,
@@ -37,6 +39,8 @@ pub struct HashMap<K, V, S = RandomState> {
 其中 `K`、`V` 、`S` 分别表示键类型、值类型和哈希函数。`std` 的 `hashMap` 实际上的底层实现实际上是 [GitHub - rust-lang/hashbrown](https://github.com/rust-lang/hashbrown) 。
 
 由于 `hashMap` 内基本为 `hashbrown` 的封装，所以其中的常规函数和迭代器就省略不讲，下面讲一下其中有趣的地方。
+
+### issue
 
 HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) ，用的是 `SipHash-1-3` 。
 
@@ -96,9 +100,13 @@ HashMap的默认哈希函数为 [SipHash](../../pages/blog/SipHash.md) ，用的
     }
 ```
 
-在
+### 协变:
 
-协变: [子类型化和变异性 - Rust 秘典（死灵书）](https://nomicon.purewhite.io/subtyping.html)
+为了让生命周期更为智能， rust 引入了子类型的概念，
+
+[子类型化和变异性 - Rust 秘典（死灵书）](https://nomicon.purewhite.io/subtyping.html)
+
+[Subtyping and Variance - The Rustonomicon](https://doc.rust-lang.org/nomicon/subtyping.html)
 
 ```rust
 fn assert_covariance() {
