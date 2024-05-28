@@ -9,4 +9,5 @@ categories: [ blog ]
 author: booiris
 ---
 
+
 [Not a Yoking Matter (Zero-Copy #1) - In Pursuit of Laziness](https://manishearth.github.io/blog/2022/08/03/zero-copy-1-not-a-yoking-matter/)
