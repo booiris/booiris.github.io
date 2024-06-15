@@ -80,8 +80,8 @@ style:
     body: '"LXGW WenKai",system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", sans-serif'
     # code: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
     # codeblock: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
-  codeblock:
-    highlightjs_theme: https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css
+  # codeblock:
+  #   highlightjs_theme: https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css
   leftbar:
     background: 'hsl(212 16% 98%)' 
     # background-image: url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.13/image/sidebar-bg1@small.jpg)
