@@ -15,7 +15,7 @@ sidebar:
     wiki: [toc, repo_info, wiki_more] # for pages using 'layout:wiki'
   widgets:
     home: search, welcome, recent # for home
- 
+
 article:
   auto_excerpt: 0
   license:
@@ -50,16 +50,16 @@ footer:
     #   icon: '<img src="https://fastly.jsdelivr.net/gh/cdn-x/placeholder@1.0.3/social/942ebbf1a4b91.svg"/>'
     #   url: /about/#comments
   sitemap:
-    'blog':
-      - '[recent](/)'
-      - '[categories](/categories)'
-      - '[tags](/tags)'
-      - '[archives](/archives)'
-    'wiki':
-      - '[main](/wiki)'
-      - '[leetcode](/wiki/leetcode)'
-      - '[redis](/wiki/redis)'
-      - '[rust_code](/wiki/rust_code)'
+    "blog":
+      - "[recent](/)"
+      - "[categories](/categories)"
+      - "[tags](/tags)"
+      - "[archives](/archives)"
+    "wiki":
+      - "[main](/wiki)"
+      - "[leetcode](/wiki/leetcode)"
+      - "[redis](/wiki/redis)"
+      - "[rust_code](/wiki/rust_code)"
   license: "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)"
   source: #'[GitHub](https://github.com/xaoxuu/hexo-theme-stellar)'
   more: # string or array (support markdown)
@@ -71,3 +71,15 @@ plugins:
   mathjax:
     enable: false
     cdn: https://cdn.jsdelivr.net/npm/mathjax@2.7.8/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+
+style:
+  font-size:
+    root: 16px
+    body: .9375rem # 15px
+    code: 85% # 14px
+    codeblock: 0.8125rem # 13px
+  font-family:
+    logo: 'LXGW WenKai",system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", sans-serif'
+    body: '"LXGW WenKai",system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", sans-serif'
+    # code: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
+    # codeblock: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
