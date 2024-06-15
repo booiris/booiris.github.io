@@ -18,13 +18,16 @@
 
 menubar:
   columns: 4 # 一行多少个
-  items: 
-    id: post
-    title: 博客
-    url: /
+  items:
+    - id: post
+      title: 博客
+      url: /
+    - id: wiki
+      title: 文档
+      url: /wiki/
 
 logo:
-  avatar: 'https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg' # you can set avatar link in _config.yml or '[https://xxx.png](/about/)'
+  avatar: "https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg" # you can set avatar link in _config.yml or '[https://xxx.png](/about/)'
   # title: '[{config.title}](/)' # you can set html tag like: '[<img no-lazy height="32px" src="xxx"/>](/)'
 
 article:
@@ -34,7 +37,6 @@ article:
     enable: false
     title: related article
   # share: [wechat, email, link]
-
 
 footer:
   social:
@@ -93,7 +95,7 @@ style:
   #   highlightjs_theme: https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css
   leftbar:
     background: var(--block)
-    background-image: 
+    background-image:
     blur-px:
     blur-bg:
     # background-image: url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.13/image/sidebar-bg1@small.jpg)
@@ -105,4 +107,4 @@ comments:
   beaudar:
     repo: booiris/comment
     branch: master
-  comment_title: '🚧🚧🚧评论区🚧🚧🚧'
+  comment_title: "🚧🚧🚧评论区🚧🚧🚧"
