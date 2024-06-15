@@ -22,6 +22,7 @@ article:
   related_posts:
     enable: false
     title: related article
+  share: [wechat, email, link]
 
 # comments:
 #   service: beaudar
