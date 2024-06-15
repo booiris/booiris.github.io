@@ -1,7 +1,7 @@
 ---
 title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-03-15 23:32:49
+updated: 2024-06-15 23:53:16
 tags: 
 top: false
 mathjax: true
@@ -22,7 +22,7 @@ author: booiris
 2. **模板实例化**: C++ 使用模板来实现泛型。在编译时，模板会生成对应于每种具体类型的实例化代码。如 `T add(T a, T b) ` 的泛型方法，对于 `add(1,2)` 和 `add(1.0,2.0)` 会生成两个函数 `int add(int a, int b)` 和 `double add( double a, double b)` 。
 3. **即时编译**: [How Generics Differ in Java and C# | HackerNoon](https://hackernoon.com/how-generics-differ-in-java-and-c), [C#泛型详解 - 知乎](https://zhuanlan.zhihu.com/p/348761322), [c# - What is reification? - Stack Overflow](https://stackoverflow.com/questions/31876372/what-is-reification)，从这些链接可以大致看出，c# 的泛型实现是编译时使用占位符表示泛型类型，然后在运行时动态实例化各种类型。
 
-回到 go 的泛型，实际上 go 的泛型实现方式有三种提案，下面分别介绍这三种提案，有助于后续对 issue 中的讨论进行分析。(本来想简单写写的，写着写着太长了，不想看的请跳至正文部分)
+回到 go 的泛型，实际上 go 的泛型实现方式有三种提案，下面分别介绍这三种提案，有助于后续对 issue 中的讨论进行分析。(本来想简单写写的，写着写着太长了，不想看的请跳至[正文](#正文) 部分)
 
 ### Stenciling
 
