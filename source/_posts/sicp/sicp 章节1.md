@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-06-15 16:06:39
+updated: 2024-06-15 20:38:04
 tags: 
 top: false
 mathjax: true
