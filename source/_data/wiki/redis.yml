@@ -1,0 +1,24 @@
+name: redis
+title: redis
+subtitle: redis源码阅读笔记
+tags: 笔记
+icon: https://cdn.jsdelivr.net/gh/booiris-cdn/img/redis_original_logo_icon_146368.svg
+cover: false
+description: redis源码阅读。
+search:
+  filter: /wiki/leetcode/
+  placeholder: 在 leetcode 中搜索...
+leftbar: 
+  - tree
+  - timeline_stellar_releases
+  - related
+
+comments:
+  service: beaudar
+  beaudar:
+    repo: booiris/comment
+    branch: master
+  comment_title: "🦻🦻🦻🦻🦻🦻🦻🦻"
+
+base_dir: /wiki/leetcode/
+tree:
