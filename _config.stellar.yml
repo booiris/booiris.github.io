@@ -88,6 +88,7 @@ style:
   codeblock:
     highlightjs_theme: https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css
 
+comment_title: '🚧🚧🚧评论区🚧🚧🚧'
 comments:
   service: beaudar
   beaudar:
