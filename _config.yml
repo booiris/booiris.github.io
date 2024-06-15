@@ -7,7 +7,7 @@ title: Booiris
 subtitle: 'English by default🤖'
 description: 'Hello world!'
 favicon: /src/icon-32x32.ico
-avatar: /src/icon-32x32.ico
+# avatar: /src/icon-32x32.ico
 # favicon:
 #   small: /src/icon-32x32.ico
 #   #medium: /images/favicon-32x32-next.png
