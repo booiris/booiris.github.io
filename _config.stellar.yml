@@ -20,18 +20,24 @@ menubar:
   columns: 4 # 一行多少个
   items:
     - id: post
-      title: 博客
+      title: Blog
       url: /
     - id: wiki
-      title: 文档
+      title: Doc
       url: /wiki/
+    - id: game
+      title: Game
+      url: /game
+    - id: pic
+      title: Pic
+      url: /pic
 
 site_tree:
   # -- 列表类页面 -- #
   # 主页配置
   home:
     leftbar: welcome, recent
-    rightbar: tagcloud, memos
+    rightbar: tagcloud
   # 博客列表页配置
   # index_blog:
   #   base_dir: blog # 只影响自动生成的页面路径
@@ -49,7 +55,7 @@ site_tree:
     base_dir: wiki # 只影响自动生成的页面路径
     menu_id: wiki # 未在 front-matter 中指定 menu_id 时，layout 为 wiki 的页面默认使用这里配置的 menu_id
     leftbar: welcome, recent # for wiki
-    rightbar: tagcloud, memos
+    rightbar: tagcloud
     # nav_tabs:
   #     # 'more': https://github.com/xaoxuu
   # # -- 内容类页面 -- #
