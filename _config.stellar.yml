@@ -28,7 +28,7 @@ menubar:
     - id: game
       title: Game
       url: /game
-    - id: pic
+    - id: Picture
       title: Pic
       url: /pic
 
@@ -37,7 +37,7 @@ site_tree:
   # 主页配置
   home:
     leftbar: welcome, recent
-    rightbar: tagcloud
+    rightbar: tagcloud, memos
   # 博客列表页配置
   # index_blog:
   #   base_dir: blog # 只影响自动生成的页面路径
@@ -55,9 +55,16 @@ site_tree:
     base_dir: wiki # 只影响自动生成的页面路径
     menu_id: wiki # 未在 front-matter 中指定 menu_id 时，layout 为 wiki 的页面默认使用这里配置的 menu_id
     leftbar: welcome, recent # for wiki
-    rightbar: tagcloud
+    rightbar: tagcloud, memos
     # nav_tabs:
   #     # 'more': https://github.com/xaoxuu
+
+  Picture:
+    base_dir: /pic
+    menu_id: Picture
+    leftbar: welcome
+    rightbar: memos
+
   # # -- 内容类页面 -- #
   # # 博客文章内页配置
   # post:
