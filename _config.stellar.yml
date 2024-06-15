@@ -94,3 +94,4 @@ comments:
   service: beaudar
   beaudar:
     repo: booiris/comment
+    branch: master
