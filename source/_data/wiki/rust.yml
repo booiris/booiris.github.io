@@ -10,8 +10,6 @@ search:
   placeholder: 在 rust_code 中搜索...
 leftbar:
   - tree
-  - timeline_stellar_releases
-  - related
 
 comments:
   service: beaudar

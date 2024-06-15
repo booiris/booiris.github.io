@@ -9,7 +9,10 @@ search:
   filter: /wiki/redis/
   placeholder: 在 redis 中搜索...
 leftbar:
-  - related
+  - tree
+
+rightbar:
+  - recent
 
 comments:
   service: beaudar
