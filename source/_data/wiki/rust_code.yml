@@ -1,0 +1,24 @@
+name: rust
+title: rust
+subtitle: rust源码阅读
+tags: 笔记
+icon: https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/rust-logo-blk.svg
+cover: false
+description: redis源码阅读。
+search:
+  filter: /wiki/rust_code/
+  placeholder: 在 rust_code 中搜索...
+leftbar: 
+  - tree
+  - timeline_stellar_releases
+  - related
+
+comments:
+  service: beaudar
+  beaudar:
+    repo: booiris/comment
+    branch: master
+  comment_title: "🦻🦻🦻🦻🦻🦻🦻🦻"
+
+base_dir: /wiki/rust_code/
+tree:
