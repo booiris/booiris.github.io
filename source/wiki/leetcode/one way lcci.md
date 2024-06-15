@@ -1,13 +1,13 @@
 ---
-title: one way lcci 
-date: 2022-05-13 11:05:41 
+title: one way lcci
+date: 2022-05-13 11:05:41
 updated: 2022-06-09 22:04:58
-tags: [] 
+tags: 
 top: false
 mathjax: true
 author: booiris
-layout: wiki  
-wiki: leetcode
+layout: wiki
+topic: leetcode
 order: 10000
 ---
 

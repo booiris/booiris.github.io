@@ -1,15 +1,16 @@
 ---
-title: 926-Flip String to Monotone Increasing 
-date: 2022-06-11 14:27:11 
+title: 926-Flip String to Monotone Increasing
+date: 2022-06-11 14:27:11
 updated: 2022-06-11 14:32:38
-tags: [前缀和] 
+tags:
+  - 前缀和
 top: false
 mathjax: true
-categories: []
+categories: 
 author: booiris
-layout: wiki 
-wiki: leetcode 
-order: 926      # add order, base on problem number.
+layout: wiki
+topic: leetcode
+order: 926
 ---
 
 ## 题意

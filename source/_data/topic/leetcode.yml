@@ -1,0 +1,4 @@
+name: Leetcode # 在面包屑导航上会显示较短的名字
+title: leetcode刷题记录 # 在列表页会显示完整的专栏标题
+description: 项目保存了leetcode的题解记录。
+order_by: -updated # 默认是按发布日期倒序排序

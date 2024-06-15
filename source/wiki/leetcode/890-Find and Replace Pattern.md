@@ -1,15 +1,15 @@
 ---
-title: 890-Find and Replace Pattern 
-date: 2022-06-12 15:32:39 
+title: 890-Find and Replace Pattern
+date: 2022-06-12 15:32:39
 updated: 2022-06-12 15:55:03
-tags: [] 
+tags: 
 top: false
 mathjax: true
-categories: []
+categories: 
 author: booiris
-layout: wiki 
-wiki: leetcode 
-order:  890    # add order, base on problem number.
+layout: wiki
+topic: leetcode
+order: 890
 ---
 
 ## 题意

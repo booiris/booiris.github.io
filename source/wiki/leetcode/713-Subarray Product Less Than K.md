@@ -1,13 +1,14 @@
 ---
-title: 713-Subarray Product Less Than K 
-date: 2022-05-05 10:28:41 
+title: 713-Subarray Product Less Than K
+date: 2022-05-05 10:28:41
 updated: 2022-06-10 00:41:24
-tags: [滑动窗口] 
+tags:
+  - 滑动窗口
 top: false
 mathjax: true
 author: booiris
-layout: wiki  
-wiki: leetcode
+layout: wiki
+topic: leetcode
 order: 713
 ---
 

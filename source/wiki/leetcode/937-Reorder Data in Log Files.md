@@ -1,13 +1,14 @@
 ---
-title: 937-Reorder Data in Log Files 
-date: 2022-05-03 12:11:57 
+title: 937-Reorder Data in Log Files
+date: 2022-05-03 12:11:57
 updated: 2022-06-10 00:41:55
-tags: [模拟] 
-top: false 
-mathjax: true 
+tags:
+  - 模拟
+top: false
+mathjax: true
 author: booiris
-layout: wiki  
-wiki: leetcode
+layout: wiki
+topic: leetcode
 order: 937
 ---
 

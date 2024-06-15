@@ -1,15 +1,15 @@
 ---
-title: 1302-Deepest Leaves Sum 
-date: 2022-08-17 20:21:22 
+title: 1302-Deepest Leaves Sum
+date: 2022-08-17 20:21:22
 updated: 2022-09-11 16:10:43
-tags: [] 
+tags: 
 top: false
 mathjax: true
-categories: []
+categories: 
 author: booiris
-layout: wiki 
-wiki: leetcode 
-order:   1302   # add order, base on problem number.
+layout: wiki
+topic: leetcode
+order: 1302
 ---
 
 ## 题意

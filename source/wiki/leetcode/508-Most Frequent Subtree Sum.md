@@ -1,15 +1,15 @@
 ---
-title: 508-Most Frequent Subtree Sum 
-date: 2022-06-19 14:18:39 
+title: 508-Most Frequent Subtree Sum
+date: 2022-06-19 14:18:39
 updated: 2022-06-19 14:27:49
-tags: [] 
+tags: 
 top: false
 mathjax: true
-categories: []
+categories: 
 author: booiris
-layout: wiki 
-wiki: leetcode 
-order:  508    # add order, base on problem number.
+layout: wiki
+topic: leetcode
+order: 508
 ---
 
 ## 题意

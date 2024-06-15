@@ -1,15 +1,18 @@
 ---
-title: 1157-Online Majority Element In Subarray 
-date: 2023-04-16 14:41:57 
+title: 1157-Online Majority Element In Subarray
+date: 2023-04-16 14:41:57
 updated: 2023-04-16 18:38:48
-tags: [线段树,树套树,摩尔投票] 
+tags:
+  - 线段树
+  - 树套树
+  - 摩尔投票
 top: false
 mathjax: true
-categories: []
+categories: 
 author: booiris
-layout: wiki 
-wiki: leetcode 
-order:  1157    # add order, base on problem number.
+layout: wiki
+topic: leetcode
+order: 1157
 ---
 
 ## 题意

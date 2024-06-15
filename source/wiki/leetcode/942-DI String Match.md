@@ -1,13 +1,14 @@
 ---
-title: 942-DI String Match 
-date: 2022-05-09 13:28:12 
+title: 942-DI String Match
+date: 2022-05-09 13:28:12
 updated: 2022-06-10 00:42:02
-tags: [贪心] 
+tags:
+  - 贪心
 top: false
 mathjax: true
 author: booiris
-layout: wiki  
-wiki: leetcode
+layout: wiki
+topic: leetcode
 order: 942
 ---
 

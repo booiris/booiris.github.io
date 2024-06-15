@@ -1,13 +1,14 @@
 ---
-title: 442-Find All Duplicates in an Array 
-date: 2022-05-08 13:46:38 
+title: 442-Find All Duplicates in an Array
+date: 2022-05-08 13:46:38
 updated: 2022-06-10 00:41:40
-tags: [原地哈希] 
+tags:
+  - 原地哈希
 top: false
 mathjax: true
 author: booiris
-layout: wiki 
-wiki: leetcode 
+layout: wiki
+topic: leetcode
 order: 442
 ---
 

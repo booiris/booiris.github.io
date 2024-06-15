@@ -1,15 +1,15 @@
 ---
-title: 498-Diagonal Traverse 
-date: 2022-06-14 10:50:39 
+title: 498-Diagonal Traverse
+date: 2022-06-14 10:50:39
 updated: 2022-06-14 10:58:47
-tags: [] 
+tags: 
 top: false
 mathjax: true
-categories: []
+categories: 
 author: booiris
-layout: wiki 
-wiki: leetcode 
-order:  498    # add order, base on problem number.
+layout: wiki
+topic: leetcode
+order: 498
 ---
 
 ## 题意

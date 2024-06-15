@@ -1,15 +1,15 @@
 ---
-title: 513-Find Bottom Left Tree Value 
-date: 2022-06-23 00:10:14 
+title: 513-Find Bottom Left Tree Value
+date: 2022-06-23 00:10:14
 updated: 2022-06-23 00:12:23
-tags: [] 
+tags: 
 top: false
 mathjax: true
-categories: []
+categories: 
 author: booiris
-layout: wiki 
-wiki: leetcode 
-order:   513   # add order, base on problem number.
+layout: wiki
+topic: leetcode
+order: 513
 ---
 
 ## 题意

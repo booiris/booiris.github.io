@@ -1,15 +1,15 @@
 ---
-title: 497-Random Point in Non-overlapping Rectangles 
-date: 2022-06-10 00:24:37 
+title: 497-Random Point in Non-overlapping Rectangles
+date: 2022-06-10 00:24:37
 updated: 2022-06-10 00:42:33
-tags: [] 
+tags: 
 top: false
 mathjax: true
-categories: []
+categories: 
 author: booiris
-layout: wiki 
-wiki: leetcode 
-order: 497 
+layout: wiki
+topic: leetcode
+order: 497
 ---
 
 ## 题意

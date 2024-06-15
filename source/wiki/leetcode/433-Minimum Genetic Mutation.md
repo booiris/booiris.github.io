@@ -1,13 +1,13 @@
 ---
-title: 433-Minimum Genetic Mutation 
-date: 2022-05-07 13:23:29 
+title: 433-Minimum Genetic Mutation
+date: 2022-05-07 13:23:29
 updated: 2022-06-10 00:41:32
-tags: [] 
+tags: 
 top: false
 mathjax: true
 author: booiris
-layout: wiki  
-wiki: leetcode
+layout: wiki
+topic: leetcode
 order: 433
 ---
 

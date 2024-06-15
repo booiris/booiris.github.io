@@ -1,15 +1,15 @@
 ---
-title: 1051-Height Checker 
-date: 2022-06-13 15:00:05 
+title: 1051-Height Checker
+date: 2022-06-13 15:00:05
 updated: 2022-06-13 15:05:05
-tags: [] 
+tags: 
 top: false
 mathjax: true
-categories: []
+categories: 
 author: booiris
-layout: wiki 
-wiki: leetcode 
-order:  1051    # add order, base on problem number.
+layout: wiki
+topic: leetcode
+order: 1051
 ---
 
 ## 题意
