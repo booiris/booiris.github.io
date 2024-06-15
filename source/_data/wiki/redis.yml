@@ -11,9 +11,6 @@ search:
 leftbar:
   - tree
 
-rightbar:
-  - recent
-
 comments:
   service: beaudar
   beaudar:

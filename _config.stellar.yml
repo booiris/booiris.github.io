@@ -45,12 +45,12 @@ site_tree:
   #   base_dir: topic # 只影响自动生成的页面路径
   #   menu_id: post # 未在 front-matter 中指定 menu_id 时，layout 为 topic 的页面默认使用这里配置的 menu_id
   # # 文档列表页配置
-  # index_wiki:
-  #   base_dir: wiki # 只影响自动生成的页面路径
-  #   menu_id: wiki # 未在 front-matter 中指定 menu_id 时，layout 为 wiki 的页面默认使用这里配置的 menu_id
-  #   leftbar: related, recent # for wiki
-  #   rightbar:
-  #   nav_tabs:
+  index_wiki:
+    base_dir: wiki # 只影响自动生成的页面路径
+    menu_id: wiki # 未在 front-matter 中指定 menu_id 时，layout 为 wiki 的页面默认使用这里配置的 menu_id
+    leftbar: welcome, recent # for wiki
+    rightbar: tagcloud, memos
+    # nav_tabs:
   #     # 'more': https://github.com/xaoxuu
   # # -- 内容类页面 -- #
   # # 博客文章内页配置
