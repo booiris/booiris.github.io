@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-06-15 15:44:46
+updated: 2024-06-15 16:06:39
 tags: 
 top: false
 mathjax: true
@@ -49,7 +49,7 @@ sicp 前面部分介绍的内容还是比较基础的，具体是在介绍程序
 
 ### 1.1.2 Naming and the Environment
 
-介绍了 lisp 的变量定义方式。
+介绍了 lisp 的变量定义方式，还捎带讲了下变量作用域的概念。
 
 ### 1.1.3 Evaluating Combinations
 
@@ -57,3 +57,5 @@ sicp 前面部分介绍的内容还是比较基础的，具体是在介绍程序
 
 1. 计算表达式需要首先计算所有子表达式
 2. 自左向右计算值
+
+### 1.14 Compound Procedures
