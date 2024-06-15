@@ -83,7 +83,7 @@ style:
   # codeblock:
   #   highlightjs_theme: https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css
   leftbar:
-    background: var(--leftbar-bg)
+    background: var(--block)
     background-image: 
     blur-px:
     blur-bg:
