@@ -91,10 +91,9 @@ style:
     # blur-px: 100px # 模糊半径
     # blur-bg: var(--alpha60) # 模糊颜色
 
-comment_title: '🚧🚧🚧评论区🚧🚧🚧'
 comments:
   service: beaudar
   beaudar:
     repo: booiris/comment
     branch: master
-  title: '🚧🚧🚧评论区🚧🚧🚧'
+  comment_title: '🚧🚧🚧评论区🚧🚧🚧'
