@@ -1,11 +1,12 @@
 ---
-title: 章节1 
-date: 2024-06-15 13:46:41 
-updated: 2024-06-15 14:54:16
-tags: [] 
+title: sicp 章节1
+date: 2024-06-15 13:46:41
+updated: 2024-06-15 15:05:53
+tags: 
 top: false
 mathjax: true
-categories: [ sicp ]
+categories:
+  - sicp
 author: booiris
 ---
 
@@ -26,8 +27,18 @@ sicp 前面部分介绍的内容还是比较基础的，具体是在介绍程序
 
 ## 1.1 The elements of Programming
 
-本段开始又到了最喜欢的概念定义环节，一个成熟的程序需要以下三种结构：
+本节开始又到了最喜欢的概念定义环节，一个成熟的语言需要以下三种结构：
 
-1. **primitive expressions**, which represent the simplest entities the language is concerned with, -- 
+1. **primitive expressions**, which represent the simplest entities the language is concerned with,
 2. **means of combination**, by which compound elements are built from simpler ones, and
 3. **means of abstraction**, by which compound elements can be named and manipulated as units.
+
+具体来说就是需要
+
+1. 基本元素，即变量和一些基础的类型
+2. 组合算子，即运算符和函数调用
+3. 抽象方式，即函数定义和数据类型的定义，能够将一组过程或者数据类型封装合并为一个单元
+
+之后，文中再次强调了程序中最重要的两个元素，过程和数据(但实际上过程也可以认为是一种数据(有没有函数是一等公民的即视感) )：
+
+> In programming, we deal with two kinds of elements: procedures and data. (Later we will discover that they are really not so distinct.)
