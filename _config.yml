@@ -6,6 +6,14 @@
 title: Booiris
 subtitle: 'English by default🤖'
 description: 'Hello world!'
+favicon: /src/icon-32x32.ico
+# favicon:
+#   small: /src/icon-32x32.ico
+#   #medium: /images/favicon-32x32-next.png
+#   medium: /src/icon-32x32.ico
+#   apple_touch_icon: /src/icon-32x32.ico
+#   safari_pinned_tab: /src/icon-32x32.ico
+#   android_manifest: /src/icon-32x32.ico
 keywords:
 author: booiris
 language:
@@ -91,13 +99,7 @@ time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
 updated_option: 'mtime'
 
-favicon:
-  small: /src/icon-32x32.ico
-  #medium: /images/favicon-32x32-next.png
-  medium: /src/icon-32x32.ico
-  apple_touch_icon: /src/icon-32x32.ico
-  safari_pinned_tab: /src/icon-32x32.ico
-  android_manifest: /src/icon-32x32.ico
+
 
 
 # Include / Exclude file(s)
