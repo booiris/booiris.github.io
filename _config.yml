@@ -183,19 +183,19 @@ theme: stellar
 #     # - <script defer src="src/auto-render.min.js"> </script>
 
 # npm i hexo-renderer-markdown-it-plus
-markdown_it_plus:
-    highlight: true
-    html: true
-    xhtmlOut: true
-    breaks: true
-    langPrefix:
-    linkify: true
-    typographer:
-    quotes: “”‘’
-    plugins:
-        - plugin:
-            name: markdown-it-mark
-            enable: false
+# markdown_it_plus:
+#     highlight: true
+#     html: true
+#     xhtmlOut: true
+#     breaks: true
+#     langPrefix:
+#     linkify: true
+#     typographer:
+#     quotes: “”‘’
+#     plugins:
+#         - plugin:
+#             name: markdown-it-mark
+#             enable: false
   # script:
 inject:
   head:
