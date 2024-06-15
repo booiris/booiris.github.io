@@ -75,8 +75,8 @@ footer:
 copycode:
   enable: true
   js: /js/plugins/copycode.js
-  default_text: 'Copy' # 按钮显示文字
-  success_text: 'Copied' # 复制成功信息
+  default_text: "Copy" # 按钮显示文字
+  success_text: "Copied" # 复制成功信息
 
 style:
   # font-size:
@@ -89,6 +89,8 @@ style:
     body: '"LXGW WenKai",system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", sans-serif'
     # code: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
     # codeblock: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
+    codeblock:
+      highlightjs_theme: https://gcore.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/atom-one-dark.min.css
 
 comments:
   service: beaudar
