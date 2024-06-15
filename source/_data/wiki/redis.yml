@@ -9,8 +9,6 @@ search:
   filter: /wiki/redis/
   placeholder: 在 redis 中搜索...
 leftbar: 
-  - tree
-  - timeline_stellar_releases
   - related
 
 comments:
@@ -22,3 +20,6 @@ comments:
 
 base_dir: /wiki/redis/
 tree:
+  '第零章':
+    - 开始
+    - catalog
