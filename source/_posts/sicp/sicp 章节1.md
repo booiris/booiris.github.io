@@ -1,13 +1,14 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-06-15 20:38:04
+updated: 2024-06-15 21:43:52
 tags: 
 top: false
 mathjax: true
 categories:
   - sicp
 author: booiris
+katex: true
 ---
 
 # 1. Building Abstractions With Procedures

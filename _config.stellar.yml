@@ -89,3 +89,8 @@ style:
     body: '"LXGW WenKai",system-ui, "Microsoft Yahei", "Segoe UI", -apple-system, Roboto, Ubuntu, "Helvetica Neue", Arial, "WenQuanYi Micro Hei", sans-serif'
     # code: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
     # codeblock: 'Menlo, Monaco, Consolas, system-ui, "Courier New", monospace, sans-serif'
+
+comments:
+  service: beaudar
+  beaudar:
+    repo: booiris/comment
