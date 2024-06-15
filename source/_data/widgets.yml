@@ -37,6 +37,6 @@ tagcloud:
 memos:
   layout: timeline
   title: 近期动态
-  api: https://booiris.top:12346/api/v1/memos?creatorId=1&limit=8
+  api: https://booiris.top:12346/api/v1/memos?filter=creator==%27users/1%27&pageSize=5
   type: memos
   hide: user,footer
