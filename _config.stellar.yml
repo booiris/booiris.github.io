@@ -1,20 +1,20 @@
-sidebar:
-  logo:
-    avatar: "[https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg](/)"
-  menu:
-    post: "[Blog](/)"
-    wiki: "[Doc](/wiki/)"
-    # notes: "[Notes](/notes/)"
-    game: "[Game](/game/)"
-    about: "[About](/about/)"
-    pic: "[Picture](/pic)"
-  widget_layout:
-    index: [welcome, recent] # for home/wiki/categories/tags/archives/404 pages
-    page: [welcome, toc] # for pages using 'layout:page'
-    post: [toc, repo_info] # for pages using 'layout:post'
-    wiki: [toc, repo_info, wiki_more] # for pages using 'layout:wiki'
-  widgets:
-    home: search, welcome, recent # for home
+# sidebar:
+#   logo:
+#     avatar: "[https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg](/)"
+#   menu:
+#     post: "[Blog](/)"
+#     wiki: "[Doc](/wiki/)"
+#     # notes: "[Notes](/notes/)"
+#     game: "[Game](/game/)"
+#     about: "[About](/about/)"
+#     pic: "[Picture](/pic)"
+#   widget_layout:
+#     index: [welcome, recent] # for home/wiki/categories/tags/archives/404 pages
+#     page: [welcome, toc] # for pages using 'layout:page'
+#     post: [toc, repo_info] # for pages using 'layout:post'
+#     wiki: [toc, repo_info, wiki_more] # for pages using 'layout:wiki'
+#   widgets:
+#     home: search, welcome, recent # for home
 
 article:
   auto_excerpt: 0
