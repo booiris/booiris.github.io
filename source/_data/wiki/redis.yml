@@ -6,8 +6,8 @@ icon: https://cdn.jsdelivr.net/gh/booiris-cdn/img/redis_original_logo_icon_14636
 cover: false
 description: redis源码阅读。
 search:
-  filter: /wiki/leetcode/
-  placeholder: 在 leetcode 中搜索...
+  filter: /wiki/redis/
+  placeholder: 在 redis 中搜索...
 leftbar: 
   - tree
   - timeline_stellar_releases
@@ -20,5 +20,5 @@ comments:
     branch: master
   comment_title: "🦻🦻🦻🦻🦻🦻🦻🦻"
 
-base_dir: /wiki/leetcode/
+base_dir: /wiki/redis/
 tree:
