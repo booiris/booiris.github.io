@@ -23,6 +23,8 @@ article:
     enable: false
     title: related article
   # share: [wechat, email, link]
+  comment_title: '🚧🚧🚧评论区🚧🚧🚧'
+
 
 footer:
   social:
