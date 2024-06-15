@@ -8,7 +8,7 @@ description: redis源码阅读。
 search:
   filter: /wiki/redis/
   placeholder: 在 redis 中搜索...
-leftbar: 
+leftbar:
   - related
 
 comments:
@@ -20,6 +20,6 @@ comments:
 
 base_dir: /wiki/redis/
 tree:
-  '第零章':
+  "第零章":
     - 开始
     - catalog

@@ -8,7 +8,7 @@ description: redis源码阅读。
 search:
   filter: /wiki/rust_code/
   placeholder: 在 rust_code 中搜索...
-leftbar: 
+leftbar:
   - tree
   - timeline_stellar_releases
   - related
@@ -22,3 +22,10 @@ comments:
 
 base_dir: /wiki/rust_code/
 tree:
+  - index
+  - rust 源码分析 (1) 概述
+  - rust 源码分析 (2)-core-内存模块
+  - rust 源码分析 (3)-std-alloc模块
+  - rust 源码分析 (4)-std-backtrace模块
+  - rust 源码分析 (5)-std-collection
+  - rust 源码分析 (6)-std-collection-HashMap
