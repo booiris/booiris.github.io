@@ -3,6 +3,7 @@ title: Picture
 menu_id: Picture
 date: 2023-07-23 00:30:44
 updated: 2024-06-16 02:01:35
+layout: page
 ---
 
 ## 1

@@ -59,8 +59,7 @@ site_tree:
     # nav_tabs:
   #     # 'more': https://github.com/xaoxuu
 
-  Picture:
-    base_dir: /pic
+  page:
     menu_id: Picture
     leftbar: welcome
     rightbar: memos
