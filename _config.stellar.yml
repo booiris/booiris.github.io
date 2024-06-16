@@ -119,7 +119,7 @@ site_tree:
   #   rightbar: toc
 
 logo:
-  avatar: "https://cdn.jsdelivr.net/gh/booiris-cdn/img/warlord-helmet.svg" # you can set avatar link in _config.yml or '[https://xxx.png](/about/)'
+  avatar: "/src/avatar.svg" # you can set avatar link in _config.yml or '[https://xxx.png](/about/)'
   # title: '[{config.title}](/)' # you can set html tag like: '[<img no-lazy height="32px" src="xxx"/>](/)'
 
 article:
