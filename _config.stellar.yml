@@ -201,4 +201,4 @@ comments:
 
 data_services:
   memos:
-  js: /js/memos.js
+    js: /js/memos.js

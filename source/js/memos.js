@@ -12,7 +12,7 @@ utils.jq(() => {
         const host = api.replace(/https:\/\/(.*?)\/(.*)/i, '$1');
         // layout
         utils.request(el, api, function (data) {
-          console.log(data)
+          data = data.memos
           var users = [];
           const filter = el.getAttribute('user');
           if (filter && filter.length > 0) {
@@ -32,7 +32,7 @@ utils.jq(() => {
                 return;
               }
             }
-            let date = new Date(item.createdTs * 1000)
+            let date = new Date(item.createTime)
             var cell = '<div class="timenode" index="' + i + '">';
             cell += '<div class="header">';
             if (!users.length && !hide.includes('user')) {
@@ -40,7 +40,7 @@ utils.jq(() => {
               if (default_avatar.length > 0) {
                 cell += `<img src="${default_avatar}">`;
               }
-              cell += '<span>' + item.creatorName + '</span>';
+              cell += '<span>' + booiris + '</span>';
               cell += '</div>';
             }
             cell += '<span>' + date.toLocaleString() + '</span>';
@@ -48,7 +48,7 @@ utils.jq(() => {
             cell += '<div class="body">';
             cell += marked.parse(item.content || '');
             var imgs = [];
-            for (let res of item.resourceList) {
+            for (let res of item.resources) {
               if (res.type?.includes('image/')) {
                 imgs.push(res);
               }
