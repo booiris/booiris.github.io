@@ -198,3 +198,7 @@ comments:
     repo: booiris/comment
     branch: master
   comment_title: "🦻🦻🦻🦻🦻🦻🦻🦻"
+
+data_services:
+  memos:
+  js: /js/memos.js
