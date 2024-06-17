@@ -1,7 +1,7 @@
 ---
 title: 为啥 go 不支持泛型方法
 date: 2024-02-20 22:10:20
-updated: 2024-06-17 23:36:44
+updated: 2024-06-17 23:55:23
 tags: 
 top: false
 mathjax: true
@@ -90,7 +90,7 @@ var a float64 = f[int, float64](7, 8.0)
 var b struct{f int} = f[complex128, struct{f int}](3, 1+1i)
 ```
 
-那么编译其会实例化**一个**函数，同时会有多个字典，每个字典包含一些运行时需要的信息:
+那么编译其会实例化**一个**函数，这个函数的第一个参数是一个字典。同时会有多个字典，每个字典包含一些运行时需要的信息，传入的字典内容由调用点生成和传入:
 
 ```go
 type pos1CallSiteDictionary struct {
@@ -106,11 +106,9 @@ func f (type_info dictionary, x int, y T1) T2 {
 }
 ```
 
-对于泛型函数，会添加一个额外的 dictionary 参数，用于实例化泛型函数中的类型，传入的 dictionary 内容由**调用点生成和传入**。
-
 #### dictionary 包含的信息
 
-整个字典需要保存整个函数执行的环境，其中包含的信息是十分多的。在提案中列举了需要的信息:
+对于形如 `f [T1, T2]` 的泛型函数，所需要的信息如下:
 
 ##### Instantiated types
 
@@ -124,7 +122,7 @@ type dictionary struct {
 }
 ```
 
-出于打印栈的目的，字典中需要包含未被使用的类型。
+出于打印栈的目的，字典中需要包含未被使用的类型，即即使 T2 没有在函数中用到也需要保存 T2 的类型 (为啥不禁止未使用的泛型类型呢…)。
 
 ##### Derived types
 
