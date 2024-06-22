@@ -5,6 +5,8 @@ date: 2022-12-17 19:36:05
 updated: 2023-04-07 18:49:05
 ---
 
+一些小玩意儿，点击标题查看
+
 ## [Life-time](/game/life-game/index.html)
 
 <img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img//g1.png" width = 80% >
