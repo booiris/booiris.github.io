@@ -11,11 +11,15 @@ updated: 2023-04-07 18:49:05
 
 The wasm-bindgen based Conway game.
 
+使用 rust wasm 编写的康威游戏
+
 github link: [rust-learning/life-game at rust-game · booiris/rust-learning · GitHub](https://github.com/booiris/rust-learning/tree/rust-game/life-game)
 
 ## [Push-box](/game/push-box/index.html)
 
 <img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img//g2.png" width = 80% >
+
+使用 rust wasm 编写的康威游戏
 
 Reinforcement learning based Sokoban game.
 
