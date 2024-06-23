@@ -43,7 +43,7 @@ hexo.extend.filter.register('before_post_render', function (post) {
                     }
                 }
 
-                console.log(md_path1, md_path2, temp_path, md_path)
+                // console.log(md_path1, md_path2, temp_path, md_path)
 
                 // url fragment 部分按 hexo-renderer-marked 的方法 slugize 后作为 "anchorId"
                 // decodeURL 解决 obsidian 的空格用 %20 表示的问题
@@ -60,12 +60,12 @@ hexo.extend.filter.register('before_post_render', function (post) {
                 cur_pagepath += "/"
             }
 
-            console.log(temp_path, cur_pagepath)
+            // console.log(temp_path, cur_pagepath)
 
             let new_str = `[${label}](${cur_pagepath}${rel_path})`;
-            // console.debug("[CHANGE] " + match_str + " -> " + new_str);
+            console.debug("[CHANGE] " + match_str + " -> " + new_str);
             return new_str;
         });
 
     return post;
-});
+}, 0);
