@@ -1,9 +1,18 @@
 'use strict';
 
 const { URL } = require('url');
-const { slugize, decodeURL } = require('hexo-util');
+const { decodeURL } = require('hexo-util');
 const { log } = require('console');
 
+function slugize(str) {
+    // 移除所有非字母数字字符，但保留中文字符
+    str = str.replace(/[^\w\s\u4e00-\u9fa5]/g, '');
+    // 将所有字母转换为小写
+    str = str.toLowerCase();
+    // 将所有的空格替换为连字符
+    str = str.replace(/\s+/g, '-');
+    return str;
+}
 
 hexo.extend.filter.register('before_post_render', function (post) {
     // 当前文档对应页面的绝对路径，类似 /path/to/file/fliename/
@@ -24,7 +33,7 @@ hexo.extend.filter.register('before_post_render', function (post) {
     };
 
     // 匹配 []() 形式，但链接中包含 :// 的不匹配，来排除超链接
-    post.content = post.content.replace(/(?<!\!)\[([^\[\]]+?)\]\((?![^)]+\:\/\/)(\S+)?\)/g,
+    post.content = post.content.replace(/(?<!\!)\[([^\[\]]+?)\]\((?![^)]+\:\/\/)([^\s)]+?)\)/g,
         function (match_str, label, rel_path) {
             // console.log(rel_path)
             const temp_path = rel_path;
