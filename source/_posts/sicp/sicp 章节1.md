@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-06-23 15:47:55
+updated: 2024-06-23 16:10:03
 tags:
   - sicp
 top: false
@@ -11,6 +11,7 @@ categories:
 author: booiris
 katex: true
 ---
+> 题解: [SICP-learning/exercise\_1 at master · booiris/SICP-learning · GitHub](https://github.com/booiris/SICP-learning/tree/master/exercise_1)
 
 ## 1. Building Abstractions With Procedures
 
@@ -128,7 +129,7 @@ lisp 的函数定义语法形式为：
 136
 ```
 
-这种完全展开的计算过程被称为 _normal-order evaluation_ (正则序求值)，先求值再代入的被称为 _applicative-order evaluation_ (应用序求值)。
+这种完全展开的计算过程被称为 _normal-order evaluation_ (正则序求值)，先求值再代入函数调用的被称为 _applicative-order evaluation_ (应用序求值)。
 
 lisp 中采用的是后面一种计算方式，部分原因在于其能够避免对表达式的重复求值。对于人类来说，完全展开然后计算从直觉上感觉就十分麻烦，但其也有特殊用处，当处理无法求值的表达式的时候。第三章讨论了使用正则式定义的流式过程，用于处理无限数据结构。
 
@@ -156,3 +157,5 @@ lisp 中采用的是后面一种计算方式，部分原因在于其能够避免
 (or ⟨e₁⟩ … ⟨eₙ⟩)
 (not ⟨e⟩)
 ```
+
+#### 1.1.7Example: Square Roots by Newton’s Method
