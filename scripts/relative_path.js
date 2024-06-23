@@ -24,7 +24,7 @@ hexo.extend.filter.register('before_post_render', function (post) {
     };
 
     // 匹配 []() 形式，但链接中包含 :// 的不匹配，来排除超链接
-    post.content = post.content.replace(/(?<!\!)\[([^\[\]]+?)\]\((?![^)]+\:\/\/)(\S+)\)/g,
+    post.content = post.content.replace(/(?<!\!)\[([^\[\]]+?)\]\((?![^)]+\:\/\/)(\S+)?\)/g,
         function (match_str, label, rel_path) {
             // console.log(rel_path)
             const temp_path = rel_path;
@@ -43,12 +43,15 @@ hexo.extend.filter.register('before_post_render', function (post) {
                     }
                 }
 
-                // console.log(md_path1, md_path2, temp_path, md_path)
+                console.log(md_path1, md_path2, temp_path, md_path, cur_pagepath)
 
                 // url fragment 部分按 hexo-renderer-marked 的方法 slugize 后作为 "anchorId"
                 // decodeURL 解决 obsidian 的空格用 %20 表示的问题
                 return md_path + (fragment ? '#' + slugize(decodeURL(fragment)) : '')
             });
+
+            console.log(rel_path, cur_pagepath, is_mdlink)
+
             if (!is_mdlink)
                 rel_path = corr_rel_path(rel_path);
 
@@ -63,40 +66,9 @@ hexo.extend.filter.register('before_post_render', function (post) {
             // console.log(temp_path, cur_pagepath)
 
             let new_str = `[${label}](${cur_pagepath}${rel_path})`;
-            console.debug("[CHANGE] " + match_str + " -> " + new_str);
+            // console.debug("[CHANGE] " + match_str + " -> " + new_str);
             return new_str;
         });
 
-    if (post.permalink.includes("sicp")) {
-        console.log(post.content)
-    }
-
     return post;
-}, 0);
-
-hexo.extend.filter.register('before_post_render', function (data) {
-    if (data.permalink.includes("sicp")) {
-        console.log('Before Post Render:', data.content);
-    }
-    return data;
-}, 100);
-
-hexo.extend.filter.register('after_post_render', function (data) {
-    if (data.permalink.includes("sicp")) {
-        console.log('After Post Render:', data.content);
-    }
-    return data;
-}, 100);
-
-hexo.extend.filter.register('before_generate', function (data) {
-    // if (data.permalink.includes("sicp")) {
-    //     console.log('Before Generate Render:', data.content);
-    // }
-
-}, 100);
-
-hexo.extend.filter.register('after_generate', function (data) {
-    // if (data.permalink.includes("sicp")) {
-    //     console.log('After Generate Render:', data.content);
-    // }
-}, 100);
+});
