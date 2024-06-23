@@ -52,14 +52,14 @@ hexo.extend.filter.register('before_post_render', function (post) {
                     }
                 }
 
-                console.log(md_path1, md_path2, temp_path, md_path, cur_pagepath)
+                // console.log(md_path1, md_path2, temp_path, md_path, cur_pagepath)
 
                 // url fragment 部分按 hexo-renderer-marked 的方法 slugize 后作为 "anchorId"
                 // decodeURL 解决 obsidian 的空格用 %20 表示的问题
                 return md_path + (fragment ? '#' + slugize(decodeURL(fragment)) : '')
             });
 
-            console.log(rel_path, cur_pagepath, is_mdlink)
+            // console.log(rel_path, cur_pagepath, is_mdlink)
 
             if (!is_mdlink)
                 rel_path = corr_rel_path(rel_path);
