@@ -158,4 +158,4 @@ lisp 中采用的是后面一种计算方式，部分原因在于其能够避免
 (not ⟨e⟩)
 ```
 
-#### 1.1.7Example: Square Roots by Newton’s Method
+#### 1.1.7 Example: Square Roots by Newton’s Method
