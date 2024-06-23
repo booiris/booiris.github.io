@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-06-23 15:06:42
+updated: 2024-06-23 15:20:39
 tags:
   - sicp
 top: false
@@ -88,4 +88,34 @@ lisp 的函数定义语法形式为：
 
 #### 1.1.5 The Substitution Model for Procedure Application
 
-本章讲的是 lisp 计算自定函数的过程，和 [1.1.3 Evaluating Combinations](sicp%20章节1.md#1.1.3%20Evaluating%20Combinations) 中计算组合式的过程类似。
+本章讲的是 lisp 计算自定函数的过程，和 [1.1.3 Evaluating Combinations](sicp%20章节1.md#1.1.3%20Evaluating%20Combinations) 中计算组合式的过程类似。在本章中使用了 "*substitution model*" (替换)来解释运算过程。
+
+例:
+
+对于如下函数
+
+```lisp
+(define (square x) (* x x) )
+(define (sum-of-squares x y)
+	(+ (square x) (square y) ) )
+(define (f a)
+	(sum-of-squares (+ a 1) (* a 2) ) )
+```
+
+计算 `(f 5)` 的过程如下:
+
+```lisp
+(f 5) ->
+(sum-of-squares (+ 5 1) (* 5 2) ) ->
+(sum-of-squares 6 10) ->
+(+ (square 6) (square 10) ) ->
+(+ (* 6 6) (* 10 10) ) ->
+(+ 36 100) ->
+136
+```
+
+*substitution model* 就是将实际的运算式替换函数名的过程。但这并不是lisp 的实际运算过程。在后续 3、4、5 章会更详细地讲述这一过程。
+
+##### 计算表达式的顺序
+
+在上面举例计算 `(`
