@@ -9,3 +9,4 @@ _multiconfig.yml
 themes/
 .vercel
 *.zip
+out

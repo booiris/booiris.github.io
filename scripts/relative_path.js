@@ -66,10 +66,37 @@ hexo.extend.filter.register('before_post_render', function (post) {
             console.debug("[CHANGE] " + match_str + " -> " + new_str);
             return new_str;
         });
-    
-    if (post.content.includes("```mermaid")) {
 
-     }
+    if (post.permalink.includes("sicp")) {
+        console.log(post.content)
+    }
 
     return post;
 }, 0);
+
+hexo.extend.filter.register('before_post_render', function (data) {
+    if (data.permalink.includes("sicp")) {
+        console.log('Before Post Render:', data.content);
+    }
+    return data;
+}, 100);
+
+hexo.extend.filter.register('after_post_render', function (data) {
+    if (data.permalink.includes("sicp")) {
+        console.log('After Post Render:', data.content);
+    }
+    return data;
+}, 100);
+
+hexo.extend.filter.register('before_generate', function (data) {
+    // if (data.permalink.includes("sicp")) {
+    //     console.log('Before Generate Render:', data.content);
+    // }
+
+}, 100);
+
+hexo.extend.filter.register('after_generate', function (data) {
+    // if (data.permalink.includes("sicp")) {
+    //     console.log('After Generate Render:', data.content);
+    // }
+}, 100);
