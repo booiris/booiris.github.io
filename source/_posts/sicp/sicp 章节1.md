@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-06-23 16:10:03
+updated: 2024-06-23 16:21:29
 tags:
   - sicp
 top: false
