@@ -1,11 +1,14 @@
 'use strict';
 
-const url = require('url');
+const { URL } = require('url');
 const { slugize, decodeURL } = require('hexo-util');
+const { log } = require('console');
+
 
 hexo.extend.filter.register('before_post_render', function (post) {
     // 当前文档对应页面的绝对路径，类似 /path/to/file/fliename/
-    let cur_pagepath = url.parse(post.permalink).pathname;
+    let page_url = new URL(post.permalink);
+    let cur_pagepath = page_url.pathname;
     // 校准相对路径，hexo 以 asset 文件夹为参考，所以加 ../
     // \ 替换为 /
     let corr_rel_path = path => {
@@ -19,12 +22,11 @@ hexo.extend.filter.register('before_post_render', function (post) {
             return ''
         }
     };
-    console.log("here")
 
     // 匹配 []() 形式，但链接中包含 :// 的不匹配，来排除超链接
     post.content = post.content.replace(/(?<!\!)\[([^\[\]]+?)\]\((?![^)]+\:\/\/)(\S+)\)/g,
         function (match_str, label, rel_path) {
-            console.log(rel_path)
+            // console.log(rel_path)
             const temp_path = rel_path;
             let is_mdlink = false;
             rel_path = rel_path.replace(/((\S+)\.md)$|((\S+)\.md)?(#(.*))$/, (_0, _1, md_path1, _3, md_path2, _5, fragment) => {
@@ -41,6 +43,8 @@ hexo.extend.filter.register('before_post_render', function (post) {
                     }
                 }
 
+                console.log(md_path1, md_path2, temp_path, md_path)
+
                 // url fragment 部分按 hexo-renderer-marked 的方法 slugize 后作为 "anchorId"
                 // decodeURL 解决 obsidian 的空格用 %20 表示的问题
                 return md_path + (fragment ? '#' + slugize(decodeURL(fragment)) : '')
@@ -55,6 +59,8 @@ hexo.extend.filter.register('before_post_render', function (post) {
             if (cur_pagepath.endsWith(".html")) {
                 cur_pagepath += "/"
             }
+
+            console.log(temp_path, cur_pagepath)
 
             let new_str = `[${label}](${cur_pagepath}${rel_path})`;
             // console.debug("[CHANGE] " + match_str + " -> " + new_str);
