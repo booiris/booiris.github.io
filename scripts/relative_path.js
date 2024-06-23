@@ -66,6 +66,10 @@ hexo.extend.filter.register('before_post_render', function (post) {
             console.debug("[CHANGE] " + match_str + " -> " + new_str);
             return new_str;
         });
+    
+    if (post.content.includes("```mermaid")) {
+
+     }
 
     return post;
 }, 0);
