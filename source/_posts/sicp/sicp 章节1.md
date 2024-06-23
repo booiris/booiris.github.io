@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-06-23 15:40:46
+updated: 2024-06-23 15:47:55
 tags:
   - sicp
 top: false
@@ -141,4 +141,18 @@ lisp 中采用的是后面一种计算方式，部分原因在于其能够避免
       (⟨p₂⟩ ⟨e₂⟩)
       …
       (⟨pₙ⟩ ⟨eₙ⟩))
+```
+
+还有个 `if` 语法糖，语法形式为：
+
+```lisp
+(if ⟨predicate⟩ ⟨consequent⟩ ⟨alternative⟩)
+```
+
+分支语法关联的逻辑运算符为：
+
+```lisp
+(and ⟨e₁⟩ … ⟨eₙ⟩)
+(or ⟨e₁⟩ … ⟨eₙ⟩)
+(not ⟨e⟩)
 ```
