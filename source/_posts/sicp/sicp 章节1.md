@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-06-23 16:21:29
+updated: 2024-06-26 00:19:41
 tags:
   - sicp
 top: false
@@ -159,3 +159,5 @@ lisp 中采用的是后面一种计算方式，部分原因在于其能够避免
 ```
 
 #### 1.1.7 Example: Square Roots by Newton’s Method
+
+本章是以牛顿迭代法作为例子解释什么是 _procedures_ (过程) ，
