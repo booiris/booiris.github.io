@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-07-07 13:40:04
+updated: 2024-07-07 13:50:21
 tags:
   - sicp
 top: false
@@ -160,13 +160,11 @@ lisp 中采用的是后面一种计算方式，部分原因在于其能够避免
 
 #### 1.1.7 Example: Square Roots by Newton’s Method
 
-本章是以牛顿迭代法作为例子解释什么是 _procedures_ (过程) ，
-
 首先，如 [1. Building Abstractions With Procedures](sicp%20章节1.md#1.%20Building%20Abstractions%20With%20Procedures) 中所言，_procedures_ 是操作数据的过程，这很像常规的数学函数，通过输出一些值，经过一些运算然后得到一些值。但和数学上的函数不一样的点在于，程序中的函数必须是可行的。
 
 以计算平方根为例，在数学上定义平方根 $y$ 为
 
-$$ y = \sqrt{x}  , where \  y \geq 0 \ and \ y^2 = x  $$
+$$ y = \sqrt{x}  , \quad where \quad  y \geq 0 \quad and \quad y^2 = x  $$
 
 非常的清晰，但也非常的抽象，这个函数只给出了什么是平方根函数(平方的逆函数)，但并没有给出怎么计算一个值的平方根。在书中提到这反映了说明性描述和过程性描述的区别，即使给出了一个函数的定义，但推出它的具体实现也是很困难的。
 
@@ -178,4 +176,15 @@ $$ y = \sqrt{x}  , where \  y \geq 0 \ and \ y^2 = x  $$
 		guess
 		(sqrt-iter (improve guess x) x))
 )
+
+(define (improve guess x)
+	(average guess (/ x guess)))
+
+(define (average x y)
+	(/ (+ x y) 2))
+
+(define (good-enough? guess x)
+	(< (abs (- (suqare guess x)) 0.001)))
 ```
+
+文字描述为不断使用一种方法猜测一个数，计算它的平方，使得平方值不断逼近给定的被开方数。
