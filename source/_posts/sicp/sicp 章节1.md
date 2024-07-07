@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-06-27 23:06:58
+updated: 2024-07-07 13:23:57
 tags:
   - sicp
 top: false
@@ -162,3 +162,8 @@ lisp 中采用的是后面一种计算方式，部分原因在于其能够避免
 
 本章是以牛顿迭代法作为例子解释什么是 _procedures_ (过程) ，
 
+首先，如 [1. Building Abstractions With Procedures](sicp%20章节1.md#1.%20Building%20Abstractions%20With%20Procedures) 中所言，_procedures_ 是操作数据的过程，这很像常规的数学函数，通过输出一些值，经过一些运算然后得到一些值。但和数学上的函数不一样的点在于，程序中的函数必须是可行的。
+
+以计算平方根为例，在数学上定义平方根 $y$ 为
+
+$$ y = \sqrt{x}  ,  \quad y \geq 0,  $$
