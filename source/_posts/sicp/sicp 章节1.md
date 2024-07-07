@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-07-07 13:59:53
+updated: 2024-07-07 14:43:25
 tags:
   - sicp
 top: false
@@ -190,3 +190,7 @@ $$ y = \sqrt{x}  , \quad where \quad  y \geq 0 \quad and \quad y^2 = x  $$
 ```
 
 文字描述为不断使用一种方法猜测一个数，计算它的平方，使得平方值不断逼近给定的被开方数。
+
+#todo 题解
+
+#### 1.1.8 Procedures as Black-Box Abstractions
