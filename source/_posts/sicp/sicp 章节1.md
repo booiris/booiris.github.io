@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-07-07 13:23:57
+updated: 2024-07-07 13:40:04
 tags:
   - sicp
 top: false
@@ -166,4 +166,16 @@ lisp 中采用的是后面一种计算方式，部分原因在于其能够避免
 
 以计算平方根为例，在数学上定义平方根 $y$ 为
 
-$$ y = \sqrt{x}  ,  \quad y \geq 0,  $$
+$$ y = \sqrt{x}  , where \  y \geq 0 \ and \ y^2 = x  $$
+
+非常的清晰，但也非常的抽象，这个函数只给出了什么是平方根函数(平方的逆函数)，但并没有给出怎么计算一个值的平方根。在书中提到这反映了说明性描述和过程性描述的区别，即使给出了一个函数的定义，但推出它的具体实现也是很困难的。
+
+最常用的计算平方根的方法为牛顿迭代法，其过程用如下代码表示：
+
+```lisp
+(define (sqrt-iter guess x)
+	(if (good-enough? guess x)
+		guess
+		(sqrt-iter (improve guess x) x))
+)
+```
