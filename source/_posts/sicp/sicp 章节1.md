@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-07-07 13:50:21
+updated: 2024-07-07 13:59:53
 tags:
   - sicp
 top: false
@@ -174,8 +174,7 @@ $$ y = \sqrt{x}  , \quad where \quad  y \geq 0 \quad and \quad y^2 = x  $$
 (define (sqrt-iter guess x)
 	(if (good-enough? guess x)
 		guess
-		(sqrt-iter (improve guess x) x))
-)
+		(sqrt-iter (improve guess x) x)))
 
 (define (improve guess x)
 	(average guess (/ x guess)))
@@ -184,7 +183,10 @@ $$ y = \sqrt{x}  , \quad where \quad  y \geq 0 \quad and \quad y^2 = x  $$
 	(/ (+ x y) 2))
 
 (define (good-enough? guess x)
-	(< (abs (- (suqare guess x)) 0.001)))
+	(< (abs (- (* guess guess) x)) 0.001))
+
+(define (sqrt x)
+	(sqrt-iter 1.0 x))
 ```
 
 文字描述为不断使用一种方法猜测一个数，计算它的平方，使得平方值不断逼近给定的被开方数。
