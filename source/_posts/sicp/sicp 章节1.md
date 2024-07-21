@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-07-07 14:48:37
+updated: 2024-07-21 18:13:34
 tags:
   - sicp
 top: false
@@ -191,8 +191,13 @@ $$ y = \sqrt{x}  , \quad where \quad  y \geq 0 \quad and \quad y^2 = x  $$
 
 文字描述为不断使用一种方法猜测一个数，计算它的平方，使得平方值不断逼近给定的被开方数。
 
-#todo 题解
-
-[练习 1.7 — SICP 解题集](https://sicp.readthedocs.io/en/latest/chp1/7.html)
-
 #### 1.1.8 Procedures as Black-Box Abstractions
+
+这一章讲述了将程序作为黑箱抽象的重要性。这个没啥好说的，好是很好，但不恰当地执行就容易变得更加抽象🤣。
+
+- **接口和实现分离**：程序的接口（输入输出）和实现（内部细节）是分离的。用户通过接口使用程序，而不需要了解实现细节。
+- **信息隐藏**：通过隐藏不必要的实现细节，可以减少认知负担，使程序更易于理解和使用。
+- **模块化设计**：通过将程序分解为独立的模块，每个模块实现特定的功能，可以提高程序的可维护性和可扩展性。
+
+### 1.2 Procedures and the Processes They Generate
+
