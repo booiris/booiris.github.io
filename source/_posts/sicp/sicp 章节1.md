@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-08-11 16:26:32
+updated: 2024-08-11 16:43:22
 tags:
   - sicp
 top: false
@@ -253,6 +253,31 @@ tips: 本章练习可以使用 [trace](https://docs.racket-lang.org/reference/de
 
 #### 1.2.2 Tree Recursion
 
-本小节通过计算斐波那契数列介绍树形递归结构，斐波那契数列定义:
+本小节通过计算斐波那契数列介绍树形递归结构，斐波那契数列为如下数列:
 
-$$ 0,1,1,2,3,4,5 $$
+$$ 0,1,1,2,3,5,8,\dots $$
+
+满足如下定义:
+
+$$ \begin{aligned}
+	F_0 &= 0 \\
+	 F_1 &= 1 \\
+	 F_n &= F_{n-1} + F_{n-2} (n \ge 2 )
+\end{aligned}
+$$
+
+它的对应程序为
+
+```lisp
+(define (fib n) (
+                 cond ((= n 0) 0)
+                      ((= n 1) 1)
+                      (else (+ (fib (- n 1))
+                               (fib (- n 2))))
+                      )
+  )
+```
+
+它的对应计算过程为:
+
+![](https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20240811164246.png)
