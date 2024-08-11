@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-08-11 15:45:45
+updated: 2024-08-11 16:08:27
 tags:
   - sicp
 top: false
@@ -249,6 +249,6 @@ $$  n! = n \times (n-1) \times (n-2) \times \dots \times 2 \times 1 $$
 
 与之相对应的，第二种计算过程为迭代计算结构，可看出，解释器并不需要保存运算的过程，需要保存的是变量 `res now max-iter-count` 。一般来说，**迭代计算过程就是那种可以使用固定变量表达计算状态的过程，同时它还有一个从当前状态转移到下一个状态的过程，还有一个表达式表达这个计算过程何时终止**。在计算 $n!$ 的时候，计算的表达式随着 $n$ 线性增长，这种被称为线性迭代结构。
 
+tips: 本章练习可以使用 [trace](https://docs.racket-lang.org/reference/debugging.html#(part._.Tracing)) 打印计算过程。
+
 #### 1.2.2 Tree Recursion
-
-
