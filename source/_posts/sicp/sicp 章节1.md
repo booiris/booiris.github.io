@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-07-21 18:13:34
+updated: 2024-08-11 14:55:52
 tags:
   - sicp
 top: false
@@ -200,4 +200,9 @@ $$ y = \sqrt{x}  , \quad where \quad  y \geq 0 \quad and \quad y^2 = x  $$
 - **模块化设计**：通过将程序分解为独立的模块，每个模块实现特定的功能，可以提高程序的可维护性和可扩展性。
 
 ### 1.2 Procedures and the Processes They Generate
+
+在第一节讲述了什么是程序，但并没有讲该怎么写程序。这就相当于我们了解了下棋的规则，但还是不知道下棋的策略。这一节就是通过一些算法介绍一些常见的程序结构。(说实在的 sicp 的精华都在后几章，前面的有点想跳过了…)
+
+#### 1.2.1 Linear Recursion and Iteration
+
 
