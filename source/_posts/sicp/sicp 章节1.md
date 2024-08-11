@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-08-11 16:08:27
+updated: 2024-08-11 16:26:32
 tags:
   - sicp
 top: false
@@ -252,3 +252,7 @@ $$  n! = n \times (n-1) \times (n-2) \times \dots \times 2 \times 1 $$
 tips: 本章练习可以使用 [trace](https://docs.racket-lang.org/reference/debugging.html#(part._.Tracing)) 打印计算过程。
 
 #### 1.2.2 Tree Recursion
+
+本小节通过计算斐波那契数列介绍树形递归结构，斐波那契数列定义:
+
+$$ 0,1,1,2,3,4,5 $$
