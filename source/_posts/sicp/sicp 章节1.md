@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-08-11 15:11:12
+updated: 2024-08-11 15:26:16
 tags:
   - sicp
 top: false
@@ -211,6 +211,8 @@ $$ y = \sqrt{x}  , \quad where \quad  y \geq 0 \quad and \quad y^2 = x  $$
 
 $$  n! = n \times (n-1) \times (n-2) \times \dots \times 2 \times 1 $$
 
+##### 递归结构
+
 根据数学定义，能够很容易地写出计算程序为:
 
 ```lisp
@@ -219,3 +221,26 @@ $$  n! = n \times (n-1) \times (n-2) \times \dots \times 2 \times 1 $$
   )
 ```
 
+根据 [1.1.5 The Substitution Model for Procedure Application](sicp%20章节1.md#1.1.5%20The%20Substitution%20Model%20for%20Procedure%20Application) 中所讲的，上述程序展开的计算过程为如下图:
+
+![](https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/%E6%88%AA%E5%B1%8F2024-08-11%2015.12.37.png)
+
+##### 迭代结构
+
+我们可以换个顺序计算阶乘, 从 $1$ 开始乘，直到乘到 $n$ ，计算的程序为：
+
+```lisp
+(define (factorial n)
+  (factorial-iter 1 1 n)
+  )
+
+(define (factorial-iter res now max-iter-count)
+  (if (= now max-iter-count) (* res now) ( factorial-iter (* res now) (+ now 1) max-iter-count ) )
+  )
+```
+
+这个程序的展开计算过程为:
+
+![](https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20240811152242.png)
+
+可以看出，计算同一个数学公式，上面两种的计算过程完全不同。
