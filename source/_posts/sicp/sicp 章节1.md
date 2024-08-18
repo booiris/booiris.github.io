@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-08-18 15:23:22
+updated: 2024-08-18 15:39:08
 tags:
   - sicp
 top: false
@@ -294,7 +294,21 @@ $$
 
 #### 1.2.3 Orders of Growth
 
-这章讲的是什么是时间复杂度，，跳过吧
+这章讲的是什么是时间复杂度，跳过吧
 
 ![](https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20240818152308.png)
+
+#### 1.2.4 Exponentiation
+
+介绍快速幂，跳了
+
+#### 1,2.5 Greatest Common Divisors
+
+介绍计算最大公约数的方法，经典的 Euclid's Algorithm，其中简略地提到了时间复杂度的证明方法：
+
+#### 1.2.6 Example: Testing for Primality
+
+介绍素数检测的方法，根号下便利 和 费马测试(这玩意写不写呢...)，
+
+### 1.3 Formulating Abstractions with Higher-Order Procedures
 
