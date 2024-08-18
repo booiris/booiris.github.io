@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-08-18 14:20:04
+updated: 2024-08-18 15:23:22
 tags:
   - sicp
 top: false
@@ -294,4 +294,7 @@ $$
 
 #### 1.2.3 Orders of Growth
 
+这章讲的是什么是时间复杂度，，跳过吧
+
+![](https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20240818152308.png)
 
