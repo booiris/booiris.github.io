@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-08-18 13:53:46
+updated: 2024-08-18 14:08:48
 tags:
   - sicp
 top: false
@@ -269,13 +269,11 @@ $$
 它的对应程序为
 
 ```lisp
-(define (fib n) (
-                 cond ((= n 0) 0)
-                      ((= n 1) 1)
-                      (else (+ (fib (- n 1))
-                               (fib (- n 2))))
-                      )
-  )
+(define (fib n)
+  (cond
+    [(= n 0) 0]
+    [(= n 1) 1]
+    [else (+ (fib (- n 1)) (fib (- n 2)))]))
 ```
 
 它的对应计算过程为:
@@ -286,15 +284,10 @@ $$
 
 ```lisp
 (define (fib n)
-  (fib-iter 0 1 n)
-  )
+  (fib-iter 0 1 n))
 
 (define (fib-iter now next count)
-  (if (= count 0)
-      now
-      (fib-iter next (+ now next) (- count 1)  )
-      )
-  )
+  (if (= count 0) now (fib-iter next (+ now next) (- count 1))))
 ```
 
-显然，这种方式计算 fib n 的时间复杂度是 O(n) 的。尽管后一种结构相较于第一种结构速度更优，但第一种是最直观的，迭代法 (动态规划) 的关键在于找到能够代表当前状态的一组变量，这往往有时候是比较难想到的，书中之后就给了个分钱币的例子，但[背包问题](https://github.com/tianyicui/pack/blob/master/V2.pdf)太基础了就不说了，跳过。
+显然，这种方式计算 fib n 的时间复杂度是 O(n) 的。尽管后一种结构相较于第一种结构速度更优，但第一种是最直观的，迭代法 (动态规划) 的关键在于找到能够代表当前状态的一组变量，这往往是比较难想到的，书中之后就给了个分钱币的例子，使用树形递归能够很容易写出问题的递归形式，但迭代形式却相对困难，书中作为思考题。[背包问题](https://github.com/tianyicui/pack/blob/master/V2.pdf)太基础了就不说了，跳过。
