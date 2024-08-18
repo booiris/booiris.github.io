@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-08-18 15:39:08
+updated: 2024-08-18 15:46:30
 tags:
   - sicp
 top: false
@@ -308,7 +308,8 @@ $$
 
 #### 1.2.6 Example: Testing for Primality
 
-介绍素数检测的方法，根号下便利 和 费马测试(这玩意写不写呢...)，
+介绍素数检测的方法，根号下便利 和 费马测试(这玩意写不写呢…)，
 
 ### 1.3 Formulating Abstractions with Higher-Order Procedures
 
+在经过了一系列算法的洗礼后，我们需要换换口味，来了解一些更加偏向 [pl](https://en.wikipedia.org/wiki/Programming_language_theory) 的知识。本节介绍的是对过程使用高阶函数进行抽象。
