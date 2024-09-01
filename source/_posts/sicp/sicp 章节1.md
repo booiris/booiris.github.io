@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-09-01 15:56:28
+updated: 2024-09-01 16:13:17
 tags:
   - sicp
 top: false
@@ -316,4 +316,62 @@ $$
 
 在经过了一系列算法的洗礼后，我们需要换换口味，来了解一些更加偏向 [pl](https://en.wikipedia.org/wiki/Programming_language_theory) 的知识。本节介绍的是对过程使用高阶函数进行抽象。(高阶函数本质就是能够接受函数作为参数的函数)
 
-#### Procedures as Arguments
+#### 1.3.1 Procedures as Arguments
+
+本节首先提出了一个场景: 计算 从 a 到 b 的和、平方和、指定序列和。常规来说可以写出如下代码:
+
+```lisp
+(define (sum-integers a b)
+  (if (> a b) 
+      0 
+      (+ a (sum-integers (+ a 1) b))))
+
+(define (sum-cubes a b)
+  (if (> a b) 
+      0 
+      (+ (cube a) 
+         (sum-cubes (+ a 1) b))))
+
+(define (pi-sum a b)
+  (if (> a b)
+      0
+      (+ (/ 1.0 (* a (+ a 2))) 
+         (pi-sum (+ a 4) b))))
+```
+
+显然，这些代码除了函数名和内部计算函数不同之外，其余的几乎没有区别，我们可以从数学的角度上看待这些过程: 数学上，对于 a 到 b 的求和可以表示为
+
+$$\sum_{n=a}^{b} f(n) = f(a) + \dots + f(b)$$
+
+其中 f(n) 就是可以替换的函数。
+
+对与如上的过程，我们可以写出如下的函数:
+
+```lisp
+(define (sum term a next b)
+  (if (> a b)
+      0
+      (+ (term a)
+         (sum term (next a) next b))))
+```
+
+于是如上的过程可以被写成:
+
+```lisp
+(define (inc n) (+ n 1))
+
+(define (identity x) x)
+
+(define (sum-integers a b)
+  (sum identity a inc b))
+
+(define (sum-cubes a b)
+  (sum cube a inc b))
+
+```
+
+#### 1.3.2 Constructing Procedures Using `Lambda`
+
+#### 1.3.3 Procedures as General Methods
+
+#### 1.3.4 Procedures as Returned Values
