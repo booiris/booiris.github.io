@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-09-01 16:13:17
+updated: 2024-09-01 16:16:45
 tags:
   - sicp
 top: false
@@ -371,6 +371,8 @@ $$\sum_{n=a}^{b} f(n) = f(a) + \dots + f(b)$$
 ```
 
 #### 1.3.2 Constructing Procedures Using `Lambda`
+
+介绍 lisp 匿名函数还有使用 let 创建局部变量，用于简化高阶函数的输入。
 
 #### 1.3.3 Procedures as General Methods
 
