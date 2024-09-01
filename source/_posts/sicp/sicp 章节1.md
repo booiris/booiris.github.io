@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-09-01 13:57:01
+updated: 2024-09-01 15:56:28
 tags:
   - sicp
 top: false
@@ -314,4 +314,6 @@ $$
 
 ### 1.3 Formulating Abstractions with Higher-Order Procedures
 
-在经过了一系列算法的洗礼后，我们需要换换口味，来了解一些更加偏向 [pl](https://en.wikipedia.org/wiki/Programming_language_theory) 的知识。本节介绍的是对过程使用高阶函数进行抽象。
+在经过了一系列算法的洗礼后，我们需要换换口味，来了解一些更加偏向 [pl](https://en.wikipedia.org/wiki/Programming_language_theory) 的知识。本节介绍的是对过程使用高阶函数进行抽象。(高阶函数本质就是能够接受函数作为参数的函数)
+
+#### Procedures as Arguments
