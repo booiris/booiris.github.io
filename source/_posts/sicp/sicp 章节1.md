@@ -1,7 +1,7 @@
 ---
 title: sicp 章节1
 date: 2024-06-15 13:46:41
-updated: 2024-08-18 15:46:30
+updated: 2024-09-01 13:57:01
 tags:
   - sicp
 top: false
@@ -298,6 +298,8 @@ $$
 
 ![](https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20240818152308.png)
 
+后面几节基本是在介绍一些基础的算法。
+
 #### 1.2.4 Exponentiation
 
 介绍快速幂，跳了
@@ -308,7 +310,7 @@ $$
 
 #### 1.2.6 Example: Testing for Primality
 
-介绍素数检测的方法，根号下便利 和 费马测试(这玩意写不写呢…)，
+介绍素数检测的方法，根号下遍历 和 费马测试(这玩意写不写呢…)，
 
 ### 1.3 Formulating Abstractions with Higher-Order Procedures
 
