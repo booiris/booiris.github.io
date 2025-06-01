@@ -10,7 +10,7 @@ find content/posts -type f -exec grep -l "published:" {} \; | while read file; d
     # sed -i 's/published: false/draft: true/g' "$file"
 done
 
-# git pull
-# git add .
-# git commit -m "$now_time"
-# git push
+git pull
+git add .
+git commit -m "$now_time"
+git push
