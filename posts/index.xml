@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on</title><link>https://booiris.space/posts/</link><description>Recent content in Posts on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Sun, 01 Sep 2024 15:56:49 +0000</lastBuildDate><atom:link href="https://booiris.space/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>sicp 章节2</title><link>https://booiris.space/posts/sicp/sicp-%E7%AB%A0%E8%8A%822/</link><pubDate>Sun, 01 Sep 2024 15:56:49 +0000</pubDate><guid>https://booiris.space/posts/sicp/sicp-%E7%AB%A0%E8%8A%822/</guid><description/></item><item><title>金字塔原理</title><link>https://booiris.space/posts/read_notes/%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86/</link><pubDate>Sat, 15 Jun 2024 16:13:55 +0000</pubDate><guid>https://booiris.space/posts/read_notes/%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86/</guid><description>&lt;h2 id="概述">概述&lt;/h2>
+&lt;p>本书分为4个部分。&lt;/p>
+&lt;p>&lt;strong>第1篇　表达的逻辑&lt;/strong>　介绍了金字塔原理的基本概念，以及如何利用这一原理构建基本的金字塔结构。本篇的内容足以使你理解和应用简单的公文写作技巧。&lt;/p>
+&lt;p>&lt;strong>第2篇　思考的逻辑&lt;/strong>　介绍了如何深入细致地把握思维的细节，以保证你使用的语句真实、明确地呈现你希望表达的思想。本篇举了许多案例，突出了迫使自己进行“冷静思考”对明确阐述思想的重要性。&lt;/p>
+&lt;p>&lt;strong>第3篇　解决问题的逻辑&lt;/strong>　读者对象是需要写研究报告的人，以及需要分析复杂问题、提出结论以作出决策的人。本篇介绍了如何在解决问题过程的不同阶段，使用多种框架组织分析过程，使你的思路实际上进行了预先组织，从而可以更方便地应用金字塔原理。&lt;/p>
+&lt;p>&lt;del>&lt;strong>第4篇　演示的逻辑&lt;/strong>　介绍了设计 PowerPoint 演示幻灯片的技巧，可以帮助你在用演示文稿呈现具有金字塔结构的思想时，使读者或观众感受到金字塔结构。&lt;/del> (用不到先不看了)&lt;/p>
+&lt;h2 id="第一篇-表达的逻辑">第一篇 表达的逻辑&lt;/h2>
+&lt;p>第一篇主要所写的是如何让文章更易理解的方法论。方法论的阐释往往需要辅以具体事例，文中也举例了一些事例进行说明。但本章既然是讲述写作的方法论，那么不如直接以原文章的行文顺序做例子，看看原文是否实现了自己提出的方法论的自举( 。&lt;/p>
+&lt;h3 id="核心观点">核心观点&lt;/h3>
+&lt;blockquote>
+&lt;p>对受众（包括读者、听众、观众或学员）来说，最容易理解的顺序是：先了解主要的、抽象的思想，然后了解次要的、为主要思想提供支持的思想。因为主要思想总是从次要思想概括总结得出，文章中所有思想的理想组织结构也必定是一个金字塔结构——由一个总的思想统领多组思想。&lt;/p>&lt;/blockquote>
+&lt;p>在本篇开头，一堆引言结束后作者提出了本篇的核心观点: 写作需要按照金字塔的结构，首先提出主要思想，然后介绍多组次要思想支持主要思想。每组思想间的联系可以是纵向的 (即上层思想是对下层的总结)，也可以是横向的 (即多个思想组成同一个逻辑推理过程，而被并列排在一起)。(怎么感觉在教高中议论文😂)&lt;/p>
+&lt;p>#todo 加个思维导图&lt;/p>
+&lt;h3 id="11-为什么要用金字塔结构">1.1 为什么要用金字塔结构&lt;/h3>
+&lt;h2 id="第二篇-思考的逻辑">第二篇 思考的逻辑&lt;/h2>
+&lt;h2 id="第三篇-解决问题的逻辑">第三篇 解决问题的逻辑&lt;/h2></description></item><item><title>sicp 章节1</title><link>https://booiris.space/posts/sicp/sicp-%E7%AB%A0%E8%8A%821/</link><pubDate>Sat, 15 Jun 2024 13:46:41 +0000</pubDate><guid>https://booiris.space/posts/sicp/sicp-%E7%AB%A0%E8%8A%821/</guid><description>&lt;blockquote>
+&lt;p>题解: &lt;a href="https://github.com/booiris/SICP-learning/tree/master/exercise_1">SICP-learning/exercise_1 at master · booiris/SICP-learning · GitHub&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;h2 id="1-building-abstractions-with-procedures">1. Building Abstractions With Procedures&lt;/h2>
+&lt;p>sicp 前面部分介绍的内容还是比较基础的，具体是在介绍程序是什么。&lt;/p>
+&lt;blockquote>
+&lt;p>We are about to study the idea of a &lt;em>computational process&lt;/em>. Computational processes are abstract beings that inhabit computers. As they evolve, processes manipulate other abstract things called &lt;em>data&lt;/em>. The evolution of a process is directed by a pattern of rules called a &lt;em>program&lt;/em>.&lt;/p>
+&lt;p>&amp;ndash; &lt;em>computational process&lt;/em> (即计算过程) 是操作数据的过程，这一过程的实现由一组定义的规则(程序)完成。&lt;/p>&lt;/blockquote>
+&lt;p>从中可以看出编写的计算机程序有两个重要的元素:&lt;/p>
+&lt;ol>
+&lt;li>数据&lt;/li>
+&lt;li>操作数据的行为&lt;/li>
+&lt;/ol>
+&lt;p>笔者认为我们编写的程序就是处理数据的过程，是对数据的各种加工变换(这就是为啥一个好的类型系统那么重要，土法炼钢不可取，此处@某一个大道至简的语言😚&lt;a href="https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/">为啥 go 不支持泛型方法&lt;/a>)。&lt;/p></description></item><item><title>rust 反序列化时的 zero copy</title><link>https://booiris.space/posts/blog/rust-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%97%B6%E7%9A%84-zero-copy/</link><pubDate>Mon, 27 May 2024 12:43:45 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%97%B6%E7%9A%84-zero-copy/</guid><description>&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20240528130113.png" alt="">&lt;/p>
+&lt;p>&lt;a href="https://manishearth.github.io/blog/2022/08/03/zero-copy-1-not-a-yoking-matter/">Not a Yoking Matter (Zero-Copy #1) - In Pursuit of Laziness&lt;/a>&lt;/p>
+&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20240528125002.png" alt="">&lt;/p></description></item><item><title>使用 rust 游玩 cf 的姿势</title><link>https://booiris.space/posts/blog/%E4%BD%BF%E7%94%A8-rust-%E6%B8%B8%E7%8E%A9-cf-%E7%9A%84%E5%A7%BF%E5%8A%BF/</link><pubDate>Fri, 15 Mar 2024 21:36:47 +0000</pubDate><guid>https://booiris.space/posts/blog/%E4%BD%BF%E7%94%A8-rust-%E6%B8%B8%E7%8E%A9-cf-%E7%9A%84%E5%A7%BF%E5%8A%BF/</guid><description>&lt;h2 id="cf-是什么">cf 是什么&lt;/h2>
+&lt;p>具体来说就是&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;del>穿越火线是一款非常受欢迎的第一人称射击网络游戏，它也被称作&amp;quot;CrossFire&amp;quot;。它最早由韩国SmileGate公司开发，后来在中国由腾讯公司运营。这个游戏在中国有着庞大的玩家基础，在亚洲其他地区以及全球也有相当多的粉丝。&lt;/del>&lt;/p>
+&lt;p>&lt;del>游戏提供了多种模式，包括经典的团队对战、爆破模式、生化模式等。玩家能选择成为全球反恐精英的一员，或者加入恐怖分子阵营。在游戏中，玩家可以购买和升级各种武器装备，与队友协同作战，完成不同的任务和挑战。&lt;/del>&lt;/p>&lt;/blockquote>
+&lt;blockquote>
+&lt;p>Codeforces 是一个在线编程和算法竞赛平台，广受全球程序员和算法爱好者的欢迎。它提供了一个平台，用户可以通过参加定期举办的编程比赛来提高自己的编程技能和算法知识。这些比赛通常分为几个不同的难度等级，适合从初学者到高级程序员的各个水平。&lt;/p>
+&lt;p>在Codeforces上，参赛者需要在限定时间内解决一系列编程问题。这些问题覆盖了数据结构、算法、数学、字符串处理、图论等众多领域。参赛者的表现根据解决问题的速度和正确性来评分，并在全球范围内进行排名。 &amp;ndash; chatgpt 生成&lt;/p>&lt;/blockquote>
+&lt;p>网站: &lt;a href="https://codeforces.com/">Codeforces&lt;/a>&lt;/p>
+&lt;h2 id="rust-是什么">rust 是什么&lt;/h2>
+&lt;p>具体来说就是&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;del>《Rust》是一款多人生存游戏，玩家需收集资源，建造庇护所，与环境和其他玩家互动以求生存。游戏以其开放世界、真实的生存挑战和玩家之间的复杂互动闻名。&lt;/del>&lt;/p>&lt;/blockquote>
+&lt;blockquote>
+&lt;p>Rust是一种开源的系统编程语言，以安全性、速度和并发性为设计目标。它旨在帮助开发者构建高效、可靠的软件，同时避免常见的内存安全错误，如缓冲区溢出。Rust通过一套严格的编译时检查机制实现这些目标，而无需依赖于传统的垃圾回收机制或大量的运行时检查。&lt;/p>
+&lt;p>Rust的设计充分考虑了现代硬件的特性，提供了零成本抽象、安全的并发编程模型，以及对内存布局的精细控制。这些特性使Rust成为开发操作系统、游戏引擎、浏览器组件以及需要高性能和高可靠性的应用程序的理想选择。 &amp;ndash; chatgpt 生成&lt;/p>&lt;/blockquote>
+&lt;p>网站: &lt;a href="https://www.rust-lang.org/">Rust Programming Language&lt;/a>&lt;/p>
+&lt;h2 id="正文">正文&lt;/h2>
+&lt;p>rust 标准库只提供了一些基本和常用的数据结构和一套&amp;quot;抽象特性&amp;quot;(或者说规范)，所以可能需要手动造一些轮子，比如处理输入和随机数生成等等，下面将介绍对应的实现代码。&lt;/p>
+&lt;h3 id="处理输入">处理输入&lt;/h3>
+&lt;p>相较于 c++ 的 &lt;code>scanf&lt;/code> 、&lt;code>cin&lt;/code> ，rust 的标准库中缺少一种方便地从标准输入中读取并构造数据的方法，网上也存在一些讨论:&lt;/p>
+&lt;ol>
+&lt;li>&lt;a href="https://users.rust-lang.org/t/why-is-it-so-difficult-to-get-user-input-in-rust/27444/11">Why is it so difficult to get user input in Rust? - help - The Rust Programming Language Forum&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.reddit.com/r/rust/comments/ifpi8p/why_is_it_so_painful_to_read_user_inputs_in_rust/">Why is it so painful to read user inputs in Rust&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;p>所以使用 rust 解决 codeforces 中的问题所遇到的第一个困难就是如何处理输入，所幸的是这个问题在&lt;a href="https://codeforces.com/blog/entry/67391">这里&lt;/a>有所讨论，具体的解决方法参考这个&lt;a href="https://codeforces.com/blog/entry/67391?#comment-516341">回复&lt;/a>。根据讨论中的代码修改，笔者使用的模板代码如下:&lt;/p></description></item><item><title>为啥 go 不支持泛型方法</title><link>https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/</link><pubDate>Tue, 20 Feb 2024 22:10:20 +0000</pubDate><guid>https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/</guid><description>&lt;h2 id="引言">引言&lt;/h2>
+&lt;p>众所周知， go 的泛型并不完善，由于其不支持 &lt;code>parameterized methods&lt;/code> (泛型方法)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 &lt;a href="https://github.com/golang/go/issues/49085">proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub&lt;/a> 有着充分的讨论，本文旨在对其中的讨论进行总结(加一点&lt;del>指指点点&lt;/del>)，找出 go 是 xx 的原因，如有错误恳请斧正。&lt;/p>
+&lt;h2 id="有点长的前置知识">有点长的前置知识…&lt;/h2>
+&lt;p>在看 issue 之前，首先介绍一下泛型的通常实现方式，一般有如下几种方式&lt;/p>
+&lt;ol>
+&lt;li>&lt;strong>类型擦除+虚函数表&lt;/strong>: 这是 Java 泛型的实现方式。在编译时，泛型类型信息会被擦除，所有的泛型被转换为基类 Object (在 go 中相当于将所有的类型变成 interface{} )，编译器同时会在必要时插入类型转换代码来确保类型安全。&lt;/li>
+&lt;li>&lt;strong>模板实例化&lt;/strong>: C++ 使用模板来实现泛型。在编译时，模板会生成对应于每种具体类型的实例化代码。如 &lt;code>T add(T a, T b) &lt;/code> 的泛型方法，对于 &lt;code>add(1,2)&lt;/code> 和 &lt;code>add(1.0,2.0)&lt;/code> 会生成两个函数 &lt;code>int add(int a, int b)&lt;/code> 和 &lt;code>double add( double a, double b)&lt;/code> 。&lt;/li>
+&lt;li>&lt;strong>即时编译&lt;/strong>: &lt;a href="https://hackernoon.com/how-generics-differ-in-java-and-c">How Generics Differ in Java and C# | HackerNoon&lt;/a>, &lt;a href="https://zhuanlan.zhihu.com/p/348761322">C#泛型详解 - 知乎&lt;/a>, &lt;a href="https://stackoverflow.com/questions/31876372/what-is-reification">c# - What is reification? - Stack Overflow&lt;/a>，从这些链接可以大致看出，c# 的泛型实现是编译时使用占位符表示泛型类型，然后在运行时动态实例化各种类型。&lt;/li>
+&lt;/ol>
+&lt;p>回到 go 的泛型，实际上 go 的泛型实现方式有三种提案，下面分别介绍这三种提案，有助于后续对 issue 中的讨论进行分析。(本来想简单写写的，写着写着太长了，不想看的请跳至 &lt;a href="https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/#%e6%ad%a3%e6%96%87">正文&lt;/a> 部分)&lt;/p></description></item><item><title>rust 无栈协程介绍</title><link>https://booiris.space/posts/blog/rust-%E6%97%A0%E6%A0%88%E5%8D%8F%E7%A8%8B%E4%BB%8B%E7%BB%8D/</link><pubDate>Tue, 23 Jan 2024 22:59:58 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-%E6%97%A0%E6%A0%88%E5%8D%8F%E7%A8%8B%E4%BB%8B%E7%BB%8D/</guid><description/></item><item><title>monad 粗浅介绍</title><link>https://booiris.space/posts/blog/monad-%E7%B2%97%E6%B5%85%E4%BB%8B%E7%BB%8D/</link><pubDate>Tue, 12 Dec 2023 21:20:47 +0000</pubDate><guid>https://booiris.space/posts/blog/monad-%E7%B2%97%E6%B5%85%E4%BB%8B%E7%BB%8D/</guid><description>&lt;h2 id="什么是-monad">什么是 monad?&lt;/h2>
+&lt;p>monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的粗浅介绍，所以跳过其数学上的定义和结构性证明(其实是目前笔者也不太懂🤫)，通过一些具体的例子说明它的概念和作用。&lt;/p>
+&lt;h3 id="定义">定义&lt;/h3>
+&lt;p>尽管没有太复杂的数学概念，但还是需要一个定义说明什么样的东西才能称之为 monad。在接下来的说明中，除了列举出数学定义以外，还有其在 go 语言中的具体表现形式。在 wiki 的定义中:&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;a href="https://en.wikipedia.org/wiki/Monad_%28functional_programming%29#Definition">Monad (functional programming) - Wikipedia&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;p>一个 monad 包含三个部分:&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>类型构造子 &lt;code>M&lt;/code> 。&lt;/p>
+&lt;ul>
+&lt;li>在 go 中可以理解为一种名为 &lt;code>M&lt;/code> 包裹着 &lt;code>T&lt;/code> 的泛型结构体 &lt;code>M&amp;lt;T&amp;gt;{ val: T }&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>类型转换子 &lt;code>Unit :: T -&amp;gt; M T&lt;/code>。&lt;/p>
+&lt;ul>
+&lt;li>在 go 中可以理解为由值 &lt;code>T&lt;/code> 构造 &lt;code>M&lt;/code> 的函数 &lt;code>func Unit[T any] (val T) -&amp;gt; M&amp;lt;T&amp;gt;&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>组合子 &lt;code>&amp;gt;&amp;gt;= or FlatMap :: M T -&amp;gt; ( T -&amp;gt; M U) -&amp;gt; M U&lt;/code> 。&lt;/p></description></item><item><title>SipHash</title><link>https://booiris.space/posts/blog/siphash/</link><pubDate>Fri, 13 Oct 2023 13:36:05 +0000</pubDate><guid>https://booiris.space/posts/blog/siphash/</guid><description>&lt;blockquote>
+&lt;p>论文 &lt;a href="https://eprint.iacr.org/2012/351.pdf">eprint.iacr.org/2012/351.pdf&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;blockquote>
+&lt;p>代码位置 &lt;a href="https://github.com/rust-lang/rust/blob/1.72.0/library/core/src/hash/sip.rs">library/core/src/hash/sip.rs&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;p>SipHash 是一类针对短消息设计的伪随机函数族，相较于其他的哈希函数有在短消息上性能高、由于随机输入的存在难以构造&lt;a href="../todo/todo.md">哈希 dos 攻击&lt;/a>的优点，是 rust 、python 的内置哈希函数实现。&lt;/p>
+&lt;h2 id="实现">实现&lt;/h2>
+&lt;p>对于 SipHash-c-d 函数族，输入为一个 128 bit 的 &lt;code>k&lt;/code> 和 可为空的输入 &lt;code>m&lt;/code>，输出为一个 64 位长度的 &lt;code>SipHash-c-d(k,m)&lt;/code>。其中 &lt;code>c&lt;/code> 为 &amp;ldquo;compression rounds&amp;rdquo; 的次数， &lt;code>d&lt;/code> 为 &amp;ldquo;finalization rounds&amp;rdquo; 的次数，&amp;ldquo;compression rounds&amp;rdquo; 和 &amp;ldquo;finalization rounds&amp;rdquo; 在之后中有说明具体的实现步骤。&lt;/p>
+&lt;h3 id="初始化">初始化&lt;/h3>
+&lt;p>首先使用 &lt;code>k0&lt;/code>、&lt;code>k1&lt;/code> 初始化四个值 &lt;code>v0&lt;/code> 、&lt;code>v1&lt;/code> 、&lt;code>v2&lt;/code> 、&lt;code>v3&lt;/code>，其中 &lt;code>k0&lt;/code>、&lt;code>k1&lt;/code> 为 输入 &lt;code>k&lt;/code> 的 64 位的小端编码 (也就是两个 u64 值 &lt;code>k0&lt;/code> 、&lt;code>k1&lt;/code> 组成了 &lt;code>k&lt;/code> )。&lt;/p>
+&lt;p>对于其中的常量，论文的选取解释为:&lt;/p>
+&lt;blockquote>
+&lt;p>The initial state constant corresponds to the ASCII string &amp;ldquo;somepseudorandomlygeneratedbytes&amp;rdquo;, big-endian encoded.&lt;/p></description></item><item><title>摄影学习</title><link>https://booiris.space/posts/blog/%E6%91%84%E5%BD%B1%E5%AD%A6%E4%B9%A0/</link><pubDate>Mon, 09 Oct 2023 13:34:26 +0000</pubDate><guid>https://booiris.space/posts/blog/%E6%91%84%E5%BD%B1%E5%AD%A6%E4%B9%A0/</guid><description>&lt;blockquote>
+&lt;p>参考+图片来源 &lt;a href="https://www.bilibili.com/video/BV1pv411H78e">从零开始手把手教你学摄影，20节课带你从小白到大师 | 摄影前期拍摄入门教程_哔哩哔哩_bilibili&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;h2 id="概念">概念&lt;/h2>
+&lt;h3 id="传感器大小分类">传感器大小分类&lt;/h3>
+&lt;p>下图来自于&lt;/p>
+&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera1.png" alt="">&lt;/p>
+&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camara2.png" alt="">&lt;/p>
+&lt;h3 id="焦距">焦距&lt;/h3>
+&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera3.png" alt="">&lt;/p>
+&lt;h3 id="曝光">曝光&lt;/h3>
+&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera4.png" alt="">&lt;/p>
+&lt;h3 id="光圈">光圈&lt;/h3>
+&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera5.png" alt="">&lt;/p>
+&lt;h3 id="快门时间">快门时间&lt;/h3>
+&lt;h3 id="感光度-iso">感光度 (ISO)&lt;/h3>
+&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera6.png" alt="">&lt;/p>
+&lt;h3 id="拍摄模式">拍摄模式&lt;/h3></description></item><item><title>rust源码阅读</title><link>https://booiris.space/posts/blog/rust%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</link><pubDate>Thu, 05 Oct 2023 23:06:41 +0000</pubDate><guid>https://booiris.space/posts/blog/rust%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</guid><description>&lt;p>更新中…&lt;/p>
+&lt;h2 id="wiki链接">&lt;strong>&lt;a href="https://booiris.space/wiki/rust_code/#%e7%9b%ae%e5%bd%95">wiki链接&lt;/a>&lt;/strong>&lt;/h2></description></item><item><title>Rust For Screeps (3): 系统监控</title><link>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/</link><pubDate>Sat, 22 Jul 2023 23:35:45 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/</guid><description>&lt;blockquote>
+&lt;p>参考 &lt;a href="https://www.jianshu.com/p/de74baf6fb48">Screeps 制作统计图表 - 简书&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;p>首先说明: 本文使用 docker 将监控系统部署在自有服务器上，所以先决条件是一台能公网访问的服务器(&lt;/p>
+&lt;h2 id="整体流程">整体流程&lt;/h2>
+&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20231102131635.png" alt="image.png">&lt;/p>
+&lt;h2 id="具体实现">具体实现&lt;/h2>
+&lt;h3 id="记录当前状态存入内存">记录当前状态存入内存&lt;/h3>
+&lt;p>在 &lt;a href="https://www.jianshu.com/p/de74baf6fb48">Screeps 制作统计图表 - 简书&lt;/a> 中使用的是 &lt;a href="https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/#memory%20object">memory object&lt;/a> 存储系统信息。遗憾的是在 rust 中无法使用 &lt;code>memory&lt;/code> 对象，但是 screeps 还有另一个存储信息的地方，那就是 &lt;a href="https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/#raw%20memory">raw memory&lt;/a> 。&lt;/p>
+&lt;p>&lt;code>raw memory&lt;/code> 可以存储 10 MB 的序列化后的内容，它由一个个 &lt;code>segment&lt;/code> 组成，每个&lt;code>segment&lt;/code> 最多存储 100 KB 内容。所以可以指定一段 &lt;code>segment&lt;/code> 用于存储当前系统的状态。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-rust" data-lang="rust">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#cf222e">fn&lt;/span> &lt;span style="color:#6639ba">log&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0550ae">&amp;amp;&lt;/span>&lt;span style="color:#6a737d">self&lt;/span>&lt;span style="color:#1f2328">)&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">	&lt;/span>&lt;span style="color:#cf222e">let&lt;/span>&lt;span style="color:#fff"> &lt;/span>status_segement&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#fff"> &lt;/span>raw_memory::segments&lt;span style="color:#1f2328">();&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">	&lt;/span>&lt;span style="color:#cf222e">let&lt;/span>&lt;span style="color:#fff"> &lt;/span>status&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#fff"> &lt;/span>Status::get_status&lt;span style="color:#1f2328">();&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">	&lt;/span>status_segement&lt;span style="color:#1f2328">.&lt;/span>set&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0550ae">STATUS_INDEX&lt;/span>&lt;span style="color:#1f2328">,&lt;/span>&lt;span style="color:#fff"> &lt;/span>status&lt;span style="color:#1f2328">.&lt;/span>into&lt;span style="color:#1f2328">());&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">&lt;/span>&lt;span style="color:#1f2328">}&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="访问内存并解析内存内容">访问内存并解析内存内容&lt;/h3>
+&lt;p>&lt;a href="https://github.com/booiris/rust-learning/tree/screep_log">GitHub - booiris/rust-learning at screep_log&lt;/a>&lt;/p>
+&lt;h3 id="将信息存储到时序数据库中">将信息存储到时序数据库中&lt;/h3>
+&lt;h3 id="使用-grafana-制作图表">使用 Grafana 制作图表&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>version: &lt;span style="color:#0a3069">&amp;#39;2&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>services:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sync:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> build:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> context: ./sync
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dockerfile: Dockerfile
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: sync:1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./sync/log:/log
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> depends_on:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - influxdb
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a"># https://hub.docker.com/_/influxdb 查看参数含义&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> influxdb:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: influxdb:latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./influxdb-data:/var/lib/influxdb2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./influxdb-config:/etc/influxdb2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">DOCKER_INFLUXDB_INIT_MODE&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>setup
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">DOCKER_INFLUXDB_INIT_USERNAME&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#953800">username&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">DOCKER_INFLUXDB_INIT_PASSWORD&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#953800">pwd&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">DOCKER_INFLUXDB_INIT_ORG&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#953800">org&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">DOCKER_INFLUXDB_INIT_BUCKET&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#953800">bucket&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a"># https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/ 查看参数含义&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> grafana:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: grafana/grafana:latest
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ports:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#0a3069">&amp;#39;12002:3000&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./grafana-data:/var/lib/grafana
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./grafana-provisioning/:/etc/grafana/provisioning
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> depends_on:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - influxdb
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> user: &lt;span style="color:#0a3069">&amp;#34;&lt;/span>&lt;span style="color:#953800">$UID&lt;/span>&lt;span style="color:#0a3069">:&lt;/span>&lt;span style="color:#953800">$GID&lt;/span>&lt;span style="color:#0a3069">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">GF_SECURITY_ADMIN_USER&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#953800">GRAFANA_USERNAME&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">GF_SECURITY_ADMIN_PASSWORD&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#953800">GRAFANA_PASSWORD&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Rust For Screeps (3): 系统监控和 panic 处理</title><link>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%92%8C-panic-%E5%A4%84%E7%90%86/</link><pubDate>Sat, 22 Jul 2023 23:35:45 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%92%8C-panic-%E5%A4%84%E7%90%86/</guid><description>&lt;p>#todo&lt;/p>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> TODO: 系统监控和 panic 处理&lt;/li>
+&lt;/ul></description></item><item><title>Rust For Screeps (2): 自定义存储模型</title><link>https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/</link><pubDate>Sat, 22 Jul 2023 21:05:20 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/</guid><description>&lt;h2 id="screeps-存储模型">Screeps 存储模型&lt;/h2>
+&lt;p>screeps 的存储模型基本如图所示。&lt;/p>
+&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img//20230722224904.png" alt="image.png">&lt;/p>
+&lt;p>其中存在两种类型的 memory，一个是 &lt;code>memory object&lt;/code> ，另一个是 &lt;code>raw memory&lt;/code> 。&lt;/p>
+&lt;h3 id="memory-object">memory object&lt;/h3>
+&lt;p>&lt;code>memory object&lt;/code> 的具体介绍在 &lt;a href="https://docs.screeps.com/global-objects.html#Memory-object">Global Objects | Screeps Documentation&lt;/a>。&lt;/p>
+&lt;blockquote>
+&lt;p>Each player has access to the global object &lt;code>Memory&lt;/code> in which he/she may store any information in the JSON format.&lt;/p>&lt;/blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#1f2328">Memory&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">someData&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#1f2328">{...};&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以看出 screeps 本身内置了一个 &lt;code>Memory&lt;/code> 的对象实例。可以往其中添加各种属性来达到存储信息的目的。&lt;/p>
+&lt;h3 id="raw-memory">raw memory&lt;/h3>
+&lt;p>&lt;code>raw memory&lt;/code> 在这里被提到 &lt;a href="https://docs.screeps.com/global-objects.html#Serialization">Global Objects | Screeps Documentation&lt;/a>&lt;/p>
+&lt;blockquote>
+&lt;p>The Memory object is stored in the stringified form and is parsed each time upon the first in the tick access from your script with the help of the &lt;code>JSON.parse&lt;/code> method.&lt;/p></description></item><item><title>Rust For Screeps (1): 初始环境搭建</title><link>https://booiris.space/posts/blog/rust-for-screeps-1-%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Sat, 22 Jul 2023 19:29:29 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-1-%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>&lt;blockquote>
+&lt;p>参考 &lt;a href="https://github.com/rustyscreeps/screeps-starter-rust/">GitHub - rustyscreeps/screeps-starter-rust: Starter Rust AI for Screeps, the JavaScript-based MMO game&lt;/a>&lt;/p>&lt;/blockquote>
+&lt;h3 id="安装相关cli">安装相关cli&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cargo install cargo-screeps
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>命令包含了构建代码、上传代码等操作。&lt;/p>
+&lt;h3 id="下载模板文件">下载模板文件&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone https://github.com/rustyscreeps/screeps-starter-rust.git
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6639ba">cd&lt;/span> screeps-starter-rust
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>模板 (版本:&lt;a href="https://github.com/rustyscreeps/cargo-screeps/tree/d91b60f9a13eb0bd763b094acb6a1d749bb1b12f">d91b60f9a13eb0bd763b094acb6a1d749bb1b12f&lt;/a>) 中包含的文件:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>./
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── Cargo.toml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── example-screeps.toml
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── javascript
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── main.js
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── LICENSE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── README.md
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── src
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── lib.rs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── logging.rs
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="模板文件说明">模板文件说明&lt;/h3>
+&lt;p>&lt;code>example-screeps.toml&lt;/code> 用于 &lt;code>cargo-screeps&lt;/code> 的配置。&lt;/p>
+&lt;p>&lt;code>javascript/main.js&lt;/code> 为游戏主入口，其中内容如下。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0a3069">&amp;#34;use strict&amp;#34;&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#cf222e">let&lt;/span> &lt;span style="color:#1f2328">wasm_module&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">// replace this with the name of your module
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span>&lt;span style="color:#cf222e">const&lt;/span> &lt;span style="color:#1f2328">MODULE_NAME&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#0a3069">&amp;#34;screeps-starter-rust&amp;#34;&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#cf222e">function&lt;/span> &lt;span style="color:#1f2328">console_error&lt;/span>&lt;span style="color:#1f2328">(...&lt;/span>&lt;span style="color:#1f2328">args&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">console&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">log&lt;/span>&lt;span style="color:#1f2328">(...&lt;/span>&lt;span style="color:#1f2328">args&lt;/span>&lt;span style="color:#1f2328">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">Game&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">notify&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">args&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">join&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0a3069">&amp;#39; &amp;#39;&lt;/span>&lt;span style="color:#1f2328">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#1f2328">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#1f2328">module&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">exports&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">loop&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#cf222e">function&lt;/span> &lt;span style="color:#1f2328">()&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#cf222e">try&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#cf222e">if&lt;/span> &lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">wasm_module&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">wasm_module&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">loop&lt;/span>&lt;span style="color:#1f2328">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span> &lt;span style="color:#cf222e">else&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57606a">// attempt to load the wasm only if there&amp;#39;s enough bucket to do a bunch of work this tick
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span> &lt;span style="color:#cf222e">if&lt;/span> &lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">Game&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">cpu&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">bucket&lt;/span> &lt;span style="color:#0550ae">&amp;lt;&lt;/span> &lt;span style="color:#0550ae">500&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">console&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">log&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0a3069">&amp;#34;we are running out of time, pausing compile!&amp;#34;&lt;/span> &lt;span style="color:#0550ae">+&lt;/span> &lt;span style="color:#1f2328">JSON&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">stringify&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">Game&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">cpu&lt;/span>&lt;span style="color:#1f2328">));&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#cf222e">return&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57606a">// delect the module from the cache, so we can reload it
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span> &lt;span style="color:#cf222e">if&lt;/span> &lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">MODULE_NAME&lt;/span> &lt;span style="color:#cf222e">in&lt;/span> &lt;span style="color:#1f2328">require&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">cache&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#cf222e">delete&lt;/span> &lt;span style="color:#1f2328">require&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">cache&lt;/span>&lt;span style="color:#1f2328">[&lt;/span>&lt;span style="color:#1f2328">MODULE_NAME&lt;/span>&lt;span style="color:#1f2328">];&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57606a">// load the wasm module
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span> &lt;span style="color:#1f2328">wasm_module&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#1f2328">require&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">MODULE_NAME&lt;/span>&lt;span style="color:#1f2328">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57606a">// load the wasm instance!
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span> &lt;span style="color:#1f2328">wasm_module&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">initialize_instance&lt;/span>&lt;span style="color:#1f2328">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57606a">// run the setup function, which configures logging
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span> &lt;span style="color:#1f2328">wasm_module&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">setup&lt;/span>&lt;span style="color:#1f2328">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57606a">// go ahead and run the loop for its first tick
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span> &lt;span style="color:#1f2328">wasm_module&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">loop&lt;/span>&lt;span style="color:#1f2328">();&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span> &lt;span style="color:#cf222e">catch&lt;/span> &lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">error&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">console_error&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0a3069">&amp;#34;caught exception:&amp;#34;&lt;/span>&lt;span style="color:#1f2328">,&lt;/span> &lt;span style="color:#1f2328">error&lt;/span>&lt;span style="color:#1f2328">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#cf222e">if&lt;/span> &lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">error&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">stack&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">console_error&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0a3069">&amp;#34;stack trace:&amp;#34;&lt;/span>&lt;span style="color:#1f2328">,&lt;/span> &lt;span style="color:#1f2328">error&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">stack&lt;/span>&lt;span style="color:#1f2328">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">console_error&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0a3069">&amp;#34;resetting VM next tick.&amp;#34;&lt;/span>&lt;span style="color:#1f2328">);&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">wasm_module&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#cf222e">null&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#1f2328">}&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>文件中 &lt;code>wasm_module&lt;/code> 保存了 wasm 的实例。如果 wasm 的实例存在，就调用 loop 函数运行游戏逻辑。如果 wasm 的实例不存在 (由于更新代码或 screeps 进行了内存回收等原因导致实列被销毁)，&lt;strong>重新载入 wasm 并且调用 setup 函数进行初始化，然后再运行游戏逻辑&lt;/strong>。&lt;/p></description></item><item><title>杂记</title><link>https://booiris.space/posts/linux/%E6%9D%82%E8%AE%B0/</link><pubDate>Sat, 20 Aug 2022 15:12:49 +0000</pubDate><guid>https://booiris.space/posts/linux/%E6%9D%82%E8%AE%B0/</guid><description>&lt;h2 id="2022-08-20">[[2022-08-20]]&lt;/h2>
+&lt;p>我们建立ssh隧道的时候，往往是想通过一台公网的主机或者是大家都可以访问的主机做跳转机，来访问内部或者外部不能直接访问的机器。所以一般像这种情况下，请将跳转机中的ssh服务器中的&lt;code>GatewayPorts&lt;/code>设为yes。&lt;/p>
+&lt;p>端口转发时参数为 &lt;code>-NfR&lt;/code>&lt;/p>
+&lt;h2 id="2022-08-30">[[2022-08-30]]&lt;/h2>
+&lt;p>docker运行systemctl&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker run -d --name desk -p 2222:22 -v /home/booiris:/home/booiris --hostname vm-host --env &lt;span style="color:#953800">container&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>docker --privileged archlinux /sbin/init
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="2022-10-08">[[2022-10-08]]&lt;/h2>
+&lt;p>@ + 时间 == today&lt;/p>
+&lt;p>rust partition_point(|x| x &amp;lt; &amp;amp;s) 函数 lower_bound upper_bound 在位置左边的为满足表达式的值，右边为不满足表达式的值。&lt;/p>
+&lt;p>[[2022-12-25]]&lt;/p>
+&lt;p>灵感：&lt;/p>
+&lt;ol>
+&lt;li>卡牌拓印场景中的元素&lt;/li>
+&lt;li>控制人物会有影响&lt;/li>
+&lt;/ol></description></item><item><title>linux自启动服务</title><link>https://booiris.space/posts/linux/linux%E8%87%AA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/</link><pubDate>Sat, 20 Aug 2022 14:29:28 +0000</pubDate><guid>https://booiris.space/posts/linux/linux%E8%87%AA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/</guid><description>&lt;p>自启动文件放在 &lt;code>/usr/lib/systemd/system&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">[&lt;/span>Unit&lt;span style="color:#0550ae">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">Description&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>code-server
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">[&lt;/span>Service&lt;span style="color:#0550ae">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">Type&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>simple
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">ExecStart&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>/usr/bin/code-server
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">User&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>your user name
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">[&lt;/span>Install&lt;span style="color:#0550ae">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">WantedBy&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>multi-user.target
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span style="display:flex;">&lt;span>sudo systemctl daemon&lt;span style="color:#0550ae">-&lt;/span>reload &lt;span style="color:#57606a">#刷新&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl start code&lt;span style="color:#0550ae">-&lt;/span>server
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl enable code&lt;span style="color:#0550ae">-&lt;/span>server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>arch虚拟机安装</title><link>https://booiris.space/posts/linux/arch%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/</link><pubDate>Thu, 04 Aug 2022 00:02:01 +0000</pubDate><guid>https://booiris.space/posts/linux/arch%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/</guid><description>&lt;h3 id="查看ip地址">查看ip地址&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ip addr
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="时间同步">时间同步&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>timedatectl set-ntp &lt;span style="color:#6639ba">true&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="准备磁盘分区">准备磁盘分区&lt;/h2>
+&lt;h3 id="显示所有分区">显示所有分区&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>fdisk -l
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="开始分区">开始分区&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>fdisk /dev/sda
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>分区过程参考&lt;a href="https://ericclose.github.io/Installing-Arch-as-a-guest-with-UEFI-and-GPT.html#arch-chroot">网址&lt;/a>&lt;/p>
+&lt;h3 id="确认是否生效">确认是否生效&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span> fdisk -l /dev/sda
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="格式化分区和设置swap分区">格式化分区和设置swap分区&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkfs.fat -F32 /dev/sda1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkswap /dev/sda2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkfs.ext4 /dev/sda3 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="启用交换分区">启用交换分区&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>swapon /dev/sda2
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="挂载根目录">挂载根目录&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mount /dev/sda3 /mnt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="挂载boot目录">挂载boot目录&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkdir /mnt/boot
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mount /dev/sda1 /mnt/boot
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="安装系统">安装系统&lt;/h2>
+&lt;h3 id="修改镜像源">修改镜像源&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vim /etc/pacman.d/mirrorlist
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>添加 &lt;code>Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch&lt;/code> 镜像&lt;/p>
+&lt;p>如果安装时报错 &lt;code>ERROR: 5984EA8F3C could not be locally signed&lt;/code> 解决办法：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>rm -fr /etc/pacman.d/gnupg
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>umount /etc/pacman.d/gnupg
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rm -fr /etc/pacman.d/gnupg
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pacman-key --init
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pacman-key --populate archlinux
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pacman -Sy archlinux-keyring
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="安装系统和网络插件">安装系统和网络插件&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pacstrap /mnt base linux networkmanager
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="配置系统">配置系统&lt;/h2>
+&lt;h3 id="生成fstab文件">生成fstab文件&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="进入chroot">进入chroot&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>arch-chroot /mnt
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="设置时区">设置时区&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="设置硬件时间同步">设置硬件时间同步&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hwclock --systohc
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="安装vim">安装vim&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pacman -S vim
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="语言设置">语言设置&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span> vim /etc/locale.gen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> en_US
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> zh_CN
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="生成语言">生成语言&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>locale-gen
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="设置默认语言">设置默认语言&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6639ba">echo&lt;/span> &lt;span style="color:#953800">LANG&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>en_US.UTF-8 &amp;gt; /etc/locale.conf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="创建host文件">创建host文件&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6639ba">echo&lt;/span> YourNewHostname &amp;gt; /etc/hostname
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="添加host">添加host&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>vim /etc/hosts
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Static table lookup for hostnames. 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># See hosts(5) for details. 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>127.0.0.1 localhost 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>::1 localhost 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>127.0.1.1 YourNewHostname.localdomain YourNewHostname
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="开启网络服务">开启网络服务&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>systemctl &lt;span style="color:#6639ba">enable&lt;/span> NetworkManager
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="设置-root-用户密码">设置 root 用户密码&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>passwd
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="安装引导程序">安装引导程序&lt;/h2>
+&lt;p>UEFI 系统：&lt;/p></description></item><item><title>nginx反向代理自签名</title><link>https://booiris.space/posts/linux/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E8%87%AA%E7%AD%BE%E5%90%8D/</link><pubDate>Sat, 02 Jul 2022 16:49:11 +0000</pubDate><guid>https://booiris.space/posts/linux/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E8%87%AA%E7%AD%BE%E5%90%8D/</guid><description>&lt;h2 id="自签名ca证书">自签名ca证书&lt;/h2>
+&lt;p>首先创建cert文件夹保存证书。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkdir cert
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6639ba">cd&lt;/span> cert
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后创建配置文件cert.cnf，注意如果时ip自签名就在your_IP填写自己的ip，如果是自签名域名就是在your_domain写自己的域名。&lt;/p>
+&lt;p>[dn]下CN字段是ca根服务器地址，alt_names下是ca验证的ip和域名地址，一般情况下这两个是一样的。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>[req] 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>prompt = no 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>default_bits = 4096
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>default_md = sha256
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>distinguished_name = dn 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x509_extensions = v3_req
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[dn] 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>C=CN
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ST=Shanghai
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>L=Shanghai
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>O=TEST
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>OU=Testing Domain
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>CN=$your_IP or $your_domain
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>emailAddress=admin@localhost
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[v3_req]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>basicConstraints=CA:TRUE
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>keyUsage=digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>extendedKeyUsage=serverAuth
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>subjectAltName=@alt_names
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[alt_names]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>IP.1=$your_IP
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DNS.1=$your_domain
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>根据配置文件生成证书。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>openssl req -new -newkey rsa:2048 -days &lt;span style="color:#0550ae">365&lt;/span> -nodes -x509 -keyout cert.key -out cert.crt -config cert.cnf
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>当前目录下生成两个文件cert.crt和cert.key，至此自签名步骤完成。&lt;/p>
+&lt;h2 id="nginx反向代理">nginx反向代理&lt;/h2>
+&lt;p>docker拉取nginx镜像。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker pull nginx
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>新建一个容器获取config文件。&lt;/p></description></item><item><title>Data Lab</title><link>https://booiris.space/posts/csapp/data-lab/</link><pubDate>Tue, 03 May 2022 23:24:12 +0000</pubDate><guid>https://booiris.space/posts/csapp/data-lab/</guid><description>&lt;h1 id="csapp-data-lab">CS:APP Data Lab&lt;/h1>
+&lt;h2 id="restriction">restriction&lt;/h2>
+&lt;ol>
+&lt;li>Integer constants 0 through 255 (0xFF), inclusive. You are
+not allowed to use big constants such as 0xffffffff.&lt;/li>
+&lt;li>Function arguments and local variables (no global variables).&lt;/li>
+&lt;li>Unary integer operations ! ~&lt;/li>
+&lt;li>Binary integer operations &amp;amp; ^ | + &amp;laquo; &amp;raquo;&lt;/li>
+&lt;li>NOT ALLOW
+&lt;ol>
+&lt;li>Use any control constructs such as if, do, while, for, switch, etc.&lt;/li>
+&lt;li>Define or use any macros.&lt;/li>
+&lt;li>Define any additional functions in this file.&lt;/li>
+&lt;li>Call any functions.&lt;/li>
+&lt;li>Use any other operations, such as &amp;amp;&amp;amp;, ||, -, or ?:&lt;/li>
+&lt;li>Use any form of casting.&lt;/li>
+&lt;li>Use any data type other than int. This implies that you
+cannot use arrays, structs, or unions.&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="question">Question&lt;/h2>
+&lt;h3 id="q1">q1&lt;/h3>
+&lt;h4 id="description">Description&lt;/h4>
+&lt;p>bitXor - x^y using only ~ and &amp;amp;.&lt;/p></description></item><item><title>线段树</title><link>https://booiris.space/posts/algorithm/segment_tree/%E7%BA%BF%E6%AE%B5%E6%A0%91/</link><pubDate>Tue, 03 May 2022 14:20:42 +0000</pubDate><guid>https://booiris.space/posts/algorithm/segment_tree/%E7%BA%BF%E6%AE%B5%E6%A0%91/</guid><description/></item><item><title>树状数组</title><link>https://booiris.space/posts/algorithm/segment_tree/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</link><pubDate>Tue, 03 May 2022 13:54:29 +0000</pubDate><guid>https://booiris.space/posts/algorithm/segment_tree/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</guid><description>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/binary_index_tree.svg" width=60% >
+&lt;h3 id="区间和模板">区间和模板：&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-rust" data-lang="rust">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#cf222e">pub&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">struct&lt;/span> &lt;span style="color:#1f2328">Bitree&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>tree: &lt;span style="color:#6639ba">Vec&lt;/span>&lt;span style="color:#0550ae">&amp;lt;&lt;/span>&lt;span style="color:#cf222e">i32&lt;/span>&lt;span style="color:#0550ae">&amp;gt;&lt;/span>&lt;span style="color:#1f2328">,&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>len: &lt;span style="color:#cf222e">usize&lt;/span>&lt;span style="color:#1f2328">,&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">&lt;/span>&lt;span style="color:#1f2328">}&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">&lt;/span>&lt;span style="color:#cf222e">impl&lt;/span>&lt;span style="color:#fff"> &lt;/span>Bitree&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#57606a">#[inline]&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">pub&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">fn&lt;/span> &lt;span style="color:#6639ba">new&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>ini: &lt;span style="color:#cf222e">&amp;amp;&lt;/span>&lt;span style="color:#6639ba">Vec&lt;/span>&lt;span style="color:#0550ae">&amp;lt;&lt;/span>&lt;span style="color:#cf222e">i32&lt;/span>&lt;span style="color:#0550ae">&amp;gt;&lt;/span>&lt;span style="color:#1f2328">)&lt;/span>&lt;span style="color:#fff"> &lt;/span>-&amp;gt; &lt;span style="color:#1f2328">Self&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">let&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">mut&lt;/span>&lt;span style="color:#fff"> &lt;/span>res&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#fff"> &lt;/span>Bitree&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>tree: &lt;span style="color:#1f2328">vec&lt;/span>&lt;span style="color:#0550ae">!&lt;/span>&lt;span style="color:#1f2328">[&lt;/span>&lt;span style="color:#0550ae">0&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>&lt;span style="color:#fff"> &lt;/span>ini&lt;span style="color:#1f2328">.&lt;/span>len&lt;span style="color:#1f2328">()&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">+&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">1&lt;/span>&lt;span style="color:#1f2328">],&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>len: &lt;span style="color:#1f2328">ini&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>len&lt;span style="color:#1f2328">(),&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">};&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">for&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">(&lt;/span>index&lt;span style="color:#1f2328">,&lt;/span>&lt;span style="color:#fff"> &lt;/span>v&lt;span style="color:#1f2328">)&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">in&lt;/span>&lt;span style="color:#fff"> &lt;/span>ini&lt;span style="color:#1f2328">.&lt;/span>iter&lt;span style="color:#1f2328">().&lt;/span>enumerate&lt;span style="color:#1f2328">()&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>res&lt;span style="color:#1f2328">.&lt;/span>update&lt;span style="color:#1f2328">(&lt;/span>index&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">+&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">1&lt;/span>&lt;span style="color:#1f2328">,&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">*&lt;/span>v&lt;span style="color:#1f2328">);&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">}&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>res&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">}&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#57606a">#[inline]&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">fn&lt;/span> &lt;span style="color:#6639ba">lowbit&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>x: &lt;span style="color:#cf222e">usize&lt;/span>&lt;span style="color:#1f2328">)&lt;/span>&lt;span style="color:#fff"> &lt;/span>-&amp;gt; &lt;span style="color:#cf222e">usize&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">return&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">(&lt;/span>x&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">as&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">i32&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">&amp;amp;&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">-&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>x&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">as&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">i32&lt;/span>&lt;span style="color:#1f2328">))&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">as&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">usize&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">}&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">fn&lt;/span> &lt;span style="color:#6639ba">update&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0550ae">&amp;amp;&lt;/span>&lt;span style="color:#cf222e">mut&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#6a737d">self&lt;/span>&lt;span style="color:#1f2328">,&lt;/span>&lt;span style="color:#fff"> &lt;/span>index: &lt;span style="color:#cf222e">usize&lt;/span>&lt;span style="color:#1f2328">,&lt;/span>&lt;span style="color:#fff"> &lt;/span>v: &lt;span style="color:#cf222e">i32&lt;/span>&lt;span style="color:#1f2328">)&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">let&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">mut&lt;/span>&lt;span style="color:#fff"> &lt;/span>pos&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#fff"> &lt;/span>index&lt;span style="color:#1f2328">;&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">while&lt;/span>&lt;span style="color:#fff"> &lt;/span>pos&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">&amp;lt;=&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#6a737d">self&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>len&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#6a737d">self&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>tree&lt;span style="color:#1f2328">[&lt;/span>pos&lt;span style="color:#1f2328">]&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">+=&lt;/span>&lt;span style="color:#fff"> &lt;/span>v&lt;span style="color:#1f2328">;&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>pos&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">+=&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#6a737d">Self&lt;/span>::lowbit&lt;span style="color:#1f2328">(&lt;/span>pos&lt;span style="color:#1f2328">);&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">}&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">}&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">fn&lt;/span> &lt;span style="color:#6639ba">get&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0550ae">&amp;amp;&lt;/span>&lt;span style="color:#6a737d">self&lt;/span>&lt;span style="color:#1f2328">,&lt;/span>&lt;span style="color:#fff"> &lt;/span>n: &lt;span style="color:#cf222e">usize&lt;/span>&lt;span style="color:#1f2328">)&lt;/span>&lt;span style="color:#fff"> &lt;/span>-&amp;gt; &lt;span style="color:#cf222e">i32&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">let&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">mut&lt;/span>&lt;span style="color:#fff"> &lt;/span>res&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">0&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">let&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">mut&lt;/span>&lt;span style="color:#fff"> &lt;/span>pos&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#fff"> &lt;/span>n&lt;span style="color:#1f2328">;&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">while&lt;/span>&lt;span style="color:#fff"> &lt;/span>pos&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">&amp;gt;&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">0&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>res&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">+=&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#6a737d">self&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>tree&lt;span style="color:#1f2328">[&lt;/span>pos&lt;span style="color:#1f2328">];&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>pos&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">-=&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#6a737d">Self&lt;/span>::lowbit&lt;span style="color:#1f2328">(&lt;/span>pos&lt;span style="color:#1f2328">);&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">}&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>res&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">}&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0a3069">/// `query` 下标从`1`开始
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0a3069">&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">pub&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#cf222e">fn&lt;/span> &lt;span style="color:#6639ba">query&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0550ae">&amp;amp;&lt;/span>&lt;span style="color:#6a737d">self&lt;/span>&lt;span style="color:#1f2328">,&lt;/span>&lt;span style="color:#fff"> &lt;/span>l: &lt;span style="color:#cf222e">usize&lt;/span>&lt;span style="color:#1f2328">,&lt;/span>&lt;span style="color:#fff"> &lt;/span>r: &lt;span style="color:#cf222e">usize&lt;/span>&lt;span style="color:#1f2328">)&lt;/span>&lt;span style="color:#fff"> &lt;/span>-&amp;gt; &lt;span style="color:#cf222e">i32&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#6a737d">self&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>get&lt;span style="color:#1f2328">(&lt;/span>r&lt;span style="color:#1f2328">)&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">-&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#6a737d">self&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>get&lt;span style="color:#1f2328">(&lt;/span>l&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">-&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">1&lt;/span>&lt;span style="color:#1f2328">)&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">}&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">&lt;/span>&lt;span style="color:#1f2328">}&lt;/span>&lt;span style="color:#fff">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查询 $\log(n)$ ,更新 $\log(n)$。&lt;/p></description></item><item><title>Obsidian 多平台同步方法</title><link>https://booiris.space/posts/blog/sync/</link><pubDate>Sun, 01 May 2022 23:31:00 +0000</pubDate><guid>https://booiris.space/posts/blog/sync/</guid><description>&lt;p>! 推荐自建 webdav 服务&lt;/p>
+&lt;h3 id="webdav-同步">webdav 同步&lt;/h3>
+&lt;p>使用 &lt;a href="#ZgotmplZ">Remotely Save&lt;/a> 插件进行多平台同步。&lt;/p>
+&lt;h4 id="注册-webdav-服务">注册 webdav 服务&lt;/h4>
+&lt;p>使用 &lt;a href="https://teracloud.jp/en/">TeraCLOUD&lt;/a> 网盘。使用步骤如下：&lt;/p>
+&lt;ol>
+&lt;li>注册账号。&lt;/li>
+&lt;li>登录 ，进入 mypage 界面。
+&lt;img src="https://s2.loli.net/2022/05/01/pFAZdzBSCetUhfH.png" width = 60% >&lt;/li>
+&lt;li>开启 webdav 服务，记住用户名和密码。
+&lt;img src="https://s2.loli.net/2022/05/01/zaS4pMH7k1l2Den.png" width=100% > 至此，webdav 服务注册成功。&lt;/li>
+&lt;/ol>
+&lt;h4 id="使用-remotely-save-插件进行同步">使用 Remotely Save 插件进行同步&lt;/h4>
+&lt;ol>
+&lt;li>安装插件。&lt;/li>
+&lt;li>服务选择 webdav。 &lt;img src="https://s2.loli.net/2022/05/01/ornl3QSUEkPKIZt.png" width=100%>&lt;/li>
+&lt;li>填写上面的用户名和密码。 &lt;img src="https://s2.loli.net/2022/05/01/d7zONpe2A4XcuQy.png" width=100%>&lt;/li>
+&lt;li>测试连接，之后自行设置同步方式即可。&lt;/li>
+&lt;/ol></description></item><item><title>插件列表</title><link>https://booiris.space/posts/blog/extension/</link><pubDate>Sun, 01 May 2022 23:30:48 +0000</pubDate><guid>https://booiris.space/posts/blog/extension/</guid><description>&lt;ol>
+&lt;li>&lt;a href="#ZgotmplZ">Admonition&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Auto Link Title&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Advanced table&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Better word count&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Calendar&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Check list&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Collapse All&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Data view&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Editor syntax highlight&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Excalidraw&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">File tree alternative&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Full screen plugin&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Image Toolkit&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Link Favicons&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Linter&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Mind map&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Minimal theme settings&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Natural Language Dates&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Note refactor obsidian&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Outliner&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Remember cursor position&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Remotely Save&lt;/a>&lt;/li>
+&lt;li>&lt;a href="#ZgotmplZ">Templater&lt;/a>&lt;/li>
+&lt;/ol>
+&lt;h4 id="auto-link-title">Auto Link Title&lt;/h4>
+&lt;p>粘贴互联网链接的时候自动添加标题。&lt;/p>
+&lt;h4 id="link-favicons">Link Favicons&lt;/h4>
+&lt;p>显示链接的 icon&lt;/p>
+&lt;h4 id="image-toolkit">Image Toolkit&lt;/h4>
+&lt;p>预览图片&lt;/p>
+&lt;h4 id="collapse-all">Collapse All&lt;/h4>
+&lt;p>折叠所有文件夹&lt;/p>
+&lt;h4 id="natural-language-dates">Natural Language Dates&lt;/h4>
+&lt;p>自动生成日期 + @&lt;/p>
+&lt;h4 id="better-word-count">Better word count&lt;/h4>
+&lt;p>计算字数&lt;/p></description></item><item><title>linux-install</title><link>https://booiris.space/posts/linux/linux-install/</link><pubDate>Sun, 01 May 2022 23:30:29 +0000</pubDate><guid>https://booiris.space/posts/linux/linux-install/</guid><description>&lt;h1 id="wsl">WSL&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>	wsl --list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>卸载对应的系统&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>	wsl --unregister Ubuntu
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>设置默认系统&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>wslconfig /setdefault Name
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>修改默认用户，主机名，修改/etc/wsl.conf文件&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">[&lt;/span>user&lt;span style="color:#0550ae">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">default&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>youruser
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">[&lt;/span>network&lt;span style="color:#0550ae">]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">hostname&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>yourhostname
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="ubuntu">Ubuntu&lt;/h2>
+&lt;h3 id="换源">换源&lt;/h3>
+&lt;ol>
+&lt;li>备份&lt;code>sources.list&lt;/code>文件&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>编辑&lt;code>/etc/apt/sources.list&lt;/code>文件&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo vim /etc/apt/sources.list
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>在文件前面添加下面的条目(阿里源)&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
+&lt;li>更新&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt update
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="oh-my-bash-美化">oh-my-bash 美化&lt;/h3>
+&lt;ol>
+&lt;li>安装&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span style="display:flex;">&lt;span>bash &lt;span style="color:#0550ae">-&lt;/span>c &lt;span style="color:#0a3069">&amp;#34;$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="安装软件">安装软件&lt;/h3>
+&lt;h4 id="安装i3wm">安装i3wm&lt;/h4>
+&lt;ol>
+&lt;li>安装&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt install i3
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>同步最新仓库&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span style="display:flex;">&lt;span>sudo apt install ca&lt;span style="color:#0550ae">-&lt;/span>certificates
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">/&lt;/span>usr&lt;span style="color:#0550ae">/&lt;/span>lib&lt;span style="color:#0550ae">/&lt;/span>apt&lt;span style="color:#0550ae">/&lt;/span>apt&lt;span style="color:#0550ae">-&lt;/span>helper download&lt;span style="color:#0550ae">-&lt;/span>file https&lt;span style="color:#1f2328">:&lt;/span>&lt;span style="color:#0550ae">//&lt;/span>debian&lt;span style="color:#0550ae">.&lt;/span>sur5r&lt;span style="color:#0550ae">.&lt;/span>net&lt;span style="color:#0550ae">/&lt;/span>i3&lt;span style="color:#0550ae">/&lt;/span>pool&lt;span style="color:#0550ae">/&lt;/span>main&lt;span style="color:#0550ae">/&lt;/span>s&lt;span style="color:#0550ae">/&lt;/span>sur5r&lt;span style="color:#0550ae">-&lt;/span>keyring&lt;span style="color:#0550ae">/&lt;/span>sur5r&lt;span style="color:#0550ae">-&lt;/span>keyring_2021&lt;span style="color:#0550ae">.&lt;/span>&lt;span style="color:#0550ae">02.02&lt;/span>_all&lt;span style="color:#0550ae">.&lt;/span>deb keyring&lt;span style="color:#0550ae">.&lt;/span>deb SHA256&lt;span style="color:#1f2328">:&lt;/span>cccfb1dd7d6b1b6a137bb96ea5b5eef18a0a4a6df1d6c0c37832025d2edaa710
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo dpkg &lt;span style="color:#0550ae">-&lt;/span>i &lt;span style="color:#0550ae">./&lt;/span>keyring&lt;span style="color:#0550ae">.&lt;/span>deb
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo sh &lt;span style="color:#0550ae">-&lt;/span>c &lt;span style="color:#0a3069">&amp;#34;echo &amp;#34;&lt;/span>deb http&lt;span style="color:#1f2328">:&lt;/span>&lt;span style="color:#0550ae">//&lt;/span>debian&lt;span style="color:#0550ae">.&lt;/span>sur5r&lt;span style="color:#0550ae">.&lt;/span>net&lt;span style="color:#0550ae">/&lt;/span>i3&lt;span style="color:#0550ae">/&lt;/span> &lt;span style="color:#0550ae">$&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>grep &lt;span style="color:#0a3069">&amp;#39;^DISTRIB_CODENAME=&amp;#39;&lt;/span> &lt;span style="color:#0550ae">/&lt;/span>etc&lt;span style="color:#0550ae">/&lt;/span>lsb&lt;span style="color:#0550ae">-&lt;/span>release &lt;span style="color:#0550ae">|&lt;/span> cut &lt;span style="color:#0550ae">-&lt;/span>f2 &lt;span style="color:#0550ae">-&lt;/span>d&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> universe&lt;span style="color:#0a3069">&amp;#34; &amp;gt; /etc/apt/sources.list.d/sur5r-i3.list&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt update
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="安装tigervnc">安装tigervnc&lt;/h4>
+&lt;ol>
+&lt;li>安装&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt install tigervnc-standalone-server
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>启动&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>vncserver -SecurityTypes=None -localhost=no --I-KNOW-THIS-IS-INSECURE :1 -dpi 150 -geometry=1920x1080
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
+&lt;li>显示当前ip&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>ip addr | grep eth0
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="安装fehxfce4-terminalrofipolybar">安装feh、xfce4-terminal、rofi、polybar&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt install feh xfce4-terminal rofi polybar
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="安装picom">安装picom&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt install libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libpcre3-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev meson gcc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone https://github.com/yshui/picom.git --depth=1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd picom
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git submodule update --init --recursive
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>meson --buildtype=release . build
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ninja -C build
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ninja -C build install
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="安装google">安装google&lt;/h4>
+&lt;ol>
+&lt;li>下载安装包&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>安装&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt install ./google-chrome-stable_current_amd64.deb
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="加载字体">加载字体&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo mkfontscale
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo fc-cache -fv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="arch">ARCH&lt;/h2>
+&lt;h3 id="创建用户">创建用户&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>useradd -m -G wheel username
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># 请自行替换 username 为你的用户名
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>passwd username
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># 请自行替换 username 为你的用户名
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vim /etc/sudoers
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># 去掉# %wheel ALL=(ALL)ALL
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="设置默认用户">设置默认用户&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>./Arch.exe config --default-user booiris
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="换源-1">换源&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo pacman-key --init
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo pacman-key --populate archlinux
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo vim /etc/pacman.d/mirrorlist
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># 清华大学
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>## 163
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Server = http://mirrors.163.com/archlinux/$repo/os/$arch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>## aliyun
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cp /etc/pacman.conf /etc/pacman.conf.backup
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo vim /etc/pacman.conf
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[archlinuxcn]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># The Chinese Arch Linux communities packages.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># SigLevel = Optional TrustedOnly
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>SigLevel = Optional TrustAll
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># 清华大学
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo pacman -Syyu
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="yay">YAY&lt;/h3>
+&lt;ol>
+&lt;li>安装&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo pacman -S yay
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>换源&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>yay --aururl &amp;#34;https://aur.tuna.tsinghua.edu.cn&amp;#34; --save
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="安装软件-1">安装软件&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>yay -S base-devel
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yay -S i3 tigervnc sublime-text-4 google-chrome xfce4-terminal
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="tighervnc-配置">tighervnc 配置&lt;/h3>
+&lt;ol>
+&lt;li>用 &lt;code>vncpasswd&lt;/code> 创建密码，它会将哈希处理之后的密码存储在 &lt;code>~/.vnc/passwd&lt;/code>。&lt;/li>
+&lt;li>编辑 &lt;code>/etc/tigervnc/vncserver.users&lt;/code> 来定义用户映射&lt;/li>
+&lt;li>创建 &lt;code>~/.vnc/config&lt;/code>，其中至少要有一行定义会话的类型，比如 &lt;code>session=foo&lt;/code> （将foo替换为你想要运行的桌面环境）。你可以通过查看 &lt;code>/usr/share/xsessions/&lt;/code> 里的 &lt;code>.desktop&lt;/code> 文件来知道有哪些桌面环境在当前系统上可以使用。&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>session=i3
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>geometry=1920x1080
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>dpi=150
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alwaysshared
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="语言">语言&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo vim /etc/locale.gen
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo locale-gen
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="字体">字体&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>yay -S noto-fonts-emoji adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts nerd-fonts-jetbrains-mono ttf-iosevka-nerd ttf-material-icons-git papirus-icon-theme
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="桌面">桌面&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>yay -S polybar rofi feh picom xss-lock dbus-x11 google-chrome
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yay -S fcitx5-im fcitx5-chinese-addons 
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>创建&lt;code>.Xresources&lt;/code>&lt;/p></description></item><item><title>chapter 1</title><link>https://booiris.space/posts/csapp/chapter-1/</link><pubDate>Sun, 01 May 2022 23:30:18 +0000</pubDate><guid>https://booiris.space/posts/csapp/chapter-1/</guid><description>&lt;p>#todo&lt;/p>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> TODO: 没写完&lt;/li>
+&lt;/ul>
+&lt;h2 id="13">1.3&lt;/h2>
+&lt;h3 id="funny-question">funny question&lt;/h3>
+&lt;h4 id="optimize-problems">Optimize Problems&lt;/h4>
+&lt;ol>
+&lt;li>
+&lt;p>Is a switch statment always more efficient than a sequence of if-else statements?&lt;/p>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> q1
+answer:&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>
+&lt;p>How much overhead is incurred by a function call?&lt;/p>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> q2&lt;/li>
+&lt;/ul>
+&lt;p>answer:&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Is a while loop more efficient than a for loop?&lt;/p>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> q3&lt;/li>
+&lt;/ul>
+&lt;p>answer:&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Are pointer references more efficient than array indexes?&lt;/p>
+&lt;ul>
+&lt;li>&lt;input disabled="" type="checkbox"> q4&lt;/li>
+&lt;/ul>
+&lt;p>answer:&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Why does out loop run so much faster if we sum into a local variable instead of an argument that is passed by reference?&lt;/p></description></item></channel></rss>

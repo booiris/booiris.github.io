@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>记忆化搜索 on</title><link>https://booiris.space/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/</link><description>Recent content in 记忆化搜索 on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Tue, 10 May 2022 20:54:08 +0000</lastBuildDate><atom:link href="https://booiris.space/tags/%E8%AE%B0%E5%BF%86%E5%8C%96%E6%90%9C%E7%B4%A2/index.xml" rel="self" type="application/rss+xml"/><item><title>1728-Cat and Mouse II</title><link>https://booiris.space/wiki/leetcode/1728-cat-and-mouse-ii/</link><pubDate>Tue, 10 May 2022 20:54:08 +0000</pubDate><guid>https://booiris.space/wiki/leetcode/1728-cat-and-mouse-ii/</guid><description>&lt;h2 id="题意">题意&lt;/h2>
+&lt;p>A game is played by a cat and a mouse named Cat and Mouse.&lt;/p>
+&lt;p>The environment is represented by a grid of size rows x cols, where each element is a wall, floor, player (Cat, Mouse), or food.&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Players are represented by the characters &amp;lsquo;C&amp;rsquo;(Cat),&amp;lsquo;M&amp;rsquo;(Mouse).&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Floors are represented by the character &amp;lsquo;.&amp;rsquo; and can be walked on.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Walls are represented by the character &amp;lsquo;#&amp;rsquo; and cannot be walked on.&lt;/p></description></item></channel></rss>
