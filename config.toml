@@ -2,6 +2,7 @@ baseURL = "https://booiris.space"
 languageCode = "en-us"
 theme = "yinyang"
 DefaultContentLanguage = "cn"
+canonifyURLs = false
 
 [languages]
 
@@ -37,7 +38,6 @@ favicon = "/avatar.svg"
 lazyImage = true
 description = "Live long and prosper."
 
-# staticPrefix = "https://cdn.jsdelivr.net/gh/joway/blog"
 [[params.socials]]
 name = "About"
 link = "/about"
