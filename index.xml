@@ -2184,4 +2184,180 @@ answer:&lt;/li>
 &lt;p>answer:&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>Why does out loop run so much faster if we sum into a local variable instead of an argument that is passed by reference?&lt;/p></description></item><item><title/><link>https://booiris.space/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://booiris.space/about/</guid><description/></item></channel></rss>
+&lt;p>Why does out loop run so much faster if we sum into a local variable instead of an argument that is passed by reference?&lt;/p></description></item><item><title/><link>https://booiris.space/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://booiris.space/about/</guid><description/></item><item><title/><link>https://booiris.space/memos/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://booiris.space/memos/</guid><description>&lt;!DOCTYPE html>
+&lt;html lang="zh-CN">
+
+&lt;head>
+ &lt;meta charset="utf-8">
+ &lt;meta name="viewport" content="width=device-width, initial-scale=1">
+ &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/versions/bulma-no-dark-mode.min.css">
+ &lt;link rel="stylesheet" href="https://booiris.space/css/index.min.css">
+ &lt;link rel="stylesheet" href="https://booiris.space/css/flexboxgrid-6.3.1.min.min.css">
+ &lt;script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"
+ type="application/javascript">&lt;/script>
+ &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
+ &lt;script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" type="application/javascript">&lt;/script>
+ &lt;style>
+ .markdown-content p {
+ margin-bottom: 1em;
+ }
+
+ .markdown-content pre {
+ background-color: #f5f5f5;
+ padding: 1em;
+ border-radius: 4px;
+ overflow-x: auto;
+ }
+
+ .markdown-content code {
+ background-color: #f5f5f5;
+ padding: 0.2em 0.4em;
+ border-radius: 3px;
+ }
+
+ .markdown-content blockquote {
+ border-left: 4px solid #dbdbdb;
+ padding-left: 1em;
+ color: #474747;
+ }
+
+ .thumbnail-img {
+ max-width: 200px;
+ max-height: 200px;
+ }
+ &lt;/style>
+&lt;/head>
+
+&lt;body>
+ &lt;div id="memos-container">
+ &lt;/div>
+
+ &lt;div class="modal" id="error-modal">
+ &lt;div class="modal-background">&lt;/div>
+ &lt;div class="modal-content">
+ &lt;div class="notification is-danger">
+ &lt;button class="delete" aria-label="close">&lt;/button>
+ &lt;p id="error-message" style="margin-bottom: 0px;">get memos failed&lt;/p>
+ &lt;/div>
+ &lt;/div>
+ &lt;/div>
+
+ &lt;script>
+ const host = 'booirisapi.asia:8443';
+ const errorModal = document.getElementById('error-modal');
+ const errorMessage = document.getElementById('error-message');
+ let nextPageToken = '';
+ let isLoading = false;
+
+ document.querySelector('.modal .delete').addEventListener('click', () => {
+ errorModal.classList.remove('is-active');
+ });
+
+ document.querySelector('.modal-background').addEventListener('click', () => {
+ errorModal.classList.remove('is-active');
+ });
+
+ async function fetchMemos(isLoadMore = false) {
+ if (isLoading) return;
+ isLoading = true;
+
+ try {
+ const url = new URL(`https://${host}/api/v1/memos`);
+ url.searchParams.append('pageSize', '10');
+ if (isLoadMore &amp;&amp; nextPageToken) {
+ url.searchParams.append('pageToken', nextPageToken);
+ }
+
+ const response = await fetch(url, {
+ headers: {
+ 'Referer': 'booiris.space'
+ }
+ });
+ const data = await response.json();
+ nextPageToken = data.nextPageToken || '';
+ displayMemos(data, isLoadMore);
+ } catch (error) {
+ errorModal.classList.add('is-active');
+ } finally {
+ isLoading = false;
+ }
+ }
+
+ function displayMemos(data, isLoadMore = false) {
+ const container = document.getElementById('memos-container');
+ if (data &amp;&amp; data.memos) {
+ if (!isLoadMore) {
+ container.innerHTML = '';
+ }
+ data.memos.forEach(memo => {
+ const memoBox = document.createElement('div');
+ memoBox.className = 'box';
+ memoBox.style.boxShadow = 'none';
+ memoBox.style.border = '3px solid #0A0A0A';
+ memoBox.style.marginBottom = '1rem';
+
+ const content = document.createElement('div');
+ content.className = 'markdown-content';
+ content.innerHTML = marked.parse(memo.content);
+
+ var imgs = [];
+ for (let res of memo.resources) {
+ if (res.type?.includes('image/')) {
+ imgs.push(res);
+ }
+ }
+ var cell = '';
+ if (imgs.length > 0) {
+ for (let img of imgs) {
+ if (img.externalLink?.length > 0) {
+ cell += `&lt;a href="${img.externalLink}" data-fancybox>&lt;img class="thumbnail-img" src="${img.externalLink}">&lt;/a>`;
+ } else {
+ const fullUrl = `https://${host}/file/${img.name}/${img.filename}`;
+ cell += `&lt;a href="${fullUrl}" data-fancybox>&lt;img class="thumbnail-img" src="${fullUrl}?thumbnail=1">&lt;/a>`;
+ }
+ }
+ }
+ const img = document.createElement('div');
+ img.className = 'grid is-gap-1';
+ img.innerHTML = cell;
+
+ const time = document.createElement('p');
+ time.className = 'is-size-6 has-text-grey';
+ time.style.marginBottom = '0';
+ time.style.marginTop = '10px';
+ time.textContent = new Date(memo.displayTime).toLocaleString('zh-CN', {
+ year: 'numeric',
+ month: '2-digit',
+ day: '2-digit',
+ hour: '2-digit',
+ minute: '2-digit',
+ second: '2-digit',
+ hour12: false
+ });
+
+ memoBox.appendChild(content);
+ memoBox.appendChild(img);
+ memoBox.appendChild(time);
+ container.appendChild(memoBox);
+ });
+ }
+ }
+
+ Fancybox.bind("[data-fancybox]", {
+ });
+
+ document.addEventListener('DOMContentLoaded', () => {
+ fetchMemos();
+
+ window.addEventListener('scroll', () => {
+ if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 400) {
+ if (nextPageToken) {
+ fetchMemos(true);
+ }
+ }
+ });
+ });
+ &lt;/script>
+&lt;/body>
+
+&lt;/html></description></item></channel></rss>
