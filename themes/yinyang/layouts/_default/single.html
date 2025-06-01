@@ -53,7 +53,7 @@
             {{ range $allCategories | uniq }}
             <div class="post-tags">
               <a href="{{ site.LanguagePrefix }}/categories/{{ lower . | urlize }}/">
-                {{ . }}
+                {{ printf "/%s" . }}
               </a>
             </div>
             {{ end }}
