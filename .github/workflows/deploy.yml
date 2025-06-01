@@ -1,0 +1,55 @@
+name: HUGO_DEPLOY
+
+on:
+  push:
+    branches:
+      - hugo
+
+env:
+  POST_ASSET_IMAGE_CDN: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Clone theme
+        run: git clone git@github.com:booiris/hugo-theme-yinyang.git themes/yinyang --depth 1
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+          extended: true
+
+      - name: Setup SSH
+        env:
+          ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_SECRET }}
+        run: |
+          sudo timedatectl set-timezone "Asia/Shanghai"
+          mkdir -p ~/.ssh/
+          echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.email "booiris02@gmail.com"
+          git config --global user.name "booiris"
+
+      - name: Build Hugo site
+        run: |
+          hugo --minify
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+
+      - name: Update sitemap
+        run: |
+          curl http://www.google.com/ping?sitemap=https://booiris.space/sitemap.xml

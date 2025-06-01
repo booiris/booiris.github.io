@@ -1,0 +1,56 @@
+baseURL = "https://booiris.space"
+languageCode = "en-us"
+theme = "yinyang"
+DefaultContentLanguage = "cn"
+
+[languages]
+
+# [languages.en]
+#   contentDir = "content/en"
+#   languageName = "English"
+#   weight = 1
+[languages.cn]
+contentDir = "content"
+languageName = "简体中文"
+weight = 2
+
+[markup]
+
+[markup.goldmark]
+
+[markup.goldmark.renderer]
+unsafe = true
+
+[markup.highlight]
+guessSyntax = true
+style = "github"
+tabWidth = 2
+
+[author]
+name = "Booiris"
+homepage = "https://booiris.space"
+
+[params]
+headTitle = "HELLO WORLD"
+mainSections = ["posts"]
+favicon = "/avatar.svg"
+lazyImage = true
+description = "Live long and prosper."
+
+# staticPrefix = "https://cdn.jsdelivr.net/gh/joway/blog"
+[[params.socials]]
+name = "About"
+link = "/about"
+
+[[params.socials]]
+name = "Github"
+link = "https://github.com/booiris"
+# [[params.socials]]
+# name = "Memos"
+# link = ""
+# [[params.socials]]
+# name = "Game"
+# link = ""
+# [[params.socials]]
+# name = "Picture"
+# link = ""
