@@ -1,16 +1,14 @@
 {{ $curLanguageName := .Site.Language.LanguageName }}
 <header>
   <div class="header-title">
-    <a href="{{ .Site.LanguagePrefix }}/"
-      >{{ or .Site.Params.headTitle .Site.Params.Author.name }}</a
-    >
+    <a href="{{ .Site.LanguagePrefix }}/">{{ or .Site.Params.headTitle .Site.Params.Author.name }}</a>
   </div>
   <div class="header-subtitle">{{ .Site.Params.Description }}</div>
 </header>
 <div class="row end-md header-items">
   {{ range .Site.Params.socials }}
   <div class="header-item">
-    <a href="{{ .link }}">{{ .name }}</a>
+    <a href="{{ .link }}" {{ if eq .blank true }}target="_blank" {{ end }}>{{ .name }}</a>
   </div>
   {{ end }}
 </div>

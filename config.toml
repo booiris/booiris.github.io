@@ -45,6 +45,7 @@ link = "/about"
 [[params.socials]]
 name = "Github"
 link = "https://github.com/booiris"
+blank = true
 
 [[params.socials]]
 name = "Memos"
