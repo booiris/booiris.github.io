@@ -2268,11 +2268,7 @@ answer:&lt;/li>
  url.searchParams.append('pageToken', nextPageToken);
  }
 
- const response = await fetch(url, {
- headers: {
- 'Referer': 'booiris.space'
- }
- });
+ const response = await fetch(url);
  const data = await response.json();
  nextPageToken = data.nextPageToken || '';
  displayMemos(data, isLoadMore);
