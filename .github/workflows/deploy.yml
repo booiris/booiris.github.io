@@ -40,6 +40,12 @@ jobs:
         run: |
           hugo --minify
 
+      - name: replace doc tag
+        run: |
+          find content/posts -type f -exec grep -l "published:" {} \; | while read file; do
+            sed -i 's/published: true/draft: false/g' "$file"
+          done
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
