@@ -2233,6 +2233,30 @@ answer:&lt;/li>
  max-width: 200px;
  max-height: 200px;
  }
+
+ .loading-spinner {
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ width: 50px;
+ height: 50px;
+ border: 5px solid #f3f3f3;
+ border-top: 5px solid #0A0A0A;
+ border-radius: 50%;
+ animation: spin 1s linear infinite;
+ display: none;
+ }
+
+ @keyframes spin {
+ 0% {
+ transform: translate(-50%, -50%) rotate(0deg);
+ }
+
+ 100% {
+ transform: translate(-50%, -50%) rotate(360deg);
+ }
+ }
  &lt;/style>
 &lt;/head>
 
@@ -2240,129 +2264,11 @@ answer:&lt;/li>
  &lt;div id="memos-container">
  &lt;/div>
 
+ &lt;div class="loading-spinner" id="loading-spinner">&lt;/div>
+
  &lt;div class="modal" id="error-modal">
  &lt;div class="modal-background">&lt;/div>
  &lt;div class="modal-content">
  &lt;div class="notification is-danger">
  &lt;button class="delete" aria-label="close">&lt;/button>
- &lt;p id="error-message" style="margin-bottom: 0px;">get memos failed&lt;/p>
- &lt;/div>
- &lt;/div>
- &lt;/div>
-
- &lt;script>
- const host = 'booirisapi.asia:8443';
- const errorModal = document.getElementById('error-modal');
- const errorMessage = document.getElementById('error-message');
- let nextPageToken = '';
- let isLoading = false;
-
- document.querySelector('.modal .delete').addEventListener('click', () => {
- errorModal.classList.remove('is-active');
- });
-
- document.querySelector('.modal-background').addEventListener('click', () => {
- errorModal.classList.remove('is-active');
- });
-
- async function fetchMemos(isLoadMore = false) {
- if (isLoading) return;
- isLoading = true;
-
- try {
- const url = new URL(`https://${host}/api/v1/memos`);
- url.searchParams.append('pageSize', '5');
- if (isLoadMore &amp;&amp; nextPageToken) {
- url.searchParams.append('pageToken', nextPageToken);
- }
-
- const response = await fetch(url, {
- mode: 'cors'
- });
- const data = await response.json();
- nextPageToken = data.nextPageToken || '';
- displayMemos(data, isLoadMore);
- } catch (error) {
- errorModal.classList.add('is-active');
- } finally {
- isLoading = false;
- }
- }
-
- function displayMemos(data, isLoadMore = false) {
- const container = document.getElementById('memos-container');
- if (data &amp;&amp; data.memos) {
- if (!isLoadMore) {
- container.innerHTML = '';
- }
- data.memos.forEach(memo => {
- const memoBox = document.createElement('div');
- memoBox.className = 'box';
- memoBox.style.boxShadow = 'none';
- memoBox.style.border = '3px solid #0A0A0A';
- memoBox.style.marginBottom = '1rem';
-
- const content = document.createElement('div');
- content.className = 'markdown-content';
- content.innerHTML = marked.parse(memo.content);
-
- var imgs = [];
- for (let res of memo.resources) {
- if (res.type?.includes('image/')) {
- imgs.push(res);
- }
- }
- var cell = '';
- if (imgs.length > 0) {
- for (let img of imgs) {
- if (img.externalLink?.length > 0) {
- cell += `&lt;a href="${img.externalLink}" data-fancybox>&lt;img class="thumbnail-img" src="${img.externalLink}">&lt;/a>`;
- } else {
- const fullUrl = `https://${host}/file/${img.name}/${img.filename}`;
- cell += `&lt;a href="${fullUrl}" data-fancybox>&lt;img class="thumbnail-img" src="${fullUrl}?thumbnail=1">&lt;/a>`;
- }
- }
- }
- const img = document.createElement('div');
- img.className = 'grid is-gap-1';
- img.innerHTML = cell;
-
- const time = document.createElement('p');
- time.className = 'is-size-6 has-text-grey';
- time.style.marginBottom = '0';
- time.textContent = new Date(memo.displayTime).toLocaleString('zh-CN', {
- year: 'numeric',
- month: '2-digit',
- day: '2-digit',
- hour: '2-digit',
- minute: '2-digit',
- second: '2-digit',
- hour12: false
- });
-
- memoBox.appendChild(content);
- memoBox.appendChild(img);
- memoBox.appendChild(time);
- container.appendChild(memoBox);
- });
- }
- }
-
- Fancybox.bind("[data-fancybox]", {
- });
-
- document.addEventListener('DOMContentLoaded', () => {
- fetchMemos();
-
- window.addEventListener('scroll', () => {
- if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 700) {
- if (nextPageToken) {
- fetchMemos(true);
- }
- }
- });
- });
- &lt;/script>
-&lt;/body>
-
-&lt;/html></description></item></channel></rss>
+ &lt;p id="error-message" style="margin-bottom: 0px;">get memos failed&lt;/p></description></item></channel></rss>
