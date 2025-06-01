@@ -306,7 +306,7 @@ a:hover {
 
 code {
   font-family: "Fira Mono", sans-serif;
-  font-size: 14px;
+  font-size: 16px !important;
 }
 
 pre {
