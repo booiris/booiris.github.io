@@ -2322,7 +2322,6 @@ answer:&lt;/li>
  const time = document.createElement('p');
  time.className = 'is-size-6 has-text-grey';
  time.style.marginBottom = '0';
- time.style.marginTop = '10px';
  time.textContent = new Date(memo.displayTime).toLocaleString('zh-CN', {
  year: 'numeric',
  month: '2-digit',
