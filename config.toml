@@ -39,6 +39,10 @@ lazyImage = true
 description = "Live long and prosper."
 
 [[params.socials]]
+name = "Home"
+link = "/"
+
+[[params.socials]]
 name = "About"
 link = "/about"
 
