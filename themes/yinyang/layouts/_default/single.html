@@ -15,7 +15,7 @@
           <div class="row post-desc">
             <div class="col-xs-6">
               {{ if .Date }}
-              <time class="post-date" datetime="{{ .Date.Format "2006-01-02 15:04:05 MST" }}">
+              <time class="post-date" datetime="{{ .Date.Format " 2006-01-02 15:04:05 MST" }}">
                 {{ .Date.Format "02 Jan 2006" }}
               </time>
               {{ end }}
@@ -38,7 +38,26 @@
 
         <div class="row middle-xs">
           <div class="col-xs-12">
-            {{ range .Params.tags }}
+            {{ $allTags := slice }}
+            {{ $allCategories := slice }}
+            {{ if .Params.categories }}
+            {{ if reflect.IsSlice .Params.categories }}
+            {{ $allCategories = .Params.categories }}
+            {{ else }}
+            {{ $allCategories = slice .Params.categories }}
+            {{ end }}
+            {{ end }}
+            {{ if .Params.tags }}
+            {{ $allTags = .Params.tags }}
+            {{ end }}
+            {{ range $allCategories | uniq }}
+            <div class="post-tags">
+              <a href="{{ site.LanguagePrefix }}/categories/{{ lower . | urlize }}/">
+                {{ . }}
+              </a>
+            </div>
+            {{ end }}
+            {{ range $allTags | uniq }}
             <div class="post-tags">
               <a href="{{ site.LanguagePrefix }}/tags/{{ lower . | urlize }}/">
                 {{ . }}
@@ -48,24 +67,24 @@
           </div>
         </div>
         {{ if in .Site.Params.mainSections .Type }}
-          <div class="row">
-            <div class="col-xs-12">
-              {{ .Site.Params.postFooterContent | safeHTML }}
-            </div>
+        <div class="row">
+          <div class="col-xs-12">
+            {{ .Site.Params.postFooterContent | safeHTML }}
           </div>
+        </div>
 
-          {{ partial "related.html" . }}
+        {{ partial "related.html" . }}
 
-          {{ if .Site.Params.postAds }}
-          <div class="post-ads">{{ .Site.Params.postAds | safeHTML }}</div>
-          {{ end }}
-          <!-- split -->
-          <div style="height: 50px;"></div>
-          {{ if .Site.Params.disqus }}
-          <div class="post-comments">
-            {{ partial "disqus.html" . }}
-          </div>
-          {{ end }}
+        {{ if .Site.Params.postAds }}
+        <div class="post-ads">{{ .Site.Params.postAds | safeHTML }}</div>
+        {{ end }}
+        <!-- split -->
+        <div style="height: 50px;"></div>
+        {{ if .Site.Params.disqus }}
+        <div class="post-comments">
+          {{ partial "disqus.html" . }}
+        </div>
+        {{ end }}
         {{ end }}
 
         {{ partial "footer.html" . }}
