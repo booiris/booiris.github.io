@@ -2263,7 +2263,7 @@ answer:&lt;/li>
 
  try {
  const url = new URL(`https://${host}/api/v1/memos`);
- url.searchParams.append('pageSize', '10');
+ url.searchParams.append('pageSize', '5');
  if (isLoadMore &amp;&amp; nextPageToken) {
  url.searchParams.append('pageToken', nextPageToken);
  }
