@@ -37,7 +37,7 @@ jobs:
           git config --global user.name "booiris"
 
       - name: Clone theme
-        run: git clone git@github.com:joway/hugo-theme-yinyang.git themes/yinyang --depth 1
+        run: git clone git@github.com:booiris/hugo-theme-yinyang.git themes/yinyang --depth 1
 
       - name: Build Hugo site
         run: |
