@@ -76,15 +76,15 @@
             isLoading = true;
 
             try {
-                const url = new URL(`https://${host}/api/v1/memos`, {
-                    mode: 'cors'
-                });
+                const url = new URL(`https://${host}/api/v1/memos`);
                 url.searchParams.append('pageSize', '10');
                 if (isLoadMore && nextPageToken) {
                     url.searchParams.append('pageToken', nextPageToken);
                 }
 
-                const response = await fetch(url);
+                const response = await fetch(url, {
+                    mode: 'cors'
+                });
                 const data = await response.json();
                 nextPageToken = data.nextPageToken || '';
                 displayMemos(data, isLoadMore);
