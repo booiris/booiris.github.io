@@ -76,7 +76,9 @@
             isLoading = true;
 
             try {
-                const url = new URL(`https://${host}/api/v1/memos`);
+                const url = new URL(`https://${host}/api/v1/memos`, {
+                    mode: 'cors'
+                });
                 url.searchParams.append('pageSize', '10');
                 if (isLoadMore && nextPageToken) {
                     url.searchParams.append('pageToken', nextPageToken);
