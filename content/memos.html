@@ -39,12 +39,38 @@
             max-width: 200px;
             max-height: 200px;
         }
+
+        .loading-spinner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #0A0A0A;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="memos-container">
     </div>
+
+    <div class="loading-spinner" id="loading-spinner"></div>
 
     <div class="modal" id="error-modal">
         <div class="modal-background"></div>
@@ -75,6 +101,11 @@
             if (isLoading) return;
             isLoading = true;
 
+            const loadingSpinner = document.getElementById('loading-spinner');
+            if (!isLoadMore) {
+                loadingSpinner.style.display = 'block';
+            }
+
             try {
                 const url = new URL(`https://${host}/api/v1/memos`);
                 url.searchParams.append('pageSize', '5');
@@ -92,6 +123,7 @@
                 errorModal.classList.add('is-active');
             } finally {
                 isLoading = false;
+                loadingSpinner.style.display = 'none';
             }
         }
 
