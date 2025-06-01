@@ -1,18 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on</title><link>https://booiris.space/categories/linux/</link><description>Recent content in Linux on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Sat, 20 Aug 2022 15:12:49 +0000</lastBuildDate><atom:link href="https://booiris.space/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>杂记</title><link>https://booiris.space/posts/linux/%E6%9D%82%E8%AE%B0/</link><pubDate>Sat, 20 Aug 2022 15:12:49 +0000</pubDate><guid>https://booiris.space/posts/linux/%E6%9D%82%E8%AE%B0/</guid><description>&lt;h2 id="2022-08-20">[[2022-08-20]]&lt;/h2>
-&lt;p>我们建立ssh隧道的时候，往往是想通过一台公网的主机或者是大家都可以访问的主机做跳转机，来访问内部或者外部不能直接访问的机器。所以一般像这种情况下，请将跳转机中的ssh服务器中的&lt;code>GatewayPorts&lt;/code>设为yes。&lt;/p>
-&lt;p>端口转发时参数为 &lt;code>-NfR&lt;/code>&lt;/p>
-&lt;h2 id="2022-08-30">[[2022-08-30]]&lt;/h2>
-&lt;p>docker运行systemctl&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker run -d --name desk -p 2222:22 -v /home/booiris:/home/booiris --hostname vm-host --env &lt;span style="color:#953800">container&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>docker --privileged archlinux /sbin/init
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="2022-10-08">[[2022-10-08]]&lt;/h2>
-&lt;p>@ + 时间 == today&lt;/p>
-&lt;p>rust partition_point(|x| x &amp;lt; &amp;amp;s) 函数 lower_bound upper_bound 在位置左边的为满足表达式的值，右边为不满足表达式的值。&lt;/p>
-&lt;p>[[2022-12-25]]&lt;/p>
-&lt;p>灵感：&lt;/p>
-&lt;ol>
-&lt;li>卡牌拓印场景中的元素&lt;/li>
-&lt;li>控制人物会有影响&lt;/li>
-&lt;/ol></description></item><item><title>linux自启动服务</title><link>https://booiris.space/posts/linux/linux%E8%87%AA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/</link><pubDate>Sat, 20 Aug 2022 14:29:28 +0000</pubDate><guid>https://booiris.space/posts/linux/linux%E8%87%AA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/</guid><description>&lt;p>自启动文件放在 &lt;code>/usr/lib/systemd/system&lt;/code>&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on</title><link>https://booiris.space/categories/linux/</link><description>Recent content in Linux on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Sat, 20 Aug 2022 14:29:28 +0000</lastBuildDate><atom:link href="https://booiris.space/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>linux自启动服务</title><link>https://booiris.space/posts/linux/linux%E8%87%AA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/</link><pubDate>Sat, 20 Aug 2022 14:29:28 +0000</pubDate><guid>https://booiris.space/posts/linux/linux%E8%87%AA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/</guid><description>&lt;p>自启动文件放在 &lt;code>/usr/lib/systemd/system&lt;/code>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">[&lt;/span>Unit&lt;span style="color:#0550ae">]&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">Description&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>code-server
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
