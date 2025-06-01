@@ -162,7 +162,7 @@
             fetchMemos();
 
             window.addEventListener('scroll', () => {
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 400) {
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 700) {
                     if (nextPageToken) {
                         fetchMemos(true);
                     }
