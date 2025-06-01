@@ -37,7 +37,6 @@ favicon = "/avatar.svg"
 lazyImage = true
 description = "Live long and prosper."
 
-
 # staticPrefix = "https://cdn.jsdelivr.net/gh/joway/blog"
 [[params.socials]]
 name = "About"
