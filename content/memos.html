@@ -54,17 +54,6 @@
             display: none;
         }
 
-        .bottom-loading-spinner {
-            width: 30px;
-            height: 30px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #0A0A0A;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            display: none;
-            margin: 20px auto;
-        }
-
         @keyframes spin {
             0% {
                 transform: translate(-50%, -50%) rotate(0deg);
@@ -82,7 +71,6 @@
     </div>
 
     <div class="loading-spinner" id="loading-spinner"></div>
-    <div class="bottom-loading-spinner" id="bottom-loading-spinner"></div>
 
     <div class="modal" id="error-modal">
         <div class="modal-background"></div>
@@ -95,7 +83,7 @@
     </div>
 
     <script>
-        const host = 'booirisapi.asia:8443';
+        const host = 'cdn.jsdelivr.net/gh/booiris/blog_memos';
         const errorModal = document.getElementById('error-modal');
         const errorMessage = document.getElementById('error-message');
         let nextPageToken = '';
@@ -109,47 +97,32 @@
             errorModal.classList.remove('is-active');
         });
 
-        async function fetchMemos(isLoadMore = false) {
+        async function fetchMemos() {
             if (isLoading) return;
             isLoading = true;
 
             const loadingSpinner = document.getElementById('loading-spinner');
-            const bottomLoadingSpinner = document.getElementById('bottom-loading-spinner');
-            if (!isLoadMore) {
-                loadingSpinner.style.display = 'block';
-            } else {
-                bottomLoadingSpinner.style.display = 'block';
-            }
+            loadingSpinner.style.display = 'block';
 
             try {
-                const url = new URL(`https://${host}/api/v1/memos`);
-                url.searchParams.append('pageSize', '5');
-                if (isLoadMore && nextPageToken) {
-                    url.searchParams.append('pageToken', nextPageToken);
-                }
-
+                const url = new URL(`https://${host}/memos.json`);
                 const response = await fetch(url, {
                     mode: 'cors'
                 });
                 const data = await response.json();
-                nextPageToken = data.nextPageToken || '';
-                displayMemos(data, isLoadMore);
+                displayMemos(data);
             } catch (error) {
                 errorModal.classList.add('is-active');
             } finally {
                 isLoading = false;
                 loadingSpinner.style.display = 'none';
-                bottomLoadingSpinner.style.display = 'none';
             }
         }
 
-        function displayMemos(data, isLoadMore = false) {
+        function displayMemos(data) {
             const container = document.getElementById('memos-container');
-            if (data && data.memos) {
-                if (!isLoadMore) {
-                    container.innerHTML = '';
-                }
-                data.memos.forEach(memo => {
+            if (data) {
+                data.forEach(memo => {
                     const memoBox = document.createElement('div');
                     memoBox.className = 'box';
                     memoBox.style.boxShadow = 'none';
@@ -170,10 +143,11 @@
                     if (imgs.length > 0) {
                         for (let img of imgs) {
                             if (img.externalLink?.length > 0) {
-                                cell += `<a href="${img.externalLink}" data-fancybox><img class="thumbnail-img" src="${img.externalLink}"></a>`;
+                                cell += `<a href="${img.externalLink}" data-fancybox><img class="thumbnail-img" src="${img.externalLink}" loading="lazy"></a>`;
                             } else {
                                 const fullUrl = `https://${host}/file/${img.name}/${img.filename}`;
-                                cell += `<a href="${fullUrl}" data-fancybox><img class="thumbnail-img" src="${fullUrl}?thumbnail=1"></a>`;
+                                const thumbnailUrl = `https://${host}/file/${img.name}/thumbnail_${img.filename}`;
+                                cell += `<a href="${fullUrl}" data-fancybox><img class="thumbnail-img" src="${thumbnailUrl}" loading="lazy"></a>`;
                             }
                         }
                     }
@@ -207,14 +181,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             fetchMemos();
-
-            window.addEventListener('scroll', () => {
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 700) {
-                    if (nextPageToken) {
-                        fetchMemos(true);
-                    }
-                }
-            });
         });
     </script>
 </body>
