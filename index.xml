@@ -2248,17 +2248,6 @@ answer:&lt;/li>
  display: none;
  }
 
- .bottom-loading-spinner {
- width: 30px;
- height: 30px;
- border: 3px solid #f3f3f3;
- border-top: 3px solid #0A0A0A;
- border-radius: 50%;
- animation: spin 1s linear infinite;
- display: none;
- margin: 20px auto;
- }
-
  @keyframes spin {
  0% {
  transform: translate(-50%, -50%) rotate(0deg);
@@ -2276,7 +2265,6 @@ answer:&lt;/li>
  &lt;/div>
 
  &lt;div class="loading-spinner" id="loading-spinner">&lt;/div>
- &lt;div class="bottom-loading-spinner" id="bottom-loading-spinner">&lt;/div>
 
  &lt;div class="modal" id="error-modal">
  &lt;div class="modal-background">&lt;/div>
