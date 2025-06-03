@@ -83,7 +83,7 @@
     </div>
 
     <script>
-        const host = 'cdn.jsdelivr.net/gh/booiris/blog_memos@master';
+        const host = 'cdn.jsdelivr.net/gh/booiris/blog_memos';
         const errorModal = document.getElementById('error-modal');
         const errorMessage = document.getElementById('error-message');
         let nextPageToken = '';
@@ -105,7 +105,7 @@
             loadingSpinner.style.display = 'block';
 
             try {
-                const url = new URL(`https://${host}/memos.json`);
+                const url = new URL(`https://${host}@master/memos.json`);
                 const response = await fetch(url, {
                     mode: 'cors'
                 });
