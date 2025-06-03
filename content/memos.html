@@ -143,11 +143,11 @@
                     if (imgs.length > 0) {
                         for (let img of imgs) {
                             if (img.externalLink?.length > 0) {
-                                cell += `<a href="${img.externalLink}" data-fancybox><img class="thumbnail-img" src="${img.externalLink}" loading="lazy"></a>`;
+                                cell += `<a href="${img.externalLink}" data-fancybox><img class="thumbnail-img" src="${img.externalLink} "loading="lazy"></a>`;
                             } else {
                                 const fullUrl = `https://${host}/file/${img.name}/${img.filename}`;
                                 const thumbnailUrl = `https://${host}/file/${img.name}/thumbnail_${img.filename}`;
-                                cell += `<a href="${fullUrl}" data-fancybox><img class="thumbnail-img" src="${thumbnailUrl}" loading="lazy"></a>`;
+                                cell += `<a href="${fullUrl}" data-fancybox><img class="thumbnail-img" src="${thumbnailUrl} "loading="lazy"></a>`;
                             }
                         }
                     }
