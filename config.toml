@@ -32,7 +32,7 @@ name = "Booiris"
 homepage = "https://booiris.space"
 
 [params]
-headTitle = "HELLO WORLD"
+headTitle = "KEEP SEEKING"
 mainSections = ["posts"]
 favicon = "/avatar.svg"
 lazyImage = true
