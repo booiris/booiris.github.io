@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hash on</title><link>https://booiris.space/tags/hash/</link><description>Recent content in Hash on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Fri, 13 Oct 2023 13:36:05 +0000</lastBuildDate><atom:link href="https://booiris.space/tags/hash/index.xml" rel="self" type="application/rss+xml"/><item><title>SipHash</title><link>https://booiris.space/posts/blog/siphash/</link><pubDate>Fri, 13 Oct 2023 13:36:05 +0000</pubDate><guid>https://booiris.space/posts/blog/siphash/</guid><description>&lt;blockquote>
-&lt;p>论文 &lt;a href="https://eprint.iacr.org/2012/351.pdf">eprint.iacr.org/2012/351.pdf&lt;/a>&lt;/p>&lt;/blockquote>
-&lt;blockquote>
-&lt;p>代码位置 &lt;a href="https://github.com/rust-lang/rust/blob/1.72.0/library/core/src/hash/sip.rs">library/core/src/hash/sip.rs&lt;/a>&lt;/p>&lt;/blockquote>
-&lt;p>SipHash 是一类针对短消息设计的伪随机函数族，相较于其他的哈希函数有在短消息上性能高、由于随机输入的存在难以构造&lt;a href="../todo/todo.md">哈希 dos 攻击&lt;/a>的优点，是 rust 、python 的内置哈希函数实现。&lt;/p>
-&lt;h2 id="实现">实现&lt;/h2>
-&lt;p>对于 SipHash-c-d 函数族，输入为一个 128 bit 的 &lt;code>k&lt;/code> 和 可为空的输入 &lt;code>m&lt;/code>，输出为一个 64 位长度的 &lt;code>SipHash-c-d(k,m)&lt;/code>。其中 &lt;code>c&lt;/code> 为 &amp;ldquo;compression rounds&amp;rdquo; 的次数， &lt;code>d&lt;/code> 为 &amp;ldquo;finalization rounds&amp;rdquo; 的次数，&amp;ldquo;compression rounds&amp;rdquo; 和 &amp;ldquo;finalization rounds&amp;rdquo; 在之后中有说明具体的实现步骤。&lt;/p>
-&lt;h3 id="初始化">初始化&lt;/h3>
-&lt;p>首先使用 &lt;code>k0&lt;/code>、&lt;code>k1&lt;/code> 初始化四个值 &lt;code>v0&lt;/code> 、&lt;code>v1&lt;/code> 、&lt;code>v2&lt;/code> 、&lt;code>v3&lt;/code>，其中 &lt;code>k0&lt;/code>、&lt;code>k1&lt;/code> 为 输入 &lt;code>k&lt;/code> 的 64 位的小端编码 (也就是两个 u64 值 &lt;code>k0&lt;/code> 、&lt;code>k1&lt;/code> 组成了 &lt;code>k&lt;/code> )。&lt;/p>
-&lt;p>对于其中的常量，论文的选取解释为:&lt;/p>
-&lt;blockquote>
-&lt;p>The initial state constant corresponds to the ASCII string &amp;ldquo;somepseudorandomlygeneratedbytes&amp;rdquo;, big-endian encoded.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Hash on</title><link>https://booiris.space/tags/hash/</link><description>Recent content in Hash on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Fri, 13 Oct 2023 13:36:05 +0000</lastBuildDate><atom:link href="https://booiris.space/tags/hash/index.xml" rel="self" type="application/rss+xml"/><item><title>SipHash</title><link>https://booiris.space/posts/blog/siphash/</link><pubDate>Fri, 13 Oct 2023 13:36:05 +0000</pubDate><guid>https://booiris.space/posts/blog/siphash/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;论文 &lt;a href="https://eprint.iacr.org/2012/351.pdf"&gt;eprint.iacr.org/2012/351.pdf&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;代码位置 &lt;a href="https://github.com/rust-lang/rust/blob/1.72.0/library/core/src/hash/sip.rs"&gt;library/core/src/hash/sip.rs&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;SipHash 是一类针对短消息设计的伪随机函数族，相较于其他的哈希函数有在短消息上性能高、由于随机输入的存在难以构造&lt;a href="../todo/todo.md"&gt;哈希 dos 攻击&lt;/a&gt;的优点，是 rust 、python 的内置哈希函数实现。&lt;/p&gt;
+&lt;h2 id="实现"&gt;实现&lt;/h2&gt;
+&lt;p&gt;对于 SipHash-c-d 函数族，输入为一个 128 bit 的 &lt;code&gt;k&lt;/code&gt; 和 可为空的输入 &lt;code&gt;m&lt;/code&gt;，输出为一个 64 位长度的 &lt;code&gt;SipHash-c-d(k,m)&lt;/code&gt;。其中 &lt;code&gt;c&lt;/code&gt; 为 &amp;ldquo;compression rounds&amp;rdquo; 的次数， &lt;code&gt;d&lt;/code&gt; 为 &amp;ldquo;finalization rounds&amp;rdquo; 的次数，&amp;ldquo;compression rounds&amp;rdquo; 和 &amp;ldquo;finalization rounds&amp;rdquo; 在之后中有说明具体的实现步骤。&lt;/p&gt;
+&lt;h3 id="初始化"&gt;初始化&lt;/h3&gt;
+&lt;p&gt;首先使用 &lt;code&gt;k0&lt;/code&gt;、&lt;code&gt;k1&lt;/code&gt; 初始化四个值 &lt;code&gt;v0&lt;/code&gt; 、&lt;code&gt;v1&lt;/code&gt; 、&lt;code&gt;v2&lt;/code&gt; 、&lt;code&gt;v3&lt;/code&gt;，其中 &lt;code&gt;k0&lt;/code&gt;、&lt;code&gt;k1&lt;/code&gt; 为 输入 &lt;code&gt;k&lt;/code&gt; 的 64 位的小端编码 (也就是两个 u64 值 &lt;code&gt;k0&lt;/code&gt; 、&lt;code&gt;k1&lt;/code&gt; 组成了 &lt;code&gt;k&lt;/code&gt; )。&lt;/p&gt;
+&lt;p&gt;对于其中的常量，论文的选取解释为:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The initial state constant corresponds to the ASCII string &amp;ldquo;somepseudorandomlygeneratedbytes&amp;rdquo;, big-endian encoded.&lt;/p&gt;</description></item></channel></rss>

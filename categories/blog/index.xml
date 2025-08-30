@@ -1,137 +1,137 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on</title><link>https://booiris.space/categories/blog/</link><description>Recent content in Blog on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Fri, 15 Mar 2024 21:36:47 +0000</lastBuildDate><atom:link href="https://booiris.space/categories/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 rust 游玩 cf 的姿势</title><link>https://booiris.space/posts/blog/%E4%BD%BF%E7%94%A8-rust-%E6%B8%B8%E7%8E%A9-cf-%E7%9A%84%E5%A7%BF%E5%8A%BF/</link><pubDate>Fri, 15 Mar 2024 21:36:47 +0000</pubDate><guid>https://booiris.space/posts/blog/%E4%BD%BF%E7%94%A8-rust-%E6%B8%B8%E7%8E%A9-cf-%E7%9A%84%E5%A7%BF%E5%8A%BF/</guid><description>&lt;h2 id="cf-是什么">cf 是什么&lt;/h2>
-&lt;p>具体来说就是&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;del>穿越火线是一款非常受欢迎的第一人称射击网络游戏，它也被称作&amp;quot;CrossFire&amp;quot;。它最早由韩国SmileGate公司开发，后来在中国由腾讯公司运营。这个游戏在中国有着庞大的玩家基础，在亚洲其他地区以及全球也有相当多的粉丝。&lt;/del>&lt;/p>
-&lt;p>&lt;del>游戏提供了多种模式，包括经典的团队对战、爆破模式、生化模式等。玩家能选择成为全球反恐精英的一员，或者加入恐怖分子阵营。在游戏中，玩家可以购买和升级各种武器装备，与队友协同作战，完成不同的任务和挑战。&lt;/del>&lt;/p>&lt;/blockquote>
-&lt;blockquote>
-&lt;p>Codeforces 是一个在线编程和算法竞赛平台，广受全球程序员和算法爱好者的欢迎。它提供了一个平台，用户可以通过参加定期举办的编程比赛来提高自己的编程技能和算法知识。这些比赛通常分为几个不同的难度等级，适合从初学者到高级程序员的各个水平。&lt;/p>
-&lt;p>在Codeforces上，参赛者需要在限定时间内解决一系列编程问题。这些问题覆盖了数据结构、算法、数学、字符串处理、图论等众多领域。参赛者的表现根据解决问题的速度和正确性来评分，并在全球范围内进行排名。 &amp;ndash; chatgpt 生成&lt;/p>&lt;/blockquote>
-&lt;p>网站: &lt;a href="https://codeforces.com/">Codeforces&lt;/a>&lt;/p>
-&lt;h2 id="rust-是什么">rust 是什么&lt;/h2>
-&lt;p>具体来说就是&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;del>《Rust》是一款多人生存游戏，玩家需收集资源，建造庇护所，与环境和其他玩家互动以求生存。游戏以其开放世界、真实的生存挑战和玩家之间的复杂互动闻名。&lt;/del>&lt;/p>&lt;/blockquote>
-&lt;blockquote>
-&lt;p>Rust是一种开源的系统编程语言，以安全性、速度和并发性为设计目标。它旨在帮助开发者构建高效、可靠的软件，同时避免常见的内存安全错误，如缓冲区溢出。Rust通过一套严格的编译时检查机制实现这些目标，而无需依赖于传统的垃圾回收机制或大量的运行时检查。&lt;/p>
-&lt;p>Rust的设计充分考虑了现代硬件的特性，提供了零成本抽象、安全的并发编程模型，以及对内存布局的精细控制。这些特性使Rust成为开发操作系统、游戏引擎、浏览器组件以及需要高性能和高可靠性的应用程序的理想选择。 &amp;ndash; chatgpt 生成&lt;/p>&lt;/blockquote>
-&lt;p>网站: &lt;a href="https://www.rust-lang.org/">Rust Programming Language&lt;/a>&lt;/p>
-&lt;h2 id="正文">正文&lt;/h2>
-&lt;p>rust 标准库只提供了一些基本和常用的数据结构和一套&amp;quot;抽象特性&amp;quot;(或者说规范)，所以可能需要手动造一些轮子，比如处理输入和随机数生成等等，下面将介绍对应的实现代码。&lt;/p>
-&lt;h3 id="处理输入">处理输入&lt;/h3>
-&lt;p>相较于 c++ 的 &lt;code>scanf&lt;/code> 、&lt;code>cin&lt;/code> ，rust 的标准库中缺少一种方便地从标准输入中读取并构造数据的方法，网上也存在一些讨论:&lt;/p>
-&lt;ol>
-&lt;li>&lt;a href="https://users.rust-lang.org/t/why-is-it-so-difficult-to-get-user-input-in-rust/27444/11">Why is it so difficult to get user input in Rust? - help - The Rust Programming Language Forum&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://www.reddit.com/r/rust/comments/ifpi8p/why_is_it_so_painful_to_read_user_inputs_in_rust/">Why is it so painful to read user inputs in Rust&lt;/a>&lt;/li>
-&lt;/ol>
-&lt;p>所以使用 rust 解决 codeforces 中的问题所遇到的第一个困难就是如何处理输入，所幸的是这个问题在&lt;a href="https://codeforces.com/blog/entry/67391">这里&lt;/a>有所讨论，具体的解决方法参考这个&lt;a href="https://codeforces.com/blog/entry/67391?#comment-516341">回复&lt;/a>。根据讨论中的代码修改，笔者使用的模板代码如下:&lt;/p></description></item><item><title>为啥 go 不支持泛型方法</title><link>https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/</link><pubDate>Tue, 20 Feb 2024 22:10:20 +0000</pubDate><guid>https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/</guid><description>&lt;h2 id="引言">引言&lt;/h2>
-&lt;p>众所周知， go 的泛型并不完善，由于其不支持 &lt;code>parameterized methods&lt;/code> (泛型方法)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 &lt;a href="https://github.com/golang/go/issues/49085">proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub&lt;/a> 有着充分的讨论，本文旨在对其中的讨论进行总结(加一点&lt;del>指指点点&lt;/del>)，找出 go 是 xx 的原因，如有错误恳请斧正。&lt;/p>
-&lt;h2 id="有点长的前置知识">有点长的前置知识…&lt;/h2>
-&lt;p>在看 issue 之前，首先介绍一下泛型的通常实现方式，一般有如下几种方式&lt;/p>
-&lt;ol>
-&lt;li>&lt;strong>类型擦除+虚函数表&lt;/strong>: 这是 Java 泛型的实现方式。在编译时，泛型类型信息会被擦除，所有的泛型被转换为基类 Object (在 go 中相当于将所有的类型变成 interface{} )，编译器同时会在必要时插入类型转换代码来确保类型安全。&lt;/li>
-&lt;li>&lt;strong>模板实例化&lt;/strong>: C++ 使用模板来实现泛型。在编译时，模板会生成对应于每种具体类型的实例化代码。如 &lt;code>T add(T a, T b) &lt;/code> 的泛型方法，对于 &lt;code>add(1,2)&lt;/code> 和 &lt;code>add(1.0,2.0)&lt;/code> 会生成两个函数 &lt;code>int add(int a, int b)&lt;/code> 和 &lt;code>double add( double a, double b)&lt;/code> 。&lt;/li>
-&lt;li>&lt;strong>即时编译&lt;/strong>: &lt;a href="https://hackernoon.com/how-generics-differ-in-java-and-c">How Generics Differ in Java and C# | HackerNoon&lt;/a>, &lt;a href="https://zhuanlan.zhihu.com/p/348761322">C#泛型详解 - 知乎&lt;/a>, &lt;a href="https://stackoverflow.com/questions/31876372/what-is-reification">c# - What is reification? - Stack Overflow&lt;/a>，从这些链接可以大致看出，c# 的泛型实现是编译时使用占位符表示泛型类型，然后在运行时动态实例化各种类型。&lt;/li>
-&lt;/ol>
-&lt;p>回到 go 的泛型，实际上 go 的泛型实现方式有三种提案，下面分别介绍这三种提案，有助于后续对 issue 中的讨论进行分析。(本来想简单写写的，写着写着太长了，不想看的请跳至 &lt;a href="https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/#%e6%ad%a3%e6%96%87">正文&lt;/a> 部分)&lt;/p></description></item><item><title>monad 粗浅介绍</title><link>https://booiris.space/posts/blog/monad-%E7%B2%97%E6%B5%85%E4%BB%8B%E7%BB%8D/</link><pubDate>Tue, 12 Dec 2023 21:20:47 +0000</pubDate><guid>https://booiris.space/posts/blog/monad-%E7%B2%97%E6%B5%85%E4%BB%8B%E7%BB%8D/</guid><description>&lt;h2 id="什么是-monad">什么是 monad?&lt;/h2>
-&lt;p>monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的粗浅介绍，所以跳过其数学上的定义和结构性证明(其实是目前笔者也不太懂🤫)，通过一些具体的例子说明它的概念和作用。&lt;/p>
-&lt;h3 id="定义">定义&lt;/h3>
-&lt;p>尽管没有太复杂的数学概念，但还是需要一个定义说明什么样的东西才能称之为 monad。在接下来的说明中，除了列举出数学定义以外，还有其在 go 语言中的具体表现形式。在 wiki 的定义中:&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;a href="https://en.wikipedia.org/wiki/Monad_%28functional_programming%29#Definition">Monad (functional programming) - Wikipedia&lt;/a>&lt;/p>&lt;/blockquote>
-&lt;p>一个 monad 包含三个部分:&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>类型构造子 &lt;code>M&lt;/code> 。&lt;/p>
-&lt;ul>
-&lt;li>在 go 中可以理解为一种名为 &lt;code>M&lt;/code> 包裹着 &lt;code>T&lt;/code> 的泛型结构体 &lt;code>M&amp;lt;T&amp;gt;{ val: T }&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>类型转换子 &lt;code>Unit :: T -&amp;gt; M T&lt;/code>。&lt;/p>
-&lt;ul>
-&lt;li>在 go 中可以理解为由值 &lt;code>T&lt;/code> 构造 &lt;code>M&lt;/code> 的函数 &lt;code>func Unit[T any] (val T) -&amp;gt; M&amp;lt;T&amp;gt;&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>组合子 &lt;code>&amp;gt;&amp;gt;= or FlatMap :: M T -&amp;gt; ( T -&amp;gt; M U) -&amp;gt; M U&lt;/code> 。&lt;/p></description></item><item><title>SipHash</title><link>https://booiris.space/posts/blog/siphash/</link><pubDate>Fri, 13 Oct 2023 13:36:05 +0000</pubDate><guid>https://booiris.space/posts/blog/siphash/</guid><description>&lt;blockquote>
-&lt;p>论文 &lt;a href="https://eprint.iacr.org/2012/351.pdf">eprint.iacr.org/2012/351.pdf&lt;/a>&lt;/p>&lt;/blockquote>
-&lt;blockquote>
-&lt;p>代码位置 &lt;a href="https://github.com/rust-lang/rust/blob/1.72.0/library/core/src/hash/sip.rs">library/core/src/hash/sip.rs&lt;/a>&lt;/p>&lt;/blockquote>
-&lt;p>SipHash 是一类针对短消息设计的伪随机函数族，相较于其他的哈希函数有在短消息上性能高、由于随机输入的存在难以构造&lt;a href="../todo/todo.md">哈希 dos 攻击&lt;/a>的优点，是 rust 、python 的内置哈希函数实现。&lt;/p>
-&lt;h2 id="实现">实现&lt;/h2>
-&lt;p>对于 SipHash-c-d 函数族，输入为一个 128 bit 的 &lt;code>k&lt;/code> 和 可为空的输入 &lt;code>m&lt;/code>，输出为一个 64 位长度的 &lt;code>SipHash-c-d(k,m)&lt;/code>。其中 &lt;code>c&lt;/code> 为 &amp;ldquo;compression rounds&amp;rdquo; 的次数， &lt;code>d&lt;/code> 为 &amp;ldquo;finalization rounds&amp;rdquo; 的次数，&amp;ldquo;compression rounds&amp;rdquo; 和 &amp;ldquo;finalization rounds&amp;rdquo; 在之后中有说明具体的实现步骤。&lt;/p>
-&lt;h3 id="初始化">初始化&lt;/h3>
-&lt;p>首先使用 &lt;code>k0&lt;/code>、&lt;code>k1&lt;/code> 初始化四个值 &lt;code>v0&lt;/code> 、&lt;code>v1&lt;/code> 、&lt;code>v2&lt;/code> 、&lt;code>v3&lt;/code>，其中 &lt;code>k0&lt;/code>、&lt;code>k1&lt;/code> 为 输入 &lt;code>k&lt;/code> 的 64 位的小端编码 (也就是两个 u64 值 &lt;code>k0&lt;/code> 、&lt;code>k1&lt;/code> 组成了 &lt;code>k&lt;/code> )。&lt;/p>
-&lt;p>对于其中的常量，论文的选取解释为:&lt;/p>
-&lt;blockquote>
-&lt;p>The initial state constant corresponds to the ASCII string &amp;ldquo;somepseudorandomlygeneratedbytes&amp;rdquo;, big-endian encoded.&lt;/p></description></item><item><title>摄影学习</title><link>https://booiris.space/posts/blog/%E6%91%84%E5%BD%B1%E5%AD%A6%E4%B9%A0/</link><pubDate>Mon, 09 Oct 2023 13:34:26 +0000</pubDate><guid>https://booiris.space/posts/blog/%E6%91%84%E5%BD%B1%E5%AD%A6%E4%B9%A0/</guid><description>&lt;blockquote>
-&lt;p>参考+图片来源 &lt;a href="https://www.bilibili.com/video/BV1pv411H78e">从零开始手把手教你学摄影，20节课带你从小白到大师 | 摄影前期拍摄入门教程_哔哩哔哩_bilibili&lt;/a>&lt;/p>&lt;/blockquote>
-&lt;h2 id="概念">概念&lt;/h2>
-&lt;h3 id="传感器大小分类">传感器大小分类&lt;/h3>
-&lt;p>下图来自于&lt;/p>
-&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera1.png" alt="">&lt;/p>
-&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camara2.png" alt="">&lt;/p>
-&lt;h3 id="焦距">焦距&lt;/h3>
-&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera3.png" alt="">&lt;/p>
-&lt;h3 id="曝光">曝光&lt;/h3>
-&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera4.png" alt="">&lt;/p>
-&lt;h3 id="光圈">光圈&lt;/h3>
-&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera5.png" alt="">&lt;/p>
-&lt;h3 id="快门时间">快门时间&lt;/h3>
-&lt;h3 id="感光度-iso">感光度 (ISO)&lt;/h3>
-&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera6.png" alt="">&lt;/p>
-&lt;h3 id="拍摄模式">拍摄模式&lt;/h3></description></item><item><title>Obsidian 多平台同步方法</title><link>https://booiris.space/posts/blog/sync/</link><pubDate>Sun, 01 May 2022 23:31:00 +0000</pubDate><guid>https://booiris.space/posts/blog/sync/</guid><description>&lt;p>! 推荐自建 webdav 服务&lt;/p>
-&lt;h3 id="webdav-同步">webdav 同步&lt;/h3>
-&lt;p>使用 &lt;a href="#ZgotmplZ">Remotely Save&lt;/a> 插件进行多平台同步。&lt;/p>
-&lt;h4 id="注册-webdav-服务">注册 webdav 服务&lt;/h4>
-&lt;p>使用 &lt;a href="https://teracloud.jp/en/">TeraCLOUD&lt;/a> 网盘。使用步骤如下：&lt;/p>
-&lt;ol>
-&lt;li>注册账号。&lt;/li>
-&lt;li>登录 ，进入 mypage 界面。
-&lt;img src="https://s2.loli.net/2022/05/01/pFAZdzBSCetUhfH.png" width = 60% >&lt;/li>
-&lt;li>开启 webdav 服务，记住用户名和密码。
-&lt;img src="https://s2.loli.net/2022/05/01/zaS4pMH7k1l2Den.png" width=100% > 至此，webdav 服务注册成功。&lt;/li>
-&lt;/ol>
-&lt;h4 id="使用-remotely-save-插件进行同步">使用 Remotely Save 插件进行同步&lt;/h4>
-&lt;ol>
-&lt;li>安装插件。&lt;/li>
-&lt;li>服务选择 webdav。 &lt;img src="https://s2.loli.net/2022/05/01/ornl3QSUEkPKIZt.png" width=100%>&lt;/li>
-&lt;li>填写上面的用户名和密码。 &lt;img src="https://s2.loli.net/2022/05/01/d7zONpe2A4XcuQy.png" width=100%>&lt;/li>
-&lt;li>测试连接，之后自行设置同步方式即可。&lt;/li>
-&lt;/ol></description></item><item><title>插件列表</title><link>https://booiris.space/posts/blog/extension/</link><pubDate>Sun, 01 May 2022 23:30:48 +0000</pubDate><guid>https://booiris.space/posts/blog/extension/</guid><description>&lt;ol>
-&lt;li>&lt;a href="#ZgotmplZ">Admonition&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Auto Link Title&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Advanced table&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Better word count&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Calendar&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Check list&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Collapse All&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Data view&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Editor syntax highlight&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Excalidraw&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">File tree alternative&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Full screen plugin&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Image Toolkit&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Link Favicons&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Linter&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Mind map&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Minimal theme settings&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Natural Language Dates&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Note refactor obsidian&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Outliner&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Remember cursor position&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Remotely Save&lt;/a>&lt;/li>
-&lt;li>&lt;a href="#ZgotmplZ">Templater&lt;/a>&lt;/li>
-&lt;/ol>
-&lt;h4 id="auto-link-title">Auto Link Title&lt;/h4>
-&lt;p>粘贴互联网链接的时候自动添加标题。&lt;/p>
-&lt;h4 id="link-favicons">Link Favicons&lt;/h4>
-&lt;p>显示链接的 icon&lt;/p>
-&lt;h4 id="image-toolkit">Image Toolkit&lt;/h4>
-&lt;p>预览图片&lt;/p>
-&lt;h4 id="collapse-all">Collapse All&lt;/h4>
-&lt;p>折叠所有文件夹&lt;/p>
-&lt;h4 id="natural-language-dates">Natural Language Dates&lt;/h4>
-&lt;p>自动生成日期 + @&lt;/p>
-&lt;h4 id="better-word-count">Better word count&lt;/h4>
-&lt;p>计算字数&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Blog on</title><link>https://booiris.space/categories/blog/</link><description>Recent content in Blog on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Fri, 15 Mar 2024 21:36:47 +0000</lastBuildDate><atom:link href="https://booiris.space/categories/blog/index.xml" rel="self" type="application/rss+xml"/><item><title>使用 rust 游玩 cf 的姿势</title><link>https://booiris.space/posts/blog/%E4%BD%BF%E7%94%A8-rust-%E6%B8%B8%E7%8E%A9-cf-%E7%9A%84%E5%A7%BF%E5%8A%BF/</link><pubDate>Fri, 15 Mar 2024 21:36:47 +0000</pubDate><guid>https://booiris.space/posts/blog/%E4%BD%BF%E7%94%A8-rust-%E6%B8%B8%E7%8E%A9-cf-%E7%9A%84%E5%A7%BF%E5%8A%BF/</guid><description>&lt;h2 id="cf-是什么"&gt;cf 是什么&lt;/h2&gt;
+&lt;p&gt;具体来说就是&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;穿越火线是一款非常受欢迎的第一人称射击网络游戏，它也被称作&amp;quot;CrossFire&amp;quot;。它最早由韩国SmileGate公司开发，后来在中国由腾讯公司运营。这个游戏在中国有着庞大的玩家基础，在亚洲其他地区以及全球也有相当多的粉丝。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;游戏提供了多种模式，包括经典的团队对战、爆破模式、生化模式等。玩家能选择成为全球反恐精英的一员，或者加入恐怖分子阵营。在游戏中，玩家可以购买和升级各种武器装备，与队友协同作战，完成不同的任务和挑战。&lt;/del&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Codeforces 是一个在线编程和算法竞赛平台，广受全球程序员和算法爱好者的欢迎。它提供了一个平台，用户可以通过参加定期举办的编程比赛来提高自己的编程技能和算法知识。这些比赛通常分为几个不同的难度等级，适合从初学者到高级程序员的各个水平。&lt;/p&gt;
+&lt;p&gt;在Codeforces上，参赛者需要在限定时间内解决一系列编程问题。这些问题覆盖了数据结构、算法、数学、字符串处理、图论等众多领域。参赛者的表现根据解决问题的速度和正确性来评分，并在全球范围内进行排名。 &amp;ndash; chatgpt 生成&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;网站: &lt;a href="https://codeforces.com/"&gt;Codeforces&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="rust-是什么"&gt;rust 是什么&lt;/h2&gt;
+&lt;p&gt;具体来说就是&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;del&gt;《Rust》是一款多人生存游戏，玩家需收集资源，建造庇护所，与环境和其他玩家互动以求生存。游戏以其开放世界、真实的生存挑战和玩家之间的复杂互动闻名。&lt;/del&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Rust是一种开源的系统编程语言，以安全性、速度和并发性为设计目标。它旨在帮助开发者构建高效、可靠的软件，同时避免常见的内存安全错误，如缓冲区溢出。Rust通过一套严格的编译时检查机制实现这些目标，而无需依赖于传统的垃圾回收机制或大量的运行时检查。&lt;/p&gt;
+&lt;p&gt;Rust的设计充分考虑了现代硬件的特性，提供了零成本抽象、安全的并发编程模型，以及对内存布局的精细控制。这些特性使Rust成为开发操作系统、游戏引擎、浏览器组件以及需要高性能和高可靠性的应用程序的理想选择。 &amp;ndash; chatgpt 生成&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;网站: &lt;a href="https://www.rust-lang.org/"&gt;Rust Programming Language&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="正文"&gt;正文&lt;/h2&gt;
+&lt;p&gt;rust 标准库只提供了一些基本和常用的数据结构和一套&amp;quot;抽象特性&amp;quot;(或者说规范)，所以可能需要手动造一些轮子，比如处理输入和随机数生成等等，下面将介绍对应的实现代码。&lt;/p&gt;
+&lt;h3 id="处理输入"&gt;处理输入&lt;/h3&gt;
+&lt;p&gt;相较于 c++ 的 &lt;code&gt;scanf&lt;/code&gt; 、&lt;code&gt;cin&lt;/code&gt; ，rust 的标准库中缺少一种方便地从标准输入中读取并构造数据的方法，网上也存在一些讨论:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://users.rust-lang.org/t/why-is-it-so-difficult-to-get-user-input-in-rust/27444/11"&gt;Why is it so difficult to get user input in Rust? - help - The Rust Programming Language Forum&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.reddit.com/r/rust/comments/ifpi8p/why_is_it_so_painful_to_read_user_inputs_in_rust/"&gt;Why is it so painful to read user inputs in Rust&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;所以使用 rust 解决 codeforces 中的问题所遇到的第一个困难就是如何处理输入，所幸的是这个问题在&lt;a href="https://codeforces.com/blog/entry/67391"&gt;这里&lt;/a&gt;有所讨论，具体的解决方法参考这个&lt;a href="https://codeforces.com/blog/entry/67391?#comment-516341"&gt;回复&lt;/a&gt;。根据讨论中的代码修改，笔者使用的模板代码如下:&lt;/p&gt;</description></item><item><title>为啥 go 不支持泛型方法</title><link>https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/</link><pubDate>Tue, 20 Feb 2024 22:10:20 +0000</pubDate><guid>https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/</guid><description>&lt;h2 id="引言"&gt;引言&lt;/h2&gt;
+&lt;p&gt;众所周知， go 的泛型并不完善，由于其不支持 &lt;code&gt;parameterized methods&lt;/code&gt; (泛型方法)，导致其无法实现 monad、流式调用等等操作。在这个 issue 中 &lt;a href="https://github.com/golang/go/issues/49085"&gt;proposal: spec: allow parameterized methods in methods · Issue #49085 · golang/go · GitHub&lt;/a&gt; 有着充分的讨论，本文旨在对其中的讨论进行总结(加一点&lt;del&gt;指指点点&lt;/del&gt;)，找出 go 是 xx 的原因，如有错误恳请斧正。&lt;/p&gt;
+&lt;h2 id="有点长的前置知识"&gt;有点长的前置知识…&lt;/h2&gt;
+&lt;p&gt;在看 issue 之前，首先介绍一下泛型的通常实现方式，一般有如下几种方式&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;类型擦除+虚函数表&lt;/strong&gt;: 这是 Java 泛型的实现方式。在编译时，泛型类型信息会被擦除，所有的泛型被转换为基类 Object (在 go 中相当于将所有的类型变成 interface{} )，编译器同时会在必要时插入类型转换代码来确保类型安全。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;模板实例化&lt;/strong&gt;: C++ 使用模板来实现泛型。在编译时，模板会生成对应于每种具体类型的实例化代码。如 &lt;code&gt;T add(T a, T b) &lt;/code&gt; 的泛型方法，对于 &lt;code&gt;add(1,2)&lt;/code&gt; 和 &lt;code&gt;add(1.0,2.0)&lt;/code&gt; 会生成两个函数 &lt;code&gt;int add(int a, int b)&lt;/code&gt; 和 &lt;code&gt;double add( double a, double b)&lt;/code&gt; 。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;即时编译&lt;/strong&gt;: &lt;a href="https://hackernoon.com/how-generics-differ-in-java-and-c"&gt;How Generics Differ in Java and C# | HackerNoon&lt;/a&gt;, &lt;a href="https://zhuanlan.zhihu.com/p/348761322"&gt;C#泛型详解 - 知乎&lt;/a&gt;, &lt;a href="https://stackoverflow.com/questions/31876372/what-is-reification"&gt;c# - What is reification? - Stack Overflow&lt;/a&gt;，从这些链接可以大致看出，c# 的泛型实现是编译时使用占位符表示泛型类型，然后在运行时动态实例化各种类型。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;回到 go 的泛型，实际上 go 的泛型实现方式有三种提案，下面分别介绍这三种提案，有助于后续对 issue 中的讨论进行分析。(本来想简单写写的，写着写着太长了，不想看的请跳至 &lt;a href="https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/#%e6%ad%a3%e6%96%87"&gt;正文&lt;/a&gt; 部分)&lt;/p&gt;</description></item><item><title>monad 粗浅介绍</title><link>https://booiris.space/posts/blog/monad-%E7%B2%97%E6%B5%85%E4%BB%8B%E7%BB%8D/</link><pubDate>Tue, 12 Dec 2023 21:20:47 +0000</pubDate><guid>https://booiris.space/posts/blog/monad-%E7%B2%97%E6%B5%85%E4%BB%8B%E7%BB%8D/</guid><description>&lt;h2 id="什么是-monad"&gt;什么是 monad?&lt;/h2&gt;
+&lt;p&gt;monad(单子) 是函数式编程中的一种抽象，本文旨在对 monad 的粗浅介绍，所以跳过其数学上的定义和结构性证明(其实是目前笔者也不太懂🤫)，通过一些具体的例子说明它的概念和作用。&lt;/p&gt;
+&lt;h3 id="定义"&gt;定义&lt;/h3&gt;
+&lt;p&gt;尽管没有太复杂的数学概念，但还是需要一个定义说明什么样的东西才能称之为 monad。在接下来的说明中，除了列举出数学定义以外，还有其在 go 语言中的具体表现形式。在 wiki 的定义中:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Monad_%28functional_programming%29#Definition"&gt;Monad (functional programming) - Wikipedia&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;一个 monad 包含三个部分:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;类型构造子 &lt;code&gt;M&lt;/code&gt; 。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 go 中可以理解为一种名为 &lt;code&gt;M&lt;/code&gt; 包裹着 &lt;code&gt;T&lt;/code&gt; 的泛型结构体 &lt;code&gt;M&amp;lt;T&amp;gt;{ val: T }&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;类型转换子 &lt;code&gt;Unit :: T -&amp;gt; M T&lt;/code&gt;。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 go 中可以理解为由值 &lt;code&gt;T&lt;/code&gt; 构造 &lt;code&gt;M&lt;/code&gt; 的函数 &lt;code&gt;func Unit[T any] (val T) -&amp;gt; M&amp;lt;T&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;组合子 &lt;code&gt;&amp;gt;&amp;gt;= or FlatMap :: M T -&amp;gt; ( T -&amp;gt; M U) -&amp;gt; M U&lt;/code&gt; 。&lt;/p&gt;</description></item><item><title>SipHash</title><link>https://booiris.space/posts/blog/siphash/</link><pubDate>Fri, 13 Oct 2023 13:36:05 +0000</pubDate><guid>https://booiris.space/posts/blog/siphash/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;论文 &lt;a href="https://eprint.iacr.org/2012/351.pdf"&gt;eprint.iacr.org/2012/351.pdf&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;代码位置 &lt;a href="https://github.com/rust-lang/rust/blob/1.72.0/library/core/src/hash/sip.rs"&gt;library/core/src/hash/sip.rs&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;SipHash 是一类针对短消息设计的伪随机函数族，相较于其他的哈希函数有在短消息上性能高、由于随机输入的存在难以构造&lt;a href="../todo/todo.md"&gt;哈希 dos 攻击&lt;/a&gt;的优点，是 rust 、python 的内置哈希函数实现。&lt;/p&gt;
+&lt;h2 id="实现"&gt;实现&lt;/h2&gt;
+&lt;p&gt;对于 SipHash-c-d 函数族，输入为一个 128 bit 的 &lt;code&gt;k&lt;/code&gt; 和 可为空的输入 &lt;code&gt;m&lt;/code&gt;，输出为一个 64 位长度的 &lt;code&gt;SipHash-c-d(k,m)&lt;/code&gt;。其中 &lt;code&gt;c&lt;/code&gt; 为 &amp;ldquo;compression rounds&amp;rdquo; 的次数， &lt;code&gt;d&lt;/code&gt; 为 &amp;ldquo;finalization rounds&amp;rdquo; 的次数，&amp;ldquo;compression rounds&amp;rdquo; 和 &amp;ldquo;finalization rounds&amp;rdquo; 在之后中有说明具体的实现步骤。&lt;/p&gt;
+&lt;h3 id="初始化"&gt;初始化&lt;/h3&gt;
+&lt;p&gt;首先使用 &lt;code&gt;k0&lt;/code&gt;、&lt;code&gt;k1&lt;/code&gt; 初始化四个值 &lt;code&gt;v0&lt;/code&gt; 、&lt;code&gt;v1&lt;/code&gt; 、&lt;code&gt;v2&lt;/code&gt; 、&lt;code&gt;v3&lt;/code&gt;，其中 &lt;code&gt;k0&lt;/code&gt;、&lt;code&gt;k1&lt;/code&gt; 为 输入 &lt;code&gt;k&lt;/code&gt; 的 64 位的小端编码 (也就是两个 u64 值 &lt;code&gt;k0&lt;/code&gt; 、&lt;code&gt;k1&lt;/code&gt; 组成了 &lt;code&gt;k&lt;/code&gt; )。&lt;/p&gt;
+&lt;p&gt;对于其中的常量，论文的选取解释为:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The initial state constant corresponds to the ASCII string &amp;ldquo;somepseudorandomlygeneratedbytes&amp;rdquo;, big-endian encoded.&lt;/p&gt;</description></item><item><title>摄影学习</title><link>https://booiris.space/posts/blog/%E6%91%84%E5%BD%B1%E5%AD%A6%E4%B9%A0/</link><pubDate>Mon, 09 Oct 2023 13:34:26 +0000</pubDate><guid>https://booiris.space/posts/blog/%E6%91%84%E5%BD%B1%E5%AD%A6%E4%B9%A0/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;参考+图片来源 &lt;a href="https://www.bilibili.com/video/BV1pv411H78e"&gt;从零开始手把手教你学摄影，20节课带你从小白到大师 | 摄影前期拍摄入门教程_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id="概念"&gt;概念&lt;/h2&gt;
+&lt;h3 id="传感器大小分类"&gt;传感器大小分类&lt;/h3&gt;
+&lt;p&gt;下图来自于&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera1.png" alt=""&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camara2.png" alt=""&gt;&lt;/p&gt;
+&lt;h3 id="焦距"&gt;焦距&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera3.png" alt=""&gt;&lt;/p&gt;
+&lt;h3 id="曝光"&gt;曝光&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera4.png" alt=""&gt;&lt;/p&gt;
+&lt;h3 id="光圈"&gt;光圈&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera5.png" alt=""&gt;&lt;/p&gt;
+&lt;h3 id="快门时间"&gt;快门时间&lt;/h3&gt;
+&lt;h3 id="感光度-iso"&gt;感光度 (ISO)&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera6.png" alt=""&gt;&lt;/p&gt;
+&lt;h3 id="拍摄模式"&gt;拍摄模式&lt;/h3&gt;</description></item><item><title>Obsidian 多平台同步方法</title><link>https://booiris.space/posts/blog/sync/</link><pubDate>Sun, 01 May 2022 23:31:00 +0000</pubDate><guid>https://booiris.space/posts/blog/sync/</guid><description>&lt;p&gt;! 推荐自建 webdav 服务&lt;/p&gt;
+&lt;h3 id="webdav-同步"&gt;webdav 同步&lt;/h3&gt;
+&lt;p&gt;使用 &lt;a href="#ZgotmplZ"&gt;Remotely Save&lt;/a&gt; 插件进行多平台同步。&lt;/p&gt;
+&lt;h4 id="注册-webdav-服务"&gt;注册 webdav 服务&lt;/h4&gt;
+&lt;p&gt;使用 &lt;a href="https://teracloud.jp/en/"&gt;TeraCLOUD&lt;/a&gt; 网盘。使用步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;注册账号。&lt;/li&gt;
+&lt;li&gt;登录 ，进入 mypage 界面。
+&lt;img src="https://s2.loli.net/2022/05/01/pFAZdzBSCetUhfH.png" width = 60% &gt;&lt;/li&gt;
+&lt;li&gt;开启 webdav 服务，记住用户名和密码。
+&lt;img src="https://s2.loli.net/2022/05/01/zaS4pMH7k1l2Den.png" width=100% &gt; 至此，webdav 服务注册成功。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="使用-remotely-save-插件进行同步"&gt;使用 Remotely Save 插件进行同步&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;安装插件。&lt;/li&gt;
+&lt;li&gt;服务选择 webdav。 &lt;img src="https://s2.loli.net/2022/05/01/ornl3QSUEkPKIZt.png" width=100%&gt;&lt;/li&gt;
+&lt;li&gt;填写上面的用户名和密码。 &lt;img src="https://s2.loli.net/2022/05/01/d7zONpe2A4XcuQy.png" width=100%&gt;&lt;/li&gt;
+&lt;li&gt;测试连接，之后自行设置同步方式即可。&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>插件列表</title><link>https://booiris.space/posts/blog/extension/</link><pubDate>Sun, 01 May 2022 23:30:48 +0000</pubDate><guid>https://booiris.space/posts/blog/extension/</guid><description>&lt;ol&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Admonition&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Auto Link Title&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Advanced table&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Better word count&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Calendar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Check list&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Collapse All&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Data view&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Editor syntax highlight&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Excalidraw&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;File tree alternative&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Full screen plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Image Toolkit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Link Favicons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Linter&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Mind map&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Minimal theme settings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Natural Language Dates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Note refactor obsidian&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Outliner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Remember cursor position&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Remotely Save&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ZgotmplZ"&gt;Templater&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id="auto-link-title"&gt;Auto Link Title&lt;/h4&gt;
+&lt;p&gt;粘贴互联网链接的时候自动添加标题。&lt;/p&gt;
+&lt;h4 id="link-favicons"&gt;Link Favicons&lt;/h4&gt;
+&lt;p&gt;显示链接的 icon&lt;/p&gt;
+&lt;h4 id="image-toolkit"&gt;Image Toolkit&lt;/h4&gt;
+&lt;p&gt;预览图片&lt;/p&gt;
+&lt;h4 id="collapse-all"&gt;Collapse All&lt;/h4&gt;
+&lt;p&gt;折叠所有文件夹&lt;/p&gt;
+&lt;h4 id="natural-language-dates"&gt;Natural Language Dates&lt;/h4&gt;
+&lt;p&gt;自动生成日期 + @&lt;/p&gt;
+&lt;h4 id="better-word-count"&gt;Better word count&lt;/h4&gt;
+&lt;p&gt;计算字数&lt;/p&gt;</description></item></channel></rss>

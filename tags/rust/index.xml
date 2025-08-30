@@ -1,20 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Rust on</title><link>https://booiris.space/tags/rust/</link><description>Recent content in Rust on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Mon, 24 Jul 2023 13:27:31 +0000</lastBuildDate><atom:link href="https://booiris.space/tags/rust/index.xml" rel="self" type="application/rss+xml"/><item><title>目录</title><link>https://booiris.space/wiki/rust_code/</link><pubDate>Mon, 24 Jul 2023 13:27:31 +0000</pubDate><guid>https://booiris.space/wiki/rust_code/</guid><description>&lt;ul>
-&lt;li>
-&lt;p>&lt;a href="rust%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%281%29%20%E6%A6%82%E8%BF%B0.md">rust 源码分析 (1) 概述&lt;/a>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;a href="rust%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%282%29-core-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9D%97.md">rust 源码分析 (2)-core-内存模块&lt;/a>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;a href="rust%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%283%29-std-alloc%E6%A8%A1%E5%9D%97.md">rust 源码分析 (3)-std-alloc模块&lt;/a>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;a href="rust%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%284%29-std-backtrace%E6%A8%A1%E5%9D%97.md">rust 源码分析 (4)-std-backtrace模块&lt;/a>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;a href="rust%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%285%29-std-collection.md">rust 源码分析 (5)-std-collection&lt;/a>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;a href="rust%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%286%29-std-collection-HashMap.md">rust 源码分析 (6)-std-collection-HashMap&lt;/a>&lt;/p>
-&lt;/li>
-&lt;/ul></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Rust on</title><link>https://booiris.space/tags/rust/</link><description>Recent content in Rust on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Mon, 24 Jul 2023 13:27:31 +0000</lastBuildDate><atom:link href="https://booiris.space/tags/rust/index.xml" rel="self" type="application/rss+xml"/><item><title>目录</title><link>https://booiris.space/wiki/rust_code/</link><pubDate>Mon, 24 Jul 2023 13:27:31 +0000</pubDate><guid>https://booiris.space/wiki/rust_code/</guid><description>&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="rust%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%281%29%20%E6%A6%82%E8%BF%B0.md"&gt;rust 源码分析 (1) 概述&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="rust%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%282%29-core-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9D%97.md"&gt;rust 源码分析 (2)-core-内存模块&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="rust%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%283%29-std-alloc%E6%A8%A1%E5%9D%97.md"&gt;rust 源码分析 (3)-std-alloc模块&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="rust%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%284%29-std-backtrace%E6%A8%A1%E5%9D%97.md"&gt;rust 源码分析 (4)-std-backtrace模块&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="rust%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%285%29-std-collection.md"&gt;rust 源码分析 (5)-std-collection&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href="rust%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%20%286%29-std-collection-HashMap.md"&gt;rust 源码分析 (6)-std-collection-HashMap&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

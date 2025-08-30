@@ -1,143 +1,143 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Screeps on</title><link>https://booiris.space/categories/screeps/</link><description>Recent content in Screeps on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Sat, 22 Jul 2023 23:35:45 +0000</lastBuildDate><atom:link href="https://booiris.space/categories/screeps/index.xml" rel="self" type="application/rss+xml"/><item><title>Rust For Screeps (3): 系统监控</title><link>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/</link><pubDate>Sat, 22 Jul 2023 23:35:45 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/</guid><description>&lt;blockquote>
-&lt;p>参考 &lt;a href="https://www.jianshu.com/p/de74baf6fb48">Screeps 制作统计图表 - 简书&lt;/a>&lt;/p>&lt;/blockquote>
-&lt;p>首先说明: 本文使用 docker 将监控系统部署在自有服务器上，所以先决条件是一台能公网访问的服务器(&lt;/p>
-&lt;h2 id="整体流程">整体流程&lt;/h2>
-&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20231102131635.png" alt="image.png">&lt;/p>
-&lt;h2 id="具体实现">具体实现&lt;/h2>
-&lt;h3 id="记录当前状态存入内存">记录当前状态存入内存&lt;/h3>
-&lt;p>在 &lt;a href="https://www.jianshu.com/p/de74baf6fb48">Screeps 制作统计图表 - 简书&lt;/a> 中使用的是 &lt;a href="https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/#memory%20object">memory object&lt;/a> 存储系统信息。遗憾的是在 rust 中无法使用 &lt;code>memory&lt;/code> 对象，但是 screeps 还有另一个存储信息的地方，那就是 &lt;a href="https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/#raw%20memory">raw memory&lt;/a> 。&lt;/p>
-&lt;p>&lt;code>raw memory&lt;/code> 可以存储 10 MB 的序列化后的内容，它由一个个 &lt;code>segment&lt;/code> 组成，每个&lt;code>segment&lt;/code> 最多存储 100 KB 内容。所以可以指定一段 &lt;code>segment&lt;/code> 用于存储当前系统的状态。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-rust" data-lang="rust">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#cf222e">fn&lt;/span> &lt;span style="color:#6639ba">log&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0550ae">&amp;amp;&lt;/span>&lt;span style="color:#6a737d">self&lt;/span>&lt;span style="color:#1f2328">)&lt;/span>&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#1f2328">{&lt;/span>&lt;span style="color:#fff">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">	&lt;/span>&lt;span style="color:#cf222e">let&lt;/span>&lt;span style="color:#fff"> &lt;/span>status_segement&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#fff"> &lt;/span>raw_memory::segments&lt;span style="color:#1f2328">();&lt;/span>&lt;span style="color:#fff">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">	&lt;/span>&lt;span style="color:#cf222e">let&lt;/span>&lt;span style="color:#fff"> &lt;/span>status&lt;span style="color:#fff"> &lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#fff"> &lt;/span>Status::get_status&lt;span style="color:#1f2328">();&lt;/span>&lt;span style="color:#fff">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">	&lt;/span>status_segement&lt;span style="color:#1f2328">.&lt;/span>set&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0550ae">STATUS_INDEX&lt;/span>&lt;span style="color:#1f2328">,&lt;/span>&lt;span style="color:#fff"> &lt;/span>status&lt;span style="color:#1f2328">.&lt;/span>into&lt;span style="color:#1f2328">());&lt;/span>&lt;span style="color:#fff">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#fff">&lt;/span>&lt;span style="color:#1f2328">}&lt;/span>&lt;span style="color:#fff">
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="访问内存并解析内存内容">访问内存并解析内存内容&lt;/h3>
-&lt;p>&lt;a href="https://github.com/booiris/rust-learning/tree/screep_log">GitHub - booiris/rust-learning at screep_log&lt;/a>&lt;/p>
-&lt;h3 id="将信息存储到时序数据库中">将信息存储到时序数据库中&lt;/h3>
-&lt;h3 id="使用-grafana-制作图表">使用 Grafana 制作图表&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>version: &lt;span style="color:#0a3069">&amp;#39;2&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>services:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sync:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> build:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> context: ./sync
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dockerfile: Dockerfile
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: sync:1
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./sync/log:/log
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> depends_on:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - influxdb
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a"># https://hub.docker.com/_/influxdb 查看参数含义&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> influxdb:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: influxdb:latest
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./influxdb-data:/var/lib/influxdb2
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./influxdb-config:/etc/influxdb2
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">DOCKER_INFLUXDB_INIT_MODE&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>setup
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">DOCKER_INFLUXDB_INIT_USERNAME&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#953800">username&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">DOCKER_INFLUXDB_INIT_PASSWORD&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#953800">pwd&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">DOCKER_INFLUXDB_INIT_ORG&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#953800">org&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">DOCKER_INFLUXDB_INIT_BUCKET&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#953800">bucket&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a"># https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/ 查看参数含义&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> grafana:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image: grafana/grafana:latest
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> restart: unless-stopped
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ports:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#0a3069">&amp;#39;12002:3000&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volumes:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./grafana-data:/var/lib/grafana
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - ./grafana-provisioning/:/etc/grafana/provisioning
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> depends_on:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - influxdb
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> user: &lt;span style="color:#0a3069">&amp;#34;&lt;/span>&lt;span style="color:#953800">$UID&lt;/span>&lt;span style="color:#0a3069">:&lt;/span>&lt;span style="color:#953800">$GID&lt;/span>&lt;span style="color:#0a3069">&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> environment:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">GF_SECURITY_ADMIN_USER&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#953800">GRAFANA_USERNAME&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#953800">GF_SECURITY_ADMIN_PASSWORD&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#0a3069">${&lt;/span>&lt;span style="color:#953800">GRAFANA_PASSWORD&lt;/span>&lt;span style="color:#0a3069">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Rust For Screeps (3): 系统监控和 panic 处理</title><link>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%92%8C-panic-%E5%A4%84%E7%90%86/</link><pubDate>Sat, 22 Jul 2023 23:35:45 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%92%8C-panic-%E5%A4%84%E7%90%86/</guid><description>&lt;p>#todo&lt;/p>
-&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> TODO: 系统监控和 panic 处理&lt;/li>
-&lt;/ul></description></item><item><title>Rust For Screeps (2): 自定义存储模型</title><link>https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/</link><pubDate>Sat, 22 Jul 2023 21:05:20 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/</guid><description>&lt;h2 id="screeps-存储模型">Screeps 存储模型&lt;/h2>
-&lt;p>screeps 的存储模型基本如图所示。&lt;/p>
-&lt;p>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img//20230722224904.png" alt="image.png">&lt;/p>
-&lt;p>其中存在两种类型的 memory，一个是 &lt;code>memory object&lt;/code> ，另一个是 &lt;code>raw memory&lt;/code> 。&lt;/p>
-&lt;h3 id="memory-object">memory object&lt;/h3>
-&lt;p>&lt;code>memory object&lt;/code> 的具体介绍在 &lt;a href="https://docs.screeps.com/global-objects.html#Memory-object">Global Objects | Screeps Documentation&lt;/a>。&lt;/p>
-&lt;blockquote>
-&lt;p>Each player has access to the global object &lt;code>Memory&lt;/code> in which he/she may store any information in the JSON format.&lt;/p>&lt;/blockquote>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#1f2328">Memory&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">someData&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#1f2328">{...};&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以看出 screeps 本身内置了一个 &lt;code>Memory&lt;/code> 的对象实例。可以往其中添加各种属性来达到存储信息的目的。&lt;/p>
-&lt;h3 id="raw-memory">raw memory&lt;/h3>
-&lt;p>&lt;code>raw memory&lt;/code> 在这里被提到 &lt;a href="https://docs.screeps.com/global-objects.html#Serialization">Global Objects | Screeps Documentation&lt;/a>&lt;/p>
-&lt;blockquote>
-&lt;p>The Memory object is stored in the stringified form and is parsed each time upon the first in the tick access from your script with the help of the &lt;code>JSON.parse&lt;/code> method.&lt;/p></description></item><item><title>Rust For Screeps (1): 初始环境搭建</title><link>https://booiris.space/posts/blog/rust-for-screeps-1-%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Sat, 22 Jul 2023 19:29:29 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-1-%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>&lt;blockquote>
-&lt;p>参考 &lt;a href="https://github.com/rustyscreeps/screeps-starter-rust/">GitHub - rustyscreeps/screeps-starter-rust: Starter Rust AI for Screeps, the JavaScript-based MMO game&lt;/a>&lt;/p>&lt;/blockquote>
-&lt;h3 id="安装相关cli">安装相关cli&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>cargo install cargo-screeps
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>命令包含了构建代码、上传代码等操作。&lt;/p>
-&lt;h3 id="下载模板文件">下载模板文件&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git clone https://github.com/rustyscreeps/screeps-starter-rust.git
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6639ba">cd&lt;/span> screeps-starter-rust
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>模板 (版本:&lt;a href="https://github.com/rustyscreeps/cargo-screeps/tree/d91b60f9a13eb0bd763b094acb6a1d749bb1b12f">d91b60f9a13eb0bd763b094acb6a1d749bb1b12f&lt;/a>) 中包含的文件:&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>./
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── Cargo.toml
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── example-screeps.toml
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── javascript
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>│ └── main.js
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── LICENSE
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>├── README.md
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>└── src
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ├── lib.rs
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> └── logging.rs
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="模板文件说明">模板文件说明&lt;/h3>
-&lt;p>&lt;code>example-screeps.toml&lt;/code> 用于 &lt;code>cargo-screeps&lt;/code> 的配置。&lt;/p>
-&lt;p>&lt;code>javascript/main.js&lt;/code> 为游戏主入口，其中内容如下。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0a3069">&amp;#34;use strict&amp;#34;&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#cf222e">let&lt;/span> &lt;span style="color:#1f2328">wasm_module&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">// replace this with the name of your module
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span>&lt;span style="color:#cf222e">const&lt;/span> &lt;span style="color:#1f2328">MODULE_NAME&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#0a3069">&amp;#34;screeps-starter-rust&amp;#34;&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#cf222e">function&lt;/span> &lt;span style="color:#1f2328">console_error&lt;/span>&lt;span style="color:#1f2328">(...&lt;/span>&lt;span style="color:#1f2328">args&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">console&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">log&lt;/span>&lt;span style="color:#1f2328">(...&lt;/span>&lt;span style="color:#1f2328">args&lt;/span>&lt;span style="color:#1f2328">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">Game&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">notify&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">args&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">join&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0a3069">&amp;#39; &amp;#39;&lt;/span>&lt;span style="color:#1f2328">));&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#1f2328">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#1f2328">module&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">exports&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">loop&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#cf222e">function&lt;/span> &lt;span style="color:#1f2328">()&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#cf222e">try&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#cf222e">if&lt;/span> &lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">wasm_module&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">wasm_module&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">loop&lt;/span>&lt;span style="color:#1f2328">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span> &lt;span style="color:#cf222e">else&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57606a">// attempt to load the wasm only if there&amp;#39;s enough bucket to do a bunch of work this tick
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span> &lt;span style="color:#cf222e">if&lt;/span> &lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">Game&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">cpu&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">bucket&lt;/span> &lt;span style="color:#0550ae">&amp;lt;&lt;/span> &lt;span style="color:#0550ae">500&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">console&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">log&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0a3069">&amp;#34;we are running out of time, pausing compile!&amp;#34;&lt;/span> &lt;span style="color:#0550ae">+&lt;/span> &lt;span style="color:#1f2328">JSON&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">stringify&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">Game&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">cpu&lt;/span>&lt;span style="color:#1f2328">));&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#cf222e">return&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57606a">// delect the module from the cache, so we can reload it
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span> &lt;span style="color:#cf222e">if&lt;/span> &lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">MODULE_NAME&lt;/span> &lt;span style="color:#cf222e">in&lt;/span> &lt;span style="color:#1f2328">require&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">cache&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#cf222e">delete&lt;/span> &lt;span style="color:#1f2328">require&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">cache&lt;/span>&lt;span style="color:#1f2328">[&lt;/span>&lt;span style="color:#1f2328">MODULE_NAME&lt;/span>&lt;span style="color:#1f2328">];&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57606a">// load the wasm module
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span> &lt;span style="color:#1f2328">wasm_module&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#1f2328">require&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">MODULE_NAME&lt;/span>&lt;span style="color:#1f2328">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57606a">// load the wasm instance!
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span> &lt;span style="color:#1f2328">wasm_module&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">initialize_instance&lt;/span>&lt;span style="color:#1f2328">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57606a">// run the setup function, which configures logging
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span> &lt;span style="color:#1f2328">wasm_module&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">setup&lt;/span>&lt;span style="color:#1f2328">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#57606a">// go ahead and run the loop for its first tick
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#57606a">&lt;/span> &lt;span style="color:#1f2328">wasm_module&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">loop&lt;/span>&lt;span style="color:#1f2328">();&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span> &lt;span style="color:#cf222e">catch&lt;/span> &lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">error&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">console_error&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0a3069">&amp;#34;caught exception:&amp;#34;&lt;/span>&lt;span style="color:#1f2328">,&lt;/span> &lt;span style="color:#1f2328">error&lt;/span>&lt;span style="color:#1f2328">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#cf222e">if&lt;/span> &lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#1f2328">error&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">stack&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> &lt;span style="color:#1f2328">{&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">console_error&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0a3069">&amp;#34;stack trace:&amp;#34;&lt;/span>&lt;span style="color:#1f2328">,&lt;/span> &lt;span style="color:#1f2328">error&lt;/span>&lt;span style="color:#1f2328">.&lt;/span>&lt;span style="color:#1f2328">stack&lt;/span>&lt;span style="color:#1f2328">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">console_error&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>&lt;span style="color:#0a3069">&amp;#34;resetting VM next tick.&amp;#34;&lt;/span>&lt;span style="color:#1f2328">);&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">wasm_module&lt;/span> &lt;span style="color:#0550ae">=&lt;/span> &lt;span style="color:#cf222e">null&lt;/span>&lt;span style="color:#1f2328">;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#1f2328">}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#1f2328">}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>文件中 &lt;code>wasm_module&lt;/code> 保存了 wasm 的实例。如果 wasm 的实例存在，就调用 loop 函数运行游戏逻辑。如果 wasm 的实例不存在 (由于更新代码或 screeps 进行了内存回收等原因导致实列被销毁)，&lt;strong>重新载入 wasm 并且调用 setup 函数进行初始化，然后再运行游戏逻辑&lt;/strong>。&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Screeps on</title><link>https://booiris.space/categories/screeps/</link><description>Recent content in Screeps on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Sat, 22 Jul 2023 23:35:45 +0000</lastBuildDate><atom:link href="https://booiris.space/categories/screeps/index.xml" rel="self" type="application/rss+xml"/><item><title>Rust For Screeps (3): 系统监控</title><link>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/</link><pubDate>Sat, 22 Jul 2023 23:35:45 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;参考 &lt;a href="https://www.jianshu.com/p/de74baf6fb48"&gt;Screeps 制作统计图表 - 简书&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;首先说明: 本文使用 docker 将监控系统部署在自有服务器上，所以先决条件是一台能公网访问的服务器(&lt;/p&gt;
+&lt;h2 id="整体流程"&gt;整体流程&lt;/h2&gt;
+&lt;p&gt;&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20231102131635.png" alt="image.png"&gt;&lt;/p&gt;
+&lt;h2 id="具体实现"&gt;具体实现&lt;/h2&gt;
+&lt;h3 id="记录当前状态存入内存"&gt;记录当前状态存入内存&lt;/h3&gt;
+&lt;p&gt;在 &lt;a href="https://www.jianshu.com/p/de74baf6fb48"&gt;Screeps 制作统计图表 - 简书&lt;/a&gt; 中使用的是 &lt;a href="https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/#memory%20object"&gt;memory object&lt;/a&gt; 存储系统信息。遗憾的是在 rust 中无法使用 &lt;code&gt;memory&lt;/code&gt; 对象，但是 screeps 还有另一个存储信息的地方，那就是 &lt;a href="https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/#raw%20memory"&gt;raw memory&lt;/a&gt; 。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;raw memory&lt;/code&gt; 可以存储 10 MB 的序列化后的内容，它由一个个 &lt;code&gt;segment&lt;/code&gt; 组成，每个&lt;code&gt;segment&lt;/code&gt; 最多存储 100 KB 内容。所以可以指定一段 &lt;code&gt;segment&lt;/code&gt; 用于存储当前系统的状态。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;fn&lt;/span&gt; &lt;span style="color:#6639ba"&gt;log&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;amp;&lt;/span&gt;&lt;span style="color:#6a737d"&gt;self&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;	&lt;/span&gt;&lt;span style="color:#cf222e"&gt;let&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;status_segement&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;raw_memory::segments&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;	&lt;/span&gt;&lt;span style="color:#cf222e"&gt;let&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;status&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Status::get_status&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;	&lt;/span&gt;status_segement&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;set&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0550ae"&gt;STATUS_INDEX&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;status&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;into&lt;span style="color:#1f2328"&gt;());&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="访问内存并解析内存内容"&gt;访问内存并解析内存内容&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/booiris/rust-learning/tree/screep_log"&gt;GitHub - booiris/rust-learning at screep_log&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="将信息存储到时序数据库中"&gt;将信息存储到时序数据库中&lt;/h3&gt;
+&lt;h3 id="使用-grafana-制作图表"&gt;使用 Grafana 制作图表&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;version: &lt;span style="color:#0a3069"&gt;&amp;#39;2&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; sync:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; restart: unless-stopped
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; build:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; context: ./sync
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; dockerfile: Dockerfile
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: sync:1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; volumes:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - ./sync/log:/log
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; depends_on:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - influxdb
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;# https://hub.docker.com/_/influxdb 查看参数含义&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; influxdb:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: influxdb:latest
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; restart: unless-stopped
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; volumes:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - ./influxdb-data:/var/lib/influxdb2
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - ./influxdb-config:/etc/influxdb2
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; environment:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#953800"&gt;DOCKER_INFLUXDB_INIT_MODE&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;setup
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#953800"&gt;DOCKER_INFLUXDB_INIT_USERNAME&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#0a3069"&gt;${&lt;/span&gt;&lt;span style="color:#953800"&gt;username&lt;/span&gt;&lt;span style="color:#0a3069"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#953800"&gt;DOCKER_INFLUXDB_INIT_PASSWORD&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#0a3069"&gt;${&lt;/span&gt;&lt;span style="color:#953800"&gt;pwd&lt;/span&gt;&lt;span style="color:#0a3069"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#953800"&gt;DOCKER_INFLUXDB_INIT_ORG&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#0a3069"&gt;${&lt;/span&gt;&lt;span style="color:#953800"&gt;org&lt;/span&gt;&lt;span style="color:#0a3069"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#953800"&gt;DOCKER_INFLUXDB_INIT_BUCKET&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#0a3069"&gt;${&lt;/span&gt;&lt;span style="color:#953800"&gt;bucket&lt;/span&gt;&lt;span style="color:#0a3069"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;# https://grafana.com/docs/grafana/latest/setup-grafana/installation/docker/ 查看参数含义&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; grafana:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; image: grafana/grafana:latest
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; restart: unless-stopped
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ports:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#0a3069"&gt;&amp;#39;12002:3000&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; volumes:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - ./grafana-data:/var/lib/grafana
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - ./grafana-provisioning/:/etc/grafana/provisioning
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; depends_on:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - influxdb
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; user: &lt;span style="color:#0a3069"&gt;&amp;#34;&lt;/span&gt;&lt;span style="color:#953800"&gt;$UID&lt;/span&gt;&lt;span style="color:#0a3069"&gt;:&lt;/span&gt;&lt;span style="color:#953800"&gt;$GID&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; environment:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#953800"&gt;GF_SECURITY_ADMIN_USER&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#0a3069"&gt;${&lt;/span&gt;&lt;span style="color:#953800"&gt;GRAFANA_USERNAME&lt;/span&gt;&lt;span style="color:#0a3069"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#953800"&gt;GF_SECURITY_ADMIN_PASSWORD&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#0a3069"&gt;${&lt;/span&gt;&lt;span style="color:#953800"&gt;GRAFANA_PASSWORD&lt;/span&gt;&lt;span style="color:#0a3069"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Rust For Screeps (3): 系统监控和 panic 处理</title><link>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%92%8C-panic-%E5%A4%84%E7%90%86/</link><pubDate>Sat, 22 Jul 2023 23:35:45 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7%E5%92%8C-panic-%E5%A4%84%E7%90%86/</guid><description>&lt;p&gt;#todo&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; TODO: 系统监控和 panic 处理&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Rust For Screeps (2): 自定义存储模型</title><link>https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/</link><pubDate>Sat, 22 Jul 2023 21:05:20 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/</guid><description>&lt;h2 id="screeps-存储模型"&gt;Screeps 存储模型&lt;/h2&gt;
+&lt;p&gt;screeps 的存储模型基本如图所示。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img//20230722224904.png" alt="image.png"&gt;&lt;/p&gt;
+&lt;p&gt;其中存在两种类型的 memory，一个是 &lt;code&gt;memory object&lt;/code&gt; ，另一个是 &lt;code&gt;raw memory&lt;/code&gt; 。&lt;/p&gt;
+&lt;h3 id="memory-object"&gt;memory object&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;memory object&lt;/code&gt; 的具体介绍在 &lt;a href="https://docs.screeps.com/global-objects.html#Memory-object"&gt;Global Objects | Screeps Documentation&lt;/a&gt;。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Each player has access to the global object &lt;code&gt;Memory&lt;/code&gt; in which he/she may store any information in the JSON format.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;Memory&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;someData&lt;/span&gt; &lt;span style="color:#0550ae"&gt;=&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{...};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以看出 screeps 本身内置了一个 &lt;code&gt;Memory&lt;/code&gt; 的对象实例。可以往其中添加各种属性来达到存储信息的目的。&lt;/p&gt;
+&lt;h3 id="raw-memory"&gt;raw memory&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;raw memory&lt;/code&gt; 在这里被提到 &lt;a href="https://docs.screeps.com/global-objects.html#Serialization"&gt;Global Objects | Screeps Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Memory object is stored in the stringified form and is parsed each time upon the first in the tick access from your script with the help of the &lt;code&gt;JSON.parse&lt;/code&gt; method.&lt;/p&gt;</description></item><item><title>Rust For Screeps (1): 初始环境搭建</title><link>https://booiris.space/posts/blog/rust-for-screeps-1-%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Sat, 22 Jul 2023 19:29:29 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-1-%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;参考 &lt;a href="https://github.com/rustyscreeps/screeps-starter-rust/"&gt;GitHub - rustyscreeps/screeps-starter-rust: Starter Rust AI for Screeps, the JavaScript-based MMO game&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id="安装相关cli"&gt;安装相关cli&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cargo install cargo-screeps
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;命令包含了构建代码、上传代码等操作。&lt;/p&gt;
+&lt;h3 id="下载模板文件"&gt;下载模板文件&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git clone https://github.com/rustyscreeps/screeps-starter-rust.git
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#6639ba"&gt;cd&lt;/span&gt; screeps-starter-rust
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模板 (版本:&lt;a href="https://github.com/rustyscreeps/cargo-screeps/tree/d91b60f9a13eb0bd763b094acb6a1d749bb1b12f"&gt;d91b60f9a13eb0bd763b094acb6a1d749bb1b12f&lt;/a&gt;) 中包含的文件:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;./
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── Cargo.toml
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── example-screeps.toml
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── javascript
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;│ └── main.js
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── LICENSE
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── README.md
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;└── src
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ├── lib.rs
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; └── logging.rs
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="模板文件说明"&gt;模板文件说明&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;example-screeps.toml&lt;/code&gt; 用于 &lt;code&gt;cargo-screeps&lt;/code&gt; 的配置。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;javascript/main.js&lt;/code&gt; 为游戏主入口，其中内容如下。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;use strict&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;let&lt;/span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;// replace this with the name of your module
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt;&lt;span style="color:#cf222e"&gt;const&lt;/span&gt; &lt;span style="color:#1f2328"&gt;MODULE_NAME&lt;/span&gt; &lt;span style="color:#0550ae"&gt;=&lt;/span&gt; &lt;span style="color:#0a3069"&gt;&amp;#34;screeps-starter-rust&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;function&lt;/span&gt; &lt;span style="color:#1f2328"&gt;console_error&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(...&lt;/span&gt;&lt;span style="color:#1f2328"&gt;args&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;console&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;log&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(...&lt;/span&gt;&lt;span style="color:#1f2328"&gt;args&lt;/span&gt;&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;Game&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;notify&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;args&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;join&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;exports&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;loop&lt;/span&gt; &lt;span style="color:#0550ae"&gt;=&lt;/span&gt; &lt;span style="color:#cf222e"&gt;function&lt;/span&gt; &lt;span style="color:#1f2328"&gt;()&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#cf222e"&gt;try&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#cf222e"&gt;if&lt;/span&gt; &lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;loop&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt; &lt;span style="color:#cf222e"&gt;else&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57606a"&gt;// attempt to load the wasm only if there&amp;#39;s enough bucket to do a bunch of work this tick
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt; &lt;span style="color:#cf222e"&gt;if&lt;/span&gt; &lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;Game&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;cpu&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;bucket&lt;/span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#0550ae"&gt;500&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;console&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;log&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;we are running out of time, pausing compile!&amp;#34;&lt;/span&gt; &lt;span style="color:#0550ae"&gt;+&lt;/span&gt; &lt;span style="color:#1f2328"&gt;JSON&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;stringify&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;Game&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;cpu&lt;/span&gt;&lt;span style="color:#1f2328"&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#cf222e"&gt;return&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57606a"&gt;// delect the module from the cache, so we can reload it
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt; &lt;span style="color:#cf222e"&gt;if&lt;/span&gt; &lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;MODULE_NAME&lt;/span&gt; &lt;span style="color:#cf222e"&gt;in&lt;/span&gt; &lt;span style="color:#1f2328"&gt;require&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;cache&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#cf222e"&gt;delete&lt;/span&gt; &lt;span style="color:#1f2328"&gt;require&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;cache&lt;/span&gt;&lt;span style="color:#1f2328"&gt;[&lt;/span&gt;&lt;span style="color:#1f2328"&gt;MODULE_NAME&lt;/span&gt;&lt;span style="color:#1f2328"&gt;];&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57606a"&gt;// load the wasm module
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt; &lt;span style="color:#0550ae"&gt;=&lt;/span&gt; &lt;span style="color:#1f2328"&gt;require&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;MODULE_NAME&lt;/span&gt;&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57606a"&gt;// load the wasm instance!
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;initialize_instance&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57606a"&gt;// run the setup function, which configures logging
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;setup&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57606a"&gt;// go ahead and run the loop for its first tick
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;loop&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt; &lt;span style="color:#cf222e"&gt;catch&lt;/span&gt; &lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;error&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;console_error&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;caught exception:&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt; &lt;span style="color:#1f2328"&gt;error&lt;/span&gt;&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#cf222e"&gt;if&lt;/span&gt; &lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;error&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;stack&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;console_error&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;stack trace:&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt; &lt;span style="color:#1f2328"&gt;error&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;stack&lt;/span&gt;&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;console_error&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;resetting VM next tick.&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt; &lt;span style="color:#0550ae"&gt;=&lt;/span&gt; &lt;span style="color:#cf222e"&gt;null&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;文件中 &lt;code&gt;wasm_module&lt;/code&gt; 保存了 wasm 的实例。如果 wasm 的实例存在，就调用 loop 函数运行游戏逻辑。如果 wasm 的实例不存在 (由于更新代码或 screeps 进行了内存回收等原因导致实列被销毁)，&lt;strong&gt;重新载入 wasm 并且调用 setup 函数进行初始化，然后再运行游戏逻辑&lt;/strong&gt;。&lt;/p&gt;</description></item></channel></rss>

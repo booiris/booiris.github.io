@@ -1,290 +1,290 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on</title><link>https://booiris.space/categories/linux/</link><description>Recent content in Linux on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Sat, 20 Aug 2022 14:29:28 +0000</lastBuildDate><atom:link href="https://booiris.space/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>linux自启动服务</title><link>https://booiris.space/posts/linux/linux%E8%87%AA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/</link><pubDate>Sat, 20 Aug 2022 14:29:28 +0000</pubDate><guid>https://booiris.space/posts/linux/linux%E8%87%AA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/</guid><description>&lt;p>自启动文件放在 &lt;code>/usr/lib/systemd/system&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">[&lt;/span>Unit&lt;span style="color:#0550ae">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">Description&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>code-server
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">[&lt;/span>Service&lt;span style="color:#0550ae">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">Type&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>simple
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">ExecStart&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>/usr/bin/code-server
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">User&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>your user name
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">[&lt;/span>Install&lt;span style="color:#0550ae">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">WantedBy&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>multi-user.target
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span style="display:flex;">&lt;span>sudo systemctl daemon&lt;span style="color:#0550ae">-&lt;/span>reload &lt;span style="color:#57606a">#刷新&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl start code&lt;span style="color:#0550ae">-&lt;/span>server
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo systemctl enable code&lt;span style="color:#0550ae">-&lt;/span>server
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>arch虚拟机安装</title><link>https://booiris.space/posts/linux/arch%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/</link><pubDate>Thu, 04 Aug 2022 00:02:01 +0000</pubDate><guid>https://booiris.space/posts/linux/arch%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/</guid><description>&lt;h3 id="查看ip地址">查看ip地址&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ip addr
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="时间同步">时间同步&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>timedatectl set-ntp &lt;span style="color:#6639ba">true&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="准备磁盘分区">准备磁盘分区&lt;/h2>
-&lt;h3 id="显示所有分区">显示所有分区&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>fdisk -l
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="开始分区">开始分区&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>fdisk /dev/sda
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>分区过程参考&lt;a href="https://ericclose.github.io/Installing-Arch-as-a-guest-with-UEFI-and-GPT.html#arch-chroot">网址&lt;/a>&lt;/p>
-&lt;h3 id="确认是否生效">确认是否生效&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span> fdisk -l /dev/sda
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="格式化分区和设置swap分区">格式化分区和设置swap分区&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkfs.fat -F32 /dev/sda1
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkswap /dev/sda2
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mkfs.ext4 /dev/sda3 
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="启用交换分区">启用交换分区&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>swapon /dev/sda2
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="挂载根目录">挂载根目录&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mount /dev/sda3 /mnt
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="挂载boot目录">挂载boot目录&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkdir /mnt/boot
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>mount /dev/sda1 /mnt/boot
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="安装系统">安装系统&lt;/h2>
-&lt;h3 id="修改镜像源">修改镜像源&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>vim /etc/pacman.d/mirrorlist
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>添加 &lt;code>Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch&lt;/code> 镜像&lt;/p>
-&lt;p>如果安装时报错 &lt;code>ERROR: 5984EA8F3C could not be locally signed&lt;/code> 解决办法：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>rm -fr /etc/pacman.d/gnupg
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>umount /etc/pacman.d/gnupg
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>rm -fr /etc/pacman.d/gnupg
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pacman-key --init
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pacman-key --populate archlinux
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pacman -Sy archlinux-keyring
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="安装系统和网络插件">安装系统和网络插件&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pacstrap /mnt base linux networkmanager
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="配置系统">配置系统&lt;/h2>
-&lt;h3 id="生成fstab文件">生成fstab文件&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="进入chroot">进入chroot&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>arch-chroot /mnt
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="设置时区">设置时区&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="设置硬件时间同步">设置硬件时间同步&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hwclock --systohc
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="安装vim">安装vim&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>pacman -S vim
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="语言设置">语言设置&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span> vim /etc/locale.gen
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> en_US
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> zh_CN
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="生成语言">生成语言&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>locale-gen
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="设置默认语言">设置默认语言&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6639ba">echo&lt;/span> &lt;span style="color:#953800">LANG&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>en_US.UTF-8 &amp;gt; /etc/locale.conf
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="创建host文件">创建host文件&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6639ba">echo&lt;/span> YourNewHostname &amp;gt; /etc/hostname
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="添加host">添加host&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>vim /etc/hosts
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># Static table lookup for hostnames. 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># See hosts(5) for details. 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>127.0.0.1 localhost 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>::1 localhost 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>127.0.1.1 YourNewHostname.localdomain YourNewHostname
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="开启网络服务">开启网络服务&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>systemctl &lt;span style="color:#6639ba">enable&lt;/span> NetworkManager
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="设置-root-用户密码">设置 root 用户密码&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>passwd
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="安装引导程序">安装引导程序&lt;/h2>
-&lt;p>UEFI 系统：&lt;/p></description></item><item><title>nginx反向代理自签名</title><link>https://booiris.space/posts/linux/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E8%87%AA%E7%AD%BE%E5%90%8D/</link><pubDate>Sat, 02 Jul 2022 16:49:11 +0000</pubDate><guid>https://booiris.space/posts/linux/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E8%87%AA%E7%AD%BE%E5%90%8D/</guid><description>&lt;h2 id="自签名ca证书">自签名ca证书&lt;/h2>
-&lt;p>首先创建cert文件夹保存证书。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>mkdir cert
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#6639ba">cd&lt;/span> cert
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后创建配置文件cert.cnf，注意如果时ip自签名就在your_IP填写自己的ip，如果是自签名域名就是在your_domain写自己的域名。&lt;/p>
-&lt;p>[dn]下CN字段是ca根服务器地址，alt_names下是ca验证的ip和域名地址，一般情况下这两个是一样的。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>[req] 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>prompt = no 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>default_bits = 4096
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>default_md = sha256
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>distinguished_name = dn 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x509_extensions = v3_req
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[dn] 
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>C=CN
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ST=Shanghai
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>L=Shanghai
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>O=TEST
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>OU=Testing Domain
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>CN=$your_IP or $your_domain
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>emailAddress=admin@localhost
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[v3_req]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>basicConstraints=CA:TRUE
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>keyUsage=digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>extendedKeyUsage=serverAuth
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>subjectAltName=@alt_names
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[alt_names]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>IP.1=$your_IP
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>DNS.1=$your_domain
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>根据配置文件生成证书。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>openssl req -new -newkey rsa:2048 -days &lt;span style="color:#0550ae">365&lt;/span> -nodes -x509 -keyout cert.key -out cert.crt -config cert.cnf
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>当前目录下生成两个文件cert.crt和cert.key，至此自签名步骤完成。&lt;/p>
-&lt;h2 id="nginx反向代理">nginx反向代理&lt;/h2>
-&lt;p>docker拉取nginx镜像。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>docker pull nginx
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>新建一个容器获取config文件。&lt;/p></description></item><item><title>linux-install</title><link>https://booiris.space/posts/linux/linux-install/</link><pubDate>Sun, 01 May 2022 23:30:29 +0000</pubDate><guid>https://booiris.space/posts/linux/linux-install/</guid><description>&lt;h1 id="wsl">WSL&lt;/h1>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>	wsl --list
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>卸载对应的系统&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>	wsl --unregister Ubuntu
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>设置默认系统&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>wslconfig /setdefault Name
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>修改默认用户，主机名，修改/etc/wsl.conf文件&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">[&lt;/span>user&lt;span style="color:#0550ae">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">default&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>youruser
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">[&lt;/span>network&lt;span style="color:#0550ae">]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#953800">hostname&lt;/span>&lt;span style="color:#0550ae">=&lt;/span>yourhostname
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="ubuntu">Ubuntu&lt;/h2>
-&lt;h3 id="换源">换源&lt;/h3>
-&lt;ol>
-&lt;li>备份&lt;code>sources.list&lt;/code>文件&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
-&lt;li>编辑&lt;code>/etc/apt/sources.list&lt;/code>文件&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo vim /etc/apt/sources.list
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
-&lt;li>在文件前面添加下面的条目(阿里源)&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
-&lt;li>更新&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt update
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="oh-my-bash-美化">oh-my-bash 美化&lt;/h3>
-&lt;ol>
-&lt;li>安装&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span style="display:flex;">&lt;span>bash &lt;span style="color:#0550ae">-&lt;/span>c &lt;span style="color:#0a3069">&amp;#34;$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="安装软件">安装软件&lt;/h3>
-&lt;h4 id="安装i3wm">安装i3wm&lt;/h4>
-&lt;ol>
-&lt;li>安装&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt install i3
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
-&lt;li>同步最新仓库&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span style="display:flex;">&lt;span>sudo apt install ca&lt;span style="color:#0550ae">-&lt;/span>certificates
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#0550ae">/&lt;/span>usr&lt;span style="color:#0550ae">/&lt;/span>lib&lt;span style="color:#0550ae">/&lt;/span>apt&lt;span style="color:#0550ae">/&lt;/span>apt&lt;span style="color:#0550ae">-&lt;/span>helper download&lt;span style="color:#0550ae">-&lt;/span>file https&lt;span style="color:#1f2328">:&lt;/span>&lt;span style="color:#0550ae">//&lt;/span>debian&lt;span style="color:#0550ae">.&lt;/span>sur5r&lt;span style="color:#0550ae">.&lt;/span>net&lt;span style="color:#0550ae">/&lt;/span>i3&lt;span style="color:#0550ae">/&lt;/span>pool&lt;span style="color:#0550ae">/&lt;/span>main&lt;span style="color:#0550ae">/&lt;/span>s&lt;span style="color:#0550ae">/&lt;/span>sur5r&lt;span style="color:#0550ae">-&lt;/span>keyring&lt;span style="color:#0550ae">/&lt;/span>sur5r&lt;span style="color:#0550ae">-&lt;/span>keyring_2021&lt;span style="color:#0550ae">.&lt;/span>&lt;span style="color:#0550ae">02.02&lt;/span>_all&lt;span style="color:#0550ae">.&lt;/span>deb keyring&lt;span style="color:#0550ae">.&lt;/span>deb SHA256&lt;span style="color:#1f2328">:&lt;/span>cccfb1dd7d6b1b6a137bb96ea5b5eef18a0a4a6df1d6c0c37832025d2edaa710
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo dpkg &lt;span style="color:#0550ae">-&lt;/span>i &lt;span style="color:#0550ae">./&lt;/span>keyring&lt;span style="color:#0550ae">.&lt;/span>deb
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo sh &lt;span style="color:#0550ae">-&lt;/span>c &lt;span style="color:#0a3069">&amp;#34;echo &amp;#34;&lt;/span>deb http&lt;span style="color:#1f2328">:&lt;/span>&lt;span style="color:#0550ae">//&lt;/span>debian&lt;span style="color:#0550ae">.&lt;/span>sur5r&lt;span style="color:#0550ae">.&lt;/span>net&lt;span style="color:#0550ae">/&lt;/span>i3&lt;span style="color:#0550ae">/&lt;/span> &lt;span style="color:#0550ae">$&lt;/span>&lt;span style="color:#1f2328">(&lt;/span>grep &lt;span style="color:#0a3069">&amp;#39;^DISTRIB_CODENAME=&amp;#39;&lt;/span> &lt;span style="color:#0550ae">/&lt;/span>etc&lt;span style="color:#0550ae">/&lt;/span>lsb&lt;span style="color:#0550ae">-&lt;/span>release &lt;span style="color:#0550ae">|&lt;/span> cut &lt;span style="color:#0550ae">-&lt;/span>f2 &lt;span style="color:#0550ae">-&lt;/span>d&lt;span style="color:#0550ae">=&lt;/span>&lt;span style="color:#1f2328">)&lt;/span> universe&lt;span style="color:#0a3069">&amp;#34; &amp;gt; /etc/apt/sources.list.d/sur5r-i3.list&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt update
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="安装tigervnc">安装tigervnc&lt;/h4>
-&lt;ol>
-&lt;li>安装&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt install tigervnc-standalone-server
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
-&lt;li>启动&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>vncserver -SecurityTypes=None -localhost=no --I-KNOW-THIS-IS-INSECURE :1 -dpi 150 -geometry=1920x1080
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="3">
-&lt;li>显示当前ip&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>ip addr | grep eth0
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="安装fehxfce4-terminalrofipolybar">安装feh、xfce4-terminal、rofi、polybar&lt;/h4>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt install feh xfce4-terminal rofi polybar
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="安装picom">安装picom&lt;/h4>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt install libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libpcre3-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev meson gcc
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git clone https://github.com/yshui/picom.git --depth=1
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd picom
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git submodule update --init --recursive
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>meson --buildtype=release . build
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ninja -C build
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ninja -C build install
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="安装google">安装google&lt;/h4>
-&lt;ol>
-&lt;li>下载安装包&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
-&lt;li>安装&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt install ./google-chrome-stable_current_amd64.deb
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="加载字体">加载字体&lt;/h4>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo mkfontscale
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo fc-cache -fv
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="arch">ARCH&lt;/h2>
-&lt;h3 id="创建用户">创建用户&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>useradd -m -G wheel username
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># 请自行替换 username 为你的用户名
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>passwd username
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># 请自行替换 username 为你的用户名
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>vim /etc/sudoers
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># 去掉# %wheel ALL=(ALL)ALL
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="设置默认用户">设置默认用户&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>./Arch.exe config --default-user booiris
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="换源-1">换源&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo pacman-key --init
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo pacman-key --populate archlinux
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo vim /etc/pacman.d/mirrorlist
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># 清华大学
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>## 163
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Server = http://mirrors.163.com/archlinux/$repo/os/$arch
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>## aliyun
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cp /etc/pacman.conf /etc/pacman.conf.backup
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo vim /etc/pacman.conf
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[archlinuxcn]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># The Chinese Arch Linux communities packages.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># SigLevel = Optional TrustedOnly
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>SigLevel = Optional TrustAll
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span># 清华大学
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo pacman -Syyu
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="yay">YAY&lt;/h3>
-&lt;ol>
-&lt;li>安装&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo pacman -S yay
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
-&lt;li>换源&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>yay --aururl &amp;#34;https://aur.tuna.tsinghua.edu.cn&amp;#34; --save
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="安装软件-1">安装软件&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>yay -S base-devel
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yay -S i3 tigervnc sublime-text-4 google-chrome xfce4-terminal
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="tighervnc-配置">tighervnc 配置&lt;/h3>
-&lt;ol>
-&lt;li>用 &lt;code>vncpasswd&lt;/code> 创建密码，它会将哈希处理之后的密码存储在 &lt;code>~/.vnc/passwd&lt;/code>。&lt;/li>
-&lt;li>编辑 &lt;code>/etc/tigervnc/vncserver.users&lt;/code> 来定义用户映射&lt;/li>
-&lt;li>创建 &lt;code>~/.vnc/config&lt;/code>，其中至少要有一行定义会话的类型，比如 &lt;code>session=foo&lt;/code> （将foo替换为你想要运行的桌面环境）。你可以通过查看 &lt;code>/usr/share/xsessions/&lt;/code> 里的 &lt;code>.desktop&lt;/code> 文件来知道有哪些桌面环境在当前系统上可以使用。&lt;/li>
-&lt;/ol>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>session=i3
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>geometry=1920x1080
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>dpi=150
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>alwaysshared
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="语言">语言&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo vim /etc/locale.gen
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo locale-gen
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="字体">字体&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>yay -S noto-fonts-emoji adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts nerd-fonts-jetbrains-mono ttf-iosevka-nerd ttf-material-icons-git papirus-icon-theme
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="桌面">桌面&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>yay -S polybar rofi feh picom xss-lock dbus-x11 google-chrome
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>yay -S fcitx5-im fcitx5-chinese-addons 
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>创建&lt;code>.Xresources&lt;/code>&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on</title><link>https://booiris.space/categories/linux/</link><description>Recent content in Linux on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Sat, 20 Aug 2022 14:29:28 +0000</lastBuildDate><atom:link href="https://booiris.space/categories/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>linux自启动服务</title><link>https://booiris.space/posts/linux/linux%E8%87%AA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/</link><pubDate>Sat, 20 Aug 2022 14:29:28 +0000</pubDate><guid>https://booiris.space/posts/linux/linux%E8%87%AA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/</guid><description>&lt;p&gt;自启动文件放在 &lt;code&gt;/usr/lib/systemd/system&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;[&lt;/span&gt;Unit&lt;span style="color:#0550ae"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#953800"&gt;Description&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;code-server
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;[&lt;/span&gt;Service&lt;span style="color:#0550ae"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#953800"&gt;Type&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;simple
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#953800"&gt;ExecStart&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;/usr/bin/code-server
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#953800"&gt;User&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;your user name
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;[&lt;/span&gt;Install&lt;span style="color:#0550ae"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#953800"&gt;WantedBy&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;multi-user.target
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl daemon&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;reload &lt;span style="color:#57606a"&gt;#刷新&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl start code&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;server
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl enable code&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>arch虚拟机安装</title><link>https://booiris.space/posts/linux/arch%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/</link><pubDate>Thu, 04 Aug 2022 00:02:01 +0000</pubDate><guid>https://booiris.space/posts/linux/arch%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/</guid><description>&lt;h3 id="查看ip地址"&gt;查看ip地址&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ip addr
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="时间同步"&gt;时间同步&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;timedatectl set-ntp &lt;span style="color:#6639ba"&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="准备磁盘分区"&gt;准备磁盘分区&lt;/h2&gt;
+&lt;h3 id="显示所有分区"&gt;显示所有分区&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;fdisk -l
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="开始分区"&gt;开始分区&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;fdisk /dev/sda
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;分区过程参考&lt;a href="https://ericclose.github.io/Installing-Arch-as-a-guest-with-UEFI-and-GPT.html#arch-chroot"&gt;网址&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id="确认是否生效"&gt;确认是否生效&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fdisk -l /dev/sda
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="格式化分区和设置swap分区"&gt;格式化分区和设置swap分区&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkfs.fat -F32 /dev/sda1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkswap /dev/sda2
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkfs.ext4 /dev/sda3 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="启用交换分区"&gt;启用交换分区&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;swapon /dev/sda2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="挂载根目录"&gt;挂载根目录&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mount /dev/sda3 /mnt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="挂载boot目录"&gt;挂载boot目录&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir /mnt/boot
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mount /dev/sda1 /mnt/boot
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="安装系统"&gt;安装系统&lt;/h2&gt;
+&lt;h3 id="修改镜像源"&gt;修改镜像源&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim /etc/pacman.d/mirrorlist
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;添加 &lt;code&gt;Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch&lt;/code&gt; 镜像&lt;/p&gt;
+&lt;p&gt;如果安装时报错 &lt;code&gt;ERROR: 5984EA8F3C could not be locally signed&lt;/code&gt; 解决办法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;rm -fr /etc/pacman.d/gnupg
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;umount /etc/pacman.d/gnupg
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;rm -fr /etc/pacman.d/gnupg
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pacman-key --init
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pacman-key --populate archlinux
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pacman -Sy archlinux-keyring
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="安装系统和网络插件"&gt;安装系统和网络插件&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pacstrap /mnt base linux networkmanager
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="配置系统"&gt;配置系统&lt;/h2&gt;
+&lt;h3 id="生成fstab文件"&gt;生成fstab文件&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="进入chroot"&gt;进入chroot&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;arch-chroot /mnt
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="设置时区"&gt;设置时区&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="设置硬件时间同步"&gt;设置硬件时间同步&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hwclock --systohc
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="安装vim"&gt;安装vim&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pacman -S vim
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="语言设置"&gt;语言设置&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; vim /etc/locale.gen
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; en_US
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; zh_CN
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="生成语言"&gt;生成语言&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;locale-gen
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="设置默认语言"&gt;设置默认语言&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#6639ba"&gt;echo&lt;/span&gt; &lt;span style="color:#953800"&gt;LANG&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;en_US.UTF-8 &amp;gt; /etc/locale.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="创建host文件"&gt;创建host文件&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#6639ba"&gt;echo&lt;/span&gt; YourNewHostname &amp;gt; /etc/hostname
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="添加host"&gt;添加host&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim /etc/hosts
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# Static table lookup for hostnames. 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# See hosts(5) for details. 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;127.0.0.1 localhost 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;::1 localhost 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;127.0.1.1 YourNewHostname.localdomain YourNewHostname
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="开启网络服务"&gt;开启网络服务&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;systemctl &lt;span style="color:#6639ba"&gt;enable&lt;/span&gt; NetworkManager
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="设置-root-用户密码"&gt;设置 root 用户密码&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;passwd
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="安装引导程序"&gt;安装引导程序&lt;/h2&gt;
+&lt;p&gt;UEFI 系统：&lt;/p&gt;</description></item><item><title>nginx反向代理自签名</title><link>https://booiris.space/posts/linux/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E8%87%AA%E7%AD%BE%E5%90%8D/</link><pubDate>Sat, 02 Jul 2022 16:49:11 +0000</pubDate><guid>https://booiris.space/posts/linux/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E8%87%AA%E7%AD%BE%E5%90%8D/</guid><description>&lt;h2 id="自签名ca证书"&gt;自签名ca证书&lt;/h2&gt;
+&lt;p&gt;首先创建cert文件夹保存证书。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir cert
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#6639ba"&gt;cd&lt;/span&gt; cert
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后创建配置文件cert.cnf，注意如果时ip自签名就在your_IP填写自己的ip，如果是自签名域名就是在your_domain写自己的域名。&lt;/p&gt;
+&lt;p&gt;[dn]下CN字段是ca根服务器地址，alt_names下是ca验证的ip和域名地址，一般情况下这两个是一样的。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[req] 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;prompt = no 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;default_bits = 4096
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;default_md = sha256
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;distinguished_name = dn 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;x509_extensions = v3_req
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[dn] 
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;C=CN
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ST=Shanghai
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;L=Shanghai
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;O=TEST
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;OU=Testing Domain
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;CN=$your_IP or $your_domain
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;emailAddress=admin@localhost
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[v3_req]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;basicConstraints=CA:TRUE
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;keyUsage=digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;extendedKeyUsage=serverAuth
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;subjectAltName=@alt_names
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[alt_names]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;IP.1=$your_IP
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;DNS.1=$your_domain
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;根据配置文件生成证书。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openssl req -new -newkey rsa:2048 -days &lt;span style="color:#0550ae"&gt;365&lt;/span&gt; -nodes -x509 -keyout cert.key -out cert.crt -config cert.cnf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;当前目录下生成两个文件cert.crt和cert.key，至此自签名步骤完成。&lt;/p&gt;
+&lt;h2 id="nginx反向代理"&gt;nginx反向代理&lt;/h2&gt;
+&lt;p&gt;docker拉取nginx镜像。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker pull nginx
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;新建一个容器获取config文件。&lt;/p&gt;</description></item><item><title>linux-install</title><link>https://booiris.space/posts/linux/linux-install/</link><pubDate>Sun, 01 May 2022 23:30:29 +0000</pubDate><guid>https://booiris.space/posts/linux/linux-install/</guid><description>&lt;h1 id="wsl"&gt;WSL&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	wsl --list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;卸载对应的系统&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	wsl --unregister Ubuntu
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;设置默认系统&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;wslconfig /setdefault Name
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;修改默认用户，主机名，修改/etc/wsl.conf文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;[&lt;/span&gt;user&lt;span style="color:#0550ae"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#953800"&gt;default&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;youruser
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;[&lt;/span&gt;network&lt;span style="color:#0550ae"&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#953800"&gt;hostname&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;yourhostname
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="ubuntu"&gt;Ubuntu&lt;/h2&gt;
+&lt;h3 id="换源"&gt;换源&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;备份&lt;code&gt;sources.list&lt;/code&gt;文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;编辑&lt;code&gt;/etc/apt/sources.list&lt;/code&gt;文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/apt/sources.list
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
+&lt;li&gt;在文件前面添加下面的条目(阿里源)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="4"&gt;
+&lt;li&gt;更新&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="oh-my-bash-美化"&gt;oh-my-bash 美化&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;bash &lt;span style="color:#0550ae"&gt;-&lt;/span&gt;c &lt;span style="color:#0a3069"&gt;&amp;#34;$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="安装软件"&gt;安装软件&lt;/h3&gt;
+&lt;h4 id="安装i3wm"&gt;安装i3wm&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install i3
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;同步最新仓库&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install ca&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;certificates
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;usr&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;lib&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;apt&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;apt&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;helper download&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;file https&lt;span style="color:#1f2328"&gt;:&lt;/span&gt;&lt;span style="color:#0550ae"&gt;//&lt;/span&gt;debian&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;sur5r&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;net&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;i3&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;pool&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;main&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;s&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;sur5r&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;keyring&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;sur5r&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;keyring_2021&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;&lt;span style="color:#0550ae"&gt;02.02&lt;/span&gt;_all&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;deb keyring&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;deb SHA256&lt;span style="color:#1f2328"&gt;:&lt;/span&gt;cccfb1dd7d6b1b6a137bb96ea5b5eef18a0a4a6df1d6c0c37832025d2edaa710
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo dpkg &lt;span style="color:#0550ae"&gt;-&lt;/span&gt;i &lt;span style="color:#0550ae"&gt;./&lt;/span&gt;keyring&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;deb
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo sh &lt;span style="color:#0550ae"&gt;-&lt;/span&gt;c &lt;span style="color:#0a3069"&gt;&amp;#34;echo &amp;#34;&lt;/span&gt;deb http&lt;span style="color:#1f2328"&gt;:&lt;/span&gt;&lt;span style="color:#0550ae"&gt;//&lt;/span&gt;debian&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;sur5r&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;net&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;i3&lt;span style="color:#0550ae"&gt;/&lt;/span&gt; &lt;span style="color:#0550ae"&gt;$&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;grep &lt;span style="color:#0a3069"&gt;&amp;#39;^DISTRIB_CODENAME=&amp;#39;&lt;/span&gt; &lt;span style="color:#0550ae"&gt;/&lt;/span&gt;etc&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;lsb&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;release &lt;span style="color:#0550ae"&gt;|&lt;/span&gt; cut &lt;span style="color:#0550ae"&gt;-&lt;/span&gt;f2 &lt;span style="color:#0550ae"&gt;-&lt;/span&gt;d&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; universe&lt;span style="color:#0a3069"&gt;&amp;#34; &amp;gt; /etc/apt/sources.list.d/sur5r-i3.list&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt update
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="安装tigervnc"&gt;安装tigervnc&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install tigervnc-standalone-server
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;启动&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vncserver -SecurityTypes=None -localhost=no --I-KNOW-THIS-IS-INSECURE :1 -dpi 150 -geometry=1920x1080
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
+&lt;li&gt;显示当前ip&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ip addr | grep eth0
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="安装fehxfce4-terminalrofipolybar"&gt;安装feh、xfce4-terminal、rofi、polybar&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install feh xfce4-terminal rofi polybar
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="安装picom"&gt;安装picom&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libpcre3-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev meson gcc
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git clone https://github.com/yshui/picom.git --depth=1
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd picom
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git submodule update --init --recursive
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;meson --buildtype=release . build
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ninja -C build
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo ninja -C build install
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="安装google"&gt;安装google&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;下载安装包&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install ./google-chrome-stable_current_amd64.deb
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="加载字体"&gt;加载字体&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mkfontscale
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo fc-cache -fv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="arch"&gt;ARCH&lt;/h2&gt;
+&lt;h3 id="创建用户"&gt;创建用户&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;useradd -m -G wheel username
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# 请自行替换 username 为你的用户名
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;passwd username
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# 请自行替换 username 为你的用户名
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim /etc/sudoers
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# 去掉# %wheel ALL=(ALL)ALL
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="设置默认用户"&gt;设置默认用户&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;./Arch.exe config --default-user booiris
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="换源-1"&gt;换源&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo pacman-key --init
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo pacman-key --populate archlinux
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/pacman.d/mirrorlist
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# 清华大学
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Server = https://mirrors.tuna.tsinghua.edu.cn/archlinux/$repo/os/$arch
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;## 163
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Server = http://mirrors.163.com/archlinux/$repo/os/$arch
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;## aliyun
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cp /etc/pacman.conf /etc/pacman.conf.backup
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/pacman.conf
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[archlinuxcn]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# The Chinese Arch Linux communities packages.
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# SigLevel = Optional TrustedOnly
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;SigLevel = Optional TrustAll
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# 清华大学
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo pacman -Syyu
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="yay"&gt;YAY&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;安装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo pacman -S yay
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
+&lt;li&gt;换源&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay --aururl &amp;#34;https://aur.tuna.tsinghua.edu.cn&amp;#34; --save
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="安装软件-1"&gt;安装软件&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S base-devel
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S i3 tigervnc sublime-text-4 google-chrome xfce4-terminal
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="tighervnc-配置"&gt;tighervnc 配置&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;用 &lt;code&gt;vncpasswd&lt;/code&gt; 创建密码，它会将哈希处理之后的密码存储在 &lt;code&gt;~/.vnc/passwd&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;编辑 &lt;code&gt;/etc/tigervnc/vncserver.users&lt;/code&gt; 来定义用户映射&lt;/li&gt;
+&lt;li&gt;创建 &lt;code&gt;~/.vnc/config&lt;/code&gt;，其中至少要有一行定义会话的类型，比如 &lt;code&gt;session=foo&lt;/code&gt; （将foo替换为你想要运行的桌面环境）。你可以通过查看 &lt;code&gt;/usr/share/xsessions/&lt;/code&gt; 里的 &lt;code&gt;.desktop&lt;/code&gt; 文件来知道有哪些桌面环境在当前系统上可以使用。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;session=i3
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;geometry=1920x1080
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;dpi=150
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;alwaysshared
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="语言"&gt;语言&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/locale.gen
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo locale-gen
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="字体"&gt;字体&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S noto-fonts-emoji adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts nerd-fonts-jetbrains-mono ttf-iosevka-nerd ttf-material-icons-git papirus-icon-theme
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="桌面"&gt;桌面&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S polybar rofi feh picom xss-lock dbus-x11 google-chrome
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S fcitx5-im fcitx5-chinese-addons 
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;创建&lt;code&gt;.Xresources&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>
