@@ -1,13 +1,17 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sicp on</title><link>https://booiris.space/categories/sicp/</link><description>Recent content in Sicp on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Sat, 15 Jun 2024 13:46:41 +0000</lastBuildDate><atom:link href="https://booiris.space/categories/sicp/index.xml" rel="self" type="application/rss+xml"/><item><title>sicp 章节1</title><link>https://booiris.space/posts/sicp/sicp-%E7%AB%A0%E8%8A%821/</link><pubDate>Sat, 15 Jun 2024 13:46:41 +0000</pubDate><guid>https://booiris.space/posts/sicp/sicp-%E7%AB%A0%E8%8A%821/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;题解: &lt;a href="https://github.com/booiris/SICP-learning/tree/master/exercise_1"&gt;SICP-learning/exercise_1 at master · booiris/SICP-learning · GitHub&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sicp on</title><link>https://booiris.space/categories/sicp/</link><description>Recent content in Sicp on</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 15 Jun 2024 13:46:41 +0000</lastBuildDate><atom:link href="https://booiris.space/categories/sicp/index.xml" rel="self" type="application/rss+xml"/><item><title>sicp 章节1</title><link>https://booiris.space/posts/sicp/sicp-%E7%AB%A0%E8%8A%821/</link><pubDate>Sat, 15 Jun 2024 13:46:41 +0000</pubDate><guid>https://booiris.space/posts/sicp/sicp-%E7%AB%A0%E8%8A%821/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;题解: &lt;a href="https://github.com/booiris/SICP-learning/tree/master/exercise_1"&gt;SICP-learning/exercise_1 at master · booiris/SICP-learning · GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id="1-building-abstractions-with-procedures"&gt;1. Building Abstractions With Procedures&lt;/h2&gt;
 &lt;p&gt;sicp 前面部分介绍的内容还是比较基础的，具体是在介绍程序是什么。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;We are about to study the idea of a &lt;em&gt;computational process&lt;/em&gt;. Computational processes are abstract beings that inhabit computers. As they evolve, processes manipulate other abstract things called &lt;em&gt;data&lt;/em&gt;. The evolution of a process is directed by a pattern of rules called a &lt;em&gt;program&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;&amp;ndash; &lt;em&gt;computational process&lt;/em&gt; (即计算过程) 是操作数据的过程，这一过程的实现由一组定义的规则(程序)完成。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;ndash; &lt;em&gt;computational process&lt;/em&gt; (即计算过程) 是操作数据的过程，这一过程的实现由一组定义的规则(程序)完成。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;从中可以看出编写的计算机程序有两个重要的元素:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;数据&lt;/li&gt;
 &lt;li&gt;操作数据的行为&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;笔者认为我们编写的程序就是处理数据的过程，是对数据的各种加工变换(这就是为啥一个好的类型系统那么重要，土法炼钢不可取，此处@某一个大道至简的语言😚&lt;a href="https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/"&gt;为啥 go 不支持泛型方法&lt;/a&gt;)。&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;笔者认为我们编写的程序就是处理数据的过程，是对数据的各种加工变换(这就是为啥一个好的类型系统那么重要，土法炼钢不可取，此处@某一个大道至简的语言😚&lt;a href="https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/"&gt;为啥 go 不支持泛型方法&lt;/a&gt;)。&lt;/p&gt;
+&lt;h3 id="11-the-elements-of-programming"&gt;1.1 The elements of Programming&lt;/h3&gt;
+&lt;p&gt;本节开始又到了最喜欢的概念定义环节，一个成熟的语言需要以下三种结构：&lt;/p&gt;</description></item></channel></rss>

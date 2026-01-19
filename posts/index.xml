@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on</title><link>https://booiris.space/posts/</link><description>Recent content in Posts on</description><generator>Hugo</generator><language>cn</language><lastBuildDate>Sat, 15 Jun 2024 16:13:55 +0000</lastBuildDate><atom:link href="https://booiris.space/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>金字塔原理</title><link>https://booiris.space/posts/read_notes/%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86/</link><pubDate>Sat, 15 Jun 2024 16:13:55 +0000</pubDate><guid>https://booiris.space/posts/read_notes/%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86/</guid><description>&lt;h2 id="概述"&gt;概述&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on</title><link>https://booiris.space/posts/</link><description>Recent content in Posts on</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Sat, 15 Jun 2024 16:13:55 +0000</lastBuildDate><atom:link href="https://booiris.space/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>金字塔原理</title><link>https://booiris.space/posts/read_notes/%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86/</link><pubDate>Sat, 15 Jun 2024 16:13:55 +0000</pubDate><guid>https://booiris.space/posts/read_notes/%E9%87%91%E5%AD%97%E5%A1%94%E5%8E%9F%E7%90%86/</guid><description>&lt;h2 id="概述"&gt;概述&lt;/h2&gt;
 &lt;p&gt;本书分为4个部分。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;第1篇　表达的逻辑&lt;/strong&gt;　介绍了金字塔原理的基本概念，以及如何利用这一原理构建基本的金字塔结构。本篇的内容足以使你理解和应用简单的公文写作技巧。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;第2篇　思考的逻辑&lt;/strong&gt;　介绍了如何深入细致地把握思维的细节，以保证你使用的语句真实、明确地呈现你希望表达的思想。本篇举了许多案例，突出了迫使自己进行“冷静思考”对明确阐述思想的重要性。&lt;/p&gt;
@@ -8,39 +8,48 @@
 &lt;p&gt;第一篇主要所写的是如何让文章更易理解的方法论。方法论的阐释往往需要辅以具体事例，文中也举例了一些事例进行说明。但本章既然是讲述写作的方法论，那么不如直接以原文章的行文顺序做例子，看看原文是否实现了自己提出的方法论的自举( 。&lt;/p&gt;
 &lt;h3 id="核心观点"&gt;核心观点&lt;/h3&gt;
 &lt;blockquote&gt;
-&lt;p&gt;对受众（包括读者、听众、观众或学员）来说，最容易理解的顺序是：先了解主要的、抽象的思想，然后了解次要的、为主要思想提供支持的思想。因为主要思想总是从次要思想概括总结得出，文章中所有思想的理想组织结构也必定是一个金字塔结构——由一个总的思想统领多组思想。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;对受众（包括读者、听众、观众或学员）来说，最容易理解的顺序是：先了解主要的、抽象的思想，然后了解次要的、为主要思想提供支持的思想。因为主要思想总是从次要思想概括总结得出，文章中所有思想的理想组织结构也必定是一个金字塔结构——由一个总的思想统领多组思想。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;在本篇开头，一堆引言结束后作者提出了本篇的核心观点: 写作需要按照金字塔的结构，首先提出主要思想，然后介绍多组次要思想支持主要思想。每组思想间的联系可以是纵向的 (即上层思想是对下层的总结)，也可以是横向的 (即多个思想组成同一个逻辑推理过程，而被并列排在一起)。(怎么感觉在教高中议论文😂)&lt;/p&gt;
 &lt;p&gt;#todo 加个思维导图&lt;/p&gt;
 &lt;h3 id="11-为什么要用金字塔结构"&gt;1.1 为什么要用金字塔结构&lt;/h3&gt;
 &lt;h2 id="第二篇-思考的逻辑"&gt;第二篇 思考的逻辑&lt;/h2&gt;
 &lt;h2 id="第三篇-解决问题的逻辑"&gt;第三篇 解决问题的逻辑&lt;/h2&gt;</description></item><item><title>sicp 章节1</title><link>https://booiris.space/posts/sicp/sicp-%E7%AB%A0%E8%8A%821/</link><pubDate>Sat, 15 Jun 2024 13:46:41 +0000</pubDate><guid>https://booiris.space/posts/sicp/sicp-%E7%AB%A0%E8%8A%821/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;题解: &lt;a href="https://github.com/booiris/SICP-learning/tree/master/exercise_1"&gt;SICP-learning/exercise_1 at master · booiris/SICP-learning · GitHub&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;题解: &lt;a href="https://github.com/booiris/SICP-learning/tree/master/exercise_1"&gt;SICP-learning/exercise_1 at master · booiris/SICP-learning · GitHub&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id="1-building-abstractions-with-procedures"&gt;1. Building Abstractions With Procedures&lt;/h2&gt;
 &lt;p&gt;sicp 前面部分介绍的内容还是比较基础的，具体是在介绍程序是什么。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;We are about to study the idea of a &lt;em&gt;computational process&lt;/em&gt;. Computational processes are abstract beings that inhabit computers. As they evolve, processes manipulate other abstract things called &lt;em&gt;data&lt;/em&gt;. The evolution of a process is directed by a pattern of rules called a &lt;em&gt;program&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;&amp;ndash; &lt;em&gt;computational process&lt;/em&gt; (即计算过程) 是操作数据的过程，这一过程的实现由一组定义的规则(程序)完成。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;ndash; &lt;em&gt;computational process&lt;/em&gt; (即计算过程) 是操作数据的过程，这一过程的实现由一组定义的规则(程序)完成。&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;从中可以看出编写的计算机程序有两个重要的元素:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;数据&lt;/li&gt;
 &lt;li&gt;操作数据的行为&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;笔者认为我们编写的程序就是处理数据的过程，是对数据的各种加工变换(这就是为啥一个好的类型系统那么重要，土法炼钢不可取，此处@某一个大道至简的语言😚&lt;a href="https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/"&gt;为啥 go 不支持泛型方法&lt;/a&gt;)。&lt;/p&gt;</description></item><item><title>使用 rust 游玩 cf 的姿势</title><link>https://booiris.space/posts/blog/%E4%BD%BF%E7%94%A8-rust-%E6%B8%B8%E7%8E%A9-cf-%E7%9A%84%E5%A7%BF%E5%8A%BF/</link><pubDate>Fri, 15 Mar 2024 21:36:47 +0000</pubDate><guid>https://booiris.space/posts/blog/%E4%BD%BF%E7%94%A8-rust-%E6%B8%B8%E7%8E%A9-cf-%E7%9A%84%E5%A7%BF%E5%8A%BF/</guid><description>&lt;h2 id="cf-是什么"&gt;cf 是什么&lt;/h2&gt;
+&lt;p&gt;笔者认为我们编写的程序就是处理数据的过程，是对数据的各种加工变换(这就是为啥一个好的类型系统那么重要，土法炼钢不可取，此处@某一个大道至简的语言😚&lt;a href="https://booiris.space/posts/blog/%E4%B8%BA%E5%95%A5-go-%E4%B8%8D%E6%94%AF%E6%8C%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95/"&gt;为啥 go 不支持泛型方法&lt;/a&gt;)。&lt;/p&gt;
+&lt;h3 id="11-the-elements-of-programming"&gt;1.1 The elements of Programming&lt;/h3&gt;
+&lt;p&gt;本节开始又到了最喜欢的概念定义环节，一个成熟的语言需要以下三种结构：&lt;/p&gt;</description></item><item><title>使用 rust 游玩 cf 的姿势</title><link>https://booiris.space/posts/blog/%E4%BD%BF%E7%94%A8-rust-%E6%B8%B8%E7%8E%A9-cf-%E7%9A%84%E5%A7%BF%E5%8A%BF/</link><pubDate>Fri, 15 Mar 2024 21:36:47 +0000</pubDate><guid>https://booiris.space/posts/blog/%E4%BD%BF%E7%94%A8-rust-%E6%B8%B8%E7%8E%A9-cf-%E7%9A%84%E5%A7%BF%E5%8A%BF/</guid><description>&lt;h2 id="cf-是什么"&gt;cf 是什么&lt;/h2&gt;
 &lt;p&gt;具体来说就是&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;del&gt;穿越火线是一款非常受欢迎的第一人称射击网络游戏，它也被称作&amp;quot;CrossFire&amp;quot;。它最早由韩国SmileGate公司开发，后来在中国由腾讯公司运营。这个游戏在中国有着庞大的玩家基础，在亚洲其他地区以及全球也有相当多的粉丝。&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;&lt;del&gt;游戏提供了多种模式，包括经典的团队对战、爆破模式、生化模式等。玩家能选择成为全球反恐精英的一员，或者加入恐怖分子阵营。在游戏中，玩家可以购买和升级各种武器装备，与队友协同作战，完成不同的任务和挑战。&lt;/del&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;del&gt;游戏提供了多种模式，包括经典的团队对战、爆破模式、生化模式等。玩家能选择成为全球反恐精英的一员，或者加入恐怖分子阵营。在游戏中，玩家可以购买和升级各种武器装备，与队友协同作战，完成不同的任务和挑战。&lt;/del&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Codeforces 是一个在线编程和算法竞赛平台，广受全球程序员和算法爱好者的欢迎。它提供了一个平台，用户可以通过参加定期举办的编程比赛来提高自己的编程技能和算法知识。这些比赛通常分为几个不同的难度等级，适合从初学者到高级程序员的各个水平。&lt;/p&gt;
-&lt;p&gt;在Codeforces上，参赛者需要在限定时间内解决一系列编程问题。这些问题覆盖了数据结构、算法、数学、字符串处理、图论等众多领域。参赛者的表现根据解决问题的速度和正确性来评分，并在全球范围内进行排名。 &amp;ndash; chatgpt 生成&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;在Codeforces上，参赛者需要在限定时间内解决一系列编程问题。这些问题覆盖了数据结构、算法、数学、字符串处理、图论等众多领域。参赛者的表现根据解决问题的速度和正确性来评分，并在全球范围内进行排名。 &amp;ndash; chatgpt 生成&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;网站: &lt;a href="https://codeforces.com/"&gt;Codeforces&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="rust-是什么"&gt;rust 是什么&lt;/h2&gt;
 &lt;p&gt;具体来说就是&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;del&gt;《Rust》是一款多人生存游戏，玩家需收集资源，建造庇护所，与环境和其他玩家互动以求生存。游戏以其开放世界、真实的生存挑战和玩家之间的复杂互动闻名。&lt;/del&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;del&gt;《Rust》是一款多人生存游戏，玩家需收集资源，建造庇护所，与环境和其他玩家互动以求生存。游戏以其开放世界、真实的生存挑战和玩家之间的复杂互动闻名。&lt;/del&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Rust是一种开源的系统编程语言，以安全性、速度和并发性为设计目标。它旨在帮助开发者构建高效、可靠的软件，同时避免常见的内存安全错误，如缓冲区溢出。Rust通过一套严格的编译时检查机制实现这些目标，而无需依赖于传统的垃圾回收机制或大量的运行时检查。&lt;/p&gt;
-&lt;p&gt;Rust的设计充分考虑了现代硬件的特性，提供了零成本抽象、安全的并发编程模型，以及对内存布局的精细控制。这些特性使Rust成为开发操作系统、游戏引擎、浏览器组件以及需要高性能和高可靠性的应用程序的理想选择。 &amp;ndash; chatgpt 生成&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Rust的设计充分考虑了现代硬件的特性，提供了零成本抽象、安全的并发编程模型，以及对内存布局的精细控制。这些特性使Rust成为开发操作系统、游戏引擎、浏览器组件以及需要高性能和高可靠性的应用程序的理想选择。 &amp;ndash; chatgpt 生成&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;网站: &lt;a href="https://www.rust-lang.org/"&gt;Rust Programming Language&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id="正文"&gt;正文&lt;/h2&gt;
 &lt;p&gt;rust 标准库只提供了一些基本和常用的数据结构和一套&amp;quot;抽象特性&amp;quot;(或者说规范)，所以可能需要手动造一些轮子，比如处理输入和随机数生成等等，下面将介绍对应的实现代码。&lt;/p&gt;
@@ -64,7 +73,8 @@
 &lt;h3 id="定义"&gt;定义&lt;/h3&gt;
 &lt;p&gt;尽管没有太复杂的数学概念，但还是需要一个定义说明什么样的东西才能称之为 monad。在接下来的说明中，除了列举出数学定义以外，还有其在 go 语言中的具体表现形式。在 wiki 的定义中:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Monad_%28functional_programming%29#Definition"&gt;Monad (functional programming) - Wikipedia&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href="https://en.wikipedia.org/wiki/Monad_%28functional_programming%29#Definition"&gt;Monad (functional programming) - Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;一个 monad 包含三个部分:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
@@ -81,9 +91,11 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;组合子 &lt;code&gt;&amp;gt;&amp;gt;= or FlatMap :: M T -&amp;gt; ( T -&amp;gt; M U) -&amp;gt; M U&lt;/code&gt; 。&lt;/p&gt;</description></item><item><title>SipHash</title><link>https://booiris.space/posts/blog/siphash/</link><pubDate>Fri, 13 Oct 2023 13:36:05 +0000</pubDate><guid>https://booiris.space/posts/blog/siphash/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;论文 &lt;a href="https://eprint.iacr.org/2012/351.pdf"&gt;eprint.iacr.org/2012/351.pdf&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;论文 &lt;a href="https://eprint.iacr.org/2012/351.pdf"&gt;eprint.iacr.org/2012/351.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;代码位置 &lt;a href="https://github.com/rust-lang/rust/blob/1.72.0/library/core/src/hash/sip.rs"&gt;library/core/src/hash/sip.rs&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;代码位置 &lt;a href="https://github.com/rust-lang/rust/blob/1.72.0/library/core/src/hash/sip.rs"&gt;library/core/src/hash/sip.rs&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;SipHash 是一类针对短消息设计的伪随机函数族，相较于其他的哈希函数有在短消息上性能高、由于随机输入的存在难以构造&lt;a href="../todo/todo.md"&gt;哈希 dos 攻击&lt;/a&gt;的优点，是 rust 、python 的内置哈希函数实现。&lt;/p&gt;
 &lt;h2 id="实现"&gt;实现&lt;/h2&gt;
 &lt;p&gt;对于 SipHash-c-d 函数族，输入为一个 128 bit 的 &lt;code&gt;k&lt;/code&gt; 和 可为空的输入 &lt;code&gt;m&lt;/code&gt;，输出为一个 64 位长度的 &lt;code&gt;SipHash-c-d(k,m)&lt;/code&gt;。其中 &lt;code&gt;c&lt;/code&gt; 为 &amp;ldquo;compression rounds&amp;rdquo; 的次数， &lt;code&gt;d&lt;/code&gt; 为 &amp;ldquo;finalization rounds&amp;rdquo; 的次数，&amp;ldquo;compression rounds&amp;rdquo; 和 &amp;ldquo;finalization rounds&amp;rdquo; 在之后中有说明具体的实现步骤。&lt;/p&gt;
@@ -92,7 +104,8 @@
 &lt;p&gt;对于其中的常量，论文的选取解释为:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The initial state constant corresponds to the ASCII string &amp;ldquo;somepseudorandomlygeneratedbytes&amp;rdquo;, big-endian encoded.&lt;/p&gt;</description></item><item><title>摄影学习</title><link>https://booiris.space/posts/blog/%E6%91%84%E5%BD%B1%E5%AD%A6%E4%B9%A0/</link><pubDate>Mon, 09 Oct 2023 13:34:26 +0000</pubDate><guid>https://booiris.space/posts/blog/%E6%91%84%E5%BD%B1%E5%AD%A6%E4%B9%A0/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;参考+图片来源 &lt;a href="https://www.bilibili.com/video/BV1pv411H78e"&gt;从零开始手把手教你学摄影，20节课带你从小白到大师 | 摄影前期拍摄入门教程_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;参考+图片来源 &lt;a href="https://www.bilibili.com/video/BV1pv411H78e"&gt;从零开始手把手教你学摄影，20节课带你从小白到大师 | 摄影前期拍摄入门教程_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id="概念"&gt;概念&lt;/h2&gt;
 &lt;h3 id="传感器大小分类"&gt;传感器大小分类&lt;/h3&gt;
 &lt;p&gt;下图来自于&lt;/p&gt;
@@ -108,7 +121,8 @@
 &lt;h3 id="感光度-iso"&gt;感光度 (ISO)&lt;/h3&gt;
 &lt;p&gt;&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/camera6.png" alt=""&gt;&lt;/p&gt;
 &lt;h3 id="拍摄模式"&gt;拍摄模式&lt;/h3&gt;</description></item><item><title>Rust For Screeps (3): 系统监控</title><link>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/</link><pubDate>Sat, 22 Jul 2023 23:35:45 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-3-%E7%B3%BB%E7%BB%9F%E7%9B%91%E6%8E%A7/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;参考 &lt;a href="https://www.jianshu.com/p/de74baf6fb48"&gt;Screeps 制作统计图表 - 简书&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;参考 &lt;a href="https://www.jianshu.com/p/de74baf6fb48"&gt;Screeps 制作统计图表 - 简书&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;首先说明: 本文使用 docker 将监控系统部署在自有服务器上，所以先决条件是一台能公网访问的服务器(&lt;/p&gt;
 &lt;h2 id="整体流程"&gt;整体流程&lt;/h2&gt;
 &lt;p&gt;&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img@main/20231102131635.png" alt="image.png"&gt;&lt;/p&gt;
@@ -116,16 +130,16 @@
 &lt;h3 id="记录当前状态存入内存"&gt;记录当前状态存入内存&lt;/h3&gt;
 &lt;p&gt;在 &lt;a href="https://www.jianshu.com/p/de74baf6fb48"&gt;Screeps 制作统计图表 - 简书&lt;/a&gt; 中使用的是 &lt;a href="https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/#memory%20object"&gt;memory object&lt;/a&gt; 存储系统信息。遗憾的是在 rust 中无法使用 &lt;code&gt;memory&lt;/code&gt; 对象，但是 screeps 还有另一个存储信息的地方，那就是 &lt;a href="https://booiris.space/posts/blog/rust-for-screeps-2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AD%98%E5%82%A8%E6%A8%A1%E5%9E%8B/#raw%20memory"&gt;raw memory&lt;/a&gt; 。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;raw memory&lt;/code&gt; 可以存储 10 MB 的序列化后的内容，它由一个个 &lt;code&gt;segment&lt;/code&gt; 组成，每个&lt;code&gt;segment&lt;/code&gt; 最多存储 100 KB 内容。所以可以指定一段 &lt;code&gt;segment&lt;/code&gt; 用于存储当前系统的状态。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;fn&lt;/span&gt; &lt;span style="color:#6639ba"&gt;log&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;amp;&lt;/span&gt;&lt;span style="color:#6a737d"&gt;self&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;fn&lt;/span&gt; &lt;span style="color:#6639ba"&gt;log&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;amp;&lt;/span&gt;&lt;span style="color:#6a737d"&gt;self&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;	&lt;/span&gt;&lt;span style="color:#cf222e"&gt;let&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;status_segement&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;raw_memory::segments&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;	&lt;/span&gt;&lt;span style="color:#cf222e"&gt;let&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;status&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Status::get_status&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;	&lt;/span&gt;status_segement&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;set&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0550ae"&gt;STATUS_INDEX&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;status&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;into&lt;span style="color:#1f2328"&gt;());&lt;/span&gt;&lt;span style="color:#fff"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="访问内存并解析内存内容"&gt;访问内存并解析内存内容&lt;/h3&gt;
 &lt;p&gt;&lt;a href="https://github.com/booiris/rust-learning/tree/screep_log"&gt;GitHub - booiris/rust-learning at screep_log&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="将信息存储到时序数据库中"&gt;将信息存储到时序数据库中&lt;/h3&gt;
 &lt;h3 id="使用-grafana-制作图表"&gt;使用 Grafana 制作图表&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;version: &lt;span style="color:#0a3069"&gt;&amp;#39;2&amp;#39;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;version: &lt;span style="color:#0a3069"&gt;&amp;#39;2&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;services:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; sync:
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; restart: unless-stopped
@@ -177,22 +191,24 @@
 &lt;h3 id="memory-object"&gt;memory object&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;memory object&lt;/code&gt; 的具体介绍在 &lt;a href="https://docs.screeps.com/global-objects.html#Memory-object"&gt;Global Objects | Screeps Documentation&lt;/a&gt;。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Each player has access to the global object &lt;code&gt;Memory&lt;/code&gt; in which he/she may store any information in the JSON format.&lt;/p&gt;&lt;/blockquote&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;Memory&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;someData&lt;/span&gt; &lt;span style="color:#0550ae"&gt;=&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{...};&lt;/span&gt;
+&lt;p&gt;Each player has access to the global object &lt;code&gt;Memory&lt;/code&gt; in which he/she may store any information in the JSON format.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;Memory&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;someData&lt;/span&gt; &lt;span style="color:#0550ae"&gt;=&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{...};&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;可以看出 screeps 本身内置了一个 &lt;code&gt;Memory&lt;/code&gt; 的对象实例。可以往其中添加各种属性来达到存储信息的目的。&lt;/p&gt;
 &lt;h3 id="raw-memory"&gt;raw memory&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;raw memory&lt;/code&gt; 在这里被提到 &lt;a href="https://docs.screeps.com/global-objects.html#Serialization"&gt;Global Objects | Screeps Documentation&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The Memory object is stored in the stringified form and is parsed each time upon the first in the tick access from your script with the help of the &lt;code&gt;JSON.parse&lt;/code&gt; method.&lt;/p&gt;</description></item><item><title>Rust For Screeps (1): 初始环境搭建</title><link>https://booiris.space/posts/blog/rust-for-screeps-1-%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link><pubDate>Sat, 22 Jul 2023 19:29:29 +0000</pubDate><guid>https://booiris.space/posts/blog/rust-for-screeps-1-%E5%88%9D%E5%A7%8B%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid><description>&lt;blockquote&gt;
-&lt;p&gt;参考 &lt;a href="https://github.com/rustyscreeps/screeps-starter-rust/"&gt;GitHub - rustyscreeps/screeps-starter-rust: Starter Rust AI for Screeps, the JavaScript-based MMO game&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;参考 &lt;a href="https://github.com/rustyscreeps/screeps-starter-rust/"&gt;GitHub - rustyscreeps/screeps-starter-rust: Starter Rust AI for Screeps, the JavaScript-based MMO game&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h3 id="安装相关cli"&gt;安装相关cli&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cargo install cargo-screeps
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cargo install cargo-screeps
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;命令包含了构建代码、上传代码等操作。&lt;/p&gt;
 &lt;h3 id="下载模板文件"&gt;下载模板文件&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git clone https://github.com/rustyscreeps/screeps-starter-rust.git
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git clone https://github.com/rustyscreeps/screeps-starter-rust.git
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#6639ba"&gt;cd&lt;/span&gt; screeps-starter-rust
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模板 (版本:&lt;a href="https://github.com/rustyscreeps/cargo-screeps/tree/d91b60f9a13eb0bd763b094acb6a1d749bb1b12f"&gt;d91b60f9a13eb0bd763b094acb6a1d749bb1b12f&lt;/a&gt;) 中包含的文件:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;./
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;./
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── Cargo.toml
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── example-screeps.toml
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;├── javascript
@@ -205,11 +221,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="模板文件说明"&gt;模板文件说明&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;example-screeps.toml&lt;/code&gt; 用于 &lt;code&gt;cargo-screeps&lt;/code&gt; 的配置。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;javascript/main.js&lt;/code&gt; 为游戏主入口，其中内容如下。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;use strict&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;use strict&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;let&lt;/span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;// replace this with the name of your module
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt;&lt;span style="color:#cf222e"&gt;const&lt;/span&gt; &lt;span style="color:#1f2328"&gt;MODULE_NAME&lt;/span&gt; &lt;span style="color:#0550ae"&gt;=&lt;/span&gt; &lt;span style="color:#0a3069"&gt;&amp;#34;screeps-starter-rust&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;const&lt;/span&gt; &lt;span style="color:#1f2328"&gt;MODULE_NAME&lt;/span&gt; &lt;span style="color:#0550ae"&gt;=&lt;/span&gt; &lt;span style="color:#0a3069"&gt;&amp;#34;screeps-starter-rust&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;function&lt;/span&gt; &lt;span style="color:#1f2328"&gt;console_error&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(...&lt;/span&gt;&lt;span style="color:#1f2328"&gt;args&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;console&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;log&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(...&lt;/span&gt;&lt;span style="color:#1f2328"&gt;args&lt;/span&gt;&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;
@@ -222,23 +238,23 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;loop&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt; &lt;span style="color:#cf222e"&gt;else&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57606a"&gt;// attempt to load the wasm only if there&amp;#39;s enough bucket to do a bunch of work this tick
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt; &lt;span style="color:#cf222e"&gt;if&lt;/span&gt; &lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;Game&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;cpu&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;bucket&lt;/span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#0550ae"&gt;500&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#cf222e"&gt;if&lt;/span&gt; &lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;Game&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;cpu&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;bucket&lt;/span&gt; &lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt; &lt;span style="color:#0550ae"&gt;500&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;console&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;log&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;we are running out of time, pausing compile!&amp;#34;&lt;/span&gt; &lt;span style="color:#0550ae"&gt;+&lt;/span&gt; &lt;span style="color:#1f2328"&gt;JSON&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;stringify&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;Game&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;cpu&lt;/span&gt;&lt;span style="color:#1f2328"&gt;));&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#cf222e"&gt;return&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57606a"&gt;// delect the module from the cache, so we can reload it
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt; &lt;span style="color:#cf222e"&gt;if&lt;/span&gt; &lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;MODULE_NAME&lt;/span&gt; &lt;span style="color:#cf222e"&gt;in&lt;/span&gt; &lt;span style="color:#1f2328"&gt;require&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;cache&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#cf222e"&gt;if&lt;/span&gt; &lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;MODULE_NAME&lt;/span&gt; &lt;span style="color:#cf222e"&gt;in&lt;/span&gt; &lt;span style="color:#1f2328"&gt;require&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;cache&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#cf222e"&gt;delete&lt;/span&gt; &lt;span style="color:#1f2328"&gt;require&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;cache&lt;/span&gt;&lt;span style="color:#1f2328"&gt;[&lt;/span&gt;&lt;span style="color:#1f2328"&gt;MODULE_NAME&lt;/span&gt;&lt;span style="color:#1f2328"&gt;];&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57606a"&gt;// load the wasm module
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt; &lt;span style="color:#0550ae"&gt;=&lt;/span&gt; &lt;span style="color:#1f2328"&gt;require&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;MODULE_NAME&lt;/span&gt;&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt; &lt;span style="color:#0550ae"&gt;=&lt;/span&gt; &lt;span style="color:#1f2328"&gt;require&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;MODULE_NAME&lt;/span&gt;&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57606a"&gt;// load the wasm instance!
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;initialize_instance&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;initialize_instance&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57606a"&gt;// run the setup function, which configures logging
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;setup&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;setup&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#57606a"&gt;// go ahead and run the loop for its first tick
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;&lt;/span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;loop&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;wasm_module&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;&lt;span style="color:#1f2328"&gt;loop&lt;/span&gt;&lt;span style="color:#1f2328"&gt;();&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt; &lt;span style="color:#cf222e"&gt;catch&lt;/span&gt; &lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#1f2328"&gt;error&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;console_error&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0a3069"&gt;&amp;#34;caught exception:&amp;#34;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt; &lt;span style="color:#1f2328"&gt;error&lt;/span&gt;&lt;span style="color:#1f2328"&gt;);&lt;/span&gt;
@@ -250,7 +266,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#1f2328"&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;文件中 &lt;code&gt;wasm_module&lt;/code&gt; 保存了 wasm 的实例。如果 wasm 的实例存在，就调用 loop 函数运行游戏逻辑。如果 wasm 的实例不存在 (由于更新代码或 screeps 进行了内存回收等原因导致实列被销毁)，&lt;strong&gt;重新载入 wasm 并且调用 setup 函数进行初始化，然后再运行游戏逻辑&lt;/strong&gt;。&lt;/p&gt;</description></item><item><title>linux自启动服务</title><link>https://booiris.space/posts/linux/linux%E8%87%AA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/</link><pubDate>Sat, 20 Aug 2022 14:29:28 +0000</pubDate><guid>https://booiris.space/posts/linux/linux%E8%87%AA%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1/</guid><description>&lt;p&gt;自启动文件放在 &lt;code&gt;/usr/lib/systemd/system&lt;/code&gt;&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;[&lt;/span&gt;Unit&lt;span style="color:#0550ae"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;[&lt;/span&gt;Unit&lt;span style="color:#0550ae"&gt;]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#953800"&gt;Description&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;code-server
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;[&lt;/span&gt;Service&lt;span style="color:#0550ae"&gt;]&lt;/span&gt;
@@ -260,85 +276,85 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;[&lt;/span&gt;Install&lt;span style="color:#0550ae"&gt;]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#953800"&gt;WantedBy&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;multi-user.target
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl daemon&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;reload &lt;span style="color:#57606a"&gt;#刷新&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl daemon&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;reload &lt;span style="color:#57606a"&gt;#刷新&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl start code&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;server
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo systemctl enable code&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;server
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>arch虚拟机安装</title><link>https://booiris.space/posts/linux/arch%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/</link><pubDate>Thu, 04 Aug 2022 00:02:01 +0000</pubDate><guid>https://booiris.space/posts/linux/arch%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/</guid><description>&lt;h3 id="查看ip地址"&gt;查看ip地址&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ip addr
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ip addr
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="时间同步"&gt;时间同步&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;timedatectl set-ntp &lt;span style="color:#6639ba"&gt;true&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;timedatectl set-ntp &lt;span style="color:#6639ba"&gt;true&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="准备磁盘分区"&gt;准备磁盘分区&lt;/h2&gt;
 &lt;h3 id="显示所有分区"&gt;显示所有分区&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;fdisk -l
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;fdisk -l
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="开始分区"&gt;开始分区&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;fdisk /dev/sda
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;fdisk /dev/sda
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;分区过程参考&lt;a href="https://ericclose.github.io/Installing-Arch-as-a-guest-with-UEFI-and-GPT.html#arch-chroot"&gt;网址&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id="确认是否生效"&gt;确认是否生效&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fdisk -l /dev/sda
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; fdisk -l /dev/sda
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="格式化分区和设置swap分区"&gt;格式化分区和设置swap分区&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkfs.fat -F32 /dev/sda1
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkfs.fat -F32 /dev/sda1
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkswap /dev/sda2
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkfs.ext4 /dev/sda3 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="启用交换分区"&gt;启用交换分区&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;swapon /dev/sda2
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;swapon /dev/sda2
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="挂载根目录"&gt;挂载根目录&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mount /dev/sda3 /mnt
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mount /dev/sda3 /mnt
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="挂载boot目录"&gt;挂载boot目录&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir /mnt/boot
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir /mnt/boot
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mount /dev/sda1 /mnt/boot
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="安装系统"&gt;安装系统&lt;/h2&gt;
 &lt;h3 id="修改镜像源"&gt;修改镜像源&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim /etc/pacman.d/mirrorlist
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim /etc/pacman.d/mirrorlist
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;添加 &lt;code&gt;Server = http://mirrors.aliyun.com/archlinux/$repo/os/$arch&lt;/code&gt; 镜像&lt;/p&gt;
 &lt;p&gt;如果安装时报错 &lt;code&gt;ERROR: 5984EA8F3C could not be locally signed&lt;/code&gt; 解决办法：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;rm -fr /etc/pacman.d/gnupg
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;rm -fr /etc/pacman.d/gnupg
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;umount /etc/pacman.d/gnupg
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;rm -fr /etc/pacman.d/gnupg
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pacman-key --init
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pacman-key --populate archlinux
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pacman -Sy archlinux-keyring
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="安装系统和网络插件"&gt;安装系统和网络插件&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pacstrap /mnt base linux networkmanager
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pacstrap /mnt base linux networkmanager
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="配置系统"&gt;配置系统&lt;/h2&gt;
 &lt;h3 id="生成fstab文件"&gt;生成fstab文件&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;genfstab -U /mnt &amp;gt;&amp;gt; /mnt/etc/fstab
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="进入chroot"&gt;进入chroot&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;arch-chroot /mnt
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;arch-chroot /mnt
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="设置时区"&gt;设置时区&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="设置硬件时间同步"&gt;设置硬件时间同步&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hwclock --systohc
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hwclock --systohc
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="安装vim"&gt;安装vim&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pacman -S vim
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pacman -S vim
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="语言设置"&gt;语言设置&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; vim /etc/locale.gen
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; vim /etc/locale.gen
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; en_US
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; zh_CN
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="生成语言"&gt;生成语言&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;locale-gen
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;locale-gen
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="设置默认语言"&gt;设置默认语言&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#6639ba"&gt;echo&lt;/span&gt; &lt;span style="color:#953800"&gt;LANG&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;en_US.UTF-8 &amp;gt; /etc/locale.conf
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#6639ba"&gt;echo&lt;/span&gt; &lt;span style="color:#953800"&gt;LANG&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;en_US.UTF-8 &amp;gt; /etc/locale.conf
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="创建host文件"&gt;创建host文件&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#6639ba"&gt;echo&lt;/span&gt; YourNewHostname &amp;gt; /etc/hostname
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#6639ba"&gt;echo&lt;/span&gt; YourNewHostname &amp;gt; /etc/hostname
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="添加host"&gt;添加host&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim /etc/hosts
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim /etc/hosts
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# Static table lookup for hostnames. 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# See hosts(5) for details. 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;127.0.0.1 localhost 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;::1 localhost 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;127.0.1.1 YourNewHostname.localdomain YourNewHostname
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="开启网络服务"&gt;开启网络服务&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;systemctl &lt;span style="color:#6639ba"&gt;enable&lt;/span&gt; NetworkManager
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;systemctl &lt;span style="color:#6639ba"&gt;enable&lt;/span&gt; NetworkManager
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="设置-root-用户密码"&gt;设置 root 用户密码&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;passwd
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;passwd
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="安装引导程序"&gt;安装引导程序&lt;/h2&gt;
 &lt;p&gt;UEFI 系统：&lt;/p&gt;</description></item><item><title>nginx反向代理自签名</title><link>https://booiris.space/posts/linux/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E8%87%AA%E7%AD%BE%E5%90%8D/</link><pubDate>Sat, 02 Jul 2022 16:49:11 +0000</pubDate><guid>https://booiris.space/posts/linux/nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E8%87%AA%E7%AD%BE%E5%90%8D/</guid><description>&lt;h2 id="自签名ca证书"&gt;自签名ca证书&lt;/h2&gt;
 &lt;p&gt;首先创建cert文件夹保存证书。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir cert
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mkdir cert
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#6639ba"&gt;cd&lt;/span&gt; cert
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后创建配置文件cert.cnf，注意如果时ip自签名就在your_IP填写自己的ip，如果是自签名域名就是在your_domain写自己的域名。&lt;/p&gt;
 &lt;p&gt;[dn]下CN字段是ca根服务器地址，alt_names下是ca验证的ip和域名地址，一般情况下这两个是一样的。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[req] 
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[req] 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;prompt = no 
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;default_bits = 4096
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;default_md = sha256
@@ -364,11 +380,11 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;IP.1=$your_IP
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;DNS.1=$your_domain
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;根据配置文件生成证书。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openssl req -new -newkey rsa:2048 -days &lt;span style="color:#0550ae"&gt;365&lt;/span&gt; -nodes -x509 -keyout cert.key -out cert.crt -config cert.cnf
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;openssl req -new -newkey rsa:2048 -days &lt;span style="color:#0550ae"&gt;365&lt;/span&gt; -nodes -x509 -keyout cert.key -out cert.crt -config cert.cnf
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;当前目录下生成两个文件cert.crt和cert.key，至此自签名步骤完成。&lt;/p&gt;
 &lt;h2 id="nginx反向代理"&gt;nginx反向代理&lt;/h2&gt;
 &lt;p&gt;docker拉取nginx镜像。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker pull nginx
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;docker pull nginx
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;新建一个容器获取config文件。&lt;/p&gt;</description></item><item><title>Data Lab</title><link>https://booiris.space/posts/csapp/data-lab/</link><pubDate>Tue, 03 May 2022 23:24:12 +0000</pubDate><guid>https://booiris.space/posts/csapp/data-lab/</guid><description>&lt;h1 id="csapp-data-lab"&gt;CS:APP Data Lab&lt;/h1&gt;
 &lt;h2 id="restriction"&gt;restriction&lt;/h2&gt;
 &lt;ol&gt;
@@ -395,11 +411,11 @@ cannot use arrays, structs, or unions.&lt;/li&gt;
 &lt;h4 id="description"&gt;Description&lt;/h4&gt;
 &lt;p&gt;bitXor - x^y using only ~ and &amp;amp;.&lt;/p&gt;</description></item><item><title>树状数组</title><link>https://booiris.space/posts/algorithm/segment_tree/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</link><pubDate>Tue, 03 May 2022 13:54:29 +0000</pubDate><guid>https://booiris.space/posts/algorithm/segment_tree/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/</guid><description>&lt;img src="https://cdn.jsdelivr.net/gh/booiris-cdn/img/binary_index_tree.svg" width=60% &gt;
 &lt;h3 id="区间和模板"&gt;区间和模板：&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;pub&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;struct&lt;/span&gt; &lt;span style="color:#1f2328"&gt;Bitree&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;pub&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;struct&lt;/span&gt; &lt;span style="color:#1f2328"&gt;Bitree&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;tree: &lt;span style="color:#6639ba"&gt;Vec&lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#cf222e"&gt;i32&lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;len: &lt;span style="color:#cf222e"&gt;usize&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;&lt;/span&gt;&lt;span style="color:#cf222e"&gt;impl&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Bitree&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;impl&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Bitree&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#57606a"&gt;#[inline]&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;pub&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;fn&lt;/span&gt; &lt;span style="color:#6639ba"&gt;new&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;ini: &lt;span style="color:#cf222e"&gt;&amp;amp;&lt;/span&gt;&lt;span style="color:#6639ba"&gt;Vec&lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;lt;&lt;/span&gt;&lt;span style="color:#cf222e"&gt;i32&lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;gt;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;-&amp;gt; &lt;span style="color:#1f2328"&gt;Self&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;let&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;mut&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;res&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;Bitree&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
@@ -436,11 +452,11 @@ cannot use arrays, structs, or unions.&lt;/li&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0a3069"&gt;/// `query` 下标从`1`开始
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0a3069"&gt;&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;pub&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;fn&lt;/span&gt; &lt;span style="color:#6639ba"&gt;query&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;amp;&lt;/span&gt;&lt;span style="color:#6a737d"&gt;self&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;l: &lt;span style="color:#cf222e"&gt;usize&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;r: &lt;span style="color:#cf222e"&gt;usize&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;-&amp;gt; &lt;span style="color:#cf222e"&gt;i32&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;pub&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#cf222e"&gt;fn&lt;/span&gt; &lt;span style="color:#6639ba"&gt;query&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;&lt;span style="color:#0550ae"&gt;&amp;amp;&lt;/span&gt;&lt;span style="color:#6a737d"&gt;self&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;l: &lt;span style="color:#cf222e"&gt;usize&lt;/span&gt;&lt;span style="color:#1f2328"&gt;,&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;r: &lt;span style="color:#cf222e"&gt;usize&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;-&amp;gt; &lt;span style="color:#cf222e"&gt;i32&lt;/span&gt; &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6a737d"&gt;self&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;get&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;r&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#6a737d"&gt;self&lt;/span&gt;&lt;span style="color:#1f2328"&gt;.&lt;/span&gt;get&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;l&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#0550ae"&gt;1&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#fff"&gt;&lt;/span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#1f2328"&gt;}&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查询 $\log(n)$ ,更新 $\log(n)$。&lt;/p&gt;</description></item><item><title>Obsidian 多平台同步方法</title><link>https://booiris.space/posts/blog/sync/</link><pubDate>Sun, 01 May 2022 23:31:00 +0000</pubDate><guid>https://booiris.space/posts/blog/sync/</guid><description>&lt;p&gt;! 推荐自建 webdav 服务&lt;/p&gt;
 &lt;h3 id="webdav-同步"&gt;webdav 同步&lt;/h3&gt;
 &lt;p&gt;使用 &lt;a href="#ZgotmplZ"&gt;Remotely Save&lt;/a&gt; 插件进行多平台同步。&lt;/p&gt;
@@ -496,19 +512,19 @@ cannot use arrays, structs, or unions.&lt;/li&gt;
 &lt;p&gt;自动生成日期 + @&lt;/p&gt;
 &lt;h4 id="better-word-count"&gt;Better word count&lt;/h4&gt;
 &lt;p&gt;计算字数&lt;/p&gt;</description></item><item><title>linux-install</title><link>https://booiris.space/posts/linux/linux-install/</link><pubDate>Sun, 01 May 2022 23:30:29 +0000</pubDate><guid>https://booiris.space/posts/linux/linux-install/</guid><description>&lt;h1 id="wsl"&gt;WSL&lt;/h1&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	wsl --list
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	wsl --list
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;卸载对应的系统&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	wsl --unregister Ubuntu
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;	wsl --unregister Ubuntu
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;设置默认系统&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;wslconfig /setdefault Name
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;wslconfig /setdefault Name
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
 &lt;li&gt;修改默认用户，主机名，修改/etc/wsl.conf文件&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;[&lt;/span&gt;user&lt;span style="color:#0550ae"&gt;]&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;[&lt;/span&gt;user&lt;span style="color:#0550ae"&gt;]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#953800"&gt;default&lt;/span&gt;&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;youruser
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;[&lt;/span&gt;network&lt;span style="color:#0550ae"&gt;]&lt;/span&gt;
@@ -518,15 +534,15 @@ cannot use arrays, structs, or unions.&lt;/li&gt;
 &lt;ol&gt;
 &lt;li&gt;备份&lt;code&gt;sources.list&lt;/code&gt;文件&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;编辑&lt;code&gt;/etc/apt/sources.list&lt;/code&gt;文件&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/apt/sources.list
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/apt/sources.list
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
 &lt;li&gt;在文件前面添加下面的条目(阿里源)&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
@@ -539,22 +555,22 @@ cannot use arrays, structs, or unions.&lt;/li&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="4"&gt;
 &lt;li&gt;更新&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt update
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt update
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="oh-my-bash-美化"&gt;oh-my-bash 美化&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;安装&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;bash &lt;span style="color:#0550ae"&gt;-&lt;/span&gt;c &lt;span style="color:#0a3069"&gt;&amp;#34;$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)&amp;#34;&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;bash &lt;span style="color:#0550ae"&gt;-&lt;/span&gt;c &lt;span style="color:#0a3069"&gt;&amp;#34;$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="安装软件"&gt;安装软件&lt;/h3&gt;
 &lt;h4 id="安装i3wm"&gt;安装i3wm&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;安装&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install i3
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install i3
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;同步最新仓库&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install ca&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;certificates
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install ca&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;certificates
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;usr&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;lib&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;apt&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;apt&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;helper download&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;file https&lt;span style="color:#1f2328"&gt;:&lt;/span&gt;&lt;span style="color:#0550ae"&gt;//&lt;/span&gt;debian&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;sur5r&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;net&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;i3&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;pool&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;main&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;s&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;sur5r&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;keyring&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;sur5r&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;keyring_2021&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;&lt;span style="color:#0550ae"&gt;02.02&lt;/span&gt;_all&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;deb keyring&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;deb SHA256&lt;span style="color:#1f2328"&gt;:&lt;/span&gt;cccfb1dd7d6b1b6a137bb96ea5b5eef18a0a4a6df1d6c0c37832025d2edaa710
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo dpkg &lt;span style="color:#0550ae"&gt;-&lt;/span&gt;i &lt;span style="color:#0550ae"&gt;./&lt;/span&gt;keyring&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;deb
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo sh &lt;span style="color:#0550ae"&gt;-&lt;/span&gt;c &lt;span style="color:#0a3069"&gt;&amp;#34;echo &amp;#34;&lt;/span&gt;deb http&lt;span style="color:#1f2328"&gt;:&lt;/span&gt;&lt;span style="color:#0550ae"&gt;//&lt;/span&gt;debian&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;sur5r&lt;span style="color:#0550ae"&gt;.&lt;/span&gt;net&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;i3&lt;span style="color:#0550ae"&gt;/&lt;/span&gt; &lt;span style="color:#0550ae"&gt;$&lt;/span&gt;&lt;span style="color:#1f2328"&gt;(&lt;/span&gt;grep &lt;span style="color:#0a3069"&gt;&amp;#39;^DISTRIB_CODENAME=&amp;#39;&lt;/span&gt; &lt;span style="color:#0550ae"&gt;/&lt;/span&gt;etc&lt;span style="color:#0550ae"&gt;/&lt;/span&gt;lsb&lt;span style="color:#0550ae"&gt;-&lt;/span&gt;release &lt;span style="color:#0550ae"&gt;|&lt;/span&gt; cut &lt;span style="color:#0550ae"&gt;-&lt;/span&gt;f2 &lt;span style="color:#0550ae"&gt;-&lt;/span&gt;d&lt;span style="color:#0550ae"&gt;=&lt;/span&gt;&lt;span style="color:#1f2328"&gt;)&lt;/span&gt; universe&lt;span style="color:#0a3069"&gt;&amp;#34; &amp;gt; /etc/apt/sources.list.d/sur5r-i3.list&amp;#34;&lt;/span&gt;
@@ -563,19 +579,19 @@ cannot use arrays, structs, or unions.&lt;/li&gt;
 &lt;ol&gt;
 &lt;li&gt;安装&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install tigervnc-standalone-server
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install tigervnc-standalone-server
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;启动&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vncserver -SecurityTypes=None -localhost=no --I-KNOW-THIS-IS-INSECURE :1 -dpi 150 -geometry=1920x1080
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vncserver -SecurityTypes=None -localhost=no --I-KNOW-THIS-IS-INSECURE :1 -dpi 150 -geometry=1920x1080
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="3"&gt;
 &lt;li&gt;显示当前ip&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ip addr | grep eth0
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;ip addr | grep eth0
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="安装fehxfce4-terminalrofipolybar"&gt;安装feh、xfce4-terminal、rofi、polybar&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install feh xfce4-terminal rofi polybar
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install feh xfce4-terminal rofi polybar
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="安装picom"&gt;安装picom&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libpcre3-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev meson gcc
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install libxext-dev libxcb1-dev libxcb-damage0-dev libxcb-xfixes0-dev libxcb-shape0-dev libxcb-render-util0-dev libxcb-render0-dev libxcb-randr0-dev libxcb-composite0-dev libxcb-image0-dev libxcb-present-dev libxcb-xinerama0-dev libxcb-glx0-dev libpixman-1-dev libdbus-1-dev libconfig-dev libgl1-mesa-dev libpcre2-dev libpcre3-dev libevdev-dev uthash-dev libev-dev libx11-xcb-dev meson gcc
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git clone https://github.com/yshui/picom.git --depth=1
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd picom
@@ -587,17 +603,17 @@ cannot use arrays, structs, or unions.&lt;/li&gt;
 &lt;ol&gt;
 &lt;li&gt;下载安装包&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;安装&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install ./google-chrome-stable_current_amd64.deb
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo apt install ./google-chrome-stable_current_amd64.deb
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id="加载字体"&gt;加载字体&lt;/h4&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mkfontscale
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo mkfontscale
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo fc-cache -fv
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="arch"&gt;ARCH&lt;/h2&gt;
 &lt;h3 id="创建用户"&gt;创建用户&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;useradd -m -G wheel username
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;useradd -m -G wheel username
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# 请自行替换 username 为你的用户名
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;passwd username
@@ -606,9 +622,9 @@ cannot use arrays, structs, or unions.&lt;/li&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;vim /etc/sudoers
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;# 去掉# %wheel ALL=(ALL)ALL
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="设置默认用户"&gt;设置默认用户&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;./Arch.exe config --default-user booiris
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;./Arch.exe config --default-user booiris
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="换源-1"&gt;换源&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo pacman-key --init
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo pacman-key --init
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo pacman-key --populate archlinux
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
@@ -637,13 +653,13 @@ cannot use arrays, structs, or unions.&lt;/li&gt;
 &lt;ol&gt;
 &lt;li&gt;安装&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo pacman -S yay
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo pacman -S yay
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start="2"&gt;
 &lt;li&gt;换源&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay --aururl &amp;#34;https://aur.tuna.tsinghua.edu.cn&amp;#34; --save
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay --aururl &amp;#34;https://aur.tuna.tsinghua.edu.cn&amp;#34; --save
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="安装软件-1"&gt;安装软件&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S base-devel
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S base-devel
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S i3 tigervnc sublime-text-4 google-chrome xfce4-terminal
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="tighervnc-配置"&gt;tighervnc 配置&lt;/h3&gt;
@@ -652,17 +668,17 @@ cannot use arrays, structs, or unions.&lt;/li&gt;
 &lt;li&gt;编辑 &lt;code&gt;/etc/tigervnc/vncserver.users&lt;/code&gt; 来定义用户映射&lt;/li&gt;
 &lt;li&gt;创建 &lt;code&gt;~/.vnc/config&lt;/code&gt;，其中至少要有一行定义会话的类型，比如 &lt;code&gt;session=foo&lt;/code&gt; （将foo替换为你想要运行的桌面环境）。你可以通过查看 &lt;code&gt;/usr/share/xsessions/&lt;/code&gt; 里的 &lt;code&gt;.desktop&lt;/code&gt; 文件来知道有哪些桌面环境在当前系统上可以使用。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;session=i3
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;session=i3
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;geometry=1920x1080
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;dpi=150
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;alwaysshared
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="语言"&gt;语言&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/locale.gen
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo vim /etc/locale.gen
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;sudo locale-gen
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="字体"&gt;字体&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S noto-fonts-emoji adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts nerd-fonts-jetbrains-mono ttf-iosevka-nerd ttf-material-icons-git papirus-icon-theme
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S noto-fonts-emoji adobe-source-han-serif-cn-fonts adobe-source-han-serif-tw-fonts adobe-source-han-sans-cn-fonts adobe-source-han-sans-tw-fonts nerd-fonts-jetbrains-mono ttf-iosevka-nerd ttf-material-icons-git papirus-icon-theme
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="桌面"&gt;桌面&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#fff;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S polybar rofi feh picom xss-lock dbus-x11 google-chrome
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S polybar rofi feh picom xss-lock dbus-x11 google-chrome
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;yay -S fcitx5-im fcitx5-chinese-addons 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;创建&lt;code&gt;.Xresources&lt;/code&gt;&lt;/p&gt;</description></item><item><title>chapter 1</title><link>https://booiris.space/posts/csapp/chapter-1/</link><pubDate>Sun, 01 May 2022 23:30:18 +0000</pubDate><guid>https://booiris.space/posts/csapp/chapter-1/</guid><description>&lt;p&gt;#todo&lt;/p&gt;
 &lt;ul&gt;
@@ -701,4 +717,20 @@ answer:&lt;/li&gt;
 &lt;p&gt;answer:&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Why does out loop run so much faster if we sum into a local variable instead of an argument that is passed by reference?&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;Why does out loop run so much faster if we sum into a local variable instead of an argument that is passed by reference?&lt;/p&gt;</description></item><item><title/><link>https://booiris.space/posts/temp/spark/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://booiris.space/posts/temp/spark/</guid><description>&lt;p&gt;==⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠== You can decompress Drawing data with the command palette: &amp;lsquo;Decompress current Excalidraw file&amp;rsquo;. For more info check in plugin settings under &amp;lsquo;Saving&amp;rsquo;&lt;/p&gt;
+&lt;h1 id="excalidraw-data"&gt;Excalidraw Data&lt;/h1&gt;
+&lt;h2 id="text-elements"&gt;Text Elements&lt;/h2&gt;
+&lt;p&gt;%%&lt;/p&gt;
+&lt;h2 id="drawing"&gt;Drawing&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;N4KAkARALgngDgUwgLgAQQQDwMYEMA2AlgCYBOuA7hADTgQBuCpAzoQPYB2KqATLZMzYBXUtiRoIACyhQ4zZAHoFAc0JRJQgEYA6bGwC2CgF7N6hbEcK4OCtptbErHALRY8RMpWdx8Q1TdIEfARcZgRmBShcZQUebQBGAE5tHho6IIR9BA4oZm4AbXAwUDBSiBJuCBgANgBpAA4KIUJEtNLIWERKwOwojmVgtrLMbmceRIB2bXrEgAZqngBWfjKY
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;UaXF7VmJ+villcgKEnVueIBmOMSAFnir+f2iyEkEQmVpU9mrrcSzieXHiDWAbiVCzA4QZhQUhsADWCAAwmx8GxSJUAMTxBCYzFDSCaXDYGHKaFCDjERHI1ESKHWZhwXCBHK4iAAM0I+HwAGVYIMJIIPMzIdC4QB1Y6Sbh8AFC2EIbkwXnofkVcEkt4ccJ5NDxcFsenYNRrbWzMEA4nCOAASWIWtQ+QAuuCWeQstbuBwhBzwYQyVhKrhZsySWSNcx
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;bSV2tB4CCzo8AL7gsIIYinRZXK48arnWZSyOMFjsLjaq7g/OsTgAOU4Yklnxui0WE2q1W9zAAIhkoMnuCyCGFwZphGSAKLBLI5W0er0AoRwYi4Lsp7VN+oTRL1WZJLNncFEDgw92e/C7tiE7toXv4MJFOPgR10XBwODchcgiPQZ5ZSpEN5QIYMQgEAoAAhAkiWDckkRRdEWVguD/2wERGSgS0u30blhQRKCqXQDEsXwhCkOyFC0NAwlzVJSDKUqG
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;kODpBliMI0hkNQzIADF2S5HkQQhJEVSKCBEOY4jWPQqFZTFYgTjQXNICEli0Iw2V5UVXiBRWQSiJyUSACVhHVTVTg0+SRLQgB5fVDQ+U0yhM7S0LYzgoDY3B9HZI1UH+WytJI9inM5QgjBBHgbLknzRIAFSwKAAEEfyLdBghZP9jPCxSolIWLmLYChnlwJdUCnY8BLs3z9GHMkYuy3KQgKwFqqYhTMiq6EKAi6NuiHFNUuE+z2JdBA9MVIqNOYbB
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;oQ5AANbgG3ibQ/lG8akXwABNGaTXmnhM0WBYvMgIw2AMbgI0gegCCEEF4hvHqmv0PTKNDW0IAg/9iRIAKgtrDS3uIbkEDgGbvtIEgAFk2GIBAKtwTRggKy9+wEn6KWgtATogYCkTq0hlHxAAKHh4gmaheEJ4mCaJ0FtEWABKZkdIQZRPQZbocdwfGzjBXgObJ7nKZpiBrpKnylLhCyoELScjw051XMG7IIeB/pjoBbJodh7goQu8FsCIAG0E1hBw
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Q4WWNdILWAWEKA9xBA3wX0Bk4VICsTf1s3DYBe3SEdqGYfPVADcFso7AAKwQXpmE5Y24DBiGffVi8+3dsoCXFxgIsO/BlcjToeLCYJekLZlEMhAx2q6NARoBZEzzhxOnWhdCMgLzgezrqvQligu04zw8OUDyBHGYNWsJyaKQeyIRW6vBBwATOg2WCcNbzjIA
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;%%&lt;/p&gt;</description></item></channel></rss>
