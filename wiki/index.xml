@@ -33,7 +33,7 @@
 &lt;ol&gt;
 &lt;li&gt;线段树+摩尔投票&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#![allow(dead_code, unused_imports, unused_macros)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#![allow(dead_code, unused_imports, unused_macros)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::cmp::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::collections::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::&lt;span style="color:#cf222e"&gt;f32&lt;/span&gt;::consts::E&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
@@ -191,7 +191,7 @@
 &lt;h3 id="原地哈希"&gt;原地哈希&lt;/h3&gt;
 &lt;h3 id="数学"&gt;数学&lt;/h3&gt;
 &lt;h3 id="位运算"&gt;位运算&lt;/h3&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#![allow(dead_code, unused_imports, unused_macros)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#![allow(dead_code, unused_imports, unused_macros)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::cmp::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::collections::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::ops::Bound::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
@@ -273,7 +273,7 @@
 &lt;p&gt;Redis自己构建了一种名为简单动态字符串(simple dynamic string, SDS) 的抽象类型，并将其作为Redis的默认字符串表示。&lt;/p&gt;
 &lt;h2 id="sds定义"&gt;SDS定义&lt;/h2&gt;
 &lt;p&gt;在 Redis7.0 中 定义的代码位于 &lt;code&gt;src/sds.h&lt;/code&gt; 中，定义如下。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-c" data-lang="c"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;/* Note: sdshdr5 is never used, we just access the flags byte directly.
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-c" data-lang="c"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;/* Note: sdshdr5 is never used, we just access the flags byte directly.
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt; * However is here to document the layout of type 5 SDS strings. */&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;struct&lt;/span&gt; &lt;span style="color:#6639ba"&gt;__attribute__&lt;/span&gt; &lt;span style="color:#1f2328"&gt;((&lt;/span&gt;__packed__&lt;span style="color:#1f2328"&gt;))&lt;/span&gt; sdshdr5 &lt;span style="color:#1f2328"&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#cf222e"&gt;unsigned&lt;/span&gt; &lt;span style="color:#cf222e"&gt;char&lt;/span&gt; flags&lt;span style="color:#1f2328"&gt;;&lt;/span&gt; &lt;span style="color:#57606a"&gt;/* 3 lsb of type, and 5 msb of string length */&lt;/span&gt;
@@ -322,7 +322,7 @@
 &lt;p&gt;岛屿由一组上、下、左、右四个方向相连的&lt;code&gt; 1 &lt;/code&gt;形成。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;首先 dfs 染色，得到每个颜色的格子数量。然后枚举整个地图，对于每一个点，遍历它的上下左右的点所在的颜色区域，最后求和得到相连的区域大小。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#![allow(dead_code, unused_imports, unused_macros)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#![allow(dead_code, unused_imports, unused_macros)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::cmp::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::collections::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::ops::Bound::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
@@ -421,7 +421,7 @@
 &lt;/ol&gt;
 &lt;p&gt;给定整数 k ，返回 组成满足上述条件的付费群体所需的最小金额 &lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#![allow(dead_code, unused_imports, unused_macros)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#![allow(dead_code, unused_imports, unused_macros)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::cmp::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::collections::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::ops::Bound::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
@@ -478,7 +478,7 @@
 &lt;p&gt;当且仅当 &lt;code&gt;b &amp;lt; c&lt;/code&gt; 时，数对&lt;code&gt;(c, d)&lt;/code&gt; 才可以跟在 &lt;code&gt;(a, b)&lt;/code&gt; 后面。我们用这种形式来构造一个数对链。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;类似最长上升子序列，创建一个数组维护每一个序列长度对应的最小末尾。对于二维数对的情况，可以先对其按第一个元素排序，然后对第二个元素进行dp。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#[allow(dead_code)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#[allow(dead_code)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#[allow(unused_imports)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::cmp::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::collections::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
@@ -520,7 +520,7 @@
 &lt;p&gt;给出一个二叉树，计算最深一层的节点和。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;dfs，如果当前的层数大于最大层数，则更新最大层数，并且重置节点和。当当前层数等于最大层数的时候，将当前节点值加入节点和。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#[allow(dead_code)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#[allow(dead_code)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#[allow(unused_imports)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::cmp::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::collections::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
@@ -589,7 +589,7 @@
 &lt;p&gt;给出一个数组，将数组分为两个部分，其中一个部分A和严格大于另一部分和，要求A部分尽可能短，如果先相同长度A的和尽可能大。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;从大到小排序数组，不断取出当前最大的数直到取出的数的和大于剩下的数的和。取出的数集即为答案。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#[allow(dead_code)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-rust" data-lang="rust"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#[allow(dead_code)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#[allow(unused_imports)]&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::cmp::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;use&lt;/span&gt;&lt;span style="color:#fff"&gt; &lt;/span&gt;std::collections::&lt;span style="color:#0550ae"&gt;*&lt;/span&gt;&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;&lt;span style="color:#fff"&gt;
@@ -632,7 +632,7 @@
 &lt;p&gt;找到树中最左下的节点。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;层序遍历树，每次取每一层最左边的节点，最后的值即为最左下的节点。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -679,7 +679,7 @@
 &lt;p&gt;求树中频率最高的子树和的数字。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;深度优先搜索树，返回当前子树和，然后更新子树和的频率，如果当前子树和大于最大频率，则更新答案。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -746,7 +746,7 @@
 &lt;p&gt;要求：请对输入的数组 就地 进行上述修改，不要从函数返回任何东西，空间复杂度为 $O(1)$。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;使用双指针，通过维护两个双指针模拟栈。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -787,7 +787,7 @@
 &lt;li&gt;在左边和上面改变方向，左边对应 y 小于 0 ，上面对应 x 小于 0 ，这时只需要将 x 或 y重置为0，然后改变方向。&lt;/li&gt;
 &lt;li&gt;在右边和下面改变方向，右边对应 y 等于 m ，下边对应 x 等于 n，这是除了将 y 改变为 m-1 ，或将 x 改变为 n-1 ，还需要将对应 x 加 2或者 y 加 2。&lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -842,7 +842,7 @@
 &lt;p&gt;给定一组目标字符串和原字符串，规定一种变换，原字符串中所有相同的字母可以变换为另一种字母。限制为每种字母只能变换一种字母，不同的字母不能变换成相同的字母。如&amp;quot;abb&amp;quot;可以变换为&amp;quot;cdd&amp;quot;，不能变换成&amp;quot;cde&amp;quot;或&amp;quot;ccc&amp;quot;。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;遍历目标字符串中的所有字符，如果长度和原字符串不相等直接跳过，然后遍历原字符串，如果当前字符不存在映射，就对应到目标字符串对应位置的字符，如果存在映射但与当前对应位置字符不相等直接跳过，如果有多个字符对应同一个字符，跳过当前的目标字符串，将所有符合条件的目标字符串放入答案中。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -892,7 +892,7 @@
 &lt;p&gt;给定一串01串，能够对其每一位进行翻转，即0变1，1变0。要求最终得到一个不下降的01串，例如000111111，求最小翻转次数。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;使用前缀和统计每一位左边0和1，和右边0和1的个数，枚举每一位 i 作为0到1上升的边缘。i 左边全为0，右边全为1，所以翻转次数为 i 左边1的个数加上 i 右边0的个数，最后求出最小值。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -931,7 +931,7 @@
 &lt;p&gt;给出多个在平面上且不相交的多个长方形，要求等概率从这些长方形范围内选出一个点（包含长方形的边），返回点的二维坐标。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;题目中的长方形数量小于100，每个长方形长和宽的长度不大于2000，所以每个长方形最多有 $2000\times2000=4e6$ 个点，总共最多 $4e6\times 100 = 4e8$ 个点。所以首先为每个点编号，然后等概率选取一个点，根据点的编号判断该点在哪个长方形中，然后根据点的编号与长方形左下角点编号的差距计算偏移，然后求出选取点的坐标。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -992,7 +992,7 @@
 &lt;p&gt;遍历字符串，如果不相等就跳过，需要删除这个字符，如果出现两次不同的情况，说明不能改变。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -1037,7 +1037,7 @@
 &lt;p&gt;序列化： 按照自己的规则将一组数据结构用字符串表示。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;没看到是搜索树，直接用层序遍历序列化，记录每一层的节点数据，空节点用特殊字符表示即可。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -1186,7 +1186,7 @@
 &lt;p&gt;给出关系，要求还原任意符合要求的数组。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;贪心地构造数组，设置当前最大值和当前最小值，当前字符为 &amp;lsquo;I&amp;rsquo; 时，插入当前最小值，最小值加1，字符为 &amp;lsquo;D&amp;rsquo; 时类似。 上面过程保证了构造的数组元素关系符合给出的字符串。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -1215,7 +1215,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>442-Find All Duplicates in an Array</title><link>https://booiris.space/wiki/leetcode/442-find-all-duplicates-in-an-array/</link><pubDate>Sun, 08 May 2022 13:46:38 +0000</pubDate><guid>https://booiris.space/wiki/leetcode/442-find-all-duplicates-in-an-array/</guid><description>&lt;h2 id="题意"&gt;题意&lt;/h2&gt;
 &lt;p&gt;给出一个长度为 n 的数组，每个数组元素的值为 [1,n], 数组中存在出现一次和出现两次的元素，要求在 $O(n)$ 时间和 $O(1)$ 空间返回出现两次的元素。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -1251,7 +1251,7 @@
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;根据规则在中间字符串内建图，对于中间字符串内两个不同的字符串 a, b，如果他们相差一位字符，则连上一条双向边。最后以初始字符串作为源点和以目标字符串为汇点建图。&lt;/p&gt;
 &lt;p&gt;最后根据建好的图 bfs 一遍即可。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -1333,7 +1333,7 @@
 &lt;p&gt;流式输入时间戳为 t 的请求，对于每一次输入，返回 [t-3000,t] 内请求的个数。&lt;/p&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;使用队列维护，将小于 t-3000 的数出队，再将 t 入队，返回当前队列元素个数。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -1370,7 +1370,7 @@
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;枚举左节点，对于每一个左节点 i，找到满足字串积小于 k 的最长字串的右节点 high，那么每一个左节点有效的字串个数为 high - i +1。&lt;/p&gt;
 &lt;p&gt;对于两个左节点 $i , j$。 如果 $i&amp;lt;j$，那么它们的最长右节点一定有 $high_i &amp;lt;= high_j$ 。枚举左节点时 high 是单调递增的，所以时间复杂度为 $O(n)$。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -1409,7 +1409,7 @@
 &lt;img src="https://s2.loli.net/2022/05/04/mLVdz7vXEb2irPs.png" &gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;对于最后一个人，每次操作与下一次操作差 k， 递归解决即可，注意下标从 1 开始，注意一下边界条件。&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
@@ -1442,7 +1442,7 @@
 &lt;/ol&gt;
 &lt;h2 id="题解"&gt;题解&lt;/h2&gt;
 &lt;p&gt;按照规则模拟即可&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="background-color:#f7f7f7;-moz-tab-size:2;-o-tab-size:2;tab-size:2;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-cpp" data-lang="cpp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define LOCAL
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#include&lt;/span&gt; &lt;span style="color:#57606a"&gt;&amp;lt;bits/stdc++.h&amp;gt;&lt;/span&gt;&lt;span style="color:#57606a"&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#cf222e"&gt;using&lt;/span&gt; &lt;span style="color:#cf222e"&gt;namespace&lt;/span&gt; std&lt;span style="color:#1f2328"&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#57606a"&gt;#define INF 0x3f3f3f3f
